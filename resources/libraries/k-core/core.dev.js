@@ -10363,7 +10363,7 @@ const ui = (() => {
                 pop.classList.remove('[status-off]');
                 pop.classList.remove('[status-active]');
 
-                if(pop.parentNode.tagName.toLowerCase()=='p')
+                if(pop.parentNode.tagName.toLowerCase()=='p' && !is_touch_device())
                 {
                     pop.addEventListener('mouseenter', ev_togglepopover => {
 
@@ -10373,13 +10373,11 @@ const ui = (() => {
                     },false);
                 }
 
-                let crossclick = is_touch_device() ? 'ontouchstart' : 'click';
-
-                pop.addEventListener( crossclick, ev_togglepopover => {
+                pop.addEventListener( 'click', ev_togglepopover => {
 
                     togglepopover(ev_togglepopover,allpops,pop);
 
-                    document.addEventListener(crossclick, ev_closeallpops=>{ closeallpops(allpops) },true)
+                    document.addEventListener('click', ev_closeallpops=>{ closeallpops(allpops) },true)
 
                 },false);
 
