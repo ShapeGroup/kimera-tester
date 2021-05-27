@@ -52,8 +52,8 @@ const ui = (() => {
         const screen = { "fullscreen":false };
 
         window.onscroll = ev => {
-            ui.screen.scrollX = parseInt( (document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : window.pageXOffset );
-            ui.screen.scrollY = parseInt( (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : window.pageYOffset );
+            ui.screen.scrollX = parseInt( (document.body.scrollLeft) ? document.body.scrollLeft : (document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : window.pageXOffset );
+            ui.screen.scrollY = parseInt( (document.body.scrollTop) ? document.body.scrollTop :  (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : window.pageYOffset );
         }
 
         // micro-libs // get real offeset top
