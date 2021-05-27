@@ -11647,6 +11647,7 @@ const ui = (() => {
             {
                 screenerbutton.addEventListener('click', () => {
 
+                    console.log(isfullscreen);
                     let el = document.documentElement;
 
                     if(!isfullscreen)
