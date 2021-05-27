@@ -5535,9 +5535,9 @@ const ui = (() => {
                         console.log( document.documentElement.scrollX||window.scrollX||window.pageXOffset, rect.left);
                         console.log( document.documentElement.scrollY||window.scrollY||window.pageYOffset, rect.top);
 
-                        alert("SORRY IS TEST DOC Y : ",document.documentElement.scrollY)
-                        alert("SORRY IS TEST WIN Y : ",window.scrollY)
-                        alert("SORRY IS TEST WIN OFFSET Y: ",window.pageYOffset)
+                        alert("SORRY IS TEST DOC Y : "+document.documentElement.scrollY)
+                        alert("SORRY IS TEST WIN Y : "+window.scrollY)
+                        alert("SORRY IS TEST WIN OFFSET Y: "+window.pageYOffset)
 
 
 
