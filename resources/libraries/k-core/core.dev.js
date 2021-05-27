@@ -162,22 +162,22 @@ const ui = (() => {
 
             console.log("w screen:",window.outerHeight );
 
-            let DOCU = document.querySelector('html'),
-                BODY = document.querySelector('body');
-
-            if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
-            {
-                DOCU.style.height = window.screen.availHeight + 'px';
-                BODY.style.height = window.screen.availHeight + 'px';
-
-                // alert("TEST: MOBILE FINDED")
-
-            }
-            else
-            {
-                DOCU.style.height = ''; if(DOCU.style=='') DOCU.removeAttribute('style');
-                BODY.style.height = ''; if(BODY.style=='') BODY.removeAttribute('style');
-            }
+            // let DOCU = document.querySelector('html'),
+            //     BODY = document.querySelector('body');
+            //
+            // if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
+            // {
+            //     DOCU.style.height = window.screen.availHeight + 'px';
+            //     BODY.style.height = window.screen.availHeight + 'px';
+            //
+            //     // alert("TEST: MOBILE FINDED")
+            //
+            // }
+            // else
+            // {
+            //     DOCU.style.height = ''; if(DOCU.style=='') DOCU.removeAttribute('style');
+            //     BODY.style.height = ''; if(BODY.style=='') BODY.removeAttribute('style');
+            // }
 
             // alert("A LITTLE TEST.. SORRY :P")
 
@@ -5524,8 +5524,8 @@ const ui = (() => {
                         event_clockdrag.stopPropagation();
 
 
-                        let docX =(document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : window.pageXOffset
-                        let docY =(document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : window.pageYOffset
+                        let docX =(document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : window.pageXOffset;
+                        let docY =(document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : window.pageYOffset;
                         let rect = ClockPivot.getBoundingClientRect();
 
                         center = {
