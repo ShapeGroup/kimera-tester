@@ -51,12 +51,12 @@ const ui = (() => {
 
         const screen = { "fullscreen":false };
 
-        document.body.insertAdjacentHTML('afterend', `<div class="fixed-bottom-right"><p id="debbugger"></p></div>`);
+        document.getElementsByTagName('BODY')[0].insertAdjacentHTML('afterend', `<div class="fixed-bottom-right"><p id="debbugger"></p></div>`);
 
         window.addEventListener('scroll', ev => {
 
-            ui.screen.scrollX = parseInt( (document.body.scrollLeft) ? document.body.scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : window.scrollX );
-            ui.screen.scrollY = parseInt( (document.body.scrollTop) ? document.body.scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset : window.scrollY );
+            ui.screen.scrollX = parseInt( (document.getElementsByTagName('BODY')[0].scrollLeft) ? document.getElementsByTagName('BODY')[0].scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : window.scrollX );
+            ui.screen.scrollY = parseInt( (document.getElementsByTagName('BODY')[0].scrollTop) ? document.getElementsByTagName('BODY')[0].scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset : window.scrollY );
 
             // document.body.scrollTop
             // document.documentElement.scrollY
@@ -83,7 +83,7 @@ const ui = (() => {
 
 
             let outdebug = `
-                            document.body.scrollTop IS : `+document.body.scrollTop
+                            document.getElementsByTagName('BODY')[0].scrollTop IS : `+document.getElementsByTagName('BODY')[0].scrollTop
                             +`document.documentElement.scrollY IS : `+document.documentElement.scrollY
                             +`document.scrollTop IS : `+document.scrollTop
                             +`window.scrollTop IS : `+window.scrollTop
