@@ -11640,7 +11640,7 @@ const ui = (() => {
         const fullscreener = () =>
         {
 
-            let isfullscreen = false,
+            var isfullscreen = false,
                 gofullscreeners = document.querySelectorAll(".screenmode");
 
             for (let screenerbutton of gofullscreeners)
@@ -11648,7 +11648,7 @@ const ui = (() => {
 
                 screenerbutton.addEventListener('click', () => {
 
-                    console.log('ACTUALLY : ',isfullscreen);
+                    console.log('-ACTUALLY : ',isfullscreen);
 
                     let el = document.documentElement;
 
@@ -11676,7 +11676,7 @@ const ui = (() => {
 
                     }
 
-                    console.log('AND NOW IS : ',isfullscreen);
+                    console.log('-AND NOW IS : ',isfullscreen);
 
                 }, false);
 
