@@ -164,16 +164,18 @@ const ui = (() => {
             let DOCU = document.querySelector('html'),
                 BODY = document.querySelector('body');
 
-            if(document.documentElement.clientWidth <= 920) // fuck mobile browser bar!
+            if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
             {
                 DOCU.style.height = window.innerHeight + 'px';
-                BODY.style.height = window.innerHeight + 'px';
+                BODY.style.height = window.innerHeight + 'px';s
             }
             else
             {
                 DOCU.style.height = ''; if(DOCU.style=='') DOCU.removeAttribute('style');
                 BODY.style.height = ''; if(BODY.style=='') BODY.removeAttribute('style');
             }
+
+            alert("A LITTLE TEST.. SORRY :P")
 
         }
 
