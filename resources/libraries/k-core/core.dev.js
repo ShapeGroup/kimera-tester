@@ -11653,7 +11653,7 @@ const ui = (() => {
 
                     console.log('-ACTUALLY : ',isfullscreen);
 
-                    if(isfullscreen===false)
+                    if(ui.isfullscreen===false)
                     {
 
                         ui.isfullscreen = true;
@@ -11664,7 +11664,7 @@ const ui = (() => {
                         // else if(el.msRequestFullscreen)     el.msRequestFullscreen();
 
 
-                        startFullScreen.call(document);s
+                        startFullScreen.call(document);
 
                     }
 
