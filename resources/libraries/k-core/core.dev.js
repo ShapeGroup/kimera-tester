@@ -11651,12 +11651,12 @@ const ui = (() => {
 
                 screenerbutton.addEventListener('click', () => {
 
-                    console.log('-ACTUALLY : ',ui.isfullscreen);
+                    console.log('-ACTUALLY : ',ui.fullscreen);
 
-                    if(ui.isfullscreen===false)
+                    if(ui.fullscreen===false)
                     {
 
-                        ui.isfullscreen = true;
+                        ui.fullscreen = true;
 
                         // if (el.requestFullscreen)           el.requestFullscreen();
                         // else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
@@ -11671,7 +11671,7 @@ const ui = (() => {
                     else
                     {
 
-                        ui.isfullscreen = false;
+                        ui.fullscreen = false;
 
                         cancellFullScreen.call(document);
 
@@ -11682,7 +11682,7 @@ const ui = (() => {
 
                     }
 
-                    console.log('-AND NOW IS : ',ui.isfullscreen);
+                    console.log('-AND NOW IS : ',ui.fullscreen);
 
                 }, false);
 
