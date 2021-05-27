@@ -161,7 +161,7 @@ const ui = (() => {
         const nomobar = () =>
         {
 
-            console.log(window.screen);
+            console.log("w screen:",window.screen);
 
             let DOCU = document.querySelector('html'),
                 BODY = document.querySelector('body');
