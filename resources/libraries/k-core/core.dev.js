@@ -63,16 +63,13 @@ const ui = (() => {
             // window.pageYOffset
             // window.scrollY
 
-            setTimeout(()=>{
-
-                alert("document.body.scrollTop IS : "+document.body.scrollTop)      //no
-                alert("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
-                alert("document.scrollTop IS : "+document.scrollTop)           //no
-                alert("window.scrollTop IS : "+window.scrollTop)                    //no
-                alert("window.pageYOffset IS : "+window.pageYOffset)                //yes
-                alert("window.scrollY IS : "+window.scrollY);                       //yes
-                alert("FINALE IS : "+ui.screen.scrollY)
-            })
+            //     alert("document.body.scrollTop IS : "+document.body.scrollTop)      //no
+            //     alert("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
+            //     alert("document.scrollTop IS : "+document.scrollTop)           //no
+            //     alert("window.scrollTop IS : "+window.scrollTop)                    //no
+            //     alert("window.pageYOffset IS : "+window.pageYOffset)                //yes
+            //     alert("window.scrollY IS : "+window.scrollY);                       //yes
+            //     alert("FINALE IS : "+ui.screen.scrollY)
 
             console.log("document.body.scrollTop IS : "+document.body.scrollTop)      //no
             console.log("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
