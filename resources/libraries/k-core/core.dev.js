@@ -11655,27 +11655,25 @@ const ui = (() => {
 
                 screenerbutton.addEventListener('click', () => {
 
-                    console.log(' ACTUALLY : ',ui.fullscreen);
+                    console.log(' ACTUALLY : ',ui.fullscreen.status);
 
-                    if(ui.fullscreen===false)
+                    if(ui.fullscreen.status===false)
                     {
 
-                        ui.fullscreen = true;
-                        ui.startFullScreen;
-                        // .call(document);
+                        ui.fullscreen.status = true;
+                        ui.fullscreen.startFullScreen.call(document);
 
                     }
 
                     else
                     {
 
-                        ui.fullscreen = false;
-                        ui.delFullScreen
-                        // ui.delFullScreen.call(document);
+                        ui.fullscreen.status = false;
+                        ui.fullscreen.delFullScreen.call(document);
 
                     }
 
-                    console.log(' AND NOW IS : ',ui.fullscreen);
+                    console.log(' AND NOW IS : ',ui.fullscreen.status);
 
                 }, false);
 
