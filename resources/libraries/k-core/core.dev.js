@@ -5523,15 +5523,17 @@ const ui = (() => {
                         event_clockdrag.preventDefault();
                         event_clockdrag.stopPropagation();
 
-                        // let rect = ClockPivot.getBoundingClientRect();
+                        let rect = ClockPivot.getBoundingClientRect();
                         center = {
-                            x:  document.documentElement.clientWidth / 2; , //window.scrollX + v
-                            y:  document.documentElement.clientHeight / 2; //window.scrollY + rect.top
+                            x:  (document.documentElement.scrollX||window.scrollX) + rect.left,
+                            y:  (document.documentElement.scrollY||window.scrollY) + rect.top
                         };
-
-                        console.log('::: obj ',ClockPivot, center.y);
-                        console.log('::: window ',window);
-                        console.log('::: dcoument ',dcoument);
+                        // center = {
+                        //     x:  document.documentElement.clientWidth / 2; , //window.scrollX + v
+                        //     y:  document.documentElement.clientHeight / 2; //window.scrollY + rect.top
+                        // };
+                        console.log( document.documentElement.scrollX||window.scrollX, rect.left);
+                        console.log( document.documentElement.scrollY||window.scrollY, rect.top);
 
                         if(event.target == RayHours)
                         {
