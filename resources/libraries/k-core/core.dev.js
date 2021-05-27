@@ -11641,15 +11641,16 @@ const ui = (() => {
         const fullscreener = () =>
         {
 
-            var gofullscreeners = document.querySelectorAll(".screenmode");
+            let gofullscreeners = document.querySelectorAll(".screenmode"),
+                startFullScreen   = document.requestFullscreen || document.webkitRequestFullscreen || document.mozRequestFullScreen || document.msRequestFullscreen,
+                cancellFullScreen = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen;
 
-            const startFullScreen = document.requestFullscreen || document.webkitRequestFullscreen || document.mozRequestFullScreen || document.msRequestFullscreen;
-            const cancellFullScreen = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen;
 
             for (let screenerbutton of gofullscreeners)
             {
 
                 screenerbutton.addEventListener('click', () => {
+                    console.log(startFullScreen);
 
                     console.log('-ACTUALLY : ',ui.fullscreen);
 
@@ -11657,13 +11658,6 @@ const ui = (() => {
                     {
 
                         ui.fullscreen = true;
-
-                        // if (el.requestFullscreen)           el.requestFullscreen();
-                        // else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-                        // else if(el.mozRequestFullScreen)    el.mozRequestFullScreen();
-                        // else if(el.msRequestFullscreen)     el.msRequestFullscreen();
-
-
                         startFullScreen.call(document);
 
                     }
@@ -11672,13 +11666,7 @@ const ui = (() => {
                     {
 
                         ui.fullscreen = false;
-
                         cancellFullScreen.call(document);
-
-                        // if (el.exitFullscreen)           el.exitFullscreen();
-                        // else if(el.webkitExitFullscreen) el.webkitExitFullscreen();
-                        // else if(el.mozCancelFullScreen)  el.mozCancelFullScreen();
-                        // else if(el.msExitFullscreen)     el.msExitFullscreen();
 
                     }
 
