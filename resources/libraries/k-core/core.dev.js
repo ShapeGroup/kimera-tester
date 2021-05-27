@@ -11668,11 +11668,19 @@ const ui = (() => {
                     {
 
                         isfullscreen = false;
-
-                        if (el.exitFullscreen)           el.exitFullscreen();
-                        else if(el.webkitExitFullscreen) el.webkitExitFullscreen();
-                        else if(el.mozCancelFullScreen)  el.mozCancelFullScreen();
-                        else if(el.msExitFullscreen)     el.msExitFullscreen();
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen().catch(() => { });
+                        } else if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen();
+                        } else if (document.mozCancelFullScreen) {
+                            document.mozCancelFullScreen();
+                        } else if (document.msExitFullscreen) {
+                            document.msExitFullscreen();
+                        }
+                        // if (el.exitFullscreen)           el.exitFullscreen();
+                        // else if(el.webkitExitFullscreen) el.webkitExitFullscreen();
+                        // else if(el.mozCancelFullScreen)  el.mozCancelFullScreen();
+                        // else if(el.msExitFullscreen)     el.msExitFullscreen();
 
                     }
 
