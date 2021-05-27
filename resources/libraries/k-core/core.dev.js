@@ -53,7 +53,7 @@ const ui = (() => {
              const screen = { "fullscreen":false };
          window.onload = () =>
          {
-             document.getElementsByTagName('BODY')[0].insertAdjacentHTML('afterend', `<div class="fixed-bottom-right"><p id="debbugger pad-[10] bkg-03"></p></div>`);
+             document.getElementsByTagName('BODY')[0].insertAdjacentHTML('afterend', `<div class="fixed-bottom-right"><p id="debbugger pad-[10] bkg-03" style="max-width:350px"></p></div>`);
 
             window.addEventListener('scroll', ev => {
 
