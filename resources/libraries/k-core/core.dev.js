@@ -11642,7 +11642,7 @@ const ui = (() => {
         {
 
             let gofullscreeners = document.querySelectorAll(".screenmode"),
-                startFullScreen   = document.requestFullscreen || document.webkitRequestFullscreen || document.mozRequestFullScreen || document.msRequestFullscreen,
+                startFullScreen   = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen || document.documentElement.mozRequestFullScreen || document.documentElement.msRequestFullscreen,
                 cancellFullScreen = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen;
 
 
