@@ -11640,22 +11640,22 @@ const ui = (() => {
         const fullscreener = () =>
         {
 
-            var isfullscreen = false;
-
-            let gofullscreeners = document.querySelectorAll(".screenmode");
+            let isfullscreen = false,
+                gofullscreeners = document.querySelectorAll(".screenmode");
 
             for (let screenerbutton of gofullscreeners)
             {
+
                 screenerbutton.addEventListener('click', () => {
 
-                    console.log('IS ACTUALLY : ',isfullscreen);
+                    console.log('ACTUALLY : ',isfullscreen);
 
                     let el = document.documentElement;
 
                     if(isfullscreen===false)
                     {
 
-                        isfullscreen=true;
+                        isfullscreen = true;
 
                         if (el.requestFullscreen)           el.requestFullscreen();
                         else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
@@ -11667,7 +11667,7 @@ const ui = (() => {
                     else
                     {
 
-                        isfullscreen=false;
+                        isfullscreen = false;
 
                         if (el.exitFullscreen)           el.exitFullscreen();
                         else if(el.webkitExitFullscreen) el.webkitExitFullscreen();
@@ -12162,7 +12162,6 @@ const ui = (() => {
             audiobox();
             grid_y();
             grabs();
-            fullscreener();
 
         },false);
 
@@ -12178,6 +12177,7 @@ const ui = (() => {
             fitup();
             flange();
             outbox();
+            fullscreener();
             effectors();
             exitloader();
 
