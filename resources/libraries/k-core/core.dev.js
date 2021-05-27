@@ -5535,6 +5535,10 @@ const ui = (() => {
                         console.log( document.documentElement.scrollX||window.scrollX, rect.left);
                         console.log( document.documentElement.scrollY||window.scrollY, rect.top);
 
+                        alert("SORRY IS TEST: ",document.documentElement.scrollY)
+                        alert("SORRY IS TEST: ",window.scrollY)
+
+
                         if(event.target == RayHours)
                         {
                             isHours = true;
