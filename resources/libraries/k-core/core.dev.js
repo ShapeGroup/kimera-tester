@@ -82,7 +82,18 @@ const ui = (() => {
             // console.log("FINALE IS : "+ui.screen.scrollY)
 
 
-            document.body.getElementById("debbugger").innerHTML('document.body.scrollTop IS : '+document.body.scrollTop+'\n'+'document.documentElement.scrollY IS : '+document.documentElement.scrollY)+'\n'+'document.scrollTop IS : '+document.scrollTop)+'\n'+'window.scrollTop IS : '+window.scrollTop+'\n'+'window.pageYOffset IS : '+window.pageYOffset+'\n'+'window.scrollY IS : '+window.scrollY+'\n'+'FINALE IS : '+ui.screen.scrollY);
+            let outdebug =
+            `
+                document.body.scrollTop IS : `+document.body.scrollTop+`
+                document.documentElement.scrollY IS : `+document.documentElement.scrollY)+`
+                document.scrollTop IS : `+document.scrollTop)+`
+                window.scrollTop IS : `+window.scrollTop+`
+                window.pageYOffset IS : `+window.pageYOffset+`
+                window.scrollY IS : `+window.scrollY+`
+                FINAL IS : `+ui.screen.scrollY+
+            `;
+
+            document.body.getElementById("debbugger").innerHTML(outdebug);
 
         },false)
 
