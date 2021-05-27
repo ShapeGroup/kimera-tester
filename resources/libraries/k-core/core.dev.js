@@ -11640,7 +11640,7 @@ const ui = (() => {
         const fullscreen =
         {
             "status":false,
-            "startFullScreen" : (document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen || document.documentElement.mozRequestFullScreen || document.documentElement.msRequestFullscreen),
+            "startFullScreen" : document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen || document.documentElement.mozRequestFullScreen || document.documentElement.msRequestFullscreen,
             "delFullScreen" : document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen
 
         };
@@ -11661,7 +11661,7 @@ const ui = (() => {
                     {
 
                         ui.fullscreen.status = true;
-                        ui.fullscreen.startFullScreen;
+                        fullscreen.startFullScreen;
                         // ui.fullscreen.startFullScreen.call(document);
 
                     }
@@ -11670,7 +11670,7 @@ const ui = (() => {
                     {
 
                         ui.fullscreen.status = false;
-                        ui.fullscreen.delFullScreen;
+                        fullscreen.delFullScreen;
                         // ui.fullscreen.delFullScreen.call(document);
 
                     }
