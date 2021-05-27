@@ -52,19 +52,26 @@ const ui = (() => {
         const screen = { "fullscreen":false };
 
         window.addEventListener('scroll', ev => {
+
             ui.screen.scrollX = parseInt( (document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : (document.body.scrollLeft) ? document.body.scrollLeft : window.pageXOffset );
+
             ui.screen.scrollY = parseInt( (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : (document.body.scrollTop) ? document.body.scrollTop : window.pageYOffset );
 
+
+            (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : (document.body.scrollTop) ? document.body.scrollTop : window.pageYOffset
+
+
+
             setTimeout(()=>{
-                alert("window.scrollY IS : "+window.scrollY)
-                alert("window.pageYOffset IS : "+window.pageYOffset)
-                alert("window.scrollTop IS : "+document.body.scrollTop)
-                alert("document.body.scrollTop IS : "+document.body.scrollTop)
-                alert("document.scrollTop IS : "+document.body.scrollTop)
-                alert("document.documentElement.scrollY IS : "+document.documentElement.scrollY)
+
+                alert("window.scrollY IS : "+window.scrollY);                       //yes
+                alert("window.pageYOffset IS : "+window.pageYOffset)                //yes
+                alert("window.scrollTop IS : "+window.scrollTop)                    //no
+                alert("document.body.scrollTop IS : "+document.body.scrollTop)      //no
+                alert("document.scrollTop IS : "+document.body.scrollTop)           //no
+                alert("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
+                alert("FINALE IS : "+ui.screen.scrollY)
             })
-            // console.log(document.body.scrollTop);
-            // alert(document.body.scrollTop)
 
         },false)
 
