@@ -11658,6 +11658,12 @@ const ui = (() => {
                         ui.fullscreen.status = true;
                         requestFullScreen.call(document.documentElement);
 
+                        for (let sbtm of gofullscreeners)
+                        {
+                            sbtm.classList.add('[status-active]')
+                            sbtm.classList.remove('[status-off]')
+                        }
+
                     }
 
                     else
@@ -11665,6 +11671,12 @@ const ui = (() => {
 
                         ui.fullscreen.status = false;
                         cancellFullScreen.call(document);
+
+                        for (let sbtm of gofullscreeners)
+                        {
+                            sbtm.classList.add('[status-off]')
+                            sbtm.classList.remove('[status-active]')
+                        }
 
                     }
 
