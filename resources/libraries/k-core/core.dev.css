@@ -5365,11 +5365,12 @@ textarea {
 .clockbox .clock .pivot,
 .chronobox .chrono .pivot {
 
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     width: 0px;
     height:0px;
+    outline: 1px solid red;
 }
 
 
