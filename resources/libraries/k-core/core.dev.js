@@ -1,12 +1,15 @@
 
-var gofullscreen = document.getElementById("TESTFULLSCREEN");
 
-gofullscreen.addEventListener("click", function() {
+if(document.getElementById("TESTFULLSCREEN"))
+{
+    var gofullscreen = document.getElementById("TESTFULLSCREEN");
+    gofullscreen.addEventListener("click", function() {
 
         const el = document.documentElement;
         if (el.requestFullscreen) { el.requestFullscreen() };
 
-}, false);
+    }, false);
+}
 
 
 const ui = (() => {
@@ -161,8 +164,6 @@ const ui = (() => {
             }
 
         }
-
-
 
     //--------------------------------------------------//
 
