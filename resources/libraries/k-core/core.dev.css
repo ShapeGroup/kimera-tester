@@ -1228,6 +1228,7 @@ body.mode-app .stop-left {
     overflow-x: hidden;
     scroll-behavior: smooth;
     max-height: inherit;
+    height: unset;
 
 }
 
@@ -6111,10 +6112,8 @@ nav.type-y>ul {
 
 .hide-bar-y {
 
-    height: inherit;
+    height: 100%;
     max-height: 100%;
-    /* max-height: inherit; */
-
 }
 
 .hide-bar-x {
