@@ -11664,7 +11664,7 @@ const ui = (() => {
 
                     }
 
-                    if(isfullscreen===true)
+                    else
                     {
 
                         isfullscreen=false;
