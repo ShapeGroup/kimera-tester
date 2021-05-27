@@ -161,7 +161,8 @@ const ui = (() => {
         const nomobar = () =>
         {
 
-                console.log(window)
+            console.log(window);
+            console.log(document.clientHeight);
 
             let DOCU = document.querySelector('html'),
                 BODY = document.querySelector('body');
