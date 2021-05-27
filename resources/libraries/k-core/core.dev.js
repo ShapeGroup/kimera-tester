@@ -5525,8 +5525,8 @@ const ui = (() => {
 
                         let rect = ClockPivot.getBoundingClientRect();
                         center = {
-                            x:  screen.height/2 , //window.scrollX + v
-                            y:  screen.width/2 //window.scrollY + rect.top
+                            x:  screen.width/2 , //window.scrollX + v
+                            y:  screen.height/2 //window.scrollY + rect.top
                         };
 
                         console.log('::: window.screen ',center.x, center.y);
