@@ -11637,11 +11637,11 @@ const ui = (() => {
 
     //--------------------------------------------------//
 
+        const fullscreen = false;
         const fullscreener = () =>
         {
 
-            var isfullscreen = false,
-                gofullscreeners = document.querySelectorAll(".screenmode");
+            var gofullscreeners = document.querySelectorAll(".screenmode");
 
             const startFullScreen = document.requestFullscreen || document.webkitRequestFullscreen || document.mozRequestFullScreen || document.msRequestFullscreen;
             const cancellFullScreen = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen;
@@ -11656,7 +11656,7 @@ const ui = (() => {
                     if(isfullscreen===false)
                     {
 
-                        isfullscreen = true;
+                        ui.isfullscreen = true;
 
                         // if (el.requestFullscreen)           el.requestFullscreen();
                         // else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
@@ -11671,7 +11671,7 @@ const ui = (() => {
                     else
                     {
 
-                        isfullscreen = false;
+                        ui.isfullscreen = false;
 
                         cancellFullScreen.call(document);
 
@@ -12245,6 +12245,7 @@ const ui = (() => {
         }
 
         return {
+            fullscreen,
             warning,
             loaderslist,
             draganddrop,
@@ -12253,3 +12254,6 @@ const ui = (() => {
 
 
 })();
+
+
+console.log('UI FULLSCREEN : ',ui.fullscreen);
