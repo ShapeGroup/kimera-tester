@@ -171,7 +171,7 @@ const ui = (() => {
         const nomobar = () =>
         {
 
-            console.log("w screen:",window.screen.availHeight);
+            console.log("w screen:",window.outerHeight );
 
             let DOCU = document.querySelector('html'),
                 BODY = document.querySelector('body');
