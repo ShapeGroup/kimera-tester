@@ -5525,11 +5525,11 @@ const ui = (() => {
 
                         let rect = ClockPivot.getBoundingClientRect();
                         center = {
-                            x:  screen.clientWidth/2 , //window.scrollX + v
-                            y:  screen.clientHeight/2 //window.scrollY + rect.top
+                            x:  parseInt(screen.clientWidth)/2 , //window.scrollX + v
+                            y:  parseInt(screen.clientHeight)/2 //window.scrollY + rect.top
                         };
 
-                        console.log('::: window.screen ',center.x, center.y);
+                        console.log('::: window.screen ',screen.clientWidth, center.y);
 
                         if(event.target == RayHours)
                         {
