@@ -5523,13 +5523,13 @@ const ui = (() => {
                         event_clockdrag.preventDefault();
                         event_clockdrag.stopPropagation();
 
-                        let rect = ClockPivot.getBoundingClientRect();
+                        // let rect = ClockPivot.getBoundingClientRect();
                         center = {
-                            x:  window.innerWidth/2 , //window.scrollX + v
-                            y:  window.innerHeight/2 //window.scrollY + rect.top
+                            x:  ClockPivot.offsetLeft , //window.scrollX + v
+                            y:  ClockPivot.offsetTop //window.scrollY + rect.top
                         };
 
-                        console.log('::: window.screen ',window.innerHeight, center.y);
+                        console.log('::: window.screen ',ClockPivot, center.y);
 
                         if(event.target == RayHours)
                         {
