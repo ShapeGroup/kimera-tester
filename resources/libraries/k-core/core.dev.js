@@ -5525,18 +5525,20 @@ const ui = (() => {
 
                         let rect = ClockPivot.getBoundingClientRect();
                         center = {
-                            x:  (document.documentElement.scrollX||window.scrollX) + rect.left,
-                            y:  (document.documentElement.scrollY||window.scrollY) + rect.top
+                            x:  (document.documentElement.scrollX||window.scrollX||window.pageXOffset) + rect.left,
+                            y:  (document.documentElement.scrollY||window.scrollY||window.pageYOffset) + rect.top
                         };
                         // center = {
                         //     x:  document.documentElement.clientWidth / 2; , //window.scrollX + v
                         //     y:  document.documentElement.clientHeight / 2; //window.scrollY + rect.top
                         // };
-                        console.log( document.documentElement.scrollX||window.scrollX, rect.left);
-                        console.log( document.documentElement.scrollY||window.scrollY, rect.top);
+                        console.log( document.documentElement.scrollX||window.scrollX||window.pageXOffset, rect.left);
+                        console.log( document.documentElement.scrollY||window.scrollY||window.pageYOffset, rect.top);
 
-                        alert("SORRY IS TEST: ",document.documentElement.scrollY)
-                        alert("SORRY IS TEST: ",window.scrollY)
+                        alert("SORRY IS TEST DOC Y : ",document.documentElement.scrollY)
+                        alert("SORRY IS TEST WIN Y : ",window.scrollY)
+                        alert("SORRY IS TEST WIN OFFSET Y: ",window.pageYOffset)
+
 
 
                         if(event.target == RayHours)
