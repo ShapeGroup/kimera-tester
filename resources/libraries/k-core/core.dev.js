@@ -51,7 +51,7 @@ const ui = (() => {
 
         const screen = { "fullscreen":false };
 
-        window.lastElementChild.insertAdjacentHTML('afterend', `<div class="fixed-bottom-right"><p id="debbugger"></p></div>`);
+        document.body.insertAdjacentHTML('afterend', `<div class="fixed-bottom-right"><p id="debbugger"></p></div>`);
 
         window.addEventListener('scroll', ev => {
 
