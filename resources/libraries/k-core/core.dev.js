@@ -11639,14 +11639,39 @@ const ui = (() => {
 
         const fullscreener = () =>
         {
-            let gofullscreeners = document.querySelectorAll(".screenmode");
+
+            let isfullscreen=false,
+                gofullscreeners = document.querySelectorAll(".screenmode");
 
             for (let screenerbutton of gofullscreeners)
             {
                 screenerbutton.addEventListener('click', () => {
 
                     let el = document.documentElement;
-                    if (el.requestFullscreen) { el.requestFullscreen() };
+
+                    if(!isfullscreen)
+                    {
+
+                        if (el.requestFullscreen)           el.requestFullscreen();
+                        else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+                        else if(el.mozRequestFullScreen)    el.mozRequestFullScreen();
+                        else if(el.msRequestFullscreen)     el.msRequestFullscreen();
+
+                        isfullscreen=true;
+
+                    }
+
+                    else
+                    {
+
+                        if (el.exitFullscreen)           el.exitFullscreen();
+                        else if(el.webkitExitFullscreen) el.webkitExitFullscreen();
+                        else if(el.mozCancelFullScreen)  el.mozCancelFullScreen();
+                        else if(el.msExitFullscreen)     el.msExitFullscreen();
+
+                        isfullscreen=false;
+
+                    }
 
                 }, false);
 
