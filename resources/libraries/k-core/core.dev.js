@@ -11640,7 +11640,7 @@ const ui = (() => {
         const fullscreen =
         {
             "status":false,
-            "startFullScreen" : (document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen || document.documentElement.mozRequestFullScreen || document.documentElement.msRequestFullscreen),
+            "startFullScreen" : (document.requestFullscreen || document.webkitRequestFullscreen || document.mozRequestFullScreen || document.msRequestFullscreen),
             "delFullScreen" : document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen
 
         };
