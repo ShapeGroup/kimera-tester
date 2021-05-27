@@ -54,7 +54,7 @@ const ui = (() => {
          window.onload = () =>
          {
              document.getElementsByTagName('BODY')[0].insertAdjacentHTML('afterend', `<div class="fixed-bottom-right"><p id="debbugger"></p></div>`);
-         
+
             window.addEventListener('scroll', ev => {
 
                 ui.screen.scrollX = parseInt( (document.getElementsByTagName('BODY')[0].scrollLeft) ? document.getElementsByTagName('BODY')[0].scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : window.scrollX );
@@ -94,7 +94,7 @@ const ui = (() => {
                                     +`FINAL IS : `+ui.screen.scrollY+``;
 
 
-                    document.getElementById("debbugger").innerHTML(outdebug);
+                    document.getElementById("debbugger").innerHTML = outdebug;
 
             },false)
         }
