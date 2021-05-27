@@ -60,16 +60,21 @@ const ui = (() => {
 
             (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : (document.body.scrollTop) ? document.body.scrollTop : window.pageYOffset
 
-
+            // document.body.scrollTop
+            // document.documentElement.scrollY
+            // document.scrollTop
+            // ?window.scrollTop
+            // window.pageYOffset
+            // window.scrollY
 
             setTimeout(()=>{
 
-                alert("window.scrollY IS : "+window.scrollY);                       //yes
-                alert("window.pageYOffset IS : "+window.pageYOffset)                //yes
-                alert("window.scrollTop IS : "+window.scrollTop)                    //no
                 alert("document.body.scrollTop IS : "+document.body.scrollTop)      //no
-                alert("document.scrollTop IS : "+document.body.scrollTop)           //no
                 alert("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
+                alert("document.scrollTop IS : "+document.scrollTop)           //no
+                alert("window.scrollTop IS : "+window.scrollTop)                    //no
+                alert("window.pageYOffset IS : "+window.pageYOffset)                //yes
+                alert("window.scrollY IS : "+window.scrollY);                       //yes
                 alert("FINALE IS : "+ui.screen.scrollY)
             })
 
