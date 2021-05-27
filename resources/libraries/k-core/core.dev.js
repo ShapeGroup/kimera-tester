@@ -3664,8 +3664,8 @@ const ui = (() => {
 
                                         // scroll container with box
 
-                                        let YCoord = ui.screen.scrollY + mY ),
-                                            XCoord = ui.screen.scrollX + mX );
+                                        let YCoord = ( ui.screen.scrollY + mY ),
+                                            XCoord = ( ui.screen.scrollX + mX );
 
                                         let scrolltarget = (isntScroller)?scroller:scroller.firstElementChild;
 
