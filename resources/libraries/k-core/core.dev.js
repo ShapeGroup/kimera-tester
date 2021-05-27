@@ -11640,7 +11640,6 @@ const ui = (() => {
         const fullscreener = () =>
         {
 
-            console.log('TESTER START');
 
             let isfullscreen=false,
                 gofullscreeners = document.querySelectorAll(".screenmode");
@@ -11649,7 +11648,7 @@ const ui = (() => {
             {
                 screenerbutton.addEventListener('click', () => {
 
-                    console.log('STAUTS FULL:',isfullscreen);
+                    console.log('on click FULLSCREEN IS : ',isfullscreen);
 
                     let el = document.documentElement;
 
@@ -11665,7 +11664,7 @@ const ui = (() => {
 
                     }
 
-                    else
+                    if(isfullscreen===true)
                     {
 
                         if (el.exitFullscreen)           el.exitFullscreen();
@@ -11676,6 +11675,8 @@ const ui = (() => {
                         isfullscreen=false;
 
                     }
+
+                    console.log('END TO : ',isfullscreen);
 
                 }, false);
 
