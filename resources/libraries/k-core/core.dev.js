@@ -48,56 +48,56 @@ const ui = (() => {
 
 
         // micro-libs // get scrollY/X standard + mobile
-        window.onload = () =>
-        {
-
-         const screen = { "fullscreen":false };
-
-        document.getElementsByTagName('BODY')[0].insertAdjacentHTML('afterend', `<div class="fixed-bottom-right"><p id="debbugger"></p></div>`);
-
-        window.addEventListener('scroll', ev => {
-
-            ui.screen.scrollX = parseInt( (document.getElementsByTagName('BODY')[0].scrollLeft) ? document.getElementsByTagName('BODY')[0].scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : window.scrollX );
-            ui.screen.scrollY = parseInt( (document.getElementsByTagName('BODY')[0].scrollTop) ? document.getElementsByTagName('BODY')[0].scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset : window.scrollY );
-
-            // document.body.scrollTop
-            // document.documentElement.scrollY
-            // document.scrollTop
-            // ?window.scrollTop
-            // window.pageYOffset
-            // window.scrollY
-
-            //     alert("document.body.scrollTop IS : "+document.body.scrollTop)      //no
-            //     alert("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
-            //     alert("document.scrollTop IS : "+document.scrollTop)           //no
-            //     alert("window.scrollTop IS : "+window.scrollTop)                    //no
-            //     alert("window.pageYOffset IS : "+window.pageYOffset)                //yes
-            //     alert("window.scrollY IS : "+window.scrollY);                       //yes
-            //     alert("FINALE IS : "+ui.screen.scrollY)
-
-            // console.log("document.body.scrollTop IS : "+document.body.scrollTop)      //no
-            // console.log("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
-            // console.log("document.scrollTop IS : "+document.scrollTop)           //no
-            // console.log("window.scrollTop IS : "+window.scrollTop)                    //no
-            // console.log("window.pageYOffset IS : "+window.pageYOffset)                //yes
-            // console.log("window.scrollY IS : "+window.scrollY);                       //yes
-            // console.log("FINALE IS : "+ui.screen.scrollY)
 
 
-            let outdebug = `
-                            document.getElementsByTagName('BODY')[0].scrollTop IS : `+document.getElementsByTagName('BODY')[0].scrollTop
-                            +`document.documentElement.scrollY IS : `+document.documentElement.scrollY
-                            +`document.scrollTop IS : `+document.scrollTop
-                            +`window.scrollTop IS : `+window.scrollTop
-                            +`window.pageYOffset IS : `+window.pageYOffset
-                            +`window.scrollY IS : `+window.scrollY
-                            +`FINAL IS : `+ui.screen.scrollY+``;
+             const screen = { "fullscreen":false };
+         window.onload = () =>
+         {
+             document.getElementsByTagName('BODY')[0].insertAdjacentHTML('afterend', `<div class="fixed-bottom-right"><p id="debbugger"></p></div>`);
+         
+            window.addEventListener('scroll', ev => {
+
+                ui.screen.scrollX = parseInt( (document.getElementsByTagName('BODY')[0].scrollLeft) ? document.getElementsByTagName('BODY')[0].scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : window.scrollX );
+                ui.screen.scrollY = parseInt( (document.getElementsByTagName('BODY')[0].scrollTop) ? document.getElementsByTagName('BODY')[0].scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset : window.scrollY );
+
+                // document.body.scrollTop
+                // document.documentElement.scrollY
+                // document.scrollTop
+                // ?window.scrollTop
+                // window.pageYOffset
+                // window.scrollY
+
+                //     alert("document.body.scrollTop IS : "+document.body.scrollTop)      //no
+                //     alert("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
+                //     alert("document.scrollTop IS : "+document.scrollTop)           //no
+                //     alert("window.scrollTop IS : "+window.scrollTop)                    //no
+                //     alert("window.pageYOffset IS : "+window.pageYOffset)                //yes
+                //     alert("window.scrollY IS : "+window.scrollY);                       //yes
+                //     alert("FINALE IS : "+ui.screen.scrollY)
+
+                // console.log("document.body.scrollTop IS : "+document.body.scrollTop)      //no
+                // console.log("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
+                // console.log("document.scrollTop IS : "+document.scrollTop)           //no
+                // console.log("window.scrollTop IS : "+window.scrollTop)                    //no
+                // console.log("window.pageYOffset IS : "+window.pageYOffset)                //yes
+                // console.log("window.scrollY IS : "+window.scrollY);                       //yes
+                // console.log("FINALE IS : "+ui.screen.scrollY)
 
 
-            document.body.getElementById("debbugger").innerHTML(outdebug);
+                    let outdebug = `
+                                    document.getElementsByTagName('BODY')[0].scrollTop IS : `+document.getElementsByTagName('BODY')[0].scrollTop
+                                    +`document.documentElement.scrollY IS : `+document.documentElement.scrollY
+                                    +`document.scrollTop IS : `+document.scrollTop
+                                    +`window.scrollTop IS : `+window.scrollTop
+                                    +`window.pageYOffset IS : `+window.pageYOffset
+                                    +`window.scrollY IS : `+window.scrollY
+                                    +`FINAL IS : `+ui.screen.scrollY+``;
 
-        },false)
-    }
+
+                    document.getElementById("debbugger").innerHTML(outdebug);
+
+            },false)
+        }
 
         // micro-libs // get real offeset top
 
