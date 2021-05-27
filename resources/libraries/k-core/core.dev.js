@@ -11651,7 +11651,7 @@ const ui = (() => {
 
                 screenerbutton.addEventListener('click', () => {
 
-                    console.log('-ACTUALLY : ',isfullscreen);
+                    console.log('-ACTUALLY : ',ui.isfullscreen);
 
                     if(ui.isfullscreen===false)
                     {
@@ -11682,7 +11682,7 @@ const ui = (() => {
 
                     }
 
-                    console.log('-AND NOW IS : ',isfullscreen);
+                    console.log('-AND NOW IS : ',ui.isfullscreen);
 
                 }, false);
 
