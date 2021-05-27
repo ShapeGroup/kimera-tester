@@ -1,17 +1,5 @@
 
 
-if(document.getElementById("TESTFULLSCREEN"))
-{
-    var gofullscreen = document.getElementById("TESTFULLSCREEN");
-    gofullscreen.addEventListener("click", function() {
-
-        const el = document.documentElement;
-        if (el.requestFullscreen) { el.requestFullscreen() };
-
-    }, false);
-}
-
-
 const ui = (() => {
 
 
@@ -11649,6 +11637,24 @@ const ui = (() => {
 
     //--------------------------------------------------//
 
+        const fullscreener = () =>
+        {
+            let gofullscreeners = document.querySelectorAll(".screenmode");
+
+            for (let screenerbutton of gofullscreeners)
+            {
+                screenerbutton.addEventListener('click', () => {
+
+                    let el = document.documentElement;
+                    if (el.requestFullscreen) { el.requestFullscreen() };
+
+                }, false);
+
+            }
+        }
+
+    //--------------------------------------------------//
+
 
 
         const parallax = () =>
@@ -12126,6 +12132,7 @@ const ui = (() => {
             audiobox();
             grid_y();
             grabs();
+            fullscreener();
 
         },false);
 
