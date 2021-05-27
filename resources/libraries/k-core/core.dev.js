@@ -5585,6 +5585,7 @@ const ui = (() => {
                         }
                         else
                         {
+                            console.log('no mobile');
                             center = {
                                 x:  ui.screen.scrollX + rect.left,
                                 y:  ui.screen.scrollY + rect.top
