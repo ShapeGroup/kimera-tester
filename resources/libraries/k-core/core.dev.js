@@ -161,15 +161,15 @@ const ui = (() => {
         const nomobar = () =>
         {
 
-            console.log("w screen:",window.screen);
+            console.log("w screen:",window.screen.availHeight);
 
             let DOCU = document.querySelector('html'),
                 BODY = document.querySelector('body');
 
             if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
             {
-                DOCU.style.height = window.innerHeight + 'px';
-                BODY.style.height = window.innerHeight + 'px';
+                DOCU.style.height = window.screen.availHeight + 'px';
+                BODY.style.height = window.screen.availHeight + 'px';
 
                 // alert("TEST: MOBILE FINDED")
 
