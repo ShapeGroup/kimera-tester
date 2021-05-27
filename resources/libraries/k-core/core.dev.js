@@ -11649,11 +11649,11 @@ const ui = (() => {
             {
                 screenerbutton.addEventListener('click', () => {
 
-                    console.log(isfullscreen);
+                    console.log('STAUTS FULL:',isfullscreen);
 
                     let el = document.documentElement;
 
-                    if(isfullscreen)
+                    if(isfullscreen===false)
                     {
 
                         if (el.requestFullscreen)           el.requestFullscreen();
@@ -11661,7 +11661,7 @@ const ui = (() => {
                         else if(el.mozRequestFullScreen)    el.mozRequestFullScreen();
                         else if(el.msRequestFullscreen)     el.msRequestFullscreen();
 
-                        isfullscreen=false;
+                        isfullscreen=true;
 
                     }
 
@@ -11673,7 +11673,7 @@ const ui = (() => {
                         else if(el.mozCancelFullScreen)  el.mozCancelFullScreen();
                         else if(el.msExitFullscreen)     el.msExitFullscreen();
 
-                        isfullscreen=true;
+                        isfullscreen=false;
 
                     }
 
