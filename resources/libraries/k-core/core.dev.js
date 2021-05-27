@@ -5529,7 +5529,7 @@ const ui = (() => {
                             y:  window.screenTop/2 //window.scrollY + rect.top
                         };
 
-                        console.log('::: ',center.x, center.y);
+                        console.log('::: window.screen ',center.x, center.y);
 
                         if(event.target == RayHours)
                         {
