@@ -54,7 +54,7 @@ const ui = (() => {
         window.onscroll = ev => {
             ui.screen.scrollX = parseInt( (document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : (document.body.scrollLeft) ? document.body.scrollLeft : window.pageXOffset );
             ui.screen.scrollY = parseInt( (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : (document.body.scrollTop) ? document.body.scrollTop : window.pageYOffset );
-
+            console.log(document.body.scrollTop);
             alert(document.body.scrollTop)
         }
 
