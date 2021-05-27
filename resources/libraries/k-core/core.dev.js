@@ -5523,21 +5523,19 @@ const ui = (() => {
                         event_clockdrag.preventDefault();
                         event_clockdrag.stopPropagation();
 
-                        let rect = ClockPivot.getBoundingClientRect();
-                        center = {
-                            x:  (document.documentElement.scrollX||window.scrollX||window.pageXOffset) + rect.left,
-                            y:  (document.documentElement.scrollY||window.scrollY||window.pageYOffset) + rect.top
-                        };
-                        // center = {
-                        //     x:  document.documentElement.clientWidth / 2; , //window.scrollX + v
-                        //     y:  document.documentElement.clientHeight / 2; //window.scrollY + rect.top
-                        // };
-                        console.log( document.documentElement.scrollX||window.scrollX||window.pageXOffset, rect.left);
-                        console.log( document.documentElement.scrollY||window.scrollY||window.pageYOffset, rect.top);
 
-                        alert("SORRY IS TEST DOC Y : "+document.documentElement.scrollY)
-                        alert("SORRY IS TEST WIN Y : "+window.scrollY)
-                        alert("SORRY IS TEST WIN OFFSET Y: "+window.pageYOffset)
+                        let docX =(document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : window.pageXOffset
+                        let docY =(document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : window.pageYOffset
+                        let rect = ClockPivot.getBoundingClientRect();
+
+                        center = {
+                            x:  parseInt(docX) + rect.left,
+                            y:  parseInt(docY) + rect.top
+                        };
+
+                        // alert("SORRY IS TEST DOC Y : "+parseInt(document.documentElement.scrollY))
+                        // alert("SORRY IS TEST WIN Y : "+parseInt(window.scrollY))
+                        // alert("SORRY IS TEST WIN OFFSET Y: "+wparseInt(indow.pageYOffset))
 
 
 
