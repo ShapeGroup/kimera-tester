@@ -51,12 +51,13 @@ const ui = (() => {
 
         const screen = { "fullscreen":false };
 
-        window.onscroll = ev => {
+        window.addEventListener('scroll', ev => {
             ui.screen.scrollX = parseInt( (document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : (document.body.scrollLeft) ? document.body.scrollLeft : window.pageXOffset );
             ui.screen.scrollY = parseInt( (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : (document.body.scrollTop) ? document.body.scrollTop : window.pageYOffset );
             console.log(document.body.scrollTop);
             alert(document.body.scrollTop)
-        }
+
+        },false)
 
         // micro-libs // get real offeset top
 
@@ -398,7 +399,7 @@ const ui = (() => {
                 if(lazyobserverlist.length>-1 || lazywhenviewlist.length>-1)
                 {
 
-                    window.onscroll = ev_scrollpage => {
+                    window.addEventListener('onscroll', ev_scrollpage => {
 
                         let scrollpage = setInterval( ()=> {
 
@@ -528,7 +529,7 @@ const ui = (() => {
 
                         },300) // 3.x fps;
 
-                    }
+                    }, false );
 
                 }
 
