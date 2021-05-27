@@ -11637,10 +11637,10 @@ const ui = (() => {
 
     //--------------------------------------------------//
 
-        const isfullscreen=false;
         const fullscreener = () =>
         {
 
+            const isfullscreen=false;
 
             let gofullscreeners = document.querySelectorAll(".screenmode");
 
@@ -11648,31 +11648,31 @@ const ui = (() => {
             {
                 screenerbutton.addEventListener('click', () => {
 
-                    console.log('on click FULLSCREEN IS : ',isfullscreen);
+                    console.log('FULLSCREEN IS ACTUALLY : ',isfullscreen);
 
                     let el = document.documentElement;
 
                     if(isfullscreen===false)
                     {
 
+                        isfullscreen=true;
+
                         if (el.requestFullscreen)           el.requestFullscreen();
                         else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
                         else if(el.mozRequestFullScreen)    el.mozRequestFullScreen();
                         else if(el.msRequestFullscreen)     el.msRequestFullscreen();
-
-                        isfullscreen=true;
 
                     }
 
                     if(isfullscreen===true)
                     {
 
+                        isfullscreen=false;
+
                         if (el.exitFullscreen)           el.exitFullscreen();
                         else if(el.webkitExitFullscreen) el.webkitExitFullscreen();
                         else if(el.mozCancelFullScreen)  el.mozCancelFullScreen();
                         else if(el.msExitFullscreen)     el.msExitFullscreen();
-
-                        isfullscreen=false;
 
                     }
 
