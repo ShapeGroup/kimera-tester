@@ -53,12 +53,8 @@ const ui = (() => {
 
         window.addEventListener('scroll', ev => {
 
-            ui.screen.scrollX = parseInt( (document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : (document.body.scrollLeft) ? document.body.scrollLeft : window.pageXOffset );
-
-            ui.screen.scrollY = parseInt( (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : (document.body.scrollTop) ? document.body.scrollTop : window.pageYOffset );
-
-
-            (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : (document.body.scrollTop) ? document.body.scrollTop : window.pageYOffset
+            ui.screen.scrollX = parseInt( (document.body.scrollLeft) ? document.body.scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : window.scrollX );
+            ui.screen.scrollY = parseInt( (document.body.scrollTop) ? document.body.scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset : window.scrollY );
 
             // document.body.scrollTop
             // document.documentElement.scrollY
@@ -77,6 +73,14 @@ const ui = (() => {
                 alert("window.scrollY IS : "+window.scrollY);                       //yes
                 alert("FINALE IS : "+ui.screen.scrollY)
             })
+
+            console.log("document.body.scrollTop IS : "+document.body.scrollTop)      //no
+            console.log("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
+            console.log("document.scrollTop IS : "+document.scrollTop)           //no
+            console.log("window.scrollTop IS : "+window.scrollTop)                    //no
+            console.log("window.pageYOffset IS : "+window.pageYOffset)                //yes
+            console.log("window.scrollY IS : "+window.scrollY);                       //yes
+            console.log("FINALE IS : "+ui.screen.scrollY)
 
         },false)
 
