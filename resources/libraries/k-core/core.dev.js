@@ -85,13 +85,13 @@ const ui = (() => {
 
 
                     let outdebug = `
-                                    document.getElementsByTagName('BODY')[0].scrollTop IS : `+document.getElementsByTagName('BODY')[0].scrollTop
-                                    +`document.documentElement.scrollY IS : `+document.documentElement.scrollY
-                                    +`document.scrollTop IS : `+document.scrollTop
-                                    +`window.scrollTop IS : `+window.scrollTop
-                                    +`window.pageYOffset IS : `+window.pageYOffset
-                                    +`window.scrollY IS : `+window.scrollY
-                                    +`FINAL IS : `+ui.screen.scrollY+``;
+                                    document.getElementsByTagName('BODY')[0].scrollTop IS : `+document.getElementsByTagName('BODY')[0].scrollTop+`
+                                    <br>document.documentElement.scrollY IS : `+document.documentElement.scrollY+`
+                                    <br>document.scrollTop IS : `+document.scrollTop+`
+                                    <br>window.scrollTop IS : `+window.scrollTop+`
+                                    <br>window.pageYOffset IS : `+window.pageYOffset+`
+                                    <br>window.scrollY IS : `+window.scrollY+`
+                                    <br>FINAL IS : `+ui.screen.scrollY+``;
 
 
                     document.getElementById("debbugger").innerHTML = outdebug;
