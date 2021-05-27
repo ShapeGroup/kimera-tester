@@ -5529,7 +5529,9 @@ const ui = (() => {
                             y:  document.documentElement.clientHeight / 2; //window.scrollY + rect.top
                         };
 
-                        console.log('::: window.screen ',ClockPivot, center.y);
+                        console.log('::: obj ',ClockPivot, center.y);
+                        console.log('::: window ',window);
+                        console.log('::: dcoument ',dcoument);
 
                         if(event.target == RayHours)
                         {
