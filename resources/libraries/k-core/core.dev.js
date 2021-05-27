@@ -161,6 +161,8 @@ const ui = (() => {
         const nomobar = () =>
         {
 
+                console.log(window)
+
             let DOCU = document.querySelector('html'),
                 BODY = document.querySelector('body');
 
@@ -169,7 +171,7 @@ const ui = (() => {
                 DOCU.style.height = window.innerHeight + 'px';
                 BODY.style.height = window.innerHeight + 'px';
 
-                alert("TEST: MOBILE FINDED")
+                // alert("TEST: MOBILE FINDED")
 
             }
             else
@@ -178,7 +180,7 @@ const ui = (() => {
                 BODY.style.height = ''; if(BODY.style=='') BODY.removeAttribute('style');
             }
 
-            alert("A LITTLE TEST.. SORRY :P")
+            // alert("A LITTLE TEST.. SORRY :P")
 
         }
 
