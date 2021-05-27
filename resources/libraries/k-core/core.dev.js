@@ -167,7 +167,10 @@ const ui = (() => {
             if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
             {
                 DOCU.style.height = window.innerHeight + 'px';
-                BODY.style.height = window.innerHeight + 'px';s
+                BODY.style.height = window.innerHeight + 'px';
+
+                alert("TEST: MOBILE FINDED")
+
             }
             else
             {
