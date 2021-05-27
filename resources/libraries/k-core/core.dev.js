@@ -1,4 +1,14 @@
 
+var gofullscreen = document.getElementById("TESTFULLSCREEN");
+
+gofullscreen.addEventListener("click", function() {
+
+        const el = document.documentElement;
+        if (el.requestFullscreen) { el.requestFullscreen() };
+
+}, false);
+
+
 const ui = (() => {
 
 
