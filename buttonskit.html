@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+
+        <title>K2.8 TESTER</title>
+        <meta name="viewport" content="target-densitydpi=150, width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8"><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+        <!-- ui framework core :: wiki > https://git.io/Jv9u1 -->
+        <link rel="stylesheet" href="./resources/libraries/k-core/core.dev.css">
+        <script type="text/javascript" src="./resources/libraries/k-core/core.dev.js"></script>
+
+        <!-- ui framework theme :: core styling override -->
+        <link rel="stylesheet" href="./resources/libraries/k-theme/theme.css">
+
+
+    </head>
+
+    <body class="mode-web">
+
+        <main class="limiter-all space-[05]">
+
+            <header class="sticky-top space-[05]-[horizontal] bkg-03 border-02" style="z-index:1000">
+                <div class="pad-[15]-[vertical]">
+                    <span class="lazy">
+                        <div data-src="./resources/elements/sidemenu-opener.html"></div>
+                    </span>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
+                    <span>
+                        <div>
+                            <h1>Kimera - <strong>Ui kit library for the web coding</strong></h1>
+                            <p>The tester theme of official project in <a href="https://github.com/ShapeGroup/kimera-frontend-framework" target="_blank">github</a></p>
+                        </div>
+                    </span>
+                </div>
+            </header>
+
+            <div class="pad-[25]"></div>
+
+            <article>
+
+                <header>
+
+                    <h2>➜ BUTTONS KIT:</h2>
+
+                    <div class="pad-[25]-[vertical] textgroup">
+
+                        <p>All ui in framework</p>
+
+                    </div>
+
+                </header>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ Basic Ui the resets :</b></h3>
+
+                    <p>All ui is in 'button' wrap. all button wrap reset inner input and ui element. In short: From non-cross-browser inputs to units that are always the same for everyone</p>
+
+                    <div class="grid-x gap-15">
+
+                     <div class="box-[20-20-100]">
+                        <p class="pad-[10]">link</p>
+                        <div class="button">
+                           <a>Simple link</a>
+                        </div>
+                     </div>
+
+                     <div class="box-[20-20-100]">
+                        <p class="pad-[10]">button</p>
+                        <div class="button">
+                           <button>Classic button</button>
+                        </div>
+                     </div>
+
+                     <div class="box-[20-20-100]">
+                        <p class="pad-[10]">input submit</p>
+                        <div class="button">
+                           <input type="submit" value="Classic submit" />
+                        </div>
+                     </div>
+
+                     <div class="box-[20-20-100]">
+                        <p class="pad-[10]">input reset</p>
+                        <div class="button">
+                           <input type="reset" value="Classic reset" />
+                        </div>
+                     </div>
+
+                     <div class="box-[20-20-100]">
+                        <p class="pad-[10]">label</p>
+                        <div class="button">
+                           <label>Simple Label</label>
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <p class="pad-[10]">input email</p>
+                        <div class="button">
+                           <input type="email" placeholder="your@email.com" />
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <p class="pad-[10]">input phone</p>
+                        <div class="button">
+                           <input type="tel" placeholder="+39 000 00 00 0000" pattern="[0-9]{10}" />
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <p class="pad-[10]">input url</p>
+                        <div class="button">
+                           <input type="url" placeholder="www.yoursite.com" />
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <p class="pad-[10]">input search</p>
+                        <div class="button">
+                           <input type="search" placeholder="search a text" />
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <p class="pad-[10]">input number</p>
+                        <div class="button">
+                           <input type="number" placeholder="3" />
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <p class="pad-[10]">text</p>
+                        <div class="button">
+                           <input type="text" value="" placeholder="Simple input text"/>
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <p class="pad-[10]">password</p>
+                        <div class="button">
+                           <input type="password" value="" placeholder="Write your pass"/>
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <p class="pad-[10]">left, right,center</p>
+                        <div class="button">
+                           <img class="before" src="data:image/svg+xml;utf8;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNSAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9InN0YXJfMjRweCI+CjxwYXRoIGlkPSJpY29uL3RvZ2dsZS9zdGFyXzI0cHgiIGQ9Ik0xMi42NTA0IDE3LjgwMTlMMTguODMwNCAyMS41MzE5TDE3LjE5MDQgMTQuNTAxOUwyMi42NTA0IDkuNzcxODZMMTUuNDYwNCA5LjE2MTg2TDEyLjY1MDQgMi41MzE4Nkw5Ljg0MDM5IDkuMTYxODZMMi42NTAzOSA5Ljc3MTg2TDguMTEwMzkgMTQuNTAxOUw2LjQ3MDM5IDIxLjUzMTlMMTIuNjUwNCAxNy44MDE5WiIgZmlsbD0iIzJGMzM0MSIvPgo8L2c+Cjwvc3ZnPgo=" />
+                           <img class="center" src="data:image/svg+xml;utf8;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNSAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9InN0YXJfMjRweCI+CjxwYXRoIGlkPSJpY29uL3RvZ2dsZS9zdGFyXzI0cHgiIGQ9Ik0xMi42NTA0IDE3LjgwMTlMMTguODMwNCAyMS41MzE5TDE3LjE5MDQgMTQuNTAxOUwyMi42NTA0IDkuNzcxODZMMTUuNDYwNCA5LjE2MTg2TDEyLjY1MDQgMi41MzE4Nkw5Ljg0MDM5IDkuMTYxODZMMi42NTAzOSA5Ljc3MTg2TDguMTEwMzkgMTQuNTAxOUw2LjQ3MDM5IDIxLjUzMTlMMTIuNjUwNCAxNy44MDE5WiIgZmlsbD0iIzJGMzM0MSIvPgo8L2c+Cjwvc3ZnPgo=" />
+                           <img class="after"  src="data:image/svg+xml;utf8;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNSAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9InN0YXJfMjRweCI+CjxwYXRoIGlkPSJpY29uL3RvZ2dsZS9zdGFyXzI0cHgiIGQ9Ik0xMi42NTA0IDE3LjgwMTlMMTguODMwNCAyMS41MzE5TDE3LjE5MDQgMTQuNTAxOUwyMi42NTA0IDkuNzcxODZMMTUuNDYwNCA5LjE2MTg2TDEyLjY1MDQgMi41MzE4Nkw5Ljg0MDM5IDkuMTYxODZMMi42NTAzOSA5Ljc3MTg2TDguMTEwMzkgMTQuNTAxOUw2LjQ3MDM5IDIxLjUzMTlMMTIuNjUwNCAxNy44MDE5WiIgZmlsbD0iIzJGMzM0MSIvPgo8L2c+Cjwvc3ZnPgo=" />
+                        </div>
+                     </div>
+
+                     <div class="box-[100-100-100]">
+                        <p class="pad-[10]">simple textarea</p>
+                        <div class="button">
+                           <textarea placeholder="Exemple..."></textarea>
+                        </div>
+                     </div>
+
+                    </div>
+
+                </section>
+
+                <section class="textgroup">
+
+                  <h3><b> ❯❯ Ui in group:</b></h3>
+
+                  <p>Regardless of which button is, it can be grouped into a "button-group". If you want to make it vertical in the mobile version it will be necessary to add "setmobile" to the class.</p>
+
+                  <div class="grid-x gap-15">
+
+                     <div class="box-[50-50-100]">
+                        <p class="pad-[10]">button-group (classic)</p>
+                        <div class="button-group">
+                           <div class="button">
+                              <input type="text" placeholder="your text"/>
+                           </div>
+                           <div class="button">
+                              <input type="submit" value="SUBMIT" />
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="box-[50-50-100]">
+                        <p class="pad-[10]">button-group (setmobile)</p>
+                        <div class="button-group setmobile">
+                           <div class="button">
+                              <label>LABEL TITLE</label>
+                           </div>
+                           <div class="button">
+                              <input type="text" placeholder="your text" />
+                           </div>
+                           <div class="button">
+                              <input  type="submit" value="SUBMIT" />
+                           </div>
+                        </div>
+                     </div>
+
+                 </div>
+
+                </section>
+
+                <section class="textgroup">
+
+                     <h3><b> ❯❯ Manage the size of the buttons :</b></h3>
+
+                     <p>
+                         All buttons have a fixed size set by the theme. This magnitude is elastic and intrinsic to the text you format within it. Emphasizing that we're talking about elastic fonts on elastic layouts: The button will be text between 12px and added padding of 10px<br>
+                         <small>(it's an example, becouse the it's size is a css calc from multi-ranges, see the theme)</small>
+                     </p>
+                     <p>
+                         These dimensions can be changed in the theme or directly but you can use pad and space of core. Now... You may have noticed that the theme is a core system override. If you wrote the padding on the theme directly you would replace the core classes with that. How to do? here's the trick you need: <samp> [class*=button]:not([class*='-group']):not([class*='pad-']):not([class*='space-']) { padding:MYPADDING; }</samp> into theme and all core sizes will be available again ;)
+                     </p>
+
+                     <div class="align-[center]">
+                         <div class="grid-x gap-20 autostretch">
+                             <div class="box-[25-25-50]">
+                                 <div class="align-[center]">
+                                    <div class="button">
+                                       <label>CLASSIC SIZE</label>
+                                    </div>
+                                </div>
+                             </div>
+                             <div class="box-[25-25-50]">
+                                <div class="button pad-[30]">
+                                   <label>SIZE VIA CORE</label>
+                                </div>
+                             </div>
+                         </div>
+                     </div>
+
+                </section>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ Ui logical presets:</b></h3>
+
+                    <div class="grid-x gap-15">
+
+                     <div class="box-[25-25-50]">
+                        <div class="button border-pass">
+                           <label>border-pass</label>
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <div class="button border-error">
+                           <label>border-error</label>
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <div class="button border-alert">
+                           <label>border-alert</label>
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <div class="button border-news">
+                           <label>border-news</label>
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <div class="button bkg-pass">
+                           <label>bkg-pass</label>
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <div class="button bkg-error ">
+                           <label>bkg-error</label>
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <div class="button bkg-alert">
+                           <label>bkg-alert</label>
+                        </div>
+                     </div>
+
+                     <div class="box-[25-25-50]">
+                        <div class="button bkg-news">
+                           <label>bkg-news</label>
+                        </div>
+                     </div>
+
+                     <div class="box-[100-100-100]"><div><p>Create usability combo via logical theme classes <small>(we suggest building custom classes)</small></p></div></div>
+
+                     <div class="box-[33-33-50]">
+                        <div class="button bkg-03">
+                           <button>PRIMARY</button>
+                        </div>
+                     </div>
+
+                     <div class="box-[33-33-50]">
+                        <div class="button bkg-02">
+                           <button>SECONDARY</button>
+                        </div>
+                     </div>
+
+                     <div class="box-[33-33-50]">
+                        <div class="button bkg-01 texttone-03">
+                           <button>TERTIARY</button>
+                        </div>
+                     </div>
+
+                     <div class="box-[33-33-50]">
+                        <div class="button disabled">
+                           <button>DISABLED</button>
+                        </div>
+                     </div>
+
+                     <div class="box-[33-33-50]">
+                        <div class="button clearized">
+                           <button>CLEARZED</button>
+                        </div>
+                     </div>
+
+                     <div class="box-[33-33-50]">
+                        <div class="button texttone-03" style="background:url(https://images.ctfassets.net/hrltx12pl8hq/1fR5Y7KaK9puRmCDaIof7j/09e2b2b9eaf42d450aba695056793607/vector1.jpg?fit=fill&w=800&h=300)">
+                           <button>CUSTOM</button>
+                        </div>
+                     </div>
+
+                    </div>
+
+                </section>
+
+                <section class="textgroup">
+
+                     <h3><b> ❯❯ Ui Check & Radio design:</b></h3>
+
+                      <div class="grid-x gap-15">
+
+                        <div class="box-[auto-auto-50]">
+                          <p class="pad-[10] ">Radio</p>
+                          <div class="button-radio">
+                              <input type="radio" name="radiotest" value="" />
+                              <label>mylabel</label>
+                          </div>
+                        </div>
+
+                        <div class="box-[auto-auto-50]">
+                          <p class="pad-[10] ">Radio</p>
+                          <div class="button-radio">
+                              <input type="radio" name="radiotest" value="" />
+                              <label>mylabel</label>
+                          </div>
+                        </div>
+
+                        <div class="box-[auto-auto-100]">
+                          <p class="pad-[10] ">Checkbox</p>
+                          <div class="button-checkbox">
+                              <input type="checkbox" name="checkboxtest" value="" />
+                              <label>mylabel</label>
+                          </div>
+                        </div>
+
+                        <div class="box-[10-10-00]" style="width:63px;">
+                          <p class="pad-[10] ">&nbsp;</p>
+                          <span class="button-checkbox">
+                              <input type="checkbox" name="checkboxtest" value="" />
+                              <label>&nbsp;</label>
+                          </span>
+                        </div>
+
+                        <div class="box-[50-50-100]">
+                          <p class="pad-[10] ">"Explicit" (A group of radio)</p>
+                          <div class="button-group">
+                            <div class="button align-[left]">
+                              <label>Do you accept?</label>
+                            </div>
+                            <div class="button-radio" style="width:150px;">
+                              <input type="radio" name="selection"  value="1" checked="true" />
+                              <p>YES</p>
+                            </div>
+                            <div class="button-radio" style="width:150px;">
+                              <input type="radio" name="selection" />
+                              <p>NO</p>
+                            </div>
+                          </div>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <section class="textgroup">
+
+                     <h3><b> ❯❯ Ui Redesigned:</b></h3>
+
+                     <div class="grid-x gap-15">
+
+                         <div class="box-[50-50-100]">
+                            <p class="pad-[10] ">button-password</p>
+                            <div class="button-password">
+                               <input type="text" value="" placeholder="Write your pass"/>
+                               <input type="password" value="" placeholder="Write your pass"/>
+                               <img alt="hide/show" title="show your password" src="data:image/svg+xml;utf8;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04IDEyQzggMTQuMjA5MSA5Ljc5MDg2IDE2IDEyIDE2QzE0LjIwOTEgMTYgMTYgMTQuMjA5MSAxNiAxMkMxNiA5Ljc5MDg2IDE0LjIwOTEgOCAxMiA4QzkuNzkwODYgOCA4IDkuNzkwODYgOCAxMlpNMTQgMTJDMTQgMTMuMTA0NiAxMy4xMDQ2IDE0IDEyIDE0QzEwLjg5NTQgMTQgMTAgMTMuMTA0NiAxMCAxMkMxMCAxMC44OTU0IDEwLjg5NTQgMTAgMTIgMTBDMTMuMTA0NiAxMCAxNCAxMC44OTU0IDE0IDEyWiIgZmlsbD0iIzg4ODg4OCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEyIDRDMTQuNzI3NSA0IDE3LjMzNTcgNS40MzA2MiAxOS43NjYzIDcuNzgxMTVDMjAuNTk1NSA4LjU4MzA1IDIxLjM0NTcgOS40MzkxNiAyMi4wMDYxIDEwLjI5NTZDMjIuNDA0NiAxMC44MTI0IDIyLjY4NzUgMTEuMjE5IDIyLjg0MjQgMTEuNDYxMkwyMy4xODcgMTJMMjIuODQyNCAxMi41Mzg4QzIyLjY4NzUgMTIuNzgxIDIyLjQwNDYgMTMuMTg3NiAyMi4wMDYxIDEzLjcwNDRDMjEuMzQ1NyAxNC41NjA4IDIwLjU5NTUgMTUuNDE3IDE5Ljc2NjMgMTYuMjE4OUMxNy4zMzU3IDE4LjU2OTQgMTQuNzI3NSAyMCAxMiAyMEM5LjI3MjQ1IDIwIDYuNjY0MzIgMTguNTY5NCA0LjIzMzcxIDE2LjIxODlDMy40MDQ0OSAxNS40MTcgMi42NTQzMSAxNC41NjA4IDEuOTkzOTEgMTMuNzA0NEMxLjU5NTQxIDEzLjE4NzYgMS4zMTI0NyAxMi43ODEgMS4xNTc1NiAxMi41Mzg4TDAuODEyOTY1IDEyTDEuMTU3NTYgMTEuNDYxMkMxLjMxMjQ3IDExLjIxOSAxLjU5NTQxIDEwLjgxMjQgMS45OTM5MSAxMC4yOTU2QzIuNjU0MzEgOS40MzkxNiAzLjQwNDQ5IDguNTgzMDUgNC4yMzM3MSA3Ljc4MTE1QzYuNjY0MzIgNS40MzA2MiA5LjI3MjQ1IDQgMTIgNFpNMjAuNDIyMyAxMS41MTY5QzE5LjgxNzYgMTAuNzMyNyAxOS4xMzAyIDkuOTQ4MiAxOC4zNzYgOS4yMTg4NUMxNi4yODI1IDcuMTk0MzggMTQuMTA1MSA2IDEyIDZDOS44OTQ5MiA2IDcuNzE3NDkgNy4xOTQzOCA1LjYyNDA0IDkuMjE4ODVDNC44Njk4NCA5Ljk0ODIgNC4xODIzOSAxMC43MzI3IDMuNTc3NzUgMTEuNTE2OUMzLjQ0NzE2IDExLjY4NjIgMy4zMjY0OSAxMS44NDc4IDMuMjE2MTcgMTJDMy4zMjY0OSAxMi4xNTIyIDMuNDQ3MTYgMTIuMzEzOCAzLjU3Nzc1IDEyLjQ4MzFDNC4xODIzOSAxMy4yNjczIDQuODY5ODQgMTQuMDUxOCA1LjYyNDA0IDE0Ljc4MTFDNy43MTc0OSAxNi44MDU2IDkuODk0OTIgMTggMTIgMThDMTQuMTA1MSAxOCAxNi4yODI1IDE2LjgwNTYgMTguMzc2IDE0Ljc4MTFDMTkuMTMwMiAxNC4wNTE4IDE5LjgxNzYgMTMuMjY3MyAyMC40MjIzIDEyLjQ4MzFDMjAuNTUyOCAxMi4zMTM4IDIwLjY3MzUgMTIuMTUyMiAyMC43ODM4IDEyQzIwLjY3MzUgMTEuODQ3OCAyMC41NTI4IDExLjY4NjIgMjAuNDIyMyAxMS41MTY5WiIgZmlsbD0iIzg4ODg4OCIvPgo8L3N2Zz4K" />
+                               <img alt="hide/show" title="hide your password" src="data:image/svg+xml;utf8;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yLjcwNzExIDEuMjkyODlMMS4yOTI4OSAyLjcwNzExTDUuMzU3NzEgNi43NzE5M0M0Ljk3OTA2IDcuMDg1NzQgNC42MDQzMiA3LjQyMjc1IDQuMjMzNzEgNy43ODExNUMzLjQwNDQ5IDguNTgzMDUgMi42NTQzMSA5LjQzOTE2IDEuOTkzOTEgMTAuMjk1NkMxLjU5NTQxIDEwLjgxMjQgMS4zMTI0NyAxMS4yMTkgMS4xNTc1NiAxMS40NjEyTDAuODEyOTY1IDEyTDEuMTU3NTYgMTIuNTM4OEMxLjMxMjQ3IDEyLjc4MSAxLjU5NTQxIDEzLjE4NzYgMS45OTM5MSAxMy43MDQ0QzIuNjU0MzEgMTQuNTYwOCAzLjQwNDQ5IDE1LjQxNyA0LjIzMzcxIDE2LjIxODhDNi42NjQzMiAxOC41Njk0IDkuMjcyNDUgMjAgMTIgMjBDMTMuNzIwOSAyMCAxNS4zOTQzIDE5LjQzMDUgMTcuMDA1NSAxOC40MTk4TDIxLjI5MjkgMjIuNzA3MUwyMi43MDcxIDIxLjI5MjlMMi43MDcxMSAxLjI5Mjg5Wk0xNS41NDQ2IDE2Ljk1ODhMMTQuMDMyIDE1LjQ0NjJDMTMuNDM2NSAxNS43OTgxIDEyLjc0MTggMTYgMTIgMTZDOS43OTA4NiAxNiA4IDE0LjIwOTEgOCAxMkM4IDExLjI1ODIgOC4yMDE5MyAxMC41NjM1IDguNTUzODIgOS45NjgwM0w2Ljc3OTcyIDguMTkzOTNDNi4zOTIzMiA4LjUwNjM0IDYuMDA2NzggOC44NDg3MiA1LjYyNDA0IDkuMjE4ODVDNC44Njk4NCA5Ljk0ODIgNC4xODIzOSAxMC43MzI3IDMuNTc3NzUgMTEuNTE2OUMzLjQ0NzE2IDExLjY4NjIgMy4zMjY0OSAxMS44NDc4IDMuMjE2MTcgMTJDMy4zMjY0OSAxMi4xNTIyIDMuNDQ3MTYgMTIuMzEzOCAzLjU3Nzc1IDEyLjQ4MzFDNC4xODIzOSAxMy4yNjczIDQuODY5ODQgMTQuMDUxOCA1LjYyNDA0IDE0Ljc4MTFDNy43MTc0OSAxNi44MDU2IDkuODk0OTIgMTggMTIgMThDMTMuMTY4MiAxOCAxNC4zNTg2IDE3LjYzMjIgMTUuNTQ0NiAxNi45NTg4Wk0xMC4wNjc3IDExLjQ4MkMxMC4wMjM2IDExLjY0NzIgMTAgMTEuODIwOCAxMCAxMkMxMCAxMy4xMDQ2IDEwLjg5NTQgMTQgMTIgMTRDMTIuMTc5MiAxNCAxMi4zNTI4IDEzLjk3NjQgMTIuNTE4IDEzLjkzMjNMMTAuMDY3NyAxMS40ODJaIiBmaWxsPSIjODg4ODg4Ii8+CjxwYXRoIGQ9Ik0yMC4wOTgxIDE1Ljg5MUwxOC42ODM4IDE0LjQ3NjdDMTkuMzE4IDEzLjgzNTYgMTkuOTAwOSAxMy4xNTkzIDIwLjQyMjMgMTIuNDgzMUMyMC41NTI4IDEyLjMxMzggMjAuNjczNSAxMi4xNTIyIDIwLjc4MzggMTJDMjAuNjczNSAxMS44NDc4IDIwLjU1MjggMTEuNjg2MiAyMC40MjIzIDExLjUxNjlDMTkuODE3NiAxMC43MzI3IDE5LjEzMDIgOS45NDgyIDE4LjM3NiA5LjIxODg1QzE2LjI4MjUgNy4xOTQzNyAxNC4xMDUxIDYgMTIgNkMxMS40Nzc3IDYgMTAuOTUwOSA2LjA3MzUzIDEwLjQyMjEgNi4yMTUwMkw4Ljg0MDE1IDQuNjMzMDRDOS44NzI2IDQuMjIxMzggMTAuOTI3MSA0IDEyIDRDMTQuNzI3NSA0IDE3LjMzNTcgNS40MzA2MiAxOS43NjYzIDcuNzgxMTVDMjAuNTk1NSA4LjU4MzA1IDIxLjM0NTcgOS40MzkxNiAyMi4wMDYxIDEwLjI5NTZDMjIuNDA0NiAxMC44MTI0IDIyLjY4NzUgMTEuMjE5IDIyLjg0MjQgMTEuNDYxMkwyMy4xODcgMTJMMjIuODQyNCAxMi41Mzg4QzIyLjY4NzUgMTIuNzgxIDIyLjQwNDYgMTMuMTg3NiAyMi4wMDYxIDEzLjcwNDRDMjEuNDM0OSAxNC40NDUxIDIwLjc5NjYgMTUuMTg1NiAyMC4wOTgxIDE1Ljg5MVoiIGZpbGw9IiM4ODg4ODgiLz4KPC9zdmc+Cg==" />
+                            </div>
+                         </div>
+
+                         <div class="box-[50-50-100]">
+                            <p class="pad-[10] ">button-rating</p>
+                            <div class="button-rating">
+                               <input type="hidden" value="3" readonly />
+                               <span class="stars"></span>
+                            </div>
+                         </div>
+
+                     </div>
+
+                     <div class="pad-[20-20-10]"><hr></div>
+
+                     <div class="grid-x gap-15">
+
+                         <div class="box-[50-50-100]">
+
+                            <p class="pad-[10] ">number</p>
+
+                            <div class="button-number">
+                               <input type="number" min="-20" max="20" value="0" readonly />
+                               <span>
+                                  <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9InJlbW92ZV9jaXJjbGVfMjRweCI+CjxwYXRoIGlkPSJpY29uL2NvbnRlbnQvcmVtb3ZlX2NpcmNsZV8yNHB4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIgMTJDMiA2LjQ4IDYuNDggMiAxMiAyQzE3LjUyIDIgMjIgNi40OCAyMiAxMkMyMiAxNy41MiAxNy41MiAyMiAxMiAyMkM2LjQ4IDIyIDIgMTcuNTIgMiAxMlpNNyAxM0gxN1YxMUg3VjEzWiIgZmlsbD0iYmxhY2siIGZpbGwtb3BhY2l0eT0iMC41NCIvPgo8L2c+Cjwvc3ZnPgo=" />
+                               </span>
+                               <span>
+                                  <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgaWQ9InJlbW92ZV9jaXJjbGVfMjRweCI+CjxwYXRoIGlkPSJpY29uL2NvbnRlbnQvcmVtb3ZlX2NpcmNsZV8yNHB4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIgMTJDMiA2LjQ4IDYuNDggMiAxMiAyQzE3LjUyIDIgMjIgNi40OCAyMiAxMkMyMiAxNy41MiAxNy41MiAyMiAxMiAyMkM2LjQ4IDIyIDIgMTcuNTIgMiAxMlpNMTguOTA1OSAxMS4yMjY2TDE4LjkwNTkgMTIuNzczNEgxMi43NzM0VjE4LjkwNTlIMTEuMjI2NlYxMi43NzM0SDUuMDk0MDZWMTEuMjI2NkgxMS4yMjY2VjUuMDk0MDRIMTIuNzczNFYxMS4yMjY2SDE4LjkwNTlaIiBmaWxsPSJibGFjayIgZmlsbC1vcGFjaXR5PSIwLjU0Ii8+CjwvZz4KPC9zdmc+Cg==" />
+                               </span>
+                            </div>
+
+                         </div>
+
+                         <div class="box-[50-50-100]">
+
+                            <p class="pad-[10] ">range</p>
+
+                            <div class="button-range">
+                               <label><small>min</small><small>max</small></label>
+                               <div class="sliders">
+                                  <span class="monitor"><small>0</small></span>
+                                  <input type="range" value="-10" min="-10" max="10"/><span></span><b></b>
+                                  <input type="range" value="-0" min="-10" max="10"/><span></span><b></b>
+                                  <input type="range" value="10" min="-10" max="10"/><span></span><b></b>
+                               </div>
+                            </div>
+
+                         </div>
+
+                     </div>
+
+                     <div class="pad-[20-20-10]"><hr></div>
+
+                     <div class="grid-x gap-15">
+
+                         <div class="box-[50-50-100]">
+
+                            <p class="pad-[10] ">select</p>
+
+                            <div class="button-select">
+                               <input type="hidden" name="" value="">
+                               <label>select an option...</label>
+                               <select value="select an option...">
+                                  <optgroup label="Coding:">
+                                     <option value="1">CSS</option>
+                                     <option value="2">JAVASCRIPT</option>
+                                     <option value="3">HTML</option>
+                                     <option value="4">PHP</option>
+                                  </optgroup>
+                                  <optgroup label="View type:">
+                                     <option value="5">WEB</option>
+                                     <option value="6">CORDOVA</option>
+                                     <option value="7">ELECTRON</option>
+                                  </optgroup>
+                                  <optgroup label="Devices:">
+                                     <option value="8">ANDROID</option>
+                                     <option value="9">IOS</option>
+                                     <option value="10">LINUX</option>
+                                     <option value="11">WINDOW</option>
+                                  </optgroup>
+                                  <optgroup label="Other:">
+                                     <option value="12">Docker</option>
+                                     <option value="13">Framework</option>
+                                     <option value="14">Unity 3d</option>
+                                     <option value="15">Github</option>
+                                  </optgroup>
+                               </select>
+                            </div>
+
+                         </div>
+
+                         <div class="box-[50-50-100]">
+
+                            <p class="pad-[10] ">dropdown</p>
+
+                            <div class="button-dropdown">
+                               <input type="hidden" name="" value="">
+                               <label>select an option...</label>
+                               <select value="select an option...">
+                                  <optgroup label="Coding:">
+                                     <option value="1">CSS</option>
+                                     <option value="2">JAVASCRIPT</option>
+                                     <option value="3">HTML</option>
+                                     <option value="4">PHP</option>
+                                  </optgroup>
+                                  <optgroup label="View type:">
+                                     <option value="5">WEB</option>
+                                     <option value="6">CORDOVA</option>
+                                     <option value="7">ELECTRON</option>
+                                  </optgroup>
+                                  <optgroup label="Devices:">
+                                     <option value="8">ANDROID</option>
+                                     <option value="9">IOS</option>
+                                     <option value="10">LINUX</option>
+                                     <option value="11">WINDOW</option>
+                                  </optgroup>
+                                  <optgroup label="Other:">
+                                     <option value="12">Docker</option>
+                                     <option value="13">Framework</option>
+                                     <option value="14">Unity 3d</option>
+                                     <option value="15">Github</option>
+                                  </optgroup>
+                               </select>
+                            </div>
+
+                         </div>
+
+                         <div class="box-[50-50-100]">
+
+                            <p class="pad-[10] ">select + search</p>
+
+                            <div class="button-select">
+                               <input type="hidden" name="" value="">
+                               <input type="search" value="" placeholder="Search start with...">
+                               <label>select an option...</label>
+                               <select value="select an option...">
+                                  <optgroup label="Coding:">
+                                     <option value="1">CSS</option>
+                                     <option value="2">JAVASCRIPT</option>
+                                     <option value="3">HTML</option>
+                                     <option value="4">PHP</option>
+                                  </optgroup>
+                                  <optgroup label="View type:">
+                                     <option value="5">WEB</option>
+                                     <option value="6">CORDOVA</option>
+                                     <option value="7">ELECTRON</option>
+                                  </optgroup>
+                                  <optgroup label="Devices:">
+                                     <option value="8">ANDROID</option>
+                                     <option value="9">IOS</option>
+                                     <option value="10">LINUX</option>
+                                     <option value="11">WINDOW</option>
+                                  </optgroup>
+                                  <optgroup label="Other:">
+                                     <option value="12">Docker</option>
+                                     <option value="13">Framework</option>
+                                     <option value="14">Unity 3d</option>
+                                     <option value="15">Github</option>
+                                  </optgroup>
+                               </select>
+                            </div>
+
+                         </div>
+
+                         <div class="box-[50-50-100]">
+
+                            <p class="pad-[10] ">dropdown + search</p>
+
+                            <div class="button-dropdown">
+                               <input type="hidden" name="" value="6">
+                               <input type="search" value="" placeholder="Search start with...">
+                               <label>CORDOVA</label>
+                               <select value="select an option...">
+                                  <optgroup label="Coding:">
+                                     <option value="1">CSS</option>
+                                     <option value="2">JAVASCRIPT</option>
+                                     <option value="3">HTML</option>
+                                     <option value="4">PHP</option>
+                                  </optgroup>
+                                  <optgroup label="View type:">
+                                     <option value="5">WEB</option>
+                                     <option value="6">CORDOVA</option>
+                                     <option value="7">ELECTRON</option>
+                                  </optgroup>
+                                  <optgroup label="Devices:">
+                                     <option value="8">ANDROID</option>
+                                     <option value="9">IOS</option>
+                                     <option value="10">LINUX</option>
+                                     <option value="11">WINDOW</option>
+                                  </optgroup>
+                                  <optgroup label="Other:">
+                                     <option value="12">Docker</option>
+                                     <option value="13">Framework</option>
+                                     <option value="14">Unity 3d</option>
+                                     <option value="15">Github</option>
+                                  </optgroup>
+                               </select>
+                            </div>
+
+                         </div>
+
+                         <div class="box-[50-50-100]">
+
+                            <p class="pad-[10] ">select + search + multiple</p>
+
+                            <div class="button-select">
+                               <input type="hidden" name="" value="3,5,10" multiple>
+                               <input type="search" value="" placeholder="Search start with...">
+                               <label>HTML,WEB,LINUX</label>
+                               <select value="select an option...">
+                                  <optgroup label="Coding:">
+                                     <option value="1">CSS</option>
+                                     <option value="2">JAVASCRIPT</option>
+                                     <option value="3">HTML</option>
+                                     <option value="4">PHP</option>
+                                  </optgroup>
+                                  <optgroup label="View type:">
+                                     <option value="5">WEB</option>
+                                     <option value="6">CORDOVA</option>
+                                     <option value="7">ELECTRON</option>
+                                  </optgroup>
+                                  <optgroup label="Devices:">
+                                     <option value="8">ANDROID</option>
+                                     <option value="9">IOS</option>
+                                     <option value="10">LINUX</option>
+                                     <option value="11">WINDOW</option>
+                                  </optgroup>
+                                  <optgroup label="Other:">
+                                     <option value="12">Docker</option>
+                                     <option value="13">Framework</option>
+                                     <option value="14">Unity 3d</option>
+                                     <option value="15">Github</option>
+                                  </optgroup>
+                               </select>
+                            </div>
+
+                         </div>
+
+                         <div class="box-[50-50-100]">
+
+                            <p class="pad-[10] ">dropdown + search + multiple</p>
+
+                            <div class="button-dropdown">
+                               <input type="hidden" name="" value="2,3,4" multiple>
+                               <input type="search" value="" placeholder="Search start with...">
+                               <label>JAVASCRIPT,HTML,PHP</label>
+                               <select value="select an option...">
+                                  <optgroup label="Coding:">
+                                     <option value="1">CSS</option>
+                                     <option value="2">JAVASCRIPT</option>
+                                     <option value="3">HTML</option>
+                                     <option value="4">PHP</option>
+                                  </optgroup>
+                                  <optgroup label="View type:">
+                                     <option value="5">WEB</option>
+                                     <option value="6">CORDOVA</option>
+                                     <option value="7">ELECTRON</option>
+                                  </optgroup>
+                                  <optgroup label="Devices:">
+                                     <option value="8">ANDROID</option>
+                                     <option value="9">IOS</option>
+                                     <option value="10">LINUX</option>
+                                     <option value="11">WINDOW</option>
+                                  </optgroup>
+                                  <optgroup label="Other:">
+                                     <option value="12">Docker</option>
+                                     <option value="13">Framework</option>
+                                     <option value="14">Unity 3d</option>
+                                     <option value="15">Github</option>
+                                  </optgroup>
+                               </select>
+                            </div>
+
+                         </div>
+
+                     </div>
+
+                     <div class="pad-[20-20-10]"><hr></div>
+
+                     <div class="grid-x gap-15">
+
+                         <div class="box-[50-50-100]">
+
+                            <p class="pad-[10] ">clock</p>
+
+                            <div class="button-clock">
+                               <input type="hidden" name="" value="09:30" min="06:00" max="16:00">
+                               <label>Hours:Minutes</label>
+                            </div>
+
+                         </div>
+
+                         <div class="box-[50-50-100]">
+
+                            <p class="pad-[10] ">timer</p>
+
+                            <div class="button-chronos -reversed">
+                               <input type="hidden" name="" value="">
+                               <label>HOURS:MINUTES:SECONDS</label>
+                            </div>
+
+                         </div>
+
+                         <div class="box-[50-50-100]">
+                            <p class="pad-[10] ">date (UTC YMD -compact)</p>
+                            <div class="button-date UTC YMD -compact">
+                               <input type="hidden" value="" name="" />
+                               <label>Select a date...</label>
+                            </div>
+                         </div>
+
+                         <div class="box-[50-50-100]">
+                            <p class="pad-[10] ">date (EUR DMY)</p>
+                            <div class="button-date EUR DMY">
+                               <input type="hidden" value="" name="" />
+                               <label>Select a date...</label>
+                            </div>
+                         </div>
+
+                         <div class="box-[50-50-100]">
+                            <p class="pad-[10] ">date (EUR DMY min max start)</p>
+                            <div class="button-date EUR DMY">
+                               <input type="hidden" value="10-12-2019" name="" min="2015" max="2015"/>
+                               <label>10-12-2019</label>
+                            </div>
+                         </div>
+
+                         <div class="box-[50-50-100]">
+                            <p class="pad-[10] ">date (EUR DMY multi date)</p>
+                            <div class="button-date EUR DMY">
+                               <input type="hidden" name="" value=""/>
+                               <input type="hidden" name="" value=""/>
+                               <label>Select a date...</label>
+                            </div>
+                         </div>
+
+                     </div>
+
+                </section>
+
+          </article>
+
+      </main>
+
+      <div class="lazy"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
+      <div class="loader"><span class="spinner"></span></div>
+
+  </body>
+
+</html>

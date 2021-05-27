@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+
+        <title>K2.8 TESTER</title>
+        <meta name="viewport" content="target-densitydpi=150, width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8"><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+        <!-- ui framework core :: wiki > https://git.io/Jv9u1 -->
+        <link rel="stylesheet" href="./resources/libraries/k-core/core.dev.css">
+        <script type="text/javascript" src="./resources/libraries/k-core/core.dev.js"></script>
+
+        <!-- ui framework theme :: core styling override -->
+        <link rel="stylesheet" href="./resources/libraries/k-theme/theme.css">
+
+
+    </head>
+
+    <body class="mode-web">
+
+        <main class="limiter-all space-[05]">
+
+            <header class="sticky-top space-[05]-[horizontal] bkg-03 border-02" style="z-index:1000">
+                <div class="pad-[15]-[vertical]">
+                    <span class="lazy">
+                        <div data-src="./resources/elements/sidemenu-opener.html"></div>
+                    </span>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
+                    <span>
+                        <div>
+                            <h1>Kimera - <strong>Ui kit library for the web coding</strong></h1>
+                            <p>The tester theme of official project in <a href="https://github.com/ShapeGroup/kimera-frontend-framework" target="_blank">github</a></p>
+                        </div>
+                    </span>
+                </div>
+            </header>
+
+            <div class="pad-[25]"></div>
+
+            <article>
+
+                <header>
+
+                    <h2>➜ LAYOUT POSITIONS CONCEPT:</h3>
+
+                    <div class="pad-[25]-[vertical] textgroup">
+
+                        <p> It is possible to position elements on a relative, floated, absolute or fixed basis. For everything else follow the original concept and the various types of grids. </p>
+
+                    </div>
+
+                </header>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ Floatting elements</b></h3>
+
+                    <p>make a float-group and put a float element. The floats class forced layout to unwide.</p>
+
+                    <div>
+                        <div class="float-group border-04">
+                            <div class="float-left border-04">
+                                <p>DIV float on left</p>
+                            </div>
+                            <div class="float-left border-04">
+                                <p>DIV float on left</p>
+                            </div>
+                            <div class="float-right border-04">
+                                <p>DIV float on right</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="float-group border-04">
+                            <span class="float-left border-05">
+                                <p>SPAN on left</p>
+                            </span>
+                            <span class="float-left border-05">
+                                <p>SPAN on left</p>
+                            </span>
+                            <span class="float-right border-05">
+                                <p>SPAN on right</p>
+                            </span>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ Absolute positions</b></h3>
+
+                    <p>Absolute class put element relative of parent. The logic is really simple to understand: "POSITION-SWITCH-SWITCH" => "absolute-top-left"</p>
+                    <p>Absolute class required a container and it's good idea to make it width a real height</p>
+
+                    <div>
+                        <div class="border-04" style="height:450px;">
+
+                            <span class="absolute-top-left border-05">
+                                <p>absolute</p>
+                            </span>
+                            <span class="absolute-top border-05">
+                                <p>absolute</p>
+                            </span>
+                            <span class="absolute-top-right border-05">
+                                <p>absolute</p>
+                            </span>
+
+                            <span class="absolute-center-left border-05">
+                                <p>absolute</p>
+                            </span>
+                            <span class="absolute-center border-05">
+                                <p>absolute</p>
+                            </span>
+                            <span class="absolute-center-right border-05">
+                                <p>absolute</p>
+                            </span>
+
+                            <span class="absolute-bottom-left border-05">
+                                <p>absolute</p>
+                            </span>
+                            <span class="absolute-bottom border-05">
+                                <p>absolute</p>
+                            </span>
+                            <span class="absolute-bottom-right border-05">
+                                <p>absolute</p>
+                            </span>
+
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ Fixed positions</b></h3>
+
+                    <p>
+                        Equal to Absolute (same logic: "POSITION-FRIST-SWITCH" => "fixed-top-left") but, in fixed position, elements flyout of box -obviously- and wrap or fisical height it's not necessary.<br>
+                        <a href="positions.fixed.html" target="_blank">TEST IT</a>
+                    </p>
+
+                </section>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ Sticky positions</b></h3>
+
+                    <p>
+                        Similar to Absolute and fixed but, in sticky, the logic is simplfied: Have a left,right,top,bottom... no other.<br>
+                        In add to this all position of the elements flyout of box relative of their wrap and scroll height.<br>
+                        <a href="positions.sticky.topbottom.html" target="_blank">TEST IT FOR : TOP / BOTTOM</a>
+                        <a href="positions.sticky.leftright.html" target="_blank">TEST IT FOR : LEFT / RIGHT</a>
+                    </p>
+
+                </section>
+
+            </article>
+
+        </main>
+
+        <div class="lazy"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
+        <div class="loader"><span class="spinner"></span></div>
+
+    </body>
+
+</html>

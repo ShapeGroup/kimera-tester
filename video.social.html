@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+
+        <title>K2.8 TESTER</title>
+        <meta name="viewport" content="target-densitydpi=150, width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8"><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+        <!-- ui framework core :: wiki > https://git.io/Jv9u1 -->
+        <link rel="stylesheet" href="./resources/libraries/k-core/core.dev.css">
+        <script type="text/javascript" src="./resources/libraries/k-core/core.dev.js"></script>
+
+        <!-- ui framework theme :: core styling override -->
+        <link rel="stylesheet" href="./resources/libraries/k-theme/theme.css">
+
+
+    </head>
+
+    <body class="mode-web">
+
+        <div class="limiter-all space-[05]">
+
+            <div class="lazy">
+                <div data-src="./resources/elements/sidemenu-opener.html"></div>
+            </div>
+
+            <div class="pad-[20-15-10]"></div>
+
+            <div>
+
+                <h2>➜ TESTING ON : VideBox + Social</h2>
+
+                <div class="pad-[05]"></div>
+
+                <p>videobox-[social] is an experimental feature. Long story short: the system recognizes the type of url entered and tries to write the social iframe without any plugin or api registration.</p>
+                <div class="pad-[05]"></div>
+                <p>Unfortunately this system is not always possible nor is it always feasible if you are not logged in to the social network itself.</p>
+
+                <div class="pad-[30-30-10]-[vertical]"><hr></div>
+
+                <p>Facebook video via url [iframed]</p>
+                <p><small>NOTE: no api facebook video can't support every link without an id. exemple: "https://fb.watch/4U0bRaoUu0/"</small></p>
+
+                <div class="pad-[10]"></div>
+
+                <div class="videobox-[social] ratio-[16:9] radius-medium">
+                    <video src="https://www.facebook.com/KimeraFramework/videos/2818375501782136"></video>
+                </div>
+
+                <div class="pad-[30-30-10]-[vertical]"><hr></div>
+
+                <p>Instagram video via url</p>
+
+                <div class="pad-[10]"></div>
+
+                <div class="videobox-[social] ratio-[1:1] radius-medium">
+                    <video src="https://instagram.com/p/vNquyLpjaZ"></video>
+                </div>
+
+                <div class="pad-[30-30-10]-[vertical]"><hr></div>
+
+                <p>Vimeo video via url</p>
+
+                <div class="pad-[10]"></div>
+
+                <div class="videobox-[social] ratio-[16:9] radius-medium">
+                    <video src="https://vimeo.com/169320822"></video>
+                </div>
+
+                <div class="pad-[30-30-10]-[vertical]"><hr></div>
+
+                <p>Youtube video via url</p>
+
+                <div class="pad-[10]"></div>
+
+                <div class="videobox-[social] ratio-[16:9] radius-medium">
+                    <video src="https://www.youtube.com/watch?v=NVb5GV6lntU"></video>
+                </div>
+
+                <div class="pad-[30-30-10]-[vertical]"><hr></div>
+
+                <p>Twitch video via url</p>
+
+                <div class="videobox-[social] ratio-[16:9] radius-medium">
+                    <video src="https://www.twitch.tv/thedandangler/clip/FamousCleverMooseCopyThis-TYZgoFhOiBYdIHWK"></video>
+                </div>
+
+                <div class="pad-[30-30-10]-[vertical]"><hr></div>
+
+                <p>Twitter video via url</p>
+
+                <!--
+                    <iframe id="tweet-button" allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?via=marcus_christie&amp;text=replace%20me&amp;count=horizontal" style="width:110px; height:20px;"></iframe>
+                    <div class="pad-[10]"></div>
+                    <iframe border=0 frameborder=0 height=250 width=550 src="https://twitframe.com/show?url=https%3A%2F%2Ftwitter.com%2Fjack%2Fstatus%2F20"></iframe>
+                -->
+
+                <div class="pad-[10]"></div>
+
+                <div class="videobox-[social] ratio-[16:9] radius-medium">
+                    <video src="https://twitter.com/Adobe/status/1379469610697719811/video/1"></video>
+                </div>
+
+                <div class="pad-[15]"></div>
+                <p><b>Video social auto settings:</b></p>
+                <div class="pad-[05]"></div>
+                <p>All social videos have a data-sets='[clearui,controls,autohide,autoplay,loop]'. For this type of test follow this list:</p>
+                <div class="pad-[05]"></div>
+                <ul>
+                    <li><a href="video.social.setstest.facebook.html" target="_blank">- facebook test</a></li>
+                    <li><a href="video.social.setstest.instagram.html" target="_blank">- instagram test</a></li>
+                    <li><a href="video.social.setstest.youtube.html" target="_blank">- youtube test</a></li>
+                    <li><a href="video.social.setstest.vimeo.html" target="_blank">- vimeo test</a></li>
+                    <li disabled>- Twitch test - currently unavailable</li>
+                    <li disabled>- Twitter test - currently unavailable</li>
+                </ul>
+
+             </div>
+
+         </div>
+
+         <div class="lazy"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
+
+         <div class="loader"><span class="spinner"></span></div>
+
+     </body>
+
+  </html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html data-theme='clear' lang="en" dir="ltr">
+
+    <head>
+
+
+        <title>K2.8 TESTER</title>
+        <meta name="viewport" content="target-densitydpi=150, width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8"><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+        <!-- ui framework core :: wiki > https://git.io/Jv9u1 -->
+        <link rel="stylesheet" href="./resources/libraries/k-core/core.dev.css">
+        <script type="text/javascript" src="./resources/libraries/k-core/core.dev.js"></script>
+
+        <!-- ui framework theme :: core styling override -->
+        <link rel="stylesheet" href="./resources/libraries/k-theme/theme.css">
+
+
+    </head>
+
+    <body class="mode-web">
+
+        <main class="limiter-all space-[05]">
+
+            <header class="sticky space-[05]-[horizontal] bkg-03 border-02" style="z-index:1000">
+                <div class="pad-[15]-[vertical]">
+                    <span class="lazy">
+                        <div data-src="./resources/elements/sidemenu-opener.html"></div>
+                    </span>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
+                    <span>
+                        <div>
+                            <h1>Kimera - <strong>Ui kit library for the web coding</strong></h1>
+                            <p>The tester theme of official project in <a href="https://github.com/ShapeGroup/kimera-frontend-framework" target="_blank">github</a></p>
+                        </div>
+                    </span>
+                </div>
+            </header>
+
+            <div class="pad-[25]"></div>
+
+            <article>
+
+                <header>
+
+                    <h2>➜ TOOLTIPS:</h2>
+
+                    <div class="pad-[25]-[vertical] textgroup">
+
+                        <p>
+                            Simple dynamic hide-show on text (and not).<br>
+                            Basically linked to the core/reset but can modded or upgrade it via theme
+                        </p>
+
+                    </div>
+
+                </header>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ Standard text elements:</b></h3>
+
+                    <p>
+                        Lorem ipsum dolor sit <span class="popover-up" data-text="amet"> <i>amet is carrots, and this is a popover into text :D</i> </span> , consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore <span class="popover-up" data-text="magna"> <i>magna = great</i> </span> aliqua. Ut enim ad minim veniam, <span class="popover-left" data-text="quis"><i>This is a popovers simple content</i></span> nostrud exercitation ullamco laboris nisi ut aliquip ex ea <span class="popover-up" data-text="comodo"><i>a last exemple...</i></span> ....
+                    </p>
+
+                </section>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ By click on element:</b></h3>
+
+                    <div class="pad-[10]"></div>
+
+                    <div class="grid-x gap-20">
+                        <div class="box-[25-25-100]">
+                            <div class="align-[center]">
+                                <span class="align-[center] popover-up">
+                                    <div><p>This is a complex popovers <a href="#">content</a></p></div>
+                                    <p>Up</p>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="box-[25-25-100]">
+                            <div class="align-[center]">
+                                <span class="align-[center] popover-right [byclick]">
+                                    <div><p>This is a complex popovers content</p></div>
+                                    <p>Right</p>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="box-[25-25-100]">
+                            <div class="align-[center]">
+                                <span class="align-[center] popover-left">
+                                    <div><p>This is a complex popovers content</p></div>
+                                    <p>Left</p>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="box-[25-25-100]">
+                            <div class="align-[center]">
+                                <span class="align-[center] popover-down">
+                                    <div><p>This is a complex popovers content</p></div>
+                                    <p>Down</p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+            </article>
+
+        </main>
+
+        <div class="lazy"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
+        <div class="loader"><span class="spinner"></span></div>
+
+    </body>
+
+</html>

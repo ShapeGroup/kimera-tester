@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+   <head>
+
+
+         <title>K2.8 TESTER</title>
+         <meta name="viewport" content="target-densitydpi=150, width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimal-ui">
+         <meta charset="utf-8"><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+         <!-- K core :: wiki > https://git.io/Jv9u1 -->
+         <link rel="stylesheet" href="./resources/getlibs/k-core/core.dev.css">
+         <script type="text/javascript" src="./resources/getlibs/k-core/core.dev.js"></script>
+
+         <!-- K theme :: core styling override -->
+         <link rel="stylesheet" href="./resources/getlibs/k-theme/theme.css">
+
+
+   </head>
+
+   <body class="mode-web">
+
+      <div class="limiter-all space-big">
+         <div class="grid-x gap-40">
+
+            <aside class="box-[20-20-100]">
+               <div>
+
+                  <include src="menu.html"><!--simple js inclusion of menu--></include>
+
+               </div>
+            </aside>
+
+            <main class="box-[80-80-100]">
+               <div>
+
+                  <head>
+                     <h2>Home</h2>
+                     <p>Where & what</p>
+                  </head>
+
+                  <div class="pad-[30-30-10] onlyvertical"><hr></div>
+
+                  <p><b>Grid-x:</b></p><div class="pad-[15-15-10]"></div>
+
+                  <section>
+
+                     
+                     <div class="lazy-on radius-medium ratio-[16-9] autocrop">
+                       <img data-src="https://effigis.com/wp-content/uploads/2015/02/Airbus_Pleiades_50cm_8bit_RGB_Yogyakarta.jpg">
+                     </div>
+                           
+                     <div class="pad-[20] onlyvertical"><p><b>Youtube:</b><br><small>Full supported : type iframe</smalL></p></div>
+
+                     <div class="lazy-on radius-medium ratio-[16-9]">
+                        <video class="type-player" data-options='[clearui,controls,autohide,autoplay]' src="https://www.youtube.com/watch?v=NVb5GV6lntU"></video> 
+                     </div>
+
+                     <div class="pad-[20] onlyvertical"><p><b>Facebook:</b><br><small>Partial supported : type iframe</smalL></p></div>
+
+                     <p>FB via video url</p>
+                     <div class="pad-small"></div>
+                     <div class="lazy-on radius-medium ratio-[16-9]">
+                       <video class="type-player" src="https://www.facebook.com/KimeraFramework/videos/2818375501782136"></video>
+                     </div>
+                     <div class="pad-small"></div>
+                     <p>FB via post url</p>
+                     <div class="lazy-on radius-medium ratio-[16-9]">
+                       <video class="type-player" src="https://www.facebook.com/CodotaAiForCode/posts/1510914142421655"></video>
+                     </div>
+                     <div class="pad-small"></div>
+                     <p>FB via permalink</p>
+                     <div class="lazy-on radius-medium ratio-[16-9]">
+                       <video class="type-player" src="https://www.facebook.com/permalink.php?story_fbid=554357288808038&id=191326448444459"></video> 
+                     </div>
+           
+                     <div class="pad-[20] onlyvertical"><p><b>Instagram:</b><br><small>Full supported : type video</smalL></p></div>
+
+                     <p>IG via post url</p>
+                     <!-- <div class="preload ratio-[1-1] round-medium">
+                       <video class="type-player" data-options='[controls,autohide,autoplay,loop]' src="https://instagram.com/p/vNquyLpjaZ/"></video>
+                     </div> -->
+                     <div class="pad-small"></div>
+                     <p>IG via iframe oembed url</p>
+                     <!-- <div style="border:3px solid blue;">
+                       <iframe src="http://api.instagram.com/oembed?url=https://instagram.com/p/CEUmwQqD0l3/" width="240" height="312"></iframe>
+                     </div>-->
+                     <div class="pad-small"></div>
+                     <!-- <div class="preload ratio-[16-9] round-medium">
+                       <video class="type-player" data-options='[clearui,controls,autohide,autoplay]' src="https://vimeo.com/169320822"></video> 
+                     </div> -->
+                     <div class="pad-small"></div>
+           
+                   </div>
+           
+                     <!-- <hr>
+                     <p>video twitch</p>
+                     <div class="ratio-[16-9]">
+                       <video src="https://player.twitch.tv/?channel=pow3rtv&enableExtensions=true&muted=false&parent=twitch.tv&player=popout&volume=0.5"></video> 
+                     </div>
+                     <iframe
+                         src="https://player.twitch.tv/?video=v40464143&parent=streamernews.example.com&autoplay=false"
+                         height="720"
+                         width="1280"
+                         frameborder="0"
+                         scrolling="no"
+                         allowfullscreen="true">
+                     </iframe>          <hr>
+                     <p>canvas</p>
+                     <div class="ratio-[16-9]">
+                       <canvas src="https://www.youtube.com/embed/tgbNymZ7vqY"></canvas> 
+                     </div> -->
+
+                  </section>
+
+               </div>
+            </main>
+
+         </div>
+      </div>
+
+      <div class="loader active"></div>
+
+   </body>
+
+</html>
+
+<script>/*javascript include file*/(() => { [].forEach.call( document.getElementsByTagName('include') , el => { let path = el.getAttribute('src'); fetch(path).then( file => { file.text().then( content => { el.insertAdjacentHTML('afterend', content); el.remove(); }); }); }); })();</script>

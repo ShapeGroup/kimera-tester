@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+
+        <title>K2.8 TESTER</title>
+        <meta name="viewport" content="target-densitydpi=150, width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8"><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+        <!-- ui framework core :: wiki > https://git.io/Jv9u1 -->
+        <link rel="stylesheet" href="./resources/libraries/k-core/core.dev.css">
+        <script type="text/javascript" src="./resources/libraries/k-core/core.dev.js"></script>
+
+        <!-- ui framework theme :: core styling override -->
+        <link rel="stylesheet" href="./resources/libraries/k-theme/theme.css">
+
+
+    </head>
+
+    <body class="mode-web">
+
+        <main class="limiter-all space-[05]">
+
+            <header class="sticky-top space-[05]-[horizontal] bkg-03 border-02" style="z-index:1000">
+                <div class="pad-[15]-[vertical]">
+                    <span class="lazy">
+                        <div data-src="./resources/elements/sidemenu-opener.html"></div>
+                    </span>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
+                    <span>
+                        <div>
+                            <h1>Kimera - <strong>Ui kit library for the web coding</strong></h1>
+                            <p>The tester theme of official project in <a href="https://github.com/ShapeGroup/kimera-frontend-framework" target="_blank">github</a></p>
+                        </div>
+                    </span>
+                </div>
+            </header>
+
+            <div class="pad-[25]"></div>
+
+            <article class="border-03">
+
+                <header>
+
+                    <h2>➜ READ AND LOAD FILE IN UI:</h2>
+
+                    <div class="pad-[25]-[vertical] textgroup">
+
+                        <p>File loader system: it is an expansion of the system. Precisely a logical superstructure ui/js of button-files with drag and drop and file reader. Its purpose is to upload files to ui before uploading. The uploaded files are returned in object form and ready to pieces. <a target="_blank" href="https://filesamples.com/">[ you can find and check all formats by this resouce ]</a></p>
+
+                    </div>
+
+                <header>
+
+                <div class="pad-[25]"></div>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ button-file & fileloader:</b></h3>
+                    <p>
+                        An important concept... <mark>button-file and the fileloader are not the same.</mark> <br>
+                        Button file is Ui button, so it's a preset of input type files. The fileloader is a javascript object with a preset structures and readers. The cannot be applied directly to the button but uses it for its own purposes.
+                    </p>
+
+                    <p>
+                        The Ui restandardized input file:
+                    </p>
+
+                   <div>
+                       <p class="pad-small text-tone-3">button-file</p>
+                       <div class="button-file">
+                          <input type="file" multiple="true" size="0.5" maxsize="1.5" minlength="1" maxlength="8" accept="png, jpeg, jpg, webp"/>
+                          <label>Upload a File</label>
+                       </div>
+                   </div>
+
+
+                   <p>
+                       This button can be accepted all standard paramenters of input type file. It's check it and return if is all in line or not.
+                   </p>
+                   <p>
+                       Now, we can study the overstructure for button-file... the <i>fileloader</i>.
+                   </p>
+
+               </section>
+
+               <section class="textgroup">
+
+                   <h3><b> ❯❯ file/fileloader type:single (one file on preset)</b></h3>
+
+                   <p>This single file structure is highly editable and usable for profile pictures, covers, more ...</p>
+
+                   <p><i>classic with different layout:</i></p>
+
+                   <div>
+
+                       <div  class = "fileloader layout-row"
+                             data-settings = "[type:single, preview:true, converter:true]"
+                             data-compressor = "[image-quality:35, image-resolution:50x50]">
+
+                             <div class="display no-image-loaded">
+                                 <!--auto-populated-->
+                             </div>
+
+                             <div class="button-file">
+                                <input type="file" size="0.5" maxsize="1.5" minlength="1" maxlength="1" accept="png, jpeg, jpg, webp"/>
+                                <label>Upload an image</label>
+                            </div>
+
+                       </div>
+
+                   </div>
+
+                   <div class="grid-x gap-20">
+
+                       <div class="box-[50-50-100]">
+                           <div>
+
+                               <p><i>classic ratio</i></p>
+                               <div class="pad-[10]"></div>
+
+                               <div  class = "fileloader"
+                                     data-settings = "[type:single, preview:true, converter:true, deleter:true]"
+                                     data-compressor = "[image-quality:75, image-resolution:300x300]">
+
+                                     <div class="display ratio-[1:1] no-image-loaded"></div>
+
+                                     <hr/>
+
+                                     <div class="button-file">
+                                        <input type="file" size="0.5" maxsize="1.5" minlength="1" maxlength="1" accept="png, jpeg, jpg, webp"/>
+                                        <label>Upload an image</label>
+                                     </div>
+
+                               </div>
+
+                           </div>
+                       </div>
+
+                       <div class="box-[50-50-100]">
+                           <div>
+
+                               <p><i>classic ratio and clear</i></p>
+                               <div class="pad-[10]"></div>
+
+                               <div  class = "fileloader"
+                                     data-settings = "[type:single, preview:true, converter:true, linked:true, deleter:true ]"
+                                     data-compressor = "[image-quality:75, image-resolution:120x120]">
+
+                                     <div class="display ratio-[1:1] no-image-loaded"></div>
+
+                                     <div class="button-file hide">
+                                        <input type="file" size="0.5" maxsize="1.5" minlength="1" maxlength="1" accept="png, jpeg, jpg, webp"/>
+                                        <label>Upload an image</label>
+                                     </div>
+
+                               </div>
+
+                           </div>
+                       </div>
+
+                   </div>
+
+               </section>
+
+                <div class="pad-[30-30-10] onlyvertical"><hr></div>
+                <p><b>file/fileloader multiple</b></p>
+                <small>This is a series of multiple files load structure with drag and drop, display types, actions and more ...</small>
+
+                 <div class="pad-[30-30-10] onlyvertical">
+                    <p>type:listed, and more..</p>
+                 </div>
+
+                 <div  class="fileloader"
+                       data-settings="[type:listed, sortable:true, converter:true, preview:true, titlelabel:true, metalabel:true, linked:true, deleter:true, grabber:true]"
+                       data-compressor="[image-quality:75, image-resolution:300x300]">
+
+                       <div class="display" style="height:50vw; max-height:25vh;">
+                       </div>
+
+                       <hr/>
+
+                       <div class="grid-x gap-10">
+
+                          <div class="box-[70-70-100]">
+
+                             <div class="button-file">
+                                <input type="file" multiple size="5120" maxsize="5120" minlength="1" maxlength="25" />
+                                <label>upload and refresh all files</label>
+                              </div>
+
+                          </div>
+
+                          <div class="box-[30-30-100]">
+
+                             <div class="button-sendnow">
+                                <a rel="nofollow">UPLOAD NOW</a>
+                             </div>
+
+                          </div>
+
+                       </div>
+
+                 </div>
+
+                 <div class="pad-[30-30-10] onlyvertical">
+                    <p>type:grid, and more...</p>
+                 </div>
+
+                 <div  class="fileloader"
+                       data-settings="[type:grid, boxgap:10, boxcut:25-25-50, sortable:true, converter:true, titlelabel:true, metalabel:true, preview:true, linked:true, deleter:true, grabber:true]"
+                       data-compressor="[image-quality:75, image-resolution:300x300]">
+
+                       <div class="display" style="height:50vw; max-height:25vh;">
+                       </div>
+
+                       <hr/>
+
+                       <div class="grid-x gap-10">
+
+                          <div class="box-[70-70-100]">
+
+                             <div class="button-file">
+                                <input type="file" multiple size="5120" maxsize="5120" minlength="1" maxlength="25" />
+                                <label>upload and refresh all files</label>
+                             </div>
+
+                          </div>
+
+                          <div class="box-[30-30-100]">
+
+                             <div class="button-sendnow">
+                                <a rel="nofollow">UPLOAD NOW</a>
+                             </div>
+
+                          </div>
+
+                       </div>
+
+                 </div>
+
+                 <div class="pad-[30-30-10] onlyvertical">
+                    <p>type:wall, and more...</p>
+                 </div>
+
+                 <div  class="fileloader"
+                       data-settings="[type:wall, boxgap:10, wallcols:04-03-01, sortable:true, converter:true, preview:true, titlelabel:true, metalabel:true, linked:true, deleter:true, grabber:true]"
+                       data-compressor="[image-quality:75, image-resolution:300x300]">
+
+                       <div class="display" style="height:50vw; max-height:25vh;">
+                       </div>
+
+                       <hr/>
+
+                       <div class="grid-x gap-10">
+
+                          <div class="box-[70-70-100]">
+
+                             <div class="button-file">
+                                <input type="file" multiple size="5120" maxsize="5120" minlength="1" maxlength="25" />
+                                <label>upload and refresh all files</label>
+                             </div>
+
+                          </div>
+
+                          <div class="box-[30-30-100]">
+
+                             <div class="button-sendnow">
+                                <a rel="nofollow">UPLOAD NOW</a>
+                             </div>
+
+                          </div>
+
+                       </div>
+
+                 </div>
+
+                 <div class="pad-[20]"></div>
+                 <hr>
+                 <div class="pad-[20]"></div>
+
+                 <p><i>(Attention: if you print on html a big file you risk crashing -much better to just use the log-</i></p>
+                 <div class="pad-[20]"></div>
+                 <p><i>where is the file data?</i>You can directly retrieve alla data of file by browsing the loaderslist: ui.loaderslist.data[THE-INDEX-OF-FILE-LOADER].datalist.filedata (filedata,blob,chunks,mime,name,size,typed)</p>
+                 <div class="pad-[20]"></div>
+                 <span>
+                     <a class="button" id="testvalues">
+                         PRINT DATA
+                     </a>
+                 </span>
+                 <span>
+                     <a class="button" id="testvaluesvialog">
+                         PRINT LOG
+                     </a>
+                 </span>
+
+                 <div class="pad-[20]"></div>
+
+                 <pre id="printer"></pre>
+
+       </main>
+
+       <div class="lazy"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
+       <div class="loader"><span class="spinner"></span></div>
+
+   </body>
+
+</html>
+
+<script>
+    window.onload = () =>
+    {
+
+        document.getElementById('testvalues').onclick  = () => print_ui();
+        document.getElementById('testvaluesvialog').onclick  = () => logvalue();
+
+        function logvalue()
+        {
+            console.log("ui.loaderslist : ",ui.loaderslist);
+        }
+        function print_ui()
+        {
+            let printer = document.querySelectorAll('#printer')[0];
+            printer.innerHTML = 'Wait/Refresh....';
+            setTimeout(()=>{
+                printer.innerText = JSON.stringify(ui.loaderslist,null,2);
+            },500)
+        }
+
+    }
+</script>

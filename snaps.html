@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+
+        <title>K2.8 TESTER</title>
+        <meta name="viewport" content="target-densitydpi=150, width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8"><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+        <!-- ui framework core :: wiki > https://git.io/Jv9u1 -->
+        <link rel="stylesheet" href="./resources/libraries/k-core/core.dev.css">
+        <script type="text/javascript" src="./resources/libraries/k-core/core.dev.js"></script>
+
+        <!-- ui framework theme :: core styling override -->
+        <link rel="stylesheet" href="./resources/libraries/k-theme/theme.css">
+
+
+    </head>
+
+    <body class="mode-web">
+
+        <main class="limiter-all space-[05]">
+
+            <header class="sticky-top space-[05]-[horizontal] bkg-03 border-02" style="z-index:1000">
+                <div class="pad-[15]-[vertical]">
+                    <span class="lazy">
+                        <div data-src="./resources/elements/sidemenu-opener.html"></div>
+                    </span>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
+                    <span>
+                        <div>
+                            <h1>Kimera - <strong>Ui kit library for the web coding</strong></h1>
+                            <p>The tester theme of official project in <a href="https://github.com/ShapeGroup/kimera-frontend-framework" target="_blank">github</a></p>
+                        </div>
+                    </span>
+                </div>
+            </header>
+
+            <div class="pad-[25]"></div>
+
+            <header>
+
+                <h2>➜ SNAP SLIDERS:</h2>
+
+                <div class="pad-[25]-[vertical] textgroup">
+
+                    <p>A dynamic hide-show side/center customizable panel <br> <small>the auto slide is an option</small></p>
+                </div>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ snap-x type wide (or div):</b></h3>
+
+                    <p>The better config to create a horizontal snap slider</p>
+
+                    <div class="snap-x autosnap-[5000] mask" style="height:300px;">
+
+                        <span class="snaplabels absolute-top-left">
+
+                            <span><p>[caption or title 01]</p></span>
+                            <span><p>[caption or title 02]</p></span>
+                            <span><p>[caption or title 03]</p></span>
+                            <span><p>[caption or title 04]</p></span>
+                            <span><p>[caption or title 05]</p></span>
+                            <span><p>[caption or title 06]</p></span>
+
+                        </span>
+
+                        <div class="snaptype-wide">
+                            <div class="snaps">
+
+                                <div> <span class="absolute-center"><p>...contents page 01...</p></span> </div>
+                                <div> <span class="absolute-center"><p>...contents page 02...</p></span> </div>
+                                <div> <span class="absolute-center"><p>...contents page 03...</p></span> </div>
+                                <div> <span class="absolute-center"><p>...contents page 04...</p></span> </div>
+                                <div class="lock"> <span class="absolute-center"><p>...lock contents...</p></span> </div>
+                                <div class="lock"> <span class="absolute-center"><p>...lock contents...</p></span> </div>
+
+                            </div>
+                        </div>
+
+                        <span class="dots"></span>
+
+                        <a class="prev"><b> ⬅ </b></a>
+                        <a class="next"><b> ➡ </b></a>
+
+                    </div>
+
+                    <div class="pad-[30-30-10] onlyvertical"><hr></div>
+
+                    <p><b>snap-x type blocks (or span):</b></p>
+
+                    <p>Configuration for create horizontal, with regular and irregualar widths, centered snap slider</p>
+
+                    <div class="snap-x autosnap-[5000] mask" style="height:300px;">
+
+                        <span class="snaplabels absolute-top-left">
+
+                            <span><p>[caption or title 01]</p></span>
+                            <span><p>[caption or title 02]</p></span>
+                            <span><p>[caption or title 03]</p></span>
+                            <span><p>[caption or title 04]</p></span>
+                            <span><p>[caption or title 05]</p></span>
+                            <span><p>[caption or title 06]</p></span>
+                            <span><p>[caption or title 07]</p></span>
+                            <span><p>[caption or title 08]</p></span>
+                            <span><p>[caption or title 09]</p></span>
+                            <span><p>[caption or title 10]</p></span>
+                            <span><p>[caption or title 11]</p></span>
+                            <span><p>[caption or title 12]</p></span>
+
+                        </span>
+
+                        <div class="snaptype-blocks">
+                            <div class="snaps">
+
+                                <span> <div class="maxheight" style="width:400px;"> <span class="absolute-center"><p>...contents page 01...</p></span> </div> </span>
+                                <span> <div class="maxheight" style="width:200px;"> <span class="absolute-center"><p>...contents page 02...</p></span> </div> </span>
+                                <span> <div class="maxheight" style="width:500px;"> <span class="absolute-center"><p>...contents page 03...</p></span> </div> </span>
+                                <span> <div class="maxheight" style="width:150px;"> <span class="absolute-center"><p>...contents page 04...</p></span> </div> </span>
+                                <span> <div class="maxheight" style="width:300px;"> <span class="absolute-center"><p>...contents page 05...</p></span> </div> </span>
+                                <span> <div class="maxheight" style="width:220px;"> <span class="absolute-center"><p>...contents page 06...</p></span> </div> </span>
+                                <span> <div class="maxheight" style="width:400px;"> <span class="absolute-center"><p>...contents page 07...</p></span> </div> </span>
+                                <span> <div class="maxheight" style="width:200px;"> <span class="absolute-center"><p>...contents page 08...</p></span> </div> </span>
+                                <span> <div class="maxheight" style="width:500px;"> <span class="absolute-center"><p>...contents page 09...</p></span> </div> </span>
+                                <span> <div class="maxheight" style="width:150px;"> <span class="absolute-center"><p>...contents page 10...</p></span> </div> </span>
+                                <span> <div class="maxheight" style="width:300px;"> <span class="absolute-center"><p>...contents page 11...</p></span> </div> </span>
+                                <span> <div class="maxheight" style="width:220px;"> <span class="absolute-center"><p>...contents page 12...</p></span> </div> </span>
+
+                            </div>
+                        </div>
+
+                        <span class="dots"></span>
+
+                        <a class="prev"><b> ⬅ </b></a>
+                        <a class="next"><b> ➡ </b></a>
+
+                    </div>
+
+                </section>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ snap-y type wide (or div):</b></h3>
+
+                    <p>Configuration for create vertical, with regular and irregualar widths, snap slider</p>
+
+                    <div class="snap-y autosnap-[5000] mask" style="height:600px;">
+
+                        <span class="snaplabels absolute-left">
+
+                            <span><p>[caption or title 01]</p></span>
+                            <span><p>[caption or title 02]</p></span>
+                            <span><p>[caption or title 03]</p></span>
+                            <span><p>[caption or title 04]</p></span>
+                            <span><p>[caption or title 05]</p></span>
+                            <span><p>[caption or title 06]</p></span>
+
+                        </span>
+
+                        <div class="snaptype-wide">
+                            <div class="snaps">
+
+                                <div> <div class="maxheight"> <span class="absolute-center"><p>...contents page 01...</p></span> </div> </div>
+                                <div> <div class="maxheight"> <span class="absolute-center"><p>...contents page 02...</p></span> </div> </div>
+                                <div> <div class="maxheight"> <span class="absolute-center"><p>...contents page 03...</p></span> </div> </div>
+                                <div> <div class="maxheight"> <span class="absolute-center"><p>...contents page 04...</p></span> </div> </div>
+                                <div> <div class="maxheight"> <span class="absolute-center"><p>...contents page 05...</p></span> </div> </div>
+                                <div> <div class="maxheight"> <span class="absolute-center"><p>...contents page 06...</p></span> </div> </div>
+
+                            </div>
+                        </div>
+
+                        <span class="dots"></span>
+
+                        <a class="prev"><b> ⬆ </b></a>
+                        <a class="next"><b> ⬇ </b></a>
+
+                    </div>
+
+                    <div class="pad-[30-30-10] onlyvertical"><hr></div>
+
+                    <p><b>snap-y type blocks (or span):</b></p>
+
+                    <p>Configuration for create vertical, with regular and irregualar widths, snap slider</p>
+
+                    <div class="snap-y autosnap-[5000] mask" style="height:350px;">
+
+                        <span class="snaplabels absolute-left">
+
+                            <span><p>[caption or title 01]</p></span>
+                            <span><p>[caption or title 02]</p></span>
+                            <span><p>[caption or title 03]</p></span>
+                            <span><p>[caption or title 04]</p></span>
+                            <span><p>[caption or title 05]</p></span>
+                            <span><p>[caption or title 06]</p></span>
+                            <span><p>[caption or title 07]</p></span>
+                            <span><p>[caption or title 08]</p></span>
+                            <span><p>[caption or title 09]</p></span>
+                            <span><p>[caption or title 10]</p></span>
+                            <span><p>[caption or title 11]</p></span>
+                            <span><p>[caption or title 12]</p></span>
+
+                        </span>
+
+                        <div class="snaptype-blocks">
+                            <div class="snaps">
+
+                                <span> <div style="height:120px;"> <span class="absolute-center"><p>...contents page 01...</p></span> </div> </span>
+                                <span> <div style="height:120px;"> <span class="absolute-center"><p>...contents page 02...</p></span> </div> </span>
+                                <span> <div style="height:150px;">  <span class="absolute-center"><p>...contents page 03...</p></span> </div> </span>
+                                <span> <div style="height:150px;"> <span class="absolute-center"><p>...contents page 04...</p></span> </div> </span>
+                                <span> <div style="height:160px;"> <span class="absolute-center"><p>...contents page 05...</p></span> </div> </span>
+                                <span> <div style="height:150px;"> <span class="absolute-center"><p>...contents page 06...</p></span> </div> </span>
+                                <span> <div style="height:150px;"> <span class="absolute-center"><p>...contents page 07...</p></span> </div> </span>
+                                <span> <div style="height:150px;"> <span class="absolute-center"><p>...contents page 08...</p></span> </div> </span>
+                                <span> <div style="height:120px;">  <span class="absolute-center"><p>...contents page 09...</p></span> </div> </span>
+                                <span> <div style="height:136px;"> <span class="absolute-center"><p>...contents page 10...</p></span> </div> </span>
+                                <span> <div style="height:150px;"> <span class="absolute-center"><p>...contents page 11...</p></span> </div> </span>
+                                <span> <div style="height:120px;"> <span class="absolute-center"><p>...contents page 12...</p></span> </div> </span>
+
+                            </div>
+                        </div>
+
+                        <span class="dots"></span>
+
+                        <a class="prev"><b> ⬆ </b></a>
+                        <a class="next"><b> ⬇ </b></a>
+
+                    </div>
+
+            </section>
+
+        </main>
+
+        <div class="lazy"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
+        <div class="loader"><span class="spinner"></span></div>
+
+    </body>
+
+</html>

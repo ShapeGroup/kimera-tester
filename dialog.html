@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+
+        <title>K2.8 TESTER</title>
+        <meta name="viewport" content="target-densitydpi=150, width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8"><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+        <!-- ui framework core :: wiki > https://git.io/Jv9u1 -->
+        <link rel="stylesheet" href="./resources/libraries/k-core/core.dev.css">
+        <script type="text/javascript" src="./resources/libraries/k-core/core.dev.js"></script>
+
+        <!-- ui framework theme :: core styling override -->
+        <link rel="stylesheet" href="./resources/libraries/k-theme/theme.css">
+
+
+    </head>
+
+    <body class="mode-web">
+
+        <main class="limiter-all space-[05]">
+
+            <header class="sticky-top space-[05]-[horizontal] bkg-03 border-02" style="z-index:1000">
+                <div class="pad-[15]-[vertical]">
+                    <span class="lazy">
+                        <div data-src="./resources/elements/sidemenu-opener.html"></div>
+                    </span>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
+                    <span>
+                        <div>
+                            <h1>Kimera - <strong>Ui kit library for the web coding</strong></h1>
+                            <p>The tester theme of official project in <a href="https://github.com/ShapeGroup/kimera-frontend-framework" target="_blank">github</a></p>
+                        </div>
+                    </span>
+                </div>
+            </header>
+
+            <div class="pad-[25]"></div>
+
+            <article class="border-03">
+
+                <section class="textgroup">
+
+                    <h2>➜ A cross and costomizable Dialogs system:</h2>
+
+                    <div class="textgroup">
+                        <p>It's a customizable warning box (similar to alert/confirm/prompt).</p>
+                        <p>It's a branch of outbox popup but more strict and rigid... in fact, it no has direct writable in html and, if you try to delete it, the system remake from zero it in one second.</p>
+                        <p>Obviously it is not a native alert, therefore it has limits (for example it cannot physically block the page at 100%) but it is a very useful additional function to create an immediate pop in an app or during the execution of any of your additional scripts.</p>
+                    </div>
+
+                    <section class="textgroup">
+
+                        <p><b>Standard dialog elements:</b></p>
+                        <p><b>Click on element for test:</b></p>
+
+                        <button onclick="alert('THIS IS STANDARD')">TEST ALERT</button>
+
+                        <div class="grid-x gap-20">
+                            <div class="box-[33-33-100]">
+                                <div class="align-center" >
+                                    <button id="alert">TEST ALERT</button>
+                                </div>
+                            </div>
+                            <div class="box-[33-33-100]">
+                                <div class="align-center" >
+                                    <button id="confirm">TEST CONFIRM</button>
+                                </div>
+                            </div>
+                            <div class="box-[33-33-100]">
+                                <div class="align-center" >
+                                    <button id="prompt">TEST PROMPT</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <p><b>This is the demo script below this page:</b></p>
+
+<pre class="pad-[25]" style="border:1px dashed #ccc">
+
+    window.addEventListener('load',()=>{
+
+        ui.warning({
+            type:'alert',
+            content:'This is a custom warning! Hello dev! This page is loaded!'
+        },
+        result => {
+            console.log(result);
+            //continue/do...
+        })
+
+    },false)
+
+</pre>
+
+<pre class="pad-[25]" style="border:1px dashed #ccc">
+
+    document.getElementById('alert').addEventListener('click',()=>{
+
+        ui.warning(null,result => {
+            console.log('the result is: ',result);
+            //continue/do...
+        })
+
+    },true);
+
+</pre>
+
+<pre class="pad-[25]" style="border:1px dashed #ccc">
+
+    document.getElementById('confirm').addEventListener('click',()=>{
+
+        ui.warning({
+            type:'confirm',
+            content:'This is a simple hello world with other params...',
+            accept:'yes',
+            decline:'no'
+        },
+        result => {
+            console.log('the result is: ',result);
+            //continue/do...
+        })
+
+    },true);
+
+</pre>
+
+<pre class="pad-[25]" style="border:1px dashed #ccc">
+
+    document.getElementById('prompt').addEventListener('click',()=>{
+
+        ui.warning({
+            type:'prompt',
+            content:'This is a simple hello world...',
+            placeholder:'write your test here',
+            accept:'TEST NOW',
+            decline:'EXIT'
+        }, result => {
+
+            if(!result)
+            {
+                console.log('the result is: ',result);
+            }
+            else
+            {
+                //can i print a result in neasted pop? yes!
+                ui.warning({
+                    type:'alert',
+                    content:'you wrote this:'+result
+                },()=>null);
+
+            }
+
+        })
+
+    },true);
+
+</pre>
+
+
+                </article>
+
+            </main>
+
+            <!-- <div class="lazy"><div data-src="./resources/elements/outbox.demo.html"></div></div> -->
+            <div class="lazy"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
+            <div class="loader"><span class="spinner"></span></div>
+
+    </body>
+
+</html>
+
+    <script>
+
+        window.addEventListener('load',()=>{
+
+            ui.warning({
+                type:'alert',
+                content:'This is a custom warning! Hello dev! This page is loaded!'
+            },
+            result => {
+                console.log(result);
+                //continue/do...
+            })
+
+        },false)
+
+        document.getElementById('alert').addEventListener('click',()=>{
+
+            ui.warning(null,result => {
+                console.log('the result is: ',result);
+                //continue/do...
+            })
+
+        },true);
+
+        document.getElementById('confirm').addEventListener('click',()=>{
+
+            ui.warning({
+                type:'confirm',
+                content:'This is a simple hello world with other params...',
+                accept:'yes',
+                decline:'no'
+            },
+            result => {
+                console.log('the result is: ',result);
+                //continue/do...
+            })
+
+        },true);
+
+        document.getElementById('prompt').addEventListener('click',()=>{
+
+            ui.warning({
+                type:'prompt',
+                content:'This is a simple hello world...',
+                placeholder:'write your test here',
+                accept:'TEST NOW',
+                decline:'EXIT'
+            }, result => {
+
+                if(!result)
+                {
+                    console.log('the result is: ',result);
+                }
+                else
+                {
+
+                    ui.warning({
+                        type:'alert',
+                        content:'you wrote this:'+result
+                    },null);
+
+                }
+
+            })
+
+        },true);
+
+    </script>
+
+</html>

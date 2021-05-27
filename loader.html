@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+
+        <title>K2.8 TESTER</title>
+        <meta name="viewport" content="target-densitydpi=150, width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8"><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+        <!-- ui framework core :: wiki > https://git.io/Jv9u1 -->
+        <link rel="stylesheet" href="./resources/libraries/k-core/core.dev.css">
+        <script type="text/javascript" src="./resources/libraries/k-core/core.dev.js"></script>
+
+        <!-- ui framework theme :: core styling override -->
+        <link rel="stylesheet" href="./resources/libraries/k-theme/theme.css">
+
+
+    </head>
+
+    <body class="mode-web">
+
+        <main class="limiter-all space-[05]">
+
+            <header class="sticky-top space-[05]-[horizontal] bkg-03 border-02" style="z-index:1000">
+                <div class="pad-[15]-[vertical]">
+                    <span class="lazy">
+                        <div data-src="./resources/elements/sidemenu-opener.html"></div>
+                    </span>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
+                    <span>
+                        <div>
+                            <h1>Kimera - <strong>Ui kit library for the web coding</strong></h1>
+                            <p>The tester theme of official project in <a href="https://github.com/ShapeGroup/kimera-frontend-framework" target="_blank">github</a></p>
+                        </div>
+                    </span>
+                </div>
+            </header>
+
+            <div class="pad-[25]"></div>
+
+            <article>
+
+                <header>
+
+                    <h2>➜ LOADER AND LAZY:</h2>
+
+                    <div class="pad-[25]-[vertical] textgroup">
+
+                        <p>The loader is divided into 2 sections:<p>
+                        <p> > The first hides the page until the document, excluding media, is available in its basic entirety.</p>
+                        <p> > In the second case, thanks to a specific lazy, it will keep the elements chosen as "loading in progress".</p>
+                        <p> The whole process is however managed by a single optimized source which is divided into 3 sectors: 1) the document collector, 2) the controller of its generic status, 3) the observer (who will tell the system if an object is already in the view and how to behave based on available settings) </p>
+                        <p> To better understand it, consult the wiki on github </p>
+
+                    </div>
+
+                </header>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ The spinner:</b></h3>
+
+                    <p>Spinner is css waiting animation. You can change it theme or inner theme file.</p>
+
+                    <div style="position:relative;height:300px; border:1px dashed #ccc;">
+                        <span class="spinner"></span>
+                    </div>
+
+                    <p>
+                        To use the page loader just insert this as the last tag, before closing the body:<br>
+                    </p>
+
+                    <div style="position:relative; border:1px dashed #ccc; padding:10px;">
+                        &lt;div class=&quot;loader&quot;&gt;&lt;span class=&quot;spinner&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+                    </div>
+
+                </section>
+
+                <section class="textgroup">
+
+                    <h3><b> ❯❯ The lazy load:</b></h3>
+
+                    <p> The lazyload not only acts as a magic cloth as things load (see images and videos) but can also load txt, html and more elements within the page.<p>
+
+                    <p> Here's how to include a small file or data inside your page (with this same system we loaded the side menus and some small non-SEO clutter on this page) :</p>
+
+                    <div style="position:relative; border:1px dashed #ccc; padding:10px;">
+                        &lt;div class=&quot;lazy&quot;&gt;&lt;div data-src=&quot;./my-sub-element-of-page.html&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+                    </div>
+
+                    <p><i>To keep in mind: being a system designed for the document it is valid for small things but it is absolutely not to be compared to an include php side or a server side includeer.</i><p>
+
+                    <hr>
+
+                    <p><b>Other preload / lazy load box:</b></p>
+
+                    <p>The lazy loading system is used in many cases ... On the page as a big Loader, for loading small things, but also to wait for several ajax-style loads such as videos and images ...</p>
+
+                    <ul>
+                        <li><a href="video.lazy-test.html" target="_blank"> lazy images</a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="video.lazy-test.html" target="_blank">html video test</a></li>
+                        <li><a href="video.social.setstest.facebook.html" target="_blank">facebook test</a></li>
+                        <li><a href="video.social.setstest.facebook.html" target="_blank">facebook test</a></li>
+                        <li><a href="video.social.setstest.instagram.html" target="_blank">instagram test</a></li>
+                        <li><a href="video.social.setstest.youtube.html" target="_blank">youtube test</a></li>
+                        <li><a href="video.social.setstest.vimeo.html" target="_blank">vimeo test</a></li>
+                    </ul>
+
+                </section>
+
+             </article>
+
+         </main>
+
+         <div class="lazy"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
+         <div class="loader"><span class="spinner"></span></div>
+
+     </body>
+
+ </html>

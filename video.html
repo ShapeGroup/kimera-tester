@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+
+        <title>K2.8 TESTER</title>
+        <meta name="viewport" content="target-densitydpi=150, width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8"><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+        <!-- ui framework core :: wiki > https://git.io/Jv9u1 -->
+        <link rel="stylesheet" href="./resources/libraries/k-core/core.dev.css">
+        <script type="text/javascript" src="./resources/libraries/k-core/core.dev.js"></script>
+
+        <!-- ui framework theme :: core styling override -->
+        <link rel="stylesheet" href="./resources/libraries/k-theme/theme.css">
+
+
+    </head>
+
+    <body class="mode-web">
+
+        <main class="limiter-all space-[05]">
+
+            <header class="sticky-top space-[05]-[horizontal] bkg-03 border-02" style="z-index:1000">
+                <div class="pad-[15]-[vertical]">
+                    <span class="lazy">
+                        <div data-src="./resources/elements/sidemenu-opener.html"></div>
+                    </span>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
+                    <span>
+                        <div>
+                            <h1>Kimera - <strong>Ui kit library for the web coding</strong></h1>
+                            <p>The tester theme of official project in <a href="https://github.com/ShapeGroup/kimera-frontend-framework" target="_blank">github</a></p>
+                        </div>
+                    </span>
+                </div>
+            </header>
+
+            <div class="pad-[25]"></div>
+
+            <article>
+
+                <header>
+
+                    <h2>➜ Media VideBox</h2>
+
+                    <div class="pad-[25]-[vertical] textgroup">
+
+                        <p>A customizable video system</p>
+
+                    </div>
+
+
+                    </header>
+
+                    <section class="textgroup">
+
+                    <h3><b> ❯❯ HTML5 classic :</b></h3>
+
+                    <div class="ratio-[16:9] radius-medium">
+                        <video controls poster="./resources/media/exemple.jpg">
+                            <source src="./resources/media/exemple.mp4">
+                        </video>
+                    </div>
+
+                    <hr>
+
+                    <h3><b> ❯❯ Videobox </b></h3>
+
+                    <div class="videobox-[custom] ratio-[16:9] radius-medium">
+
+                        <video src="./resources/media/exemple.mp4" poster="./resources/media/exemple.jpg"></video>
+
+                        <div class='display'>
+
+                            <div>
+                                <span><p> Video Title </p></span>
+                            </div>
+
+                            <div>
+
+                                <span class="maximized"></span>
+
+                                <span class="cinema"></span>
+
+                                <span class="loop"></span>
+
+                                <span class="play"></span>
+
+                                <span class="timeline">
+                                    <div class="progress-[00]"><!--buffer--></div>
+                                    <div class="progress-[00]"><!--loaded--></div>
+                                </span>
+
+                                <div class="duration">
+                                    <p>00:00:00 / 00:00:00</p>
+                                </div>
+
+                                <span class="volume [status-50]">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <h3><b> ❯❯ Videobox (background &  backscreen) </b></h3>
+
+                    <div class="radius-medium" style="height:400px;">
+
+                         <div class="videobox-[background]">
+                            <video autoplay preload playsinline muted loop src="./resources/media/exemple.mp4" poster="./resources/media/exemple.jpg"></video>
+                         </div>
+
+                         <span class="bkg-03 pad-[15] radius-medium absolute-center">
+                             <div class="textgroup">
+                                 <p>"videobox-[background]" go back respect parent container.</p>
+                                 <p>
+                                     <a target="_self" href="video.fullscreen.html">
+                                         The alternative for fullscreen:  type-backscreen
+                                     </a>
+                                 </p>
+                                 <p> html video background & backscreen added autoplay muted loop automatically.</p>
+                             </div>
+                         </span>
+
+                     </div>
+
+                 </section>
+
+                 <section class="textgroup">
+
+                    <p><b>videobox + lazy [experimental]</b></p>
+
+                    <p>you can test the loader system on video box <a target="_blank" href="./video.lazy-test.html">here</a></p>
+
+                    <p><b>videobox + social url [experimental]</b></p>
+
+                    <p>It's an experimental of framework which reads social media videos without api registration and more... You can <a target="_blank" href="./video.social.html">test it here</a>
+
+                </section>
+
+             </article>
+
+         </main>
+
+         <div class="lazy"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
+         <div class="loader"><span class="spinner"></span></div>
+
+     </body>
+
+ </html>

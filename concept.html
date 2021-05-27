@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+
+        <title>K2.8 TESTER</title>
+        <meta name="viewport" content="target-densitydpi=150, width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimal-ui">
+        <meta charset="utf-8"><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+
+        <!-- ui framework core :: wiki > https://git.io/Jv9u1 -->
+        <link rel="stylesheet" href="./resources/libraries/k-core/core.dev.css">
+        <script type="text/javascript" src="./resources/libraries/k-core/core.dev.js"></script>
+
+        <!-- ui framework theme :: core styling override -->
+        <link rel="stylesheet" href="./resources/libraries/k-theme/theme.css">
+
+
+    </head>
+
+    <body class="mode-web">
+
+        <main class="limiter-all space-[05]">
+
+            <header class="sticky-top space-[05]-[horizontal] bkg-03 border-02" style="z-index:1000">
+                <div class="pad-[15]-[vertical]">
+                    <span class="lazy">
+                        <div data-src="./resources/elements/sidemenu-opener.html"></div>
+                    </span>
+                    <span>&nbsp;&nbsp;&nbsp;</span>
+                    <span>
+                        <div>
+                            <h1>Kimera - <strong>Ui kit library for the web coding</strong></h1>
+                            <p>The tester theme of official project in <a href="https://github.com/ShapeGroup/kimera-frontend-framework" target="_blank">github</a></p>
+                        </div>
+                    </span>
+                </div>
+            </header>
+
+            <div class="pad-[25]"></div>
+
+            <article class="border-03">
+
+                <section class="textgroup">
+
+                    <h2>➜ BLOCK AND PARTIAL, A LAYOUT BASIC LOGIC ROLE:</h2>
+
+                    <p class="pad-[10]-[vertical]">
+                        Think how I was creating a paginated in <i>Indesign</i> or <i>Metro</i> styled where each element is self-centered, and perfectly edged and aligned... In practice it will be that.
+                    </p>
+
+                    <p class="pad-[10]-[vertical]">
+                        The concept of the blocks foresees the <i>div</i> as a unit of line - therefore 100% wide, at the end of each new div - and the <i>span</i> as a partial unit - therefore relative to the content by height and width and succession -.<br>
+                        Same as div most of the basic "block style" elements have been formatted (ex: section, article, canvas, ecc) however it is not possible for these elements to concatenate with span creating a "borderless" layout.<br>
+                        The combination of div and span generates quick and easy layouts... Just understand the rules below:
+                    </p>
+
+                    <p class="pad-[10]-[vertical]">
+                        The concept of the blocks foresees the <i>div</i> as a unit of line - therefore 100% wide, at the end of each new div - and the <i>span</i> as a partial unit - therefore relative to the content by height and width and succession -.<br>
+                    </p>
+
+                    <p>...a note apart: <q> Can I rule this out? </q></p>
+
+                    <p class="pad-[10]-[vertical]">
+                         Technically ... no. The framework is very similar to a professional page layout program where everything must occupy a space that is as elastic as it is predefined. However you can add a display: block (or float-grup) when you find it necessary by returning to a css that leaves spaces between one span and another.
+                    </p>
+
+                </section>
+
+                <section class="textgroup">
+
+                    <h2>➜ PRATICAL EXEMPLE:</h2>
+
+                    <p>
+                        A simple DIV (violet), a simple SPAN (rose):
+                    </p>
+
+                    <div>
+                        <div class="border-04">
+                            <p>
+                                DIV is every wide and not have margin
+                            </p>
+                        </div>
+                        <span class="border-05">
+                             <p>
+                                 SPAN is every partial and not have margin
+                             </p>
+                        </span>
+                    </div>
+
+                    <p>
+                        As you can see there are no margins between the parts. They wouldn't even exist if we nested them.
+                    </p>
+
+                    <h3><b> ❯❯ THE DIV:</b></h3>
+
+                    <div>
+                        <div class="border-04">
+                            <p>
+                                Every DIV of framework not have...
+                            </p>
+                        </div>
+                        <div class="border-04">
+                            <p>
+                                ...linespace beetwin other DIV or SPAN.
+                            </p>
+                        </div>
+                        <div class="border-04">
+                            <div class="border-04">
+                                <p>
+                                    This is a DIV inner DIV and is always wide... All pad you see is applied with an extra class.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="border-04">
+                            <p>All element inside a DIV is always wide, excluded specific exceptions, the SPAN and your customized not wide class...obviously.</p>
+                        </div>
+                    </div>
+
+                    <h3><b> ❯❯ THE SPAN:</b></h3>
+
+                    <span class="border-05">
+                        <p>
+                            Hello
+                        </p>
+                    </span>
+                    <span class="border-05">
+                        <p>
+                            SPAN
+                        </p>
+                    </span>
+                    <span class="border-05">
+                        <p>
+                            exemple!
+                        </p>
+                    </span>
+
+                    <div></div>
+
+                    <span class="border-05">
+                        <p>How you can see all span is partial and follower element. You can stop it via div or (generically) with a wide/block element (exemple: hr).</p>
+                    </span>
+
+                    <div></div>
+
+                    <span class="border-05">
+                        <span class="border-05">
+                            <p>This is</p>
+                        </span>
+                        <span class="border-05">
+                            <p>multiple SPAN</p>
+                        </span>
+                        <span class="border-05">
+                            <p>inside</p>
+                        </span>
+                        <span class="border-05">
+                            <p>a SPAN wrap</p>
+                        </span>
+                    </span>
+
+                    <h3><b> ❯❯ THE COMBO OF DIV IN SPAN (A SHARP LAYOUT):</b></h3>
+
+                    <div>
+                        <div class="border-04">
+                            <span class="border-05">
+                                <p>
+                                    SPAN inner DIV is every partial contest. So...
+                                </p>
+                            </span>
+                        </div>
+                    </div>
+
+                    <p>Do you like a menu voice?</p>
+
+                    <div>
+                        <div class="border-04" style="height:40px;">
+                            <span class="border-05">
+                                <p>You</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Can</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Crate</p>
+                            </span>
+                            <span class="border-05">
+                                <p>A</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Super</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Rapid</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Inline</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Contets</p>
+                            </span>
+                        </div>
+                    </div>
+
+                    <p>In the example we purposely impose a height of 40px to the parent. This causes each span to become 40px high and showcasing how the contents within the span are not necessarily and always centered (there are many reasons why this is so, you will understand them with experience here). The problem is easily bypassed thanks to the .autostretch class </p>
+
+                    <div>
+                        <div class="autostretch border-04" style="height:40px;">
+                            <span class="border-05">
+                                <p>You</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Can</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Crate</p>
+                            </span>
+                            <span class="border-05">
+                                <p>A</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Perfect</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Rapid</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Aligned</p>
+                            </span>
+                            <span class="border-05">
+                                <p>Contets</p>
+                            </span>
+                        </div>
+                    </div>
+
+                    <p>Viceversa, DIV inner SPAN is every wide contest.</p>
+
+                    <div>
+                        <span class="border-05">
+                            <div class="border-04">
+                                <p>DIV inner SPAN is every wide contest.</p>
+                            </div>
+                        </span>
+                    </div>
+
+                    <p>If it's multiple...</p>
+
+                    <div>
+                        <span class="border-05" style="max-width:200px;">
+                            <div class="border-04">
+                                <p>This</p>
+                            </div>
+                            <div class="border-04">
+                                <p>Is</p>
+                            </div>
+                            <div class="border-04">
+                                <p>Multiple</p>
+                            </div>
+                            <div class="border-04">
+                                <p>DIV</p>
+                            </div>
+                            <div class="border-04">
+                                <p>Into</p>
+                            </div>
+                            <div class="border-04">
+                                <p>SPAN</p>
+                            </div>
+                            <div class="border-04">
+                                <p>wrap</p>
+                            </div>
+                        </span>
+                    </div>
+
+                </section>
+
+            </article>
+
+        </main>
+
+        <div class="lazy"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
+        <div class="loader"><span class="spinner"></span></div>
+
+    </body>
+
+</html>
