@@ -5576,11 +5576,20 @@ const ui = (() => {
                         event_clockdrag.stopPropagation();
 
                         let rect = ClockPivot.getBoundingClientRect();
-
-                        center = {
-                            x:  ui.screen.scrollX + rect.left,
-                            y:  ui.screen.scrollY + rect.top
-                        };
+                        if(is_touch_device())
+                        {
+                            center = {
+                                x:  ui.screen.scrollX - rect.left,
+                                y:  ui.screen.scrollY - rect.top
+                            };
+                        }
+                        else
+                        {
+                            center = {
+                                x:  ui.screen.scrollX + rect.left,
+                                y:  ui.screen.scrollY + rect.top
+                            };
+                        }
 
 
                         if(event.target == RayHours)
