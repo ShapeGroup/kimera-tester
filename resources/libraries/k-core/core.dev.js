@@ -54,6 +54,15 @@ const ui = (() => {
         window.addEventListener('scroll', ev => {
             ui.screen.scrollX = parseInt( (document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : (document.body.scrollLeft) ? document.body.scrollLeft : window.pageXOffset );
             ui.screen.scrollY = parseInt( (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : (document.body.scrollTop) ? document.body.scrollTop : window.pageYOffset );
+
+            setTimeout(()=>{
+                alert("window.scrollY IS : "+window.scrollY)
+                alert("window.pageYOffset IS : "+window.pageYOffset)
+                alert("window.scrollTop IS : "+document.body.scrollTop)
+                alert("document.body.scrollTop IS : "+document.body.scrollTop)
+                alert("document.scrollTop IS : "+document.body.scrollTop)
+                alert("document.documentElement.scrollY IS : "+document.documentElement.scrollY)
+            })
             // console.log(document.body.scrollTop);
             // alert(document.body.scrollTop)
 
