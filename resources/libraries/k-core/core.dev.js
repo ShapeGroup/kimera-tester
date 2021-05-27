@@ -54,6 +54,8 @@ const ui = (() => {
         window.onscroll = ev => {
             ui.screen.scrollX = parseInt( (document.body.scrollLeft) ? document.body.scrollLeft : (document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : window.pageXOffset );
             ui.screen.scrollY = parseInt( (document.body.scrollTop) ? document.body.scrollTop :  (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : window.pageYOffset );
+
+            alert(document.body.scrollTop)
         }
 
         // micro-libs // get real offeset top
