@@ -1227,7 +1227,7 @@ body.mode-app .stop-left {
     overflow-y: scroll;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    height: inherit;
+    max-height: inherit;
 
 }
 
