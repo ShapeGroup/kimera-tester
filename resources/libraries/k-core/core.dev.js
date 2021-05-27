@@ -11661,7 +11661,8 @@ const ui = (() => {
                     {
 
                         ui.fullscreen = true;
-                        ui.startFullScreen.call(document);
+                        ui.startFullScreen;
+                        // .call(document);
 
                     }
 
@@ -11669,7 +11670,8 @@ const ui = (() => {
                     {
 
                         ui.fullscreen = false;
-                        ui.delFullScreen.call(document);
+                        ui.delFullScreen
+                        // ui.delFullScreen.call(document);
 
                     }
 
