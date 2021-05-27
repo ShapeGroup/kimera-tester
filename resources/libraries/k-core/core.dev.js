@@ -11645,15 +11645,12 @@ const ui = (() => {
             const requestFullScreen = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullScreen || document.documentElement.mozRequestFullScreen || document.documentElement.msRequestFullScreen;
             const cancellFullScreen = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen;
 
-
             var gofullscreeners   = document.querySelectorAll(".screenmode");
 
             for (let screenerbutton of gofullscreeners)
             {
 
                 screenerbutton.addEventListener('click', () => {
-
-                    console.log(' ACTUALLY : ',ui.fullscreen.status);
 
                     if(ui.fullscreen.status===false)
                     {
@@ -11670,8 +11667,6 @@ const ui = (() => {
                         cancellFullScreen.call(document);
 
                     }
-
-                    console.log(' AND NOW IS : ',ui.fullscreen.status);
 
                 }, false);
 
@@ -12243,6 +12238,3 @@ const ui = (() => {
 
 
 })();
-
-
-console.log('UI FULLSCREEN : ',ui.fullscreen);
