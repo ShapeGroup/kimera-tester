@@ -73,24 +73,16 @@ const ui = (() => {
             //     alert("window.scrollY IS : "+window.scrollY);                       //yes
             //     alert("FINALE IS : "+ui.screen.scrollY)
 
-            console.log("document.body.scrollTop IS : "+document.body.scrollTop)      //no
-            console.log("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
-            console.log("document.scrollTop IS : "+document.scrollTop)           //no
-            console.log("window.scrollTop IS : "+window.scrollTop)                    //no
-            console.log("window.pageYOffset IS : "+window.pageYOffset)                //yes
-            console.log("window.scrollY IS : "+window.scrollY);                       //yes
-            console.log("FINALE IS : "+ui.screen.scrollY)
+            // console.log("document.body.scrollTop IS : "+document.body.scrollTop)      //no
+            // console.log("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
+            // console.log("document.scrollTop IS : "+document.scrollTop)           //no
+            // console.log("window.scrollTop IS : "+window.scrollTop)                    //no
+            // console.log("window.pageYOffset IS : "+window.pageYOffset)                //yes
+            // console.log("window.scrollY IS : "+window.scrollY);                       //yes
+            // console.log("FINALE IS : "+ui.screen.scrollY)
 
 
-            document.getElementById("debbugger").innerHTML(
-                "document.body.scrollTop IS : "+document.body.scrollTop+'\n'+
-                "document.documentElement.scrollY IS : "+document.documentElement.scrollY)+'\n'+
-                "document.scrollTop IS : "+document.scrollTop)+'\n'+
-                "window.scrollTop IS : "+window.scrollTop+'\n'+
-                "window.pageYOffset IS : "+window.pageYOffset+'\n'+
-                "window.scrollY IS : "+window.scrollY+'\n'+
-                "FINALE IS : "+ui.screen.scrollY;
-            )
+            document.body.getElementById("debbugger").innerHTML("document.body.scrollTop IS : "+document.body.scrollTop+'\n'+"document.documentElement.scrollY IS : "+document.documentElement.scrollY)+'\n'+"document.scrollTop IS : "+document.scrollTop)+'\n'+"window.scrollTop IS : "+window.scrollTop+'\n'+"window.pageYOffset IS : "+window.pageYOffset+'\n'+"window.scrollY IS : "+window.scrollY+'\n'+"FINALE IS : "+ui.screen.scrollY);
 
         },false)
 
