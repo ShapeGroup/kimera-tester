@@ -11653,7 +11653,7 @@ const ui = (() => {
 
                     let el = document.documentElement;
 
-                    if(!isfullscreen)
+                    if(isfullscreen)
                     {
 
                         if (el.requestFullscreen)           el.requestFullscreen();
@@ -11661,7 +11661,7 @@ const ui = (() => {
                         else if(el.mozRequestFullScreen)    el.mozRequestFullScreen();
                         else if(el.msRequestFullscreen)     el.msRequestFullscreen();
 
-                        isfullscreen=true;
+                        isfullscreen=false;
 
                     }
 
@@ -11673,7 +11673,7 @@ const ui = (() => {
                         else if(el.mozCancelFullScreen)  el.mozCancelFullScreen();
                         else if(el.msExitFullscreen)     el.msExitFullscreen();
 
-                        isfullscreen=false;
+                        isfullscreen=true;
 
                     }
 
