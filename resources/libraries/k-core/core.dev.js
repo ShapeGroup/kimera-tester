@@ -11640,6 +11640,8 @@ const ui = (() => {
         const fullscreener = () =>
         {
 
+            console.log('TESTER START');
+
             let isfullscreen=false,
                 gofullscreeners = document.querySelectorAll(".screenmode");
 
@@ -11648,6 +11650,7 @@ const ui = (() => {
                 screenerbutton.addEventListener('click', () => {
 
                     console.log(isfullscreen);
+
                     let el = document.documentElement;
 
                     if(!isfullscreen)
