@@ -52,8 +52,8 @@ const ui = (() => {
         const screen = { "fullscreen":false };
 
         window.onscroll = ev => {
-            screen.scrollX = parseInt( (document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : window.pageXOffset );
-            screen.scrollY = parseInt( (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : window.pageYOffset );
+            ui.screen.scrollX = parseInt( (document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : window.pageXOffset );
+            ui.screen.scrollY = parseInt( (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : window.pageYOffset );
         }
 
         // micro-libs // get real offeset top
@@ -4378,7 +4378,6 @@ const ui = (() => {
 
                                 if (dirX > -1 && dirX < containerwidth+1)
                                 {
-                                    console.log('draggg',dirX);
 
                                     let bulletpercent, newval;
 
