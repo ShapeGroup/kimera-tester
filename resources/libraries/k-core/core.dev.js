@@ -48,8 +48,10 @@ const ui = (() => {
 
 
         // micro-libs // get scrollY/X standard + mobile
+        window.onload = () =>
+        {
 
-        const screen = { "fullscreen":false };
+         const screen = { "fullscreen":false };
 
         document.getElementsByTagName('BODY')[0].insertAdjacentHTML('afterend', `<div class="fixed-bottom-right"><p id="debbugger"></p></div>`);
 
@@ -91,9 +93,11 @@ const ui = (() => {
                             +`window.scrollY IS : `+window.scrollY
                             +`FINAL IS : `+ui.screen.scrollY+``;
 
+
             document.body.getElementById("debbugger").innerHTML(outdebug);
 
         },false)
+    }
 
         // micro-libs // get real offeset top
 
