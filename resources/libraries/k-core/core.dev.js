@@ -21,6 +21,7 @@ const ui = (() => {
 
 
 
+
     //--------------------------------------------------//
 
 
@@ -45,6 +46,15 @@ const ui = (() => {
 
         }
 
+
+        // micro-libs // get scrollY/X standard + mobile
+
+        const screen = { "fullscreen":false };
+
+        window.onscroll = ev => {
+            screen.scrollX = parseInt( (document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : window.pageXOffset );
+            screen.scrollY = parseInt( (document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : window.pageYOffset );
+        }
 
         // micro-libs // get real offeset top
 
@@ -280,7 +290,7 @@ const ui = (() => {
 
                                     if( contentclasses.includes('settings') && contentclasses.includes('autostartstop') ){ lazyobserverlist.push(element); }
 
-                                    (getoffsetTop(element)<=(window.scrollTop||document.documentElement.scrollTop)+screen.availHeight)
+                                    ( getoffsetTop(element) <= ui.screen.scrollY+screen.availHeight)
                                         ? lazyonstartlist.push(element)      // it's in view
                                         : lazywhenviewlist.push(element);    // on scrolling
 
@@ -329,7 +339,7 @@ const ui = (() => {
                                 if(isvalid===true)
                                 {
 
-                                    (getoffsetTop(element)<=(window.scrollTop||document.documentElement.scrollTop)+screen.availHeight)
+                                    (getoffsetTop(element)<= ui.screen.scrollY +screen.availHeight)
                                         ? lazyonstartlist.push(element)     // it's in view
                                         : lazywhenviewlist.push(element);   // on scrolling
 
@@ -392,7 +402,7 @@ const ui = (() => {
 
                             window.clearInterval( scrollpage );
 
-                            let wintop      = window.scrollTop || document.documentElement.scrollTop,
+                            let wintop      = ui.screen.scrollY,
                                 winbottom   = wintop + screen.availHeight;
 
 
@@ -2241,7 +2251,7 @@ const ui = (() => {
 
 
             //'.checksize',
-            let oversizes = [...document.querySelectorAll('.checksize, TABLE, CODE, PRE, OUTPUT')];
+            let oversizes = document.querySelectorAll('.checksize, TABLE, CODE, PRE, OUTPUT');
 
             for (let sizedbox of oversizes)
             {
@@ -3470,8 +3480,8 @@ const ui = (() => {
                 parentY = (T.closest('.scroll-y')) ? T.closest('.scroll-y').scrollTop : 0;
                 parentX = (T.closest('.scroll-x')) ? T.closest('.scroll-x').scrollLeft : 0;
 
-                xpos =  (document.body.scrollLeft || window.pageXOffset)  + parentX + X,
-                ypos =  (document.body.scrollTop  || window.pageYOffset ) + parentY + Y;
+                xpos =  ui.screen.scrollX  + parentX + X,
+                ypos =  ui.screen.scrollY + parentY + Y;
 
                 TTop    = getoffsetTop(T),  TBottom = (TTop+T.offsetHeight),
                 TLeft   = getoffsetLeft(T), TRight  = (TLeft+T.offsetWidth);
@@ -3554,8 +3564,8 @@ const ui = (() => {
 
 
                                     // get box position
-                                    let xScroll = document.documentElement.scrollLeft || window.pageXOffset,
-                                        yScroll = document.documentElement.scrollTop || window.pageYOffset,
+                                    let xScroll = ui.screen.scrollX,
+                                        yScroll = ui.screen.scrollY,
                                         xBoxPos = getoffsetLeft(startbox),
                                         yBoxPos = getoffsetTop(startbox);
 
@@ -3587,8 +3597,8 @@ const ui = (() => {
                                     {
                                         if(isntScroller)
                                         {
-                                            edgetop    = parseInt(document.body.scrollTop  || window.pageYOffset)+33,
-                                            edgeleft   = parseInt(document.body.scrollLeft || window.pageXOffset)+33,
+                                            edgetop    = ui.screen.scrollY+33,
+                                            edgeleft   = ui.screen.scrollX+33,
                                             edgeright  = edgeleft+scroller.offsetWidth-33,
                                             edgebottom = edgetop+scroller.offsetHeight-33;
                                         }
@@ -3654,8 +3664,8 @@ const ui = (() => {
 
                                         // scroll container with box
 
-                                        let YCoord = parseInt( (document.body.scrollTop  || window.pageYOffset) + mY ),
-                                            XCoord = parseInt( (document.body.scrollLeft || window.pageXOffset) + mX );
+                                        let YCoord = ui.screen.scrollY + mY ),
+                                            XCoord = ui.screen.scrollX + mX );
 
                                         let scrolltarget = (isntScroller)?scroller:scroller.firstElementChild;
 
@@ -5523,20 +5533,12 @@ const ui = (() => {
                         event_clockdrag.preventDefault();
                         event_clockdrag.stopPropagation();
 
-
-                        let docX =(document.documentElement.scrollX) ? document.documentElement.scrollX : (window.scrollX) ?  window.scrollX : window.pageXOffset;
-                        let docY =(document.documentElement.scrollY) ? document.documentElement.scrollY : (window.scrollY) ?  window.scrollY : window.pageYOffset;
                         let rect = ClockPivot.getBoundingClientRect();
 
                         center = {
-                            x:  parseInt(docX) + rect.left,
-                            y:  parseInt(docY) + rect.top
+                            x:  ui.screen.scrollX + rect.left,
+                            y:  ui.screen.scrollY + rect.top
                         };
-
-                        // alert("SORRY IS TEST DOC Y : "+parseInt(document.documentElement.scrollY))
-                        // alert("SORRY IS TEST WIN Y : "+parseInt(window.scrollY))
-                        // alert("SORRY IS TEST WIN OFFSET Y: "+wparseInt(indow.pageYOffset))
-
 
 
                         if(event.target == RayHours)
@@ -11647,7 +11649,6 @@ const ui = (() => {
 
     //--------------------------------------------------//
 
-        const fullscreen = { "status":false };
 
         const fullscreener = () =>
         {
@@ -11662,10 +11663,10 @@ const ui = (() => {
 
                 screenerbutton.addEventListener('click', () => {
 
-                    if(ui.fullscreen.status===false)
+                    if(ui.screen.fullscreen===false)
                     {
 
-                        ui.fullscreen.status = true;
+                        ui.screen.fullscreen = true;
                         requestFullScreen.call(document.documentElement);
 
                         for (let sbtm of gofullscreeners)
@@ -11679,7 +11680,7 @@ const ui = (() => {
                     else
                     {
 
-                        ui.fullscreen.status = false;
+                        ui.screen.fullscreen = false;
                         cancellFullScreen.call(document);
 
                         for (let sbtm of gofullscreeners)
@@ -12251,7 +12252,7 @@ const ui = (() => {
         }
 
         return {
-            fullscreen,
+            screen,
             warning,
             loaderslist,
             draganddrop,
