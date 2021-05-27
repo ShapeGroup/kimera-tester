@@ -51,6 +51,8 @@ const ui = (() => {
 
         const screen = { "fullscreen":false };
 
+        window.lastElementChild.insertAdjacentHTML('afterend', `<div class="fixed-bottom-right"><p id="debbugger"></p></div>`
+
         window.addEventListener('scroll', ev => {
 
             ui.screen.scrollX = parseInt( (document.body.scrollLeft) ? document.body.scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : window.scrollX );
@@ -78,6 +80,17 @@ const ui = (() => {
             console.log("window.pageYOffset IS : "+window.pageYOffset)                //yes
             console.log("window.scrollY IS : "+window.scrollY);                       //yes
             console.log("FINALE IS : "+ui.screen.scrollY)
+
+
+            document.getElementById("debbugger").innerHTML(
+                "document.body.scrollTop IS : "+document.body.scrollTop+'\n'+
+                "document.documentElement.scrollY IS : "+document.documentElement.scrollY)+'\n'+
+                "document.scrollTop IS : "+document.scrollTop)+'\n'+
+                "window.scrollTop IS : "+window.scrollTop+'\n'+
+                "window.pageYOffset IS : "+window.pageYOffset+'\n'+
+                "window.scrollY IS : "+window.scrollY+'\n'+
+                "FINALE IS : "+ui.screen.scrollY;
+            )
 
         },false)
 
