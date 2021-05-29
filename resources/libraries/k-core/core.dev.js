@@ -5616,10 +5616,10 @@ const ui = (() => {
 
                         if(is_touch_device())
                         {
-                            alert('c X is :'+event.touches[0].clientY+' and center is: '+center.y)
+                            alert('c X is :'+event.clientY+' and center is: '+center.y)
 
-                            deltaX = event.touches[0].clientX - center.x,
-                            deltaY = event.touches[0].clientY - center.y,
+                            deltaX = parseInt( event.touches[0].clientX - center.x),
+                            deltaY = parseInt( event.touches[0].clientY - center.y),
                             angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI);
                         }
                         else
