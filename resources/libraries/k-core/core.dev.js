@@ -3577,6 +3577,8 @@ const ui = (() => {
                             if(!grabbing)
                             {
 
+                                let tester = document.querySelectorAll('#TESTER')[0];
+
                                 // (longtap emulation)
                                 var starttap = new Date().getTime(),
                                     taptime = setInterval(()=>{
@@ -3708,6 +3710,9 @@ const ui = (() => {
 
                                         startbox.style.left = parseInt( ((mX-xPointerStart)+xBoxPos) ) + "px";
                                         startbox.style.top  = parseInt( ((mY-yPointerStart)+yBoxPos) ) + "px";
+
+                                        tester.innerHTML = startbox.style.top;
+
 
                                         // scroll container with box
 
