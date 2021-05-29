@@ -3609,12 +3609,13 @@ const ui = (() => {
 
 
                                     // get box position
-                                    let xScroll = ui.screen.scrollX,
-                                        yScroll = ui.screen.scrollY,
+                                    let xScroll = (ui.screen.scrollX)?ui.screen.scrollX:0,
+                                        yScroll = (ui.screen.scrollY)?ui.screen.scrollY:0,
                                         xBoxPos = getoffsetLeft(startbox),
                                         yBoxPos = getoffsetTop(startbox);
 
-                                        alert("yScroll =>  "+yScroll)
+                                        alert("yScroll =  "+yScroll)
+
                                     if(startbox.closest('.scroll-x')) xScroll =  xScroll + (startbox.closest('.scroll-x').scrollLeft || 0 );
                                     if(startbox.closest('.scroll-y')) yScroll =  yScroll + (startbox.closest('.scroll-y').scrollTop || 0);
 
