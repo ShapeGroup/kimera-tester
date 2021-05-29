@@ -5576,21 +5576,26 @@ const ui = (() => {
                         event_clockdrag.stopPropagation();
 
                         let rect = ClockPivot.getBoundingClientRect();
-                        if(is_touch_device())
-                        {
-                            center = {
-                                x:  ui.screen.scrollX + rect.left,
-                                y:  ui.screen.scrollY + rect.top
-                            };
-                        }
-                        else
-                        {
-                            alert(rect.top)
-                            center = {
-                                x:  ui.screen.scrollX + rect.left,
-                                y:  ui.screen.scrollY + rect.top
-                            };
-                        }
+
+                        center = {
+                            x:  ui.screen.scrollX + rect.left,
+                            y:  ui.screen.scrollY + rect.top
+                        };
+                        // if(is_touch_device())
+                        // {
+                        //     center = {
+                        //         x:  ui.screen.scrollX + rect.left,
+                        //         y:  ui.screen.scrollY + rect.top
+                        //     };
+                        // }
+                        // else
+                        // {
+                        //     alert(rect.top)
+                        //     center = {
+                        //         x:  ui.screen.scrollX + rect.left,
+                        //         y:  ui.screen.scrollY + rect.top
+                        //     };
+                        // }
 
 
                         if(event.target == RayHours)
@@ -5616,16 +5621,16 @@ const ui = (() => {
 
                         if(is_touch_device())
                         {
-                            deltaX = event.touches[0].pageX - center.x,
-                            deltaY = event.touches[0].pageY - center.y,
+                            deltaX = event.touches[0].pageX - center.x;
+                            deltaY = event.touches[0].pageY - center.y;
                         }
                         else
                         {
-                            deltaX = event.pageX - center.x,
-                            deltaY = event.pageY - center.y,
+                            deltaX = event.pageX - center.x;
+                            deltaY = event.pageY - center.y;
                         }
 
-                        angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI) ;
+                        angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI);
 
                         if(isHours)
                         {
