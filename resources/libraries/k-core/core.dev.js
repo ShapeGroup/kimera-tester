@@ -3631,7 +3631,7 @@ const ui = (() => {
                                         yPointerStart = ev_grabs_start.clientY + yScroll;
                                     }
 
-                                    alert("xPointerStart _ "+xPointerStart)
+                                    alert("ev  "+ev_grabs_start.touches[0].clientX)
 
                                     // storicize edge wrapper limit
                                     // if you're in proximity of it, scroll container.
@@ -3696,8 +3696,8 @@ const ui = (() => {
 
                                         if ( is_touch_device() )
                                         {
-                                            mX   = ev_grabs_move.touches[0].pageX;
-                                            mY   = ev_grabs_move.touches[0].pageY;
+                                            mX   = ev_grabs_move.touches[0].clientX;
+                                            mY   = ev_grabs_move.touches[0].clientY;
                                         }
                                         else
                                         {
