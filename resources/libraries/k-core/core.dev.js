@@ -5616,7 +5616,7 @@ const ui = (() => {
 
                         if(is_touch_device())
                         {
-                            alert('c X is :'+event.clientY+' and center is: '+center.y)
+                            alert('C X = '+event.clientY+' CENTER = '+center.y)
 
                             deltaX = parseInt( event.touches[0].clientX - center.x),
                             deltaY = parseInt( event.touches[0].clientY - center.y),
