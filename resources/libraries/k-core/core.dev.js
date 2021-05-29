@@ -5579,8 +5579,8 @@ const ui = (() => {
                         if(is_touch_device())
                         {
                             center = {
-                                x:  ui.screen.scrollX - rect.left,
-                                y:  ui.screen.scrollY - rect.top
+                                x:  ui.screen.scrollX + rect.left,
+                                y:  ui.screen.scrollY + rect.top
                             };
                         }
                         else
@@ -5616,16 +5616,16 @@ const ui = (() => {
 
                         if(is_touch_device())
                         {
-                            deltaX = parseInt( event.touches[0].pageX - center.x),
-                            deltaY = parseInt( event.touches[0].pageY - center.y),
-                            angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI);
+                            deltaX = event.touches[0].pageX - center.x,
+                            deltaY = event.touches[0].pageY - center.y,
                         }
                         else
                         {
                             deltaX = event.pageX - center.x,
                             deltaY = event.pageY - center.y,
-                            angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI) ;
                         }
+
+                        angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI) ;
 
                         if(isHours)
                         {
