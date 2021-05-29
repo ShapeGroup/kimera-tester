@@ -1853,7 +1853,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -1880,7 +1880,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -1918,7 +1918,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -1995,7 +1995,7 @@ const ui = (() => {
                         {
                             clearInterval(boxexistcheck); boxexistcheck=null;
 
-                            box.classList.add('off');
+                            box.classList.add('[status-off]');
 
                             setTimeout( () => {
                                 body.classList.remove('gpuboost','vfxtransition-in','vfx-center')
