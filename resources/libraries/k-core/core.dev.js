@@ -3618,16 +3618,18 @@ const ui = (() => {
 
                                     if ( is_touch_device() )
                                     {
-                                        xPointerStart = ev_grabs_start.touches[0].clientX + xScroll;
-                                        yPointerStart = ev_grabs_start.touches[0].clientY + yScroll;
+                                        xPointerStart = ev_grabs_start.touches[0].pageX + xScroll;
+                                        yPointerStart = ev_grabs_start.touches[0].pageY + yScroll;
                                         // xPointerStart  =ev_grabs_start.touches[0].clientX  + xScroll;
                                         // yPointerStart =ev_grabs_start.touches[0].clientY + yScroll;
                                     }
                                     else
                                     {
-                                        xPointerStart = ev_grabs_start.clientX  + xScroll;
+                                        xPointerStart = ev_grabs_start.clientX + xScroll;
                                         yPointerStart = ev_grabs_start.clientY + yScroll;
                                     }
+
+                                    alert("xPointerStart", xPointerStart)
 
                                     // storicize edge wrapper limit
                                     // if you're in proximity of it, scroll container.
