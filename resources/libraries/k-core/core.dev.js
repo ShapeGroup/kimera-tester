@@ -5578,6 +5578,7 @@ const ui = (() => {
                         let rect = ClockPivot.getBoundingClientRect();
                         if(is_touch_device())
                         {
+                            alert(rect.top)
                             center = {
                                 x:  ui.screen.scrollX - rect.left,
                                 y:  ui.screen.scrollY - rect.top
@@ -5585,7 +5586,7 @@ const ui = (() => {
                         }
                         else
                         {
-                            console.log('no mobile');
+                            alert(rect.top)
                             center = {
                                 x:  ui.screen.scrollX + rect.left,
                                 y:  ui.screen.scrollY + rect.top
