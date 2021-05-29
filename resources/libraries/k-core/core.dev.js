@@ -3629,7 +3629,7 @@ const ui = (() => {
                                         yPointerStart = ev_grabs_start.clientY + yScroll;
                                     }
 
-                                    alert("xPointerStart", xPointerStart)
+                                    alert("xPointerStart : "+xPointerStart)
 
                                     // storicize edge wrapper limit
                                     // if you're in proximity of it, scroll container.
