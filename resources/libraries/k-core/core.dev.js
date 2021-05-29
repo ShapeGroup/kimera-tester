@@ -3618,13 +3618,15 @@ const ui = (() => {
 
                                     if ( is_touch_device() )
                                     {
-                                        xPointerStart  =ev_grabs_start.touches[0].clientX  + xScroll;
-                                        yPointerStart =ev_grabs_start.touches[0].clientY + yScroll;
+                                        xPointerStart = ev_grabs_start.touches[0].clientX + xScroll;
+                                        yPointerStart = ev_grabs_start.touches[0].clientY + yScroll;
+                                        // xPointerStart  =ev_grabs_start.touches[0].clientX  + xScroll;
+                                        // yPointerStart =ev_grabs_start.touches[0].clientY + yScroll;
                                     }
                                     else
                                     {
-                                        xPointerStart  =ev_grabs_start.clientX  + xScroll;
-                                        yPointerStart =ev_grabs_start.clientY + yScroll;
+                                        xPointerStart = ev_grabs_start.clientX  + xScroll;
+                                        yPointerStart = ev_grabs_start.clientY + yScroll;
                                     }
 
                                     // storicize edge wrapper limit
@@ -3690,8 +3692,8 @@ const ui = (() => {
 
                                         if ( is_touch_device() )
                                         {
-                                            mX   = ev_grabs_move.touches[0].clientX;
-                                            mY   = ev_grabs_move.touches[0].clientY;
+                                            mX   = ev_grabs_move.touches[0].pageX;
+                                            mY   = ev_grabs_move.touches[0].pageY;
                                         }
                                         else
                                         {
@@ -5577,25 +5579,11 @@ const ui = (() => {
 
                         let rect = ClockPivot.getBoundingClientRect();
 
+
                         center = {
                             x:  ui.screen.scrollX + rect.left,
                             y:  ui.screen.scrollY + rect.top
                         };
-                        // if(is_touch_device())
-                        // {
-                        //     center = {
-                        //         x:  ui.screen.scrollX + rect.left,
-                        //         y:  ui.screen.scrollY + rect.top
-                        //     };
-                        // }
-                        // else
-                        // {
-                        //     alert(rect.top)
-                        //     center = {
-                        //         x:  ui.screen.scrollX + rect.left,
-                        //         y:  ui.screen.scrollY + rect.top
-                        //     };
-                        // }
 
 
                         if(event.target == RayHours)
