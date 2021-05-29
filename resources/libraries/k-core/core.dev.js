@@ -3614,8 +3614,10 @@ const ui = (() => {
                                         xBoxPos = getoffsetLeft(startbox),
                                         yBoxPos = getoffsetTop(startbox);
 
+                                        alert("yScroll =>  "+yScroll)
                                     if(startbox.closest('.scroll-x')) xScroll =  xScroll + (startbox.closest('.scroll-x').scrollLeft || 0 );
                                     if(startbox.closest('.scroll-y')) yScroll =  yScroll + (startbox.closest('.scroll-y').scrollTop || 0);
+
 
 
                                     if ( is_touch_device() )
@@ -3631,7 +3633,6 @@ const ui = (() => {
                                         xPointerStart = ev_grabs_start.clientX + xScroll;
                                     }
 
-                                    alert("yScroll :  "+yScroll)
 
                                     // storicize edge wrapper limit
                                     // if you're in proximity of it, scroll container.
