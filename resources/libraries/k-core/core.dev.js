@@ -5578,7 +5578,7 @@ const ui = (() => {
                         let rect = ClockPivot.getBoundingClientRect();
                         if(is_touch_device())
                         {
-                            alert(rect.top)
+                            alert('rect is :'+rect.top+' and s top is: '+ui.screen.scrollY)
                             center = {
                                 x:  ui.screen.scrollX - rect.left,
                                 y:  ui.screen.scrollY - rect.top
