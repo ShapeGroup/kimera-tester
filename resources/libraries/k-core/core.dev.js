@@ -2615,7 +2615,7 @@ const ui = (() => {
                             centerdist = (active.offsetTop+active.offsetHeight/2) - dir ;
                         }
 
-                        console.log('DIMS: 'boxmin,boxmax,centerdist);
+                        console.log('DIMS: ',boxmin,boxmax,centerdist);
 
                         // if it' s first | proximity of start
 
