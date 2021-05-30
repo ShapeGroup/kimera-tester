@@ -604,7 +604,7 @@ output,*>output {
 
     direction: ltr;
     text-align: left;
-    white-space: pre;
+    white-space:normal ;
     word-spacing: normal;
     word-break: break-all;
     word-wrap: break-word;
