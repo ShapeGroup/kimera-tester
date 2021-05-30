@@ -3438,9 +3438,6 @@ const ui = (() => {
 
 
 
-            document.getElementsByTagName('BODY')[0].insertAdjacentHTML('afterend', `<div class="fixed-bottom-right pad-[10] bkg-03"  style="max-width:350px"><p id="debbugger"></p></div>`);
-
-
 
             ///// SET GRAB INACTIVE
             // :: when you start to drag, it's true.
@@ -3703,16 +3700,6 @@ const ui = (() => {
 
                                         startbox.style.top  = parseInt( ((mY-yPointerStart)+yBoxPos) ) + "px";
                                         startbox.style.left = parseInt( ((mX-xPointerStart)+xBoxPos) ) + "px";
-
-                                        let outdebug = `
-                                            wso : `+window.screen.orientation+`<br>
-                                            yPointerStart : `+yPointerStart+`<br>
-                                            ev Y : `+mY+`<br>
-                                            el top : `+startbox.style.top+`<br>
-                                            ui ScreenY : `+screenview.scrollY+`<br>
-                                            screenY : `+screenview.scrollY+``;
-
-                                        document.getElementById("debbugger").innerHTML = outdebug;
 
                                         // scroll container with box
 
