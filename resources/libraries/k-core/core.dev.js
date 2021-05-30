@@ -177,40 +177,40 @@ const ui = (() => {
         const nomobar = () =>
         {
 
-            let DOCU = document.querySelector('html'),
-                BODY = document.querySelector('body');
+            let DOCU = document.getElementsByTagName('html')[0],
+                BODY = document.getElementsByTagName('body')[0];
 
             if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
             {
-
-                var orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
-
-                if (orientation === "landscape-primary")
-                {
-                  console.log("That looks good.");
-                }
-                else if (orientation === "landscape-secondary")
-                {
-                  console.log("Mmmh... the screen is upside down!");
-                }
-                else if (orientation === "portrait-secondary" || orientation === "portrait-primary")
-                {
-                  console.log("Mmmh... you should rotate your device to landscape");
-                }
-                else if (orientation === undefined)
-                {
-                  console.log("The orientation API isn't supported in this browser :(");
-                }
-
-                const wso = window.screen.orientation;
-                wso.lock("portrait");
-
-                // const locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock || false;
-                // if(locOrientation) locOrientation('portrait');
-
-                // screen.addEventListener("orientationchange", function () {
-                //   console.log("The orientation of the screen is: " + screen.orientation);
-                // });
+                //
+                // var orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
+                //
+                // if (orientation === "landscape-primary")
+                // {
+                //   console.log("That looks good.");
+                // }
+                // else if (orientation === "landscape-secondary")
+                // {
+                //   console.log("Mmmh... the screen is upside down!");
+                // }
+                // else if (orientation === "portrait-secondary" || orientation === "portrait-primary")
+                // {
+                //   console.log("Mmmh... you should rotate your device to landscape");
+                // }
+                // else if (orientation === undefined)
+                // {
+                //   console.log("The orientation API isn't supported in this browser :(");
+                // }
+                //
+                // const wso = window.screen.orientation;
+                // wso.lock("portrait");
+                //
+                // // const locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock || false;
+                // // if(locOrientation) locOrientation('portrait');
+                //
+                // // screen.addEventListener("orientationchange", function () {
+                // //   console.log("The orientation of the screen is: " + screen.orientation);
+                // // });
 
                 DOCU.style.height = window.screen.availHeight + 'px';
                 BODY.style.height = window.screen.availHeight + 'px';
