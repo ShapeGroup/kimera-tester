@@ -10599,15 +10599,11 @@ const ui = (() => {
                     }
 
 
-                    /// actions
-
-                    let crossclick = 'click';
-
                     // play/pause audio
                     if(play)
                     {
 
-                        play.addEventListener( crossclick, ev_audio_playclick => {
+                        play.addEventListener( 'click', ev_audio_playclick => {
 
                             updateRuntime();
 
@@ -10634,7 +10630,7 @@ const ui = (() => {
                     if(loop)
                     {
 
-                        loop.addEventListener( crossclick, ev_audio_loopclick => {
+                        loop.addEventListener( 'click', ev_audio_loopclick => {
 
                             if(!audio.loop)
                             {
@@ -10965,7 +10961,7 @@ const ui = (() => {
                                 return ~~(x / e.offsetWidth * 100)
                             }
 
-                            volume.addEventListener( crossclick, ev_video_powerclick => {
+                            volume.addEventListener( 'click', ev_video_powerclick => {
 
                                 if(ev_video_powerclick.target!=power)
                                 {
@@ -11016,7 +11012,7 @@ const ui = (() => {
                         if(loop)
                         {
 
-                            loop.addEventListener( crossclick, ev_loopvideo => {
+                            loop.addEventListener( 'click', ev_loopvideo => {
 
                                 if(!video.loop)
                                 {
@@ -11105,14 +11101,15 @@ const ui = (() => {
 
                         if(video.autoplay) playpause();
 
-                        if(starter) starter.addEventListener( crossclick, ev_playvideo => { alert("!!!"); playpause(ev_playvideo) },false);
+                        if(starter) starter.addEventListener( 'click', ev_playvideo => { alert("starter!!!"); playpause(ev_playvideo) },false);
 
-                        if(play) play.addEventListener( crossclick, ev_playvideo => { alert("!!!"); playpause(ev_playvideo) },false);
+                        if(play) play.addEventListener( 'click', ev_playvideo => { alert("play!!!"); playpause(ev_playvideo) },false);
 
-                        display.addEventListener( crossclick, ev_playvideo => {
+                        display.addEventListener( 'click', ev_playvideo => {
+
                             if(ev_playvideo.target === display)
                             {
-
+alert("display!!!");
                                 playpause(ev_playvideo)
 
                                 if( display.className.includes('-active') )
