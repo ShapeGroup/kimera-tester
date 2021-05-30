@@ -10895,7 +10895,7 @@ const ui = (() => {
                     {
 
                         window.clearInterval(checkbuffer);
-
+                        alert("VIDEODATASTART");
                         //// Print load progress
 
                         if(streamprogress)
@@ -11103,9 +11103,11 @@ const ui = (() => {
 
                         }
 
-                        if(video.autoplay){ playpause(); };
-                        if(starter) starter.addEventListener( crossclick, ev_playvideo => { playpause(ev_playvideo) },false);
-                        if(play) play.addEventListener( crossclick, ev_playvideo => { playpause(ev_playvideo) },false);
+                        if(video.autoplay) playpause();
+
+                        if(starter) starter.addEventListener( crossclick, ev_playvideo => { alert("!!!"); playpause(ev_playvideo) },false);
+
+                        if(play) play.addEventListener( crossclick, ev_playvideo => { alert("!!!"); playpause(ev_playvideo) },false);
 
                         display.addEventListener( crossclick, ev_playvideo => {
                             if(ev_playvideo.target === display)
