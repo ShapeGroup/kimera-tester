@@ -85,31 +85,6 @@ body {
 
 }
 
-body.mode-web {
-
-    min-height: 100vh;
-}
-
-body.mode-web.hidescrollbar {
-
-    overflow-y: auto;
-
-}
-
-body.mode-app {
-
-    position: relative;
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    overflow: hidden;
-    -webkit-touch-callout: none;
-        -ms-touch-action: manipulation;
-            touch-action: manipulation;
-
-}
-
 iframe,
 frameset,
 noframes {
@@ -631,8 +606,8 @@ output,*>output {
     text-align: left;
     white-space: pre;
     word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
+    word-break: break-all;
+    word-wrap: break-word;
     line-height: 2;
     -moz-tab-size: 2;
     -o-tab-size: 2;
@@ -975,28 +950,36 @@ span>*  {
 /* ———— */
 
 
+
+
+
+body.mode-web.hidescrollbar {
+
+    overflow-y: auto;
+
+}
+
 body.mode-web:not(.scroll-x) {
 
     opacity: 0;
-    min-height: 100%;
+    width: 100vw;
+    min-height: 100vh;
     align-content: start;
     align-items: start;
     overflow-x: clip;
-    width: 100%;
+
 }
 
 body.mode-web.scroll-x {
 
-    /* display: inline-block;
-    vertical-align: top; */
+    height: 100vh;
+    max-width: unset;
 
     position: relative;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    max-width: unset;
     scroll-behavior: smooth;
-    height: inherit;
 
 }
 
@@ -1011,7 +994,7 @@ body.mode-web.scroll-x>span {
     align-items: center;
     vertical-align: middle;
     height: 100vh;
-    margin-right: -6px;
+    /* margin-right: -6px; */
 
 }
 
@@ -1028,6 +1011,21 @@ body.mode-web.scroll-x >span {
 }
 
 /* ———— */
+
+
+body.mode-app {
+
+    position: relative;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    -webkit-touch-callout: none;
+        -ms-touch-action: manipulation;
+            touch-action: manipulation;
+
+}
 
 body.mode-app .view-controller {
 
