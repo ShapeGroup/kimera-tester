@@ -183,8 +183,11 @@ const ui = (() => {
             if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
             {
 
-                const locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock || false;
-                if(locOrientation) locOrientation('portrait');
+                let wso = window.screen.orientation;
+                if(wso) wso.lock("portrait");
+
+                // const locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock || false;
+                // if(locOrientation) locOrientation('portrait');
 
                 // screen.addEventListener("orientationchange", function () {
                 //   console.log("The orientation of the screen is: " + screen.orientation);
@@ -3682,6 +3685,7 @@ const ui = (() => {
                                         startbox.style.left = parseInt( ((mX-xPointerStart)+xBoxPos) ) + "px";
 
                                         let outdebug = `
+                                            wso : `+window.screen.orientation+`<br>
                                             yPointerStart : `+yPointerStart+`<br>
                                             ev Y : `+mY+`<br>
                                             el top : `+startbox.style.top+`<br>
