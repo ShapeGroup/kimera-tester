@@ -2698,7 +2698,7 @@ const ui = (() => {
                     }
 
 
-                    console.log(minimum,maximum,position);
+                    console.log(minimum,maximum,actualposition);
 
                     if(actualposition<=minimum)
                     {
