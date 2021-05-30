@@ -10601,7 +10601,7 @@ const ui = (() => {
 
                     /// actions
 
-                    let crossclick = is_touch_device() ? 'touchstart' : 'click';
+                    let crossclick = 'click';
 
                     // play/pause audio
                     if(play)
