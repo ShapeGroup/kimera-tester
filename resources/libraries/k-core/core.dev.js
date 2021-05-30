@@ -12280,8 +12280,8 @@ const ui = (() => {
         }
 
         return {
-            screen,
             warning,
+            screenview,
             loaderslist,
             draganddrop,
             reload: reload
