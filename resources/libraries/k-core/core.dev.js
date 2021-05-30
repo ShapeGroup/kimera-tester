@@ -2421,7 +2421,7 @@ const ui = (() => {
             // 2 make dynamic
             //
 
-            console.log("V6");
+            console.log("V7");
             for (let slider of allsnapsliders)
             {
 
@@ -2679,8 +2679,8 @@ const ui = (() => {
                            ? parseInt( (actual.offsetLeft+(actual.offsetWidth/2)) - dir )
                            : parseInt(  actual.offsetLeft - dir );
 
-
-                        minimum = (isblocks) ? snapsmainwrap.offsetLeft : snapsmainwrap.offsetWidth/2,
+                           //snapsmainwrap.offsetLeft
+                        minimum = (isblocks) ? getoffsetLeft(snapsmainwrap) : snapsmainwrap.offsetWidth/2,
                         maximum = allboxdims-minimum;
 
                         console.log("dat snap - for maximum:",allboxdims,maximum,' ... form min: ',isblocks,snapsmainwrap.offsetLeft,snapsmainwrap.offsetWidth);
