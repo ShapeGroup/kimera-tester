@@ -2421,7 +2421,7 @@ const ui = (() => {
             // 2 make dynamic
             //
 
-            console.log("V((7))");
+            console.log("V8");
             for (let slider of allsnapsliders)
             {
 
@@ -2487,11 +2487,19 @@ const ui = (() => {
                 // let rowboxeswidth = 0;
 
                 if(isHorizontal)
+                {
                     for (let box of allboxes) allboxdims += box.offsetWidth;
                     // rowboxeswidth = allboxdims-slider.offsetWidth;
+
+                }
                 else
+                {
                     for (let box of allboxes) allboxdims += box.offsetHeight;
                     // rowboxeswidth = allboxdims-slider.offsetHeight;
+                }
+
+
+                // if(isblocks) snapsmainwrap.offsetWidth = rowboxeswidth;
 
 
 

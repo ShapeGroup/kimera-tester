@@ -1315,13 +1315,18 @@ body.mode-app .stop-left {
     transition: transform ease-out .5s, -webkit-transform ease-out .5s;
 
 }
+.snap-x .snaptype-blocks {
 
-.snap-x .snaptype-blocks  {
-
-    z-index: 100;
-    width: 0;
-    margin: 0 auto;
     height: 100%;
+    margin: 0 auto;
+    z-index: 100;
+
+}
+
+.snap-x .snaptype-blocks,
+.snap-x .snaptype-blocks .snaps  {
+
+    width: 0;
 
 }
 
