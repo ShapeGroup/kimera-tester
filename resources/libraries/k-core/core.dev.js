@@ -10891,7 +10891,7 @@ const ui = (() => {
                     {
 
                         window.clearInterval(checkbuffer);
-                        alert("VIDEODATASTART");
+
                         //// Print load progress
 
                         if(streamprogress)
@@ -11101,15 +11101,15 @@ const ui = (() => {
 
                         if(video.autoplay) playpause();
 
-                        if(starter) starter.addEventListener( 'click', ev_playvideo => { alert("starter!!!"); playpause(ev_playvideo) },false);
+                        if(starter) starter.addEventListener( 'click', ev_playvideo => { playpause(ev_playvideo) },false);
 
-                        if(play) play.addEventListener( 'click', ev_playvideo => { alert("play!!!"); playpause(ev_playvideo) },false);
+                        if(play) play.addEventListener( 'click', ev_playvideo => { playpause(ev_playvideo) },false);
 
                         display.addEventListener( 'click', ev_playvideo => {
 
                             if(ev_playvideo.target === display)
                             {
-alert("display!!!");
+
                                 playpause(ev_playvideo)
 
                                 if( display.className.includes('-active') )
@@ -11132,7 +11132,7 @@ alert("display!!!");
 
                         if(playprogress)
                         {
-                            playprogress.addEventListener( crossclick, ev_clickvideoprogress => {
+                            playprogress.addEventListener( 'click', ev_clickvideoprogress => {
 
                                 let pointX = (ev_clickvideoprogress.pageX - getoffsetLeft(playprogress)),
                                 clickpercent = ~~((pointX/playprogress.offsetWidth) * 100 ),
@@ -11152,7 +11152,7 @@ alert("display!!!");
                         if(maximized)
                         {
 
-                            maximized.addEventListener( crossclick,  ev_maximizedvideo => {
+                            maximized.addEventListener( 'click',  ev_maximizedvideo => {
 
                                 ev_maximizedvideo.preventDefault();
                                 setfullscreen()
@@ -11212,7 +11212,7 @@ alert("display!!!");
                         if(cinema)
                         {
 
-                            cinema.addEventListener( crossclick, ev_cinemavideo => {
+                            cinema.addEventListener( 'click', ev_cinemavideo => {
 
                                 ev_cinemavideo.preventDefault();
                                 setcinemode();
