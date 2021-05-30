@@ -10891,34 +10891,29 @@ const ui = (() => {
 
                     // on buffering start...
 
-                    if (video.buffered.length === 0)
+                    let videodatastart = () =>
                     {
 
-                        console.log('no buffer for a video'); return;
+                        window.clearInterval(checkbuffer);
 
-                    }
-
-                    else
-                    {
-s
                         //// Print load progress
 
                         if(streamprogress)
                         {
 
                             let bufferedSeconds = (video.buffered.end(0) - video.buffered.start(0)),
-                                checkvideobuffer = setInterval( () =>{
+                                buffering = setInterval( () =>{
                                     let loadpercent = ~~((bufferedSeconds / video.duration) * 100);
                                     if(loadpercent>=99 || bufferedSeconds==video.duration)
                                     {
                                         streamprogress.className = 'progress-[100]';
-                                        window.clearInterval(checkvideobuffer);
+                                        window.clearInterval(buffering);
                                     }
                                     else
                                     {
                                         streamprogress.className = 'progress-['+((loadpercent<10)?'0'+loadpercent:''+loadpercent)+']'
                                     }
-                                },500);
+                                },250);
 
                         }
 
@@ -11307,6 +11302,9 @@ s
 
 
                     }
+
+
+                    let checkbuffer = setInterval( () =>{ if (video.buffered.length !== 0) videodatastart(); },500);
 
 
                 }
