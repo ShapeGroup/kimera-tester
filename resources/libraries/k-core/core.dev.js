@@ -3688,6 +3688,7 @@ const ui = (() => {
                                             yPointerStart : `+yPointerStart+`<br>
                                             ev Y : `+mY+`<br>
                                             el top : `+startbox.style.top+`<br>
+                                            ui ScreenY : `+ui.screen.scrollY+`<br>
                                             screenY : `+screen.scrollY+``;
 
                                         document.getElementById("debbugger").innerHTML = outdebug;
