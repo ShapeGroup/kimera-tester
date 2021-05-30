@@ -51,17 +51,16 @@ const ui = (() => {
 
 
          const screenview = { "fullscreen":false };
-         window.onload = () =>
-         {
 
-            window.addEventListener('scroll', ev => {
+         (()=>{
+             window.addEventListener('scroll', ev_scroll => {
 
-                ui.screenview.scrollX = parseInt( (document.getElementsByTagName('BODY')[0].scrollLeft) ? document.getElementsByTagName('BODY')[0].scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : window.scrollX );
-                ui.screenview.scrollY = parseInt( (document.getElementsByTagName('BODY')[0].scrollTop) ? document.getElementsByTagName('BODY')[0].scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset : window.scrollY );
+                 ui.screenview.scrollX = parseInt( (document.getElementsByTagName('BODY')[0].scrollLeft) ? document.getElementsByTagName('BODY')[0].scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset ? (window.scrollX) window.scrollX : false ) || false;
+                 ui.screenview.scrollY = parseInt( (document.getElementsByTagName('BODY')[0].scrollTop) ? document.getElementsByTagName('BODY')[0].scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset ? (window.scrollY) window.scrollY : false ) || false;
 
-            },false)
+             },false)
+         })()
 
-        }
 
         // micro-libs // get real offeset top
 
