@@ -3544,7 +3544,7 @@ const ui = (() => {
 
                     function startgrab(event)
                     {
-                        log(ui);
+                        console.log(ui);
 
                         ev_grabs_start = event || window.event;
 
