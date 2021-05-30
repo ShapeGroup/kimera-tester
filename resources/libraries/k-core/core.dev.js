@@ -2667,7 +2667,6 @@ const ui = (() => {
 
                     }
 
-                    alert("UPDATE V1");
                     // check dragging position respect the cage limitss
 
                     let positon,actualposition,minimum,maximum;
