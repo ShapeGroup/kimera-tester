@@ -3548,8 +3548,6 @@ const ui = (() => {
                             if(!grabbing)
                             {
 
-                                let tester = document.querySelectorAll('#TESTER')[0];
-
                                 // (longtap emulation)
                                 var starttap = new Date().getTime(),
                                     taptime = setInterval(()=>{
@@ -3682,8 +3680,6 @@ const ui = (() => {
 
                                         startbox.style.top  = parseInt( ((mY-yPointerStart)+yBoxPos) ) + "px";
                                         startbox.style.left = parseInt( ((mX-xPointerStart)+xBoxPos) ) + "px";
-
-                                        tester.innerHTML = startbox.style.top;
 
                                         let outdebug = `
                                             yPointerStart : `+yPointerStart+`<br>
