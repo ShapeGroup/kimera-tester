@@ -2421,7 +2421,7 @@ const ui = (() => {
             // 2 make dynamic
             //
 
-            console.log("V1");
+            console.log("V2");
             for (let slider of allsnapsliders)
             {
 
