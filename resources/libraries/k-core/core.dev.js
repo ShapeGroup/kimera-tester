@@ -50,14 +50,14 @@ const ui = (() => {
         // micro-libs // get scrollY/X standard + mobile
 
 
-         const screen = { "fullscreen":false };
+         const screenview = { "fullscreen":false };
          window.onload = () =>
          {
 
             window.addEventListener('scroll', ev => {
 
-                ui.screen.scrollX = parseInt( (document.getElementsByTagName('BODY')[0].scrollLeft) ? document.getElementsByTagName('BODY')[0].scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : window.scrollX );
-                ui.screen.scrollY = parseInt( (document.getElementsByTagName('BODY')[0].scrollTop) ? document.getElementsByTagName('BODY')[0].scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset : window.scrollY );
+                ui.screenview.scrollX = parseInt( (document.getElementsByTagName('BODY')[0].scrollLeft) ? document.getElementsByTagName('BODY')[0].scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : window.scrollX );
+                ui.screenview.scrollY = parseInt( (document.getElementsByTagName('BODY')[0].scrollTop) ? document.getElementsByTagName('BODY')[0].scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset : window.scrollY );
 
             },false)
 
@@ -183,8 +183,8 @@ const ui = (() => {
             if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
             {
 
-                const locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock;
-                locOrientation('portrait');
+                const locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock || false;
+                if(locOrientation) locOrientation('portrait');
 
                 // screen.addEventListener("orientationchange", function () {
                 //   console.log("The orientation of the screen is: " + screen.orientation);
@@ -299,7 +299,7 @@ const ui = (() => {
 
                                     if( contentclasses.includes('settings') && contentclasses.includes('autostartstop') ){ lazyobserverlist.push(element); }
 
-                                    ( getoffsetTop(element) <= (ui.screen.scrollY||0)+screen.availHeight)
+                                    ( getoffsetTop(element) <= (ui.screenview.scrollY||0)+screen.availHeight)
                                         ? lazyonstartlist.push(element)      // it's in view
                                         : lazywhenviewlist.push(element);    // on scrolling
 
@@ -348,7 +348,7 @@ const ui = (() => {
                                 if(isvalid===true)
                                 {
 
-                                    (getoffsetTop(element)<= (ui.screen.scrollY||0)+screen.availHeight)
+                                    (getoffsetTop(element)<= (ui.screenview.scrollY||0)+screen.availHeight)
                                         ? lazyonstartlist.push(element)     // it's in view
                                         : lazywhenviewlist.push(element);   // on scrolling
 
@@ -411,7 +411,7 @@ const ui = (() => {
 
                             window.clearInterval( scrollpage );
 
-                            let wintop      = (ui.screen.scrollY||0),
+                            let wintop      = (ui.screenview.scrollY||0),
                                 winbottom   = wintop + screen.availHeight;
 
 
@@ -3494,8 +3494,8 @@ const ui = (() => {
                 parentY = (T.closest('.scroll-y')) ? T.closest('.scroll-y').scrollTop : 0;
                 parentX = (T.closest('.scroll-x')) ? T.closest('.scroll-x').scrollLeft : 0;
 
-                xpos =  (ui.screen.scrollX || 0)  + parentX + X,
-                ypos =  (ui.screen.scrollY || 0) + parentY + Y;
+                xpos =  (ui.screenview.scrollX || 0)  + parentX + X,
+                ypos =  (ui.screenview.scrollY || 0) + parentY + Y;
 
                 TTop    = getoffsetTop(T),  TBottom = (TTop+T.offsetHeight),
                 TLeft   = getoffsetLeft(T), TRight  = (TLeft+T.offsetWidth);
@@ -3578,8 +3578,8 @@ const ui = (() => {
 
 
                                     // get box position
-                                    let xScroll = (ui.screen.scrollX||0),
-                                        yScroll = (ui.screen.scrollY||0),
+                                    let xScroll = (ui.screenview.scrollX||0),
+                                        yScroll = (ui.screenview.scrollY||0),
                                         xBoxPos = getoffsetLeft(startbox),
                                         yBoxPos = getoffsetTop(startbox);
 
@@ -3616,8 +3616,8 @@ const ui = (() => {
                                     {
                                         if(isntScroller)
                                         {
-                                            edgetop    = (ui.screen.scrollY||0)+33,
-                                            edgeleft   = (ui.screen.scrollX||0)+33,
+                                            edgetop    = (ui.screenview.scrollY||0)+33,
+                                            edgeleft   = (ui.screenview.scrollX||0)+33,
                                             edgeright  = edgeleft+scroller.offsetWidth-33,
                                             edgebottom = edgetop+scroller.offsetHeight-33;
                                         }
@@ -3685,15 +3685,15 @@ const ui = (() => {
                                             yPointerStart : `+yPointerStart+`<br>
                                             ev Y : `+mY+`<br>
                                             el top : `+startbox.style.top+`<br>
-                                            ui ScreenY : `+ui.screen.scrollY+`<br>
-                                            screenY : `+screen.scrollY+``;
+                                            ui ScreenY : `+ui.screenview.scrollY+`<br>
+                                            screenY : `+screenview.scrollY+``;
 
                                         document.getElementById("debbugger").innerHTML = outdebug;
 
                                         // scroll container with box
 
-                                        let YCoord = ( (ui.screen.scrollY||0) + mY ),
-                                            XCoord = ( (ui.screen.scrollX||0) + mX );
+                                        let YCoord = ( (ui.screenview.scrollY||0) + mY ),
+                                            XCoord = ( (ui.screenview.scrollX||0) + mX );
 
                                         let scrolltarget = (isntScroller)?scroller:scroller.firstElementChild;
 
@@ -5564,8 +5564,8 @@ const ui = (() => {
 
 
                         center = {
-                            x:  (ui.screen.scrollX||0) + rect.left,
-                            y:  (ui.screen.scrollY||0) + rect.top
+                            x:  (ui.screenview.scrollX||0) + rect.left,
+                            y:  (ui.screenview.scrollY||0) + rect.top
                         };
 
 
@@ -11691,10 +11691,10 @@ const ui = (() => {
 
                 screenerbutton.addEventListener('click', () => {
 
-                    if(ui.screen.fullscreen===false)
+                    if(ui.screenview.fullscreen===false)
                     {
 
-                        ui.screen.fullscreen = true;
+                        ui.screenview.fullscreen = true;
                         requestFullScreen.call(document.documentElement);
 
                         for (let sbtm of gofullscreeners)
@@ -11708,7 +11708,7 @@ const ui = (() => {
                     else
                     {
 
-                        ui.screen.fullscreen = false;
+                        ui.screenview.fullscreen = false;
                         cancellFullScreen.call(document);
 
                         for (let sbtm of gofullscreeners)
