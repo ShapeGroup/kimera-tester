@@ -10646,7 +10646,7 @@ const ui = (() => {
                     if(timeline)
                     {
 
-                        progressor.addEventListener(crossclick, ev_audio_progressclick => {
+                        progressor.addEventListener('click', ev_audio_progressclick => {
 
                             //progressbar
                             let percent = fromWidthToPercent(progressor, ( is_touch_device() ? ev_audio_progressclick.touches[0].pageX : ev_audio_progressclick.pageX )-getoffsetLeft(progressor) );
@@ -10665,7 +10665,7 @@ const ui = (() => {
                     if(volume)
                     {
 
-                        volume.addEventListener(crossclick, ev_audio_powerclick => {
+                        volume.addEventListener('click', ev_audio_powerclick => {
 
                             if(ev_audio_powerclick.target!=power)
                             {
@@ -10867,9 +10867,6 @@ const ui = (() => {
                 }
 
                 video.oncanplay = ev_videoready => {
-
-
-                    var crossclick = is_touch_device() ? 'ontouchstart' : 'click';
 
 
                     // on buffering start...
