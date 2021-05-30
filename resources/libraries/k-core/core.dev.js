@@ -50,53 +50,17 @@ const ui = (() => {
         // micro-libs // get scrollY/X standard + mobile
 
 
-             const screen = { "fullscreen":false };
+         const screen = { "fullscreen":false };
          window.onload = () =>
          {
-             document.getElementsByTagName('BODY')[0].insertAdjacentHTML('afterend', `<div class="fixed-bottom-right pad-[10] bkg-03"  style="max-width:350px"><p id="debbugger"></p></div>`);
 
             window.addEventListener('scroll', ev => {
 
                 ui.screen.scrollX = parseInt( (document.getElementsByTagName('BODY')[0].scrollLeft) ? document.getElementsByTagName('BODY')[0].scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : window.scrollX );
                 ui.screen.scrollY = parseInt( (document.getElementsByTagName('BODY')[0].scrollTop) ? document.getElementsByTagName('BODY')[0].scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset : window.scrollY );
 
-                // document.body.scrollTop
-                // document.documentElement.scrollY
-                // document.scrollTop
-                // ?window.scrollTop
-                // window.pageYOffset
-                // window.scrollY
-
-                //     alert("document.body.scrollTop IS : "+document.body.scrollTop)      //no
-                //     alert("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
-                //     alert("document.scrollTop IS : "+document.scrollTop)           //no
-                //     alert("window.scrollTop IS : "+window.scrollTop)                    //no
-                //     alert("window.pageYOffset IS : "+window.pageYOffset)                //yes
-                //     alert("window.scrollY IS : "+window.scrollY);                       //yes
-                //     alert("FINALE IS : "+ui.screen.scrollY)
-
-                // console.log("document.body.scrollTop IS : "+document.body.scrollTop)      //no
-                // console.log("document.documentElement.scrollY IS : "+document.documentElement.scrollY) //no
-                // console.log("document.scrollTop IS : "+document.scrollTop)           //no
-                // console.log("window.scrollTop IS : "+window.scrollTop)                    //no
-                // console.log("window.pageYOffset IS : "+window.pageYOffset)                //yes
-                // console.log("window.scrollY IS : "+window.scrollY);                       //yes
-                // console.log("FINALE IS : "+ui.screen.scrollY)
-
-
-                    let outdebug = `
-                                    document.getElementsByTagName('BODY')[0].scrollTop IS : `+document.getElementsByTagName('BODY')[0].scrollTop+`
-                                    <br>document.documentElement.scrollY IS : `+document.documentElement.scrollY+`
-                                    <br>document.scrollTop IS : `+document.scrollTop+`
-                                    <br>window.scrollTop IS : `+window.scrollTop+`
-                                    <br>window.pageYOffset IS : `+window.pageYOffset+`
-                                    <br>window.scrollY IS : `+window.scrollY+`
-                                    <br>FINAL IS : `+ui.screen.scrollY+``;
-
-
-                    document.getElementById("debbugger").innerHTML = outdebug;
-
             },false)
+
         }
 
         // micro-libs // get real offeset top
@@ -333,7 +297,7 @@ const ui = (() => {
 
                                     if( contentclasses.includes('settings') && contentclasses.includes('autostartstop') ){ lazyobserverlist.push(element); }
 
-                                    ( getoffsetTop(element) <= ui.screen.scrollY+screen.availHeight)
+                                    ( getoffsetTop(element) <= (ui.screen.scrollY||0)+screen.availHeight)
                                         ? lazyonstartlist.push(element)      // it's in view
                                         : lazywhenviewlist.push(element);    // on scrolling
 
@@ -382,7 +346,7 @@ const ui = (() => {
                                 if(isvalid===true)
                                 {
 
-                                    (getoffsetTop(element)<= ui.screen.scrollY +screen.availHeight)
+                                    (getoffsetTop(element)<= (ui.screen.scrollY||0)+screen.availHeight)
                                         ? lazyonstartlist.push(element)     // it's in view
                                         : lazywhenviewlist.push(element);   // on scrolling
 
@@ -445,7 +409,7 @@ const ui = (() => {
 
                             window.clearInterval( scrollpage );
 
-                            let wintop      = ui.screen.scrollY,
+                            let wintop      = (ui.screen.scrollY||0),
                                 winbottom   = wintop + screen.availHeight;
 
 
@@ -3450,6 +3414,11 @@ const ui = (() => {
         {
 
 
+
+            document.getElementsByTagName('BODY')[0].insertAdjacentHTML('afterend', `<div class="fixed-bottom-right pad-[10] bkg-03"  style="max-width:350px"><p id="debbugger"></p></div>`);
+
+
+
             ///// SET GRAB INACTIVE
             // :: when you start to drag, it's true.
 
@@ -3523,8 +3492,8 @@ const ui = (() => {
                 parentY = (T.closest('.scroll-y')) ? T.closest('.scroll-y').scrollTop : 0;
                 parentX = (T.closest('.scroll-x')) ? T.closest('.scroll-x').scrollLeft : 0;
 
-                xpos =  ui.screen.scrollX  + parentX + X,
-                ypos =  ui.screen.scrollY + parentY + Y;
+                xpos =  (ui.screen.scrollX || 0)  + parentX + X,
+                ypos =  (ui.screen.scrollY || 0) + parentY + Y;
 
                 TTop    = getoffsetTop(T),  TBottom = (TTop+T.offsetHeight),
                 TLeft   = getoffsetLeft(T), TRight  = (TLeft+T.offsetWidth);
@@ -3609,8 +3578,8 @@ const ui = (() => {
 
 
                                     // get box position
-                                    let xScroll = (ui.screen.scrollX)?ui.screen.scrollX:0,
-                                        yScroll = (ui.screen.scrollY)?ui.screen.scrollY:0,
+                                    let xScroll = (ui.screen.scrollX||0),
+                                        yScroll = (ui.screen.scrollY||0),
                                         xBoxPos = getoffsetLeft(startbox),
                                         yBoxPos = getoffsetTop(startbox);
 
@@ -3648,8 +3617,8 @@ const ui = (() => {
                                     {
                                         if(isntScroller)
                                         {
-                                            edgetop    = ui.screen.scrollY+33,
-                                            edgeleft   = ui.screen.scrollX+33,
+                                            edgetop    = (ui.screen.scrollY||0)+33,
+                                            edgeleft   = (ui.screen.scrollX||0)+33,
                                             edgeright  = edgeleft+scroller.offsetWidth-33,
                                             edgebottom = edgetop+scroller.offsetHeight-33;
                                         }
@@ -3698,28 +3667,35 @@ const ui = (() => {
 
                                         if ( is_touch_device() )
                                         {
-                                            mX   = ev_grabs_move.touches[0].clientX;
                                             mY   = ev_grabs_move.touches[0].clientY;
+                                            mX   = ev_grabs_move.touches[0].clientX;
                                         }
                                         else
                                         {
-                                            mX   = ev_grabs_move.clientX;
                                             mY   = ev_grabs_move.clientY;
+                                            mX   = ev_grabs_move.clientX;
                                         }
 
 
                                         // move box in position
 
-                                        startbox.style.left = parseInt( ((mX-xPointerStart)+xBoxPos) ) + "px";
                                         startbox.style.top  = parseInt( ((mY-yPointerStart)+yBoxPos) ) + "px";
+                                        startbox.style.left = parseInt( ((mX-xPointerStart)+xBoxPos) ) + "px";
 
                                         tester.innerHTML = startbox.style.top;
 
+                                        let outdebug = `
+                                            yPointerStart : `+yPointerStart+`<br>
+                                            ev Y : `+mY+`<br>
+                                            el top : `+startbox.style.top+`<br>
+                                            screenY : `+ui.screen.scrollY+``;
+
+                                        document.getElementById("debbugger").innerHTML = outdebug;
 
                                         // scroll container with box
 
-                                        let YCoord = ( ui.screen.scrollY + mY ),
-                                            XCoord = ( ui.screen.scrollX + mX );
+                                        let YCoord = ( (ui.screen.scrollY||0) + mY ),
+                                            XCoord = ( (ui.screen.scrollX||0) + mX );
 
                                         let scrolltarget = (isntScroller)?scroller:scroller.firstElementChild;
 
@@ -5590,8 +5566,8 @@ const ui = (() => {
 
 
                         center = {
-                            x:  ui.screen.scrollX + rect.left,
-                            y:  ui.screen.scrollY + rect.top
+                            x:  (ui.screen.scrollX||0) + rect.left,
+                            y:  (ui.screen.scrollY||0) + rect.top
                         };
 
 
