@@ -596,6 +596,30 @@ b {
 
 }
 
+
+pre,*>pre,
+code,*>code,
+output,*>output {
+
+    overflow-wrap: normal;
+    word-spacing:normal;
+    word-wrap:normal;
+    white-space: pre;
+
+}
+
+samp,*>samp,
+kbd,*>kbd,
+output,*>output {
+
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-spacing: normal;
+    word-break: break-all;
+    word-wrap: break-word;
+
+}
+
 pre,*>pre,
 samp,*>samp,
 code,*>code,
@@ -605,9 +629,6 @@ output,*>output {
     direction: ltr;
     text-align: left;
     white-space:normal ;
-    word-spacing: normal;
-    word-break: break-all;
-    word-wrap: break-word;
     line-height: 2;
     -moz-tab-size: 2;
     -o-tab-size: 2;
