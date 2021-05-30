@@ -2683,7 +2683,6 @@ const ui = (() => {
                         minimum = (isblocks) ? snapsmainwrap.offsetLeft : snapsmainwrap.offsetWidth/2,
                         maximum = allboxdims-minimum;
 
-                        console.log(allboxdims,actual.offsetLeft,(actual.offsetWidth/2),dir);
 
 
                     }
@@ -2697,6 +2696,9 @@ const ui = (() => {
                         maximum = allboxdims-snapsmainwrap.offsetHeight;
 
                     }
+
+
+                    console.log(minimum,maximum,position);
 
                     if(actualposition<=minimum)
                     {
