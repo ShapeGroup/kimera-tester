@@ -2698,7 +2698,7 @@ const ui = (() => {
                     }
 
 
-                    console.log(minimum,maximum,actualposition);
+                    console.log(allboxdims,snapsmainwrap.offsetLeft,actual.offsetLeft);
 
                     if(actualposition<=minimum)
                     {
