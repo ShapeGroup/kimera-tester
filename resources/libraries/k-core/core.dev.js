@@ -2675,6 +2675,8 @@ const ui = (() => {
                     if(isHorizontal)
                     {
 
+                        console.log(actual.offsetLeft,(actual.offsetWidth/2),dir);
+
                         actualposition = (isblocks)
                            ? parseInt( (actual.offsetLeft+(actual.offsetWidth/2)) - dir )
                            : parseInt(  actual.offsetLeft - dir );
