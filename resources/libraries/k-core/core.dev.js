@@ -2421,7 +2421,7 @@ const ui = (() => {
             // 2 make dynamic
             //
 
-            console.log("V7");
+            console.log("V((7))");
             for (let slider of allsnapsliders)
             {
 
@@ -2545,11 +2545,13 @@ const ui = (() => {
                         if(is_touch_device())
                         {
                             start = (isHorizontal) ? ev_snapslider.touches[0].clientX : ev_snapslider.touches[0].clientY;
+                            console.log("TOUCH START:",start);
                             document.ontouchmove = snap_dragMove;
                         }
                         else
                         {
                             start = (isHorizontal) ? ev_snapslider.clientX : ev_snapslider.clientY;
+                            console.log("MOUSE START:",start);
                             document.onmousemove = snap_dragMove;
                         }
 
@@ -2585,6 +2587,7 @@ const ui = (() => {
                             : ev_snapslider.clientY-start;
                     }
 
+                    console.log("DIR: ",dir);
 
                     // Update active class in runtime dragging (actual)
 
@@ -2612,6 +2615,7 @@ const ui = (() => {
                             centerdist = (active.offsetTop+active.offsetHeight/2) - dir ;
                         }
 
+                        console.log('DIMS: 'boxmin,boxmax,centerdist);
 
                         // if it' s first | proximity of start
 
@@ -2683,7 +2687,6 @@ const ui = (() => {
                         minimum = (isblocks) ? getoffsetLeft(snapsmainwrap) : snapsmainwrap.offsetWidth/2,
                         maximum = allboxdims-minimum;
 
-                        console.log("dat snap - for maximum:",allboxdims,maximum,' ... form min: ',isblocks,snapsmainwrap.offsetLeft,snapsmainwrap.offsetWidth);
 
 
                     }
@@ -2698,6 +2701,7 @@ const ui = (() => {
 
                     }
 
+                    console.log("dat snap - for maximum:",allboxdims,maximum,' ... form min: ',isblocks,minimum,snapsmainwrap.offsetLeft,snapsmainwrap.offsetWidth);
 
 
                     if(actualposition<=minimum)
