@@ -3583,7 +3583,6 @@ const ui = (() => {
                                         xBoxPos = getoffsetLeft(startbox),
                                         yBoxPos = getoffsetTop(startbox);
 
-                                        alert("yScroll =  "+yScroll)
 
                                     if(startbox.closest('.scroll-x')) xScroll =  xScroll + (startbox.closest('.scroll-x').scrollLeft || 0 );
                                     if(startbox.closest('.scroll-y')) yScroll =  yScroll + (startbox.closest('.scroll-y').scrollTop || 0);
