@@ -2421,7 +2421,7 @@ const ui = (() => {
             // 2 make dynamic
             //
 
-            console.log("V8");
+            console.log("V9");
             for (let slider of allsnapsliders)
             {
 
@@ -2507,7 +2507,7 @@ const ui = (() => {
                 if(isHorizontal && active.offsetLeft!=0)
                 {
                     dragbox.style.transform = (isblocks)
-                        ? 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
+                        ? 'translateX(-'+(snapsmainwrap.offsetLeft-active.offsetWidth/2)+'px)'
                         : 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
                 }
 
