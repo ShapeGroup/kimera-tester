@@ -2421,7 +2421,7 @@ const ui = (() => {
             // 2 make dynamic
             //
 
-            console.log("V2");
+            console.log("V3");
             for (let slider of allsnapsliders)
             {
 
@@ -2683,6 +2683,7 @@ const ui = (() => {
                         minimum = (isblocks) ? snapsmainwrap.offsetLeft : snapsmainwrap.offsetWidth/2,
                         maximum = allboxdims-minimum;
 
+                        console.log("dat:",isblocks,minimum);
 
 
                     }
@@ -2698,7 +2699,6 @@ const ui = (() => {
                     }
 
 
-                    console.log(allboxdims,snapsmainwrap.offsetLeft,actual.offsetLeft);
 
                     if(actualposition<=minimum)
                     {
