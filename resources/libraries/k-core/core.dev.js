@@ -183,8 +183,6 @@ const ui = (() => {
             if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
             {
 
-                screen.lockOrientation('portrait');
-
                 // screen.addEventListener("orientationchange", function () {
                 //   console.log("The orientation of the screen is: " + screen.orientation);
                 // });
