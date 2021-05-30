@@ -987,7 +987,7 @@ body.mode-web:not(.scroll-x) {
     min-height: 100vh;
     align-content: start;
     align-items: start;
-    overflow-x: clip;
+    overflow-x: hidden;
 
 }
 
