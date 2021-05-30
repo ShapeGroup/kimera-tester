@@ -2667,7 +2667,7 @@ const ui = (() => {
 
                     }
 
-
+                    alert("UPDATE V1");
                     // check dragging position respect the cage limitss
 
                     let positon,actualposition,minimum,maximum;
@@ -2675,7 +2675,6 @@ const ui = (() => {
                     if(isHorizontal)
                     {
 
-                        console.log(actual.offsetLeft,(actual.offsetWidth/2),dir);
 
                         actualposition = (isblocks)
                            ? parseInt( (actual.offsetLeft+(actual.offsetWidth/2)) - dir )
@@ -2684,6 +2683,8 @@ const ui = (() => {
 
                         minimum = (isblocks) ? snapsmainwrap.offsetLeft : snapsmainwrap.offsetWidth/2,
                         maximum = allboxdims-minimum;
+
+                        console.log(allboxdims,actual.offsetLeft,(actual.offsetWidth/2),dir);
 
 
                     }
