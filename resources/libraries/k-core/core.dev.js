@@ -177,26 +177,27 @@ const ui = (() => {
         const nomobar = () =>
         {
 
-            console.log("w screen:",window.outerHeight );
+            let DOCU = document.querySelector('html'),
+                BODY = document.querySelector('body');
 
-            // let DOCU = document.querySelector('html'),
-            //     BODY = document.querySelector('body');
-            //
-            // if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
-            // {
-            //     DOCU.style.height = window.screen.availHeight + 'px';
-            //     BODY.style.height = window.screen.availHeight + 'px';
-            //
-            //     // alert("TEST: MOBILE FINDED")
-            //
-            // }
-            // else
-            // {
-            //     DOCU.style.height = ''; if(DOCU.style=='') DOCU.removeAttribute('style');
-            //     BODY.style.height = ''; if(BODY.style=='') BODY.removeAttribute('style');
-            // }
+            if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
+            {
 
-            // alert("A LITTLE TEST.. SORRY :P")
+                screen.lockOrientation('portrait');
+
+                // screen.addEventListener("orientationchange", function () {
+                //   console.log("The orientation of the screen is: " + screen.orientation);
+                // });
+
+                DOCU.style.height = window.screen.availHeight + 'px';
+                BODY.style.height = window.screen.availHeight + 'px';
+
+            }
+            else
+            {
+                DOCU.style.height = ''; if(DOCU.style=='') DOCU.removeAttribute('style');
+                BODY.style.height = ''; if(BODY.style=='') BODY.removeAttribute('style');
+            }
 
         }
 
@@ -12188,7 +12189,6 @@ const ui = (() => {
             tagcode();
             retagpre();
             lazyloader();
-            nomobar();
             modeapp();
             absolute();
             paginations();
@@ -12204,6 +12204,7 @@ const ui = (() => {
             audiobox();
             grid_y();
             grabs();
+            nomobar();
 
         },false);
 
