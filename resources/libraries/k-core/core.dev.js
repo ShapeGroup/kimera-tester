@@ -4109,10 +4109,16 @@ const ui = (() => {
                         max      = taginput.getAttribute('max');
 
                     // build the numbers into cage
-                    console.log(btn.querySelectorAll('.number-slider').length);
-                    (btn.querySelectorAll('.number-slider').length!=1)
-                        ?   btn.insertAdjacentHTML('beforeEnd','<div class="number-slider"></div>')
-                        :   btn.querySelectorAll('.number-slider').innerHTML=''
+
+                    if(btn.querySelectorAll('.number-slider').length<=0)
+                    {
+                        btn.insertAdjacentHTML('beforeEnd','<div class="number-slider"></div>')
+                    }
+                    else
+                    {
+                        btn.querySelectorAll('.number-slider')[0].innerHTML='';
+                        btn.insertAdjacentHTML('beforeEnd','<div class="number-slider"></div>')
+                    }
 
 
                     let slide = btn.querySelectorAll('.number-slider')[0];
