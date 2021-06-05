@@ -2421,7 +2421,7 @@ const ui = (() => {
             // 2 make dynamic
             //
 
-            console.log("V9");
+            console.log("V10");
             for (let slider of allsnapsliders)
             {
 
@@ -2507,7 +2507,7 @@ const ui = (() => {
                 if(isHorizontal && active.offsetLeft!=0)
                 {
                     dragbox.style.transform = (isblocks)
-                        ? 'translateX(-'+(snapsmainwrap.offsetLeft-active.offsetWidth/2)+'px)'
+                        ? 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
                         : 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
                 }
 
@@ -4109,8 +4109,12 @@ const ui = (() => {
                         max      = taginput.getAttribute('max');
 
                     // build the numbers into cage
+                    console.log(btn.querySelectorAll('.number-slider').length);
+                    (btn.querySelectorAll('.number-slider').length!=1)
+                        ?   btn.insertAdjacentHTML('beforeEnd','<div class="number-slider"></div>')
+                        :   btn.querySelectorAll('.number-slider').innerHTML=''
 
-                    btn.insertAdjacentHTML('beforeEnd','<div class="number-slider"></div>');
+
                     let slide = btn.querySelectorAll('.number-slider')[0];
 
                     for (let i = min; i <= max; i++) slide.insertAdjacentHTML('beforeEnd',`<span class="number-[`+i+`]"><small>`+i+`</small></span>`);
