@@ -12322,7 +12322,7 @@ const ui = (() => {
             else if(fn == 'stopwatch')      stopwatch();
 
 
-            else debug(`:: [⚠ ui alert]: wrong reload\n   ⮑ The name "`+fn+`" is not valid!\n      Read the wiki on: https://git.io/vldt456`\n      Actual valid names:`,["buttons","filereaders","passwords","starts","numbers","ranges","selects","dropsdown","clocks","checks","radios","datepikers","stopwatch","condingtag","absolute","checksize","scrollers","snaps","anchors","cards","paginations","tab-x","tab-y,"spoilers","videobox","audiobox","gridx-y","warning","outbox","parallax","autocrop","fitheight","fitup","flanges","grabs","effectors"]]);
+            else debug(`:: [⚠ ui alert]: wrong reload\n   ⮑ The name "`+fn+`" is not valid!\n      Read the wiki on: https://git.io/vldt456`\n      Actual valid names:`,["buttons","filereaders","passwords","starts","numbers","ranges","selects","dropsdown","clocks","checks","radios","datepikers","stopwatch","condingtag","absolute","checksize","scrollers","snaps","anchors","cards","paginations","tab-x","tab-y,"spoilers","videobox","audiobox","gridx-y","warning","outbox","parallax","autocrop","fitheight","fitup","flanges","grabs","effectors"]);
 
         }
 
