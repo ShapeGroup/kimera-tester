@@ -12286,7 +12286,6 @@ const ui = (() => {
             else if(fn == 'scrollers')      standardscroll();
             else if(fn == 'snaps')          snapscroll();
             else if(fn == 'anchors')        anchors();
-            else if(fn == 'buttons')        buttons();
             else if(fn == 'fileloader')     fileloader();
             else if(fn == 'cards')          expandercard();
             else if(fn == 'paginations')    paginations();
@@ -12305,8 +12304,26 @@ const ui = (() => {
             else if(fn == 'flanges')        flange();
             else if(fn == 'grabs')          grabs();
             else if(fn == 'effectors')      effectors();
-            else debug(`:: [⚠ ui alert]: wrong reload\n   ⮑ The name "`+fn+`" is not valid!\n      Actual valid names: https://git.io/vldt456`);
-            //condingtag, absolute, checksize, scrollers, snaps, anchors, cards, paginations, tab-x, tab-y, spoilers, videobox, audiobox, grid-y, buttons, warning, outbox, parallax, autocrop, fitheight, fitup, flanges, grabs, effectors
+
+            else if(fn == 'buttons')        buttons();
+
+            else if(fn == 'filereaders')    filereaders();
+
+            else if(fn == 'passwords')      passwords();
+            else if(fn == 'starts')         starts();
+            else if(fn == 'numbers')        numbers();
+            else if(fn == 'ranges')         ranges();
+            else if(fn == 'selects')        selects();
+            else if(fn == 'dropsdown')      dropsdown();
+            else if(fn == 'clocks')         clocks();
+            else if(fn == 'checks')         checks();
+            else if(fn == 'radios')         radios();
+            else if(fn == 'datepikers')     datepikers();
+            else if(fn == 'stopwatch')      stopwatch();
+
+
+            else debug(`:: [⚠ ui alert]: wrong reload\n   ⮑ The name "`+fn+`" is not valid!\n      Read the wiki on: https://git.io/vldt456`\n      Actual valid names:`,[["buttons"],["filereaders","passwords","starts","numbers","ranges","selects","dropsdown","clocks","checks","radios","datepikers","stopwatch"],["condingtag","absolute","checksize","scrollers","snaps","anchors","cards","paginations","tab-x","tab-y,"spoilers","videobox","audiobox","gridx-y","warning","outbox","parallax","autocrop","fitheight","fitup","flanges","grabs","effectors"]]);
+
         }
 
         return {
