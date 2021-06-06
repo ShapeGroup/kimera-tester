@@ -4,7 +4,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.beta - mod maremapp ] [gapkit project beta 0.0.8 ]
+        //	[ kimera framework V 2.8.X ]
         //	Credits: Alberto Marà & Shape group - All right reserved
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
