@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.28f3 --VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.28f4 --VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -2506,28 +2506,24 @@ const ui = (() => {
                 if(isHorizontal)
                 {
 
+                    console.log("isblocks",isblocks);
+
                     if(isblocks && active.offsetLeft==0 && allboxdims>=snapsmainwrap.offsetWidth )
                     {
-                            console.log("01");
+                        console.log("01");
+                        dragbox.style.transform = 'translateX(-'+(snapsmainwrap)+'px)';
                     }
                     else if(isblocks)
                     {
                         console.log("03");
+                        dragbox.style.transform = 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
                     }
                     else
                     {
                         console.log("01");
+                        dragbox.style.transform = 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
 
                     }
-
-                    dragbox.style.transform =     (isblocks && active.offsetLeft==0 && allboxdims>=snapsmainwrap.offsetWidth ) ? 'translateX(-'+(snapsmainwrap)+'px)'
-                                                : (isblocks) ? 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
-                                                : 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
-
-
-                    // dragbox.style.transform = (isblocks)
-                    //     ? 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
-                    //     : 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
 
                 }
 
