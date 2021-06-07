@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.28-f8a --VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.28-f8b - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -2566,13 +2566,11 @@ const ui = (() => {
                         if(is_touch_device())
                         {
                             start = (isHorizontal) ? ev_snapslider.touches[0].clientX : ev_snapslider.touches[0].clientY;
-                            console.log("TOUCH START:",start);
                             document.ontouchmove = snap_dragMove;
                         }
                         else
                         {
                             start = (isHorizontal) ? ev_snapslider.clientX : ev_snapslider.clientY;
-                            console.log("MOUSE START:",start);
                             document.onmousemove = snap_dragMove;
                         }
 
