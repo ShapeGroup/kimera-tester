@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.28-f8b - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.29 - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -11106,12 +11106,12 @@ const ui = (() => {
 
                         if(video.autoplay) playpause();
 
-                        if(starter) starter.addEventListener( 'click', ev_playvideo => { playpause(ev_playvideo) },false);
+                        if(starter) starter.addEventListener( 'click', ev_playvideo => { alert("starter") playpause(ev_playvideo) },false);
 
-                        if(play) play.addEventListener( 'click', ev_playvideo => { playpause(ev_playvideo) },false);
+                        if(play) play.addEventListener( 'click', ev_playvideo => { alert("play")  playpause(ev_playvideo) },false);
 
                         display.addEventListener( 'click', ev_playvideo => {
-
+                            alert("click all display!");
                             if(ev_playvideo.target === display)
                             {
 
@@ -11138,6 +11138,7 @@ const ui = (() => {
                         if(playprogress)
                         {
                             playprogress.addEventListener( 'click', ev_clickvideoprogress => {
+                                alert("click on bar!");
 
                                 let pointX = (ev_clickvideoprogress.pageX - getoffsetLeft(playprogress)),
                                 clickpercent = ~~((pointX/playprogress.offsetWidth) * 100 ),
@@ -11158,6 +11159,7 @@ const ui = (() => {
                         {
 
                             maximized.addEventListener( 'click',  ev_maximizedvideo => {
+                                alert("click all maximized!");
 
                                 ev_maximizedvideo.preventDefault();
                                 setfullscreen()
