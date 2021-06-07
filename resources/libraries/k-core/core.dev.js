@@ -11106,7 +11106,7 @@ const ui = (() => {
 
                         if(video.autoplay) playpause();
 
-                        if(starter) starter.addEventListener( 'click', ev_playvideo => { alert("starter") playpause(ev_playvideo) },false);
+                        if(starter) starter.addEventListener( 'click', ev_playvideo => { alert("starter"); playpause(ev_playvideo); },false);
 
                         if(play) play.addEventListener( 'click', ev_playvideo => { alert("play")  playpause(ev_playvideo) },false);
 
