@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.28e --VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.28f2 --VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -2506,29 +2506,15 @@ const ui = (() => {
                 if(isHorizontal && active.offsetLeft!=0)
                 {
 
-                    let startonleft = 0;
+                    dragbox.style.transform =     (isblocks && active.offsetLeft==0 && allboxdims>=snapsmainwrap.offsetWidth ) ? 'translateX(-'+(snapsmainwrap)+'px)'
+                                                : (isblocks) ? 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
+                                                : 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
 
-                    if(isblocks)
-                    {
-                        if( active.offsetLeft==0 &&  allboxdims>= snapsmainwrap.offsetWidth )
-                        {
-                            startonleft = 'translateX(-'+(snapsmainwrap)+'px)';
-                        }
-                        else
-                        {
-                            startonleft = 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)';
-                        }
-                    }
-                    else
-                    {
-                        startonleft = v
-                    }
-
-                    dragbox.style.transform = startonleft;
 
                     // dragbox.style.transform = (isblocks)
                     //     ? 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
                     //     : 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
+
                 }
 
                 else if(!isHorizontal && active.offsetTop!=0)
