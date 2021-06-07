@@ -2503,7 +2503,7 @@ const ui = (() => {
 
 
                 // start to initial position
-                if(isHorizontal && active.offsetLeft!=0)
+                if(isHorizontal)
                 {
 
                     if(isblocks && active.offsetLeft==0 && allboxdims>=snapsmainwrap.offsetWidth )
