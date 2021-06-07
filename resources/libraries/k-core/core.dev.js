@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.29d1 - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.29d3 - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -10886,202 +10886,45 @@ const ui = (() => {
                     power = volume.firstElementChild;
 
                 }
+                setTimeout(()=>{
 
-                video.onloadeddata = ev_videoready => {
+                    video.onloadeddata = ev_videoready => {
 
-                    console.log("VIDEO CAN PLAY");
+                        console.log("VIDEO CAN PLAY");
 
-                    // on buffering start...
+                        // on buffering start...
 
-                    let videodatastart = () =>
-                    {
-
-                        window.clearInterval(checkbuffer);
-
-                        //// Print load progress
-
-                        if(streamprogress)
+                        let videodatastart = () =>
                         {
 
-                            let bufferedSeconds = (video.buffered.end(0) - video.buffered.start(0)),
-                                buffering = setInterval( () =>{
-                                    let loadpercent = ~~((bufferedSeconds / video.duration) * 100);
-                                    if(loadpercent>=99 || bufferedSeconds==video.duration)
-                                    {
-                                        streamprogress.className = 'progress-[100]';
-                                        window.clearInterval(buffering);
-                                    }
-                                    else
-                                    {
-                                        streamprogress.className = 'progress-['+((loadpercent<10)?'0'+loadpercent:''+loadpercent)+']'
-                                    }
-                                },250);
+                            window.clearInterval(checkbuffer);
 
-                        }
+                            //// Print load progress
 
-
-                        //// when video end
-
-                        video.onended = ev_endedvideo =>
-                        {
-
-                            if(play)
+                            if(streamprogress)
                             {
-                                play.classList.add('[status-off]');
-                                play.classList.remove('[status-active]');
+
+                                let bufferedSeconds = (video.buffered.end(0) - video.buffered.start(0)),
+                                    buffering = setInterval( () =>{
+                                        let loadpercent = ~~((bufferedSeconds / video.duration) * 100);
+                                        if(loadpercent>=99 || bufferedSeconds==video.duration)
+                                        {
+                                            streamprogress.className = 'progress-[100]';
+                                            window.clearInterval(buffering);
+                                        }
+                                        else
+                                        {
+                                            streamprogress.className = 'progress-['+((loadpercent<10)?'0'+loadpercent:''+loadpercent)+']'
+                                        }
+                                    },250);
+
                             }
 
 
-                            if(loop)
+                            //// when video end
+
+                            video.onended = ev_endedvideo =>
                             {
-                                if(!loop.className.includes('status-active'))
-                                {
-                                    videobox.classList.add('[display-active]');
-                                    videobox.classList.remove('[display-off]');
-                                }
-                            }
-                            else
-                            {
-                                videobox.classList.add('[display-active]');
-                                videobox.classList.remove('[display-off]');
-                            }
-
-                        };
-
-
-                        //// when time is readable
-
-                        if(timelabel)
-                        {
-                            timelabel.innerText = '--:--:--'+'/'+videotimeformat(video.duration);
-                        }
-
-
-                        //// when touch volume
-
-                        if(volume)
-                        {
-
-                            function fromWidthToPercent (e,x)
-                            {
-                                return ~~(x / e.offsetWidth * 100)
-                            }
-
-                            volume.addEventListener( 'click', ev_video_powerclick => {
-
-                                if(ev_video_powerclick.target!=power)
-                                {
-                                    if( !video.muted )
-                                    {
-                                        video.muted = true;
-                                        volume.classList.add('[status-off]');
-                                        volume.classList.remove('[status-active]');
-                                    }
-                                    else
-                                    {
-                                        video.muted = false;
-                                        volume.classList.add('[status-active]');
-                                        volume.classList.remove('[status-off]');
-                                    }
-                                }
-                                else
-                                {
-                                    let percent = fromWidthToPercent(power, ( is_touch_device() ? ev_video_powerclick.touches[0].pageX : ev_video_powerclick.pageX )-getoffsetLeft(power) );
-                                    power.className = 'progress-['+((percent<10) ? '0'+percent:percent)+']';
-
-                                    video.volume = parseInt(percent)/100;
-
-                                    if( video.volume<=0.10 )
-                                    {
-                                        video.muted = true;
-                                        power.className = 'progress-[00]';
-                                        volume.classList.add('[status-off]');
-                                        volume.classList.remove('[status-active]');
-                                    }
-                                    else
-                                    {
-                                        video.muted = false;
-                                        video.removeAttribute('muted')
-                                        volume.classList.add('[status-active]');
-                                        volume.classList.remove('[status-off]');
-                                    }
-                                }
-
-                                ev_audio_mutedclick=null;
-
-                            }, true );
-
-                        }
-
-
-                        //// loop asset
-                        if(loop)
-                        {
-
-                            loop.addEventListener( 'click', ev_loopvideo => {
-
-                                if(!video.loop)
-                                {
-
-                                    video.loop=true;
-                                    loop.classList.add('[status-active]');
-                                    loop.classList.remove('[status-off]');
-
-                                }
-
-                                else
-                                {
-
-                                    video.loop=false;
-                                    loop.classList.add('[status-off]');
-                                    loop.classList.remove('[status-active]');
-
-                                }
-
-                            }, false );
-
-                        }
-
-
-                        //// play pause asset
-
-                        let playpause = () =>
-                        {
-
-                            var checkvals;
-
-                            function playvideo()
-                            {
-
-                                videobox.classList.remove('[display-active]');
-                                videobox.classList.add('[display-off]');
-
-                                checkvals = setInterval(()=>{
-                                    timelabel.innerText = videotimeformat(video.currentTime)+'/'+videotimeformat(video.duration);
-                                    let loadpercent = ~~((video.currentTime / video.duration) * 100);
-                                    playprogress.className = 'progress-['+((loadpercent<10)?'0'+loadpercent:''+loadpercent)+']'
-                                },100);
-
-                                if(play)
-                                {
-                                    play.classList.add('[status-active]');
-                                    play.classList.remove('[status-off]');
-                                }
-
-                                if(starter)
-                                {
-                                    starter.classList.add('[status-active]');
-                                    starter.classList.remove('[status-off]');
-                                }
-
-                                video.play();
-
-                            }
-                            function pausevideo()
-                            {
-
-                                videobox.classList.add('[display-active]');
-                                videobox.classList.remove('[display-off]');
 
                                 if(play)
                                 {
@@ -11089,205 +10932,312 @@ const ui = (() => {
                                     play.classList.remove('[status-active]');
                                 }
 
-                                if(starter)
+
+                                if(loop)
                                 {
-                                    starter.classList.add('[status-off]');
-                                    starter.classList.remove('[status-active]');
-                                }
-
-                                window.clearInterval(checkvals);
-
-                                video.pause();
-
-                            }
-
-                            (video.paused || video.ended) ? playvideo() : pausevideo();
-
-                        }
-
-                        if(video.autoplay) playpause();
-
-                        if(starter) starter.addEventListener( 'click', ev_playvideo => { alert("starter"); playpause(ev_playvideo); },true);
-
-                        if(play) play.addEventListener( 'click', ev_playvideo => { alert("play");  playpause(ev_playvideo); },true);
-
-                        display.addEventListener( 'click', ev_playvideo => {
-                            alert("click all display!");
-                            if(ev_playvideo.target === display)
-                            {
-
-                                playpause(ev_playvideo)
-
-                                if( display.className.includes('-active') )
-                                {
-                                    display.classList.add('[status-off]');
-                                    display.classList.remove('[status-active]');
+                                    if(!loop.className.includes('status-active'))
+                                    {
+                                        videobox.classList.add('[display-active]');
+                                        videobox.classList.remove('[display-off]');
+                                    }
                                 }
                                 else
                                 {
-                                    display.classList.remove('[status-off]');
-                                    display.classList.add('[status-active]');
+                                    videobox.classList.add('[display-active]');
+                                    videobox.classList.remove('[display-off]');
                                 }
 
-                            }
-
-                        },false);
+                            };
 
 
-                        //// change play time on click
+                            //// when time is readable
 
-                        if(playprogress)
-                        {
-                            playprogress.addEventListener( 'click', ev_clickvideoprogress => {
-                                alert("click on bar!");
-
-                                let pointX = (ev_clickvideoprogress.pageX - getoffsetLeft(playprogress)),
-                                clickpercent = ~~((pointX/playprogress.offsetWidth) * 100 ),
-                                timefrompercent = ((clickpercent * video.duration) / 100).toFixed(6);
-
-                                playprogress.className = 'progress-['+((clickpercent<10)?'0'+clickpercent:''+clickpercent)+']'
-
-                                timelabel.innerText = videotimeformat(timefrompercent)+'/'+videotimeformat(video.duration);
-                                video.currentTime = timefrompercent;
-
-                            },false);
-                        }
-
-
-
-                        //// change fullscreen
-                        if(maximized)
-                        {
-
-                            maximized.addEventListener( 'click',  ev_maximizedvideo => {
-                                alert("click all maximized!");
-
-                                ev_maximizedvideo.preventDefault();
-                                setfullscreen()
-
-                            },false);
-
-
-                            function setfullscreen()
+                            if(timelabel)
                             {
-                                if( videobox.className.includes('[cinemode]') ) setcinemode_off();
-                                setTimeout(()=>{
-                                    (videobox.className.includes('[fullscreen]')) ? setfullscreen_off() : setfullscreen_on();
-                                },300);
+                                timelabel.innerText = '--:--:--'+'/'+videotimeformat(video.duration);
                             }
-                            function setfullscreen_off()
+
+
+                            //// when touch volume
+
+                            if(volume)
                             {
-                                document.exitFullscreen();
-                                setTimeout(()=>{
-                                    videobox.classList.remove('[fullscreen]');
-                                },300);
-                            }
-                            function setfullscreen_on()
-                            {
-                                videobox.classList.add('[fullscreen]');
-                                     if (videobox.requestFullscreen) { videobox.requestFullscreen(); }
-                                else if (videobox.msRequestFullscreen) { videobox.msRequestFullscreen(); }
-                                else if (videobox.webkitRequestFullScreen) { videobox.webkitRequestFullScreen(); }
-                            }
 
+                                function fromWidthToPercent (e,x)
+                                {
+                                    return ~~(x / e.offsetWidth * 100)
+                                }
 
-                            videobox.addEventListener('fullscreenchange',
-                            () => {
+                                volume.addEventListener( 'click', ev_video_powerclick => {
 
-                                setTimeout(()=>{
-
-                                    if( videobox.className.includes('[fullscreen]') )
+                                    if(ev_video_powerclick.target!=power)
                                     {
-                                        maximized.classList.add('[status-active]');
-                                        maximized.classList.remove('[status-off]');
+                                        if( !video.muted )
+                                        {
+                                            video.muted = true;
+                                            volume.classList.add('[status-off]');
+                                            volume.classList.remove('[status-active]');
+                                        }
+                                        else
+                                        {
+                                            video.muted = false;
+                                            volume.classList.add('[status-active]');
+                                            volume.classList.remove('[status-off]');
+                                        }
                                     }
                                     else
                                     {
-                                        maximized.classList.add('[status-off]')
-                                        maximized.classList.remove('[status-active]')
+                                        let percent = fromWidthToPercent(power, ( is_touch_device() ? ev_video_powerclick.touches[0].pageX : ev_video_powerclick.pageX )-getoffsetLeft(power) );
+                                        power.className = 'progress-['+((percent<10) ? '0'+percent:percent)+']';
+
+                                        video.volume = parseInt(percent)/100;
+
+                                        if( video.volume<=0.10 )
+                                        {
+                                            video.muted = true;
+                                            power.className = 'progress-[00]';
+                                            volume.classList.add('[status-off]');
+                                            volume.classList.remove('[status-active]');
+                                        }
+                                        else
+                                        {
+                                            video.muted = false;
+                                            video.removeAttribute('muted')
+                                            volume.classList.add('[status-active]');
+                                            volume.classList.remove('[status-off]');
+                                        }
                                     }
 
-                                },500)
+                                    ev_audio_mutedclick=null;
 
-                            },true);
+                                }, true );
 
-
-                        }
-
+                            }
 
 
-                        //// change cinemode
-                        if(cinema)
-                        {
+                            //// loop asset
+                            if(loop)
+                            {
 
-                            cinema.addEventListener( 'click', ev_cinemavideo => {
+                                loop.addEventListener( 'click', ev_loopvideo => {
 
-                                ev_cinemavideo.preventDefault();
-                                setcinemode();
+                                    if(!video.loop)
+                                    {
+
+                                        video.loop=true;
+                                        loop.classList.add('[status-active]');
+                                        loop.classList.remove('[status-off]');
+
+                                    }
+
+                                    else
+                                    {
+
+                                        video.loop=false;
+                                        loop.classList.add('[status-off]');
+                                        loop.classList.remove('[status-active]');
+
+                                    }
+
+                                }, false );
+
+                            }
+
+
+                            //// play pause asset
+
+                            let playpause = () =>
+                            {
+
+                                var checkvals;
+
+                                function playvideo()
+                                {
+
+                                    videobox.classList.remove('[display-active]');
+                                    videobox.classList.add('[display-off]');
+
+                                    checkvals = setInterval(()=>{
+                                        timelabel.innerText = videotimeformat(video.currentTime)+'/'+videotimeformat(video.duration);
+                                        let loadpercent = ~~((video.currentTime / video.duration) * 100);
+                                        playprogress.className = 'progress-['+((loadpercent<10)?'0'+loadpercent:''+loadpercent)+']'
+                                    },100);
+
+                                    if(play)
+                                    {
+                                        play.classList.add('[status-active]');
+                                        play.classList.remove('[status-off]');
+                                    }
+
+                                    if(starter)
+                                    {
+                                        starter.classList.add('[status-active]');
+                                        starter.classList.remove('[status-off]');
+                                    }
+
+                                    video.play();
+
+                                }
+                                function pausevideo()
+                                {
+
+                                    videobox.classList.add('[display-active]');
+                                    videobox.classList.remove('[display-off]');
+
+                                    if(play)
+                                    {
+                                        play.classList.add('[status-off]');
+                                        play.classList.remove('[status-active]');
+                                    }
+
+                                    if(starter)
+                                    {
+                                        starter.classList.add('[status-off]');
+                                        starter.classList.remove('[status-active]');
+                                    }
+
+                                    window.clearInterval(checkvals);
+
+                                    video.pause();
+
+                                }
+
+                                (video.paused || video.ended) ? playvideo() : pausevideo();
+
+                            }
+
+                            if(video.autoplay) playpause();
+
+                            if(starter) starter.addEventListener( 'click', ev_playvideo => { alert("starter"); playpause(ev_playvideo); },true);
+
+                            if(play) play.addEventListener( 'click', ev_playvideo => { alert("play");  playpause(ev_playvideo); },true);
+
+                            display.addEventListener( 'click', ev_playvideo => {
+                                alert("click all display!");
+                                if(ev_playvideo.target === display)
+                                {
+
+                                    playpause(ev_playvideo)
+
+                                    if( display.className.includes('-active') )
+                                    {
+                                        display.classList.add('[status-off]');
+                                        display.classList.remove('[status-active]');
+                                    }
+                                    else
+                                    {
+                                        display.classList.remove('[status-off]');
+                                        display.classList.add('[status-active]');
+                                    }
+
+                                }
 
                             },false);
 
-                            function setcinemode()
+
+                            //// change play time on click
+
+                            if(playprogress)
                             {
-                                if( videobox.className.includes('[fullscreen]') ) setfullscreen_off();
-                                setTimeout(()=>{
-                                    (videobox.className.includes('[cinemode]')) ?  setcinemode_off() : setcinemode_on();
-                                },300);
+                                playprogress.addEventListener( 'click', ev_clickvideoprogress => {
+                                    alert("click on bar!");
+
+                                    let pointX = (ev_clickvideoprogress.pageX - getoffsetLeft(playprogress)),
+                                    clickpercent = ~~((pointX/playprogress.offsetWidth) * 100 ),
+                                    timefrompercent = ((clickpercent * video.duration) / 100).toFixed(6);
+
+                                    playprogress.className = 'progress-['+((clickpercent<10)?'0'+clickpercent:''+clickpercent)+']'
+
+                                    timelabel.innerText = videotimeformat(timefrompercent)+'/'+videotimeformat(video.duration);
+                                    video.currentTime = timefrompercent;
+
+                                },false);
                             }
 
-                            function setcinemode_on()
+
+
+                            //// change fullscreen
+                            if(maximized)
                             {
 
-                                videobox.scrollIntoView({
-                                    behavior: "smooth",
-                                    block: "center",
-                                    inline: "center"
-                                });
+                                maximized.addEventListener( 'click',  ev_maximizedvideo => {
+                                    alert("click all maximized!");
 
-                                setTimeout(()=>{
-                                    videobox.style.width = video.offsetWidth+'px';
-                                    videobox.style.height = video.offsetHeight+'px';
-                                    videobox.style.padding = '0px';
+                                    ev_maximizedvideo.preventDefault();
+                                    setfullscreen()
+
+                                },false);
 
 
-                                    cinebox.classList.add('[status---]');
+                                function setfullscreen()
+                                {
+                                    if( videobox.className.includes('[cinemode]') ) setcinemode_off();
+                                    setTimeout(()=>{
+                                        (videobox.className.includes('[fullscreen]')) ? setfullscreen_off() : setfullscreen_on();
+                                    },300);
+                                }
+                                function setfullscreen_off()
+                                {
+                                    document.exitFullscreen();
+                                    setTimeout(()=>{
+                                        videobox.classList.remove('[fullscreen]');
+                                    },300);
+                                }
+                                function setfullscreen_on()
+                                {
+                                    videobox.classList.add('[fullscreen]');
+                                         if (videobox.requestFullscreen) { videobox.requestFullscreen(); }
+                                    else if (videobox.msRequestFullscreen) { videobox.msRequestFullscreen(); }
+                                    else if (videobox.webkitRequestFullScreen) { videobox.webkitRequestFullScreen(); }
+                                }
 
-                                    cinema.classList.add('[status-active]');
-                                    cinema.classList.remove('[status-off]');
+
+                                videobox.addEventListener('fullscreenchange',
+                                () => {
 
                                     setTimeout(()=>{
 
-                                        videobox.classList.add('[cinemode]');
+                                        if( videobox.className.includes('[fullscreen]') )
+                                        {
+                                            maximized.classList.add('[status-active]');
+                                            maximized.classList.remove('[status-off]');
+                                        }
+                                        else
+                                        {
+                                            maximized.classList.add('[status-off]')
+                                            maximized.classList.remove('[status-active]')
+                                        }
 
-                                        videobox.insertAdjacentHTML('afterend', `<div style="height:`+video.offsetHeight+`px;"></div>`);
+                                    },500)
 
-                                        cinebox.classList.add('[status-active]');
-                                        cinebox.classList.remove('[status-off]');
+                                },true);
 
-                                    },200);
 
-                                },200);
                             }
 
-                            function setcinemode_off()
+
+
+                            //// change cinemode
+                            if(cinema)
                             {
 
+                                cinema.addEventListener( 'click', ev_cinemavideo => {
 
-                                cinema.classList.add('[status-off]');
-                                cinema.classList.remove('[status-active]');
+                                    ev_cinemavideo.preventDefault();
+                                    setcinemode();
 
-                                cinebox.classList.add('[status-off]');
-                                cinebox.classList.remove('[status-active]');
+                                },false);
 
-                                setTimeout(()=>{
+                                function setcinemode()
+                                {
+                                    if( videobox.className.includes('[fullscreen]') ) setfullscreen_off();
+                                    setTimeout(()=>{
+                                        (videobox.className.includes('[cinemode]')) ?  setcinemode_off() : setcinemode_on();
+                                    },300);
+                                }
 
-                                    videobox.classList.remove('[cinemode]');
-
-                                    videobox.nextElementSibling.remove();
-                                    videobox.style.width = '';
-                                    videobox.style.height = '';
-                                    videobox.style.padding = '';
-                                    if(videobox.style==''){videobox.removeAttribute('style')}
+                                function setcinemode_on()
+                                {
 
                                     videobox.scrollIntoView({
                                         behavior: "smooth",
@@ -11295,26 +11245,79 @@ const ui = (() => {
                                         inline: "center"
                                     });
 
-                                },300)
+                                    setTimeout(()=>{
+                                        videobox.style.width = video.offsetWidth+'px';
+                                        videobox.style.height = video.offsetHeight+'px';
+                                        videobox.style.padding = '0px';
 
-                                setTimeout(()=>{
+
+                                        cinebox.classList.add('[status---]');
+
+                                        cinema.classList.add('[status-active]');
+                                        cinema.classList.remove('[status-off]');
+
+                                        setTimeout(()=>{
+
+                                            videobox.classList.add('[cinemode]');
+
+                                            videobox.insertAdjacentHTML('afterend', `<div style="height:`+video.offsetHeight+`px;"></div>`);
+
+                                            cinebox.classList.add('[status-active]');
+                                            cinebox.classList.remove('[status-off]');
+
+                                        },200);
+
+                                    },200);
+                                }
+
+                                function setcinemode_off()
+                                {
+
+
+                                    cinema.classList.add('[status-off]');
+                                    cinema.classList.remove('[status-active]');
+
+                                    cinebox.classList.add('[status-off]');
                                     cinebox.classList.remove('[status-active]');
-                                    cinebox.classList.remove('[status-off]');
-                                    cinebox.classList.remove('[status---]');
-                                },500)
+
+                                    setTimeout(()=>{
+
+                                        videobox.classList.remove('[cinemode]');
+
+                                        videobox.nextElementSibling.remove();
+                                        videobox.style.width = '';
+                                        videobox.style.height = '';
+                                        videobox.style.padding = '';
+                                        if(videobox.style==''){videobox.removeAttribute('style')}
+
+                                        videobox.scrollIntoView({
+                                            behavior: "smooth",
+                                            block: "center",
+                                            inline: "center"
+                                        });
+
+                                    },300)
+
+                                    setTimeout(()=>{
+                                        cinebox.classList.remove('[status-active]');
+                                        cinebox.classList.remove('[status-off]');
+                                        cinebox.classList.remove('[status---]');
+                                    },500)
+
+                                }
 
                             }
+
 
                         }
 
 
+                        let checkbuffer = setInterval( () =>{ if (video.buffered.length !== 0) videodatastart(); },500);
+
+
                     }
 
-
-                    let checkbuffer = setInterval( () =>{ if (video.buffered.length !== 0) videodatastart(); },500);
-
-
-                }
+                },300)
 
             }
 
