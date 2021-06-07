@@ -2594,7 +2594,6 @@ const ui = (() => {
                             : ev_snapslider.clientY-start;
                     }
 
-                    console.log("DIR: ",dir);
 
                     // Update active class in runtime dragging (actual)
 
@@ -2708,9 +2707,6 @@ const ui = (() => {
 
                     }
 
-                    console.log("dat snap - for maximum:",allboxdims,maximum,' ... form min: ',isblocks,minimum,snapsmainwrap.offsetLeft,snapsmainwrap.offsetWidth);
-
-
                     if(actualposition<=minimum)
                     {
                         dragbox.classList.add('smooth');
@@ -2735,6 +2731,7 @@ const ui = (() => {
 
                     document.ontouchend = snap_dragEnd;
                     document.onmouseup = snap_dragEnd;
+                    dragbox.onclick = snap_dragEnd;
 
 
                 }
