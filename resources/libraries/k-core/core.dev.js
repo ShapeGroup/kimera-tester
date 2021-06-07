@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.29c - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.29d - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -10887,8 +10887,9 @@ const ui = (() => {
 
                 }
 
-                video.oncanplay = ev_videoready => {
+                video.onloadeddata = ev_videoready => {
 
+                    console.log("VIDEO CAN PLAY");
 
                     // on buffering start...
 
@@ -11106,9 +11107,9 @@ const ui = (() => {
 
                         if(video.autoplay) playpause();
 
-                        if(starter) starter.addEventListener( 'click', ev_playvideo => { alert("starter"); playpause(ev_playvideo); },false);
+                        if(starter) starter.addEventListener( 'click', ev_playvideo => { alert("starter"); playpause(ev_playvideo); },true);
 
-                        if(play) play.addEventListener( 'click', ev_playvideo => { alert("play");  playpause(ev_playvideo); },false);
+                        if(play) play.addEventListener( 'click', ev_playvideo => { alert("play");  playpause(ev_playvideo); },true);
 
                         display.addEventListener( 'click', ev_playvideo => {
                             alert("click all display!");
