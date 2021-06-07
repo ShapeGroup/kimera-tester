@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.28f6 --VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.28f7 --VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -2511,7 +2511,7 @@ const ui = (() => {
                     if(isblocks && active.offsetLeft==0 && allboxdims>=snapsmainwrap.offsetWidth )
                     {
                         console.log("01",snapsmainwrap);
-                        dragbox.style.transform = 'translateX(-'+snapsmainwrap+'px)';
+                        dragbox.style.transform = 'translateX(-'+allboxdims+'px)';
                     }
                     else if(isblocks)
                     {
