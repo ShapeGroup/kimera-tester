@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.29f1 - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.29f2 - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -10813,7 +10813,7 @@ const ui = (() => {
 
                 //// set for start
 
-                video.muted; // anti safari "block content with audio"
+                video.setAttribute('muted',true); // anti safari "block content with audio"
 
                 if(video.autoplay)
                 {
