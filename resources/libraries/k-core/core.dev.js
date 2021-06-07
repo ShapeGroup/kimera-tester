@@ -2506,21 +2506,9 @@ const ui = (() => {
                 if(isHorizontal)
                 {
 
-                    console.log("isblocks",isblocks);
-
-                    if(isblocks && active.offsetLeft==0 && allboxdims>=snapsmainwrap.offsetWidth )
-                    {
-                        dragbox.style.transform = 'translateX(-'+slider.offsetWidth/2+'px)';
-                    }
-                    else if(isblocks)
-                    {
-                        dragbox.style.transform = 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
-                    }
-                    else
-                    {
-                        dragbox.style.transform = 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
-
-                    }
+                    if(isblocks && active.offsetLeft==0 && allboxdims>=snapsmainwrap.offsetWidth ) dragbox.style.transform = 'translateX(-'+slider.offsetWidth/2+'px)';
+                    else if(isblocks)                                                              dragbox.style.transform = 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
+                    else                                                                           dragbox.style.transform = 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
 
                 }
 
