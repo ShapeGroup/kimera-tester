@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.28-A kimera - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.28c --VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -2421,7 +2421,6 @@ const ui = (() => {
             // 2 make dynamic
             //
 
-            console.log("V10");
             for (let slider of allsnapsliders)
             {
 
