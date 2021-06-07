@@ -2506,6 +2506,20 @@ const ui = (() => {
                 if(isHorizontal && active.offsetLeft!=0)
                 {
 
+                    if(isblocks && active.offsetLeft==0 && allboxdims>=snapsmainwrap.offsetWidth )
+                    {
+                            console.log("01");
+                    }
+                    else if(isblocks)
+                    {
+                        console.log("03");
+                    }
+                    else
+                    {
+                        console.log("01");
+
+                    }
+
                     dragbox.style.transform =     (isblocks && active.offsetLeft==0 && allboxdims>=snapsmainwrap.offsetWidth ) ? 'translateX(-'+(snapsmainwrap)+'px)'
                                                 : (isblocks) ? 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
                                                 : 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
