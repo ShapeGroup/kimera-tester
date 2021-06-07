@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.29a - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.29c - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -11108,7 +11108,7 @@ const ui = (() => {
 
                         if(starter) starter.addEventListener( 'click', ev_playvideo => { alert("starter"); playpause(ev_playvideo); },false);
 
-                        if(play) play.addEventListener( 'click', ev_playvideo => { alert("play")  playpause(ev_playvideo) },false);
+                        if(play) play.addEventListener( 'click', ev_playvideo => { alert("play");  playpause(ev_playvideo); },false);
 
                         display.addEventListener( 'click', ev_playvideo => {
                             alert("click all display!");
