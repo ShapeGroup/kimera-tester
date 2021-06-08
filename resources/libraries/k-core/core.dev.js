@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.29f2 - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.29f3 - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -10888,14 +10888,28 @@ const ui = (() => {
 
                 }
 
-                video.addEventListener('loadedmetadata', ev_videoready => {
+                video.addEventListener('canplaythrough', ev_videoready => {
 
                     // on buffering start...
 
+
+                    var checkbuffer = setInterval( () =>{
+
+                        if(video.buffered.length !== 0)
+                        {
+                            videodatastart()
+                        }
+                        else
+                        {
+                            window.clearInterval(checkbuffer);
+                            checkbuffer = null;
+                        }
+
+                    },500);
+
+
                     let videodatastart = () =>
                     {
-
-                        window.clearInterval(checkbuffer);
 
                         //// Print load progress
 
@@ -11313,7 +11327,6 @@ const ui = (() => {
                     }
 
 
-                    let checkbuffer = setInterval( () =>{ if (video.buffered.length !== 0) videodatastart(); },500);
 
 
                 }, false);
