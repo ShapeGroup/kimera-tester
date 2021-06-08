@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.29h1 - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.29l - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -152,10 +152,13 @@ const ui = (() => {
 
         // micro-libs // safari suck
 
-        let videostag = document.querySelectorAll('video');
-        (()={
+        document.addEventListener('DOMContentLoaded',
+        () => {ù
 
-            for(let v of videostag) {
+            let videostag = document.getElementsByTagName('video');
+
+            for(let v of videostag)
+            {
 
                 if(!v.getAttribute('playsinline') ) {
                     debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari need a playsinline attribute on all videos. We will apply it for you.`);
@@ -173,7 +176,7 @@ const ui = (() => {
 
             }
 
-        })
+        },false);
 
 
     //--------------------------------------------------//
