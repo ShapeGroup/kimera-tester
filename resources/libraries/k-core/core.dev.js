@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.30d - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.30e - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -10639,10 +10639,7 @@ const ui = (() => {
 
                         play.addEventListener( 'click', ev_audio_playclick => {
 
-                            if(audio.muted!=null)
-                            {
-                                if(audio.muted!=false && audio.volume<=0) audio.volume=1;
-                            }
+                            if(audio.muted && audio.volume<=0) audio.volume=1;
 
                             audio.removeAttribute('muted');
 
