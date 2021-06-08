@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.29f4 - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.29g - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -10888,7 +10888,8 @@ const ui = (() => {
 
                 }
 
-                video.addEventListener('canplaythrough', ev_videoready => {
+                video.addEventListener('canplaythrough', ev_videoready =>
+                {
 
                     // on buffering start...
 
@@ -10898,9 +10899,6 @@ const ui = (() => {
                         if(video.buffered.length !== 0)
                         {
                             videodatastart()
-                        }
-                        else
-                        {
                             window.clearInterval(checkbuffer);
                             checkbuffer = null;
                         }
@@ -11123,12 +11121,12 @@ const ui = (() => {
 
                         if(video.autoplay) playpause();
 
-                        if(starter) starter.addEventListener( 'click', ev_playvideo => { alert("starter"); playpause(ev_playvideo); },true);
+                        if(starter) starter.addEventListener( 'click', ev_playvideo => {  playpause(ev_playvideo); },false);
 
-                        if(play) play.addEventListener( 'click', ev_playvideo => { alert("play");  playpause(ev_playvideo); },true);
+                        if(play) play.addEventListener( 'click', ev_playvideo => {  playpause(ev_playvideo); },false);
 
                         display.addEventListener( 'click', ev_playvideo => {
-                            alert("click all display!");
+
                             if(ev_playvideo.target === display)
                             {
 
