@@ -10641,7 +10641,7 @@ const ui = (() => {
 
                             if(audio.muted!=null)
                             {
-                                if(audio.muted==muted && audio.volume<=0) audio.volume=1;
+                                if(audio.muted!=false && audio.volume<=0) audio.volume=1;
                             }
 
                             audio.removeAttribute('muted');
