@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.29h3 - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.29h5 - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -161,13 +161,11 @@ const ui = (() => {
             {
 
                 if(!v.getAttribute('playsinline') || !v.getAttribute('muted') || v.muted != false) {
-                    debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari need a playsinline and muted attribute on all videos. We will apply it for you.`);
-                    v.setAttribute('playsinline',true);
-                    v.setAttribute('muted',true);
+                    debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari "need playsinline" and "muted" attribute on all videos. Note: It's not possible to add dynamically via script.`, v);
                 }
 
                 if(v.src) { if(!v.src.includes('http') && !v.src.includes('https')) {
-                    debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari doesn't like relative aurochs on videos. The video may not start.`);
+                    debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari doesn't like relative aurochs on videos. Video may not start.`, v);
                 }}
 
             }
