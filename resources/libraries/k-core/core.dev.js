@@ -10645,7 +10645,7 @@ const ui = (() => {
                                 isfirstplay=false;
                                 console.log("VOLUME UPP!");
                                 audio.removeAttribute("muted");
-                                if(audio.volume==0) audio.volume=1;
+                                if(!audio.volume || audio.volume==0) audio.volume = 1.0;
                             }
 
                             updateRuntime();
