@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.29h5b - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.29h5c - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -159,8 +159,10 @@ const ui = (() => {
 
             for(let v of videostag)
             {
+
                 alert(v.getAttribute('playsinline'))
-                if( v.getAttribute('playsinline') == undefined || v.getAttribute('muted') == undefined ) {
+
+                if( v.getAttribute('playsinline') == null || v.getAttribute('muted') == null ) {
                     debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari "need playsinline" and "muted" attribute on all videos. Note: It's not possible to add dynamically via script.`, v);
                 }
 
