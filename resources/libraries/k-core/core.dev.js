@@ -160,8 +160,6 @@ const ui = (() => {
             for(let v of videostag)
             {
 
-                alert(v.getAttribute('playsinline'))
-
                 if( v.getAttribute('playsinline') == null || v.getAttribute('muted') == null ) {
                     debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari "need playsinline" and "muted" attribute on all videos. Note: It's not possible to add dynamically via script.`, v);
                 }
