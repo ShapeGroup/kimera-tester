@@ -10547,7 +10547,7 @@ const ui = (() => {
                     volumeIcon,
                     power;
 
-                audio.muted=true;
+                audio.mute=true;
 
                 audio.load();
 
@@ -10639,9 +10639,9 @@ const ui = (() => {
 
                         play.addEventListener( 'click', ev_audio_playclick => {
 
-                            if(audio.muted==muted && audio.volume<=0) audio.volume=1;
+                            if(audio.mute==muted && audio.volume<=0) audio.volume=1;
 
-                            audio.removeAttribute('muted');
+                            audio.removeAttribute('mute');
 
                             updateRuntime();
 
