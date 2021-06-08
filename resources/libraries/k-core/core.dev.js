@@ -153,25 +153,27 @@ const ui = (() => {
         // micro-libs // safari suck
 
         let videostag = document.querySelectorAll('video');
+        (()={
 
-        for(let v of videostag) {
+            for(let v of videostag) {
 
-            if(!v.getAttribute('playsinline') ) {
-                debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari need a playsinline attribute on all videos. We will apply it for you.`);
-                v.setAttribute('playsinline');
+                if(!v.getAttribute('playsinline') ) {
+                    debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari need a playsinline attribute on all videos. We will apply it for you.`);
+                    v.setAttribute('playsinline');
+                }
+
+                if(!v.getAttribute('muted') || v.muted != false ) {
+                    debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari need a muted attribute true in true position on all videos. We will apply it for you.`);
+                    v.setAttribute('muted',true);
+                }
+
+                if(v.src) { if(!v.src.includes('http') && !v.src.includes('https')) {
+                    debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari doesn't like relative aurochs on videos. The video may not start.`);
+                }}
+
             }
 
-            if(!v.getAttribute('muted') || v.muted != false ) {
-                debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari need a muted attribute true in true position on all videos. We will apply it for you.`);
-                v.setAttribute('muted',true);
-            }
-
-            if(v.src) { if(!v.src.includes('http') && !v.src.includes('https')) {
-                debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari doesn't like relative aurochs on videos. The video may not start.`);
-            }}
-
-        }
-
+        })
 
 
     //--------------------------------------------------//
