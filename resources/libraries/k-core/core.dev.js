@@ -13,7 +13,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.29g2 - VisorBeta`);
+        debug(`:: [🛈 Version] Kimera V2.8.29g3 - VisorBeta`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -11153,7 +11153,6 @@ const ui = (() => {
                         if(playprogress)
                         {
                             playprogress.addEventListener( 'click', ev_clickvideoprogress => {
-                                alert("click on bar!");
 
                                 let pointX = (ev_clickvideoprogress.pageX - getoffsetLeft(playprogress)),
                                 clickpercent = ~~((pointX/playprogress.offsetWidth) * 100 ),
