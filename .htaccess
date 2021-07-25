@@ -1,0 +1,19 @@
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    #Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+    #Header add Access-Control-Allow-Methods "GET,POST"
+
+    #Header set Access-Control-Allow-Origin https://twitter.com 
+    #Header set Access-Control-Allow-Origin https://www.instagram.com/ 
+
+</IfModule>
+
+<IfModule mod_setenvif.c>
+  <IfModule mod_headers.c>
+    <FilesMatch "\.(bmp|cur|gif|ico|jpe?g|png|svgz?|webp|avifs?)$">
+      SetEnvIf Origin ":" IS_CORS
+      Header set Access-Control-Allow-Origin "*" env=IS_CORS
+    </FilesMatch>
+  </IfModule>
+</IfModule>

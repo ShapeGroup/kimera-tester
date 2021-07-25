@@ -47,7 +47,7 @@
 
                 <header>
 
-                    <h2>➜ Media VideBox (we are fixing one last bug on apple)</h2>
+                    <h2>➜ Media VideBox</h2>
 
                     <div class="pad-[25]-[vertical] textgroup">
 
@@ -63,7 +63,9 @@
                     <h3><b> ❯❯ HTML5 classic :</b></h3>
 
                     <div class="ratio-[16:9] radius-medium">
-                        <video playsinline muted="true" controls="true" type='video/mp4' src="https://shapegroup.github.io/kimera-tester/resources/media/exemple.mp4" poster="./resources/media/exemple.jpg"></video>
+                        <video controls poster="./resources/media/exemple.jpg">
+                            <source src="./resources/media/exemple.mp4" type="video/mp4">
+                        </video>
                     </div>
 
                     <hr>
@@ -72,7 +74,9 @@
 
                     <div class="videobox-[custom] ratio-[16:9] radius-medium">
 
-                        <video playsinline muted="true" type='video/mp4' src="https://shapegroup.github.io/kimera-tester/resources/media/exemple.mp4" poster="./resources/media/exemple.jpg"></video>
+                        <video poster="./resources/media/exemple.jpg">
+                            <source src="./resources/media/exemple.mp4" type="video/mp4">
+                        </video>
 
                         <div class='display'>
 
@@ -113,7 +117,7 @@
                     <div class="radius-medium" style="height:400px;">
 
                          <div class="videobox-[background]">
-                            <video autoplay preload playsinline muted loop type='video/mp4' src="https://shapegroup.github.io/kimera-tester/resources/media/exemple.mp4"poster="./resources/media/exemple.jpg"></video>
+                            <video autoplay preload playsinline muted loop src="./resources/media/exemple.mp4" poster="./resources/media/exemple.jpg"></video>
                          </div>
 
                          <span class="bkg-03 pad-[15] radius-medium absolute-center">
@@ -148,8 +152,8 @@
 
          </main>
 
-         <div class="lazy border-05"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
-         <div class="loader border-04"><span class="spinner"></span></div>
+         <div class="lazy"><div data-src="./resources/elements/sidemenu-outbox.html"></div></div>
+         <div class="loader"><span class="spinner"></span></div>
 
      </body>
 

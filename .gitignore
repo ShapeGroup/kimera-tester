@@ -1,0 +1,4 @@
+# Exlude directories:
+/.bkps/
+/.trash/
+/.spare/

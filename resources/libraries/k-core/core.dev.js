@@ -1,10 +1,9 @@
 
-
 const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.X ]
+        //	[ kimera framework V 2.8.beta - mod maremapp ] [gapkit project beta 0.0.8 ]
         //	Credits: Alberto Marà & Shape group - All right reserved
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -13,11 +12,10 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.30f5 - VisorBeta`);
+        debug(`:: [🛈 Version] V2.8 kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
-
 
 
 
@@ -45,21 +43,6 @@ const ui = (() => {
             }
 
         }
-
-
-        // micro-libs // get scrollY/X standard + mobile
-
-
-         const screenview = { "fullscreen":false };
-
-         (()=>{
-             window.addEventListener('scroll', ev_scroll => {
-
-                 screenview.scrollX = parseInt( (document.getElementsByTagName('BODY')[0].scrollLeft) ? document.getElementsByTagName('BODY')[0].scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : (window.scrollX) ? window.scrollX : false ) || false;
-                 screenview.scrollY = parseInt( (document.getElementsByTagName('BODY')[0].scrollTop) ? document.getElementsByTagName('BODY')[0].scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset : (window.scrollY) ? window.scrollY : false ) || false;
-
-             },false)
-         })()
 
 
         // micro-libs // get real offeset top
@@ -149,30 +132,6 @@ const ui = (() => {
         })
 
 
-
-        // micro-libs // safari suck
-
-        document.addEventListener('DOMContentLoaded',
-        () => {
-
-            let videostag = document.getElementsByTagName('video');
-
-            for(let v of videostag)
-            {
-
-                if( v.getAttribute('playsinline') == null || v.getAttribute('muted') == null ) {
-                    debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari "need playsinline" and "muted" attribute on all videos. Note: It's not possible to add dynamically via script.`, v);
-                }
-
-                if(v.src) { if(!v.src.includes('http') && !v.src.includes('https')) {
-                    debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari doesn't like relative aurochs on videos. Video may not start.`, v);
-                }}
-
-            }
-
-        },false);
-
-
     //--------------------------------------------------//
 
 
@@ -193,6 +152,8 @@ const ui = (() => {
 
         }
 
+
+
     //--------------------------------------------------//
 
 
@@ -200,44 +161,13 @@ const ui = (() => {
         const nomobar = () =>
         {
 
-            let DOCU = document.getElementsByTagName('html')[0],
-                BODY = document.getElementsByTagName('body')[0];
+            let DOCU = document.querySelector('html'),
+                BODY = document.querySelector('body');
 
-            if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
+            if(document.documentElement.clientWidth <= 920) // fuck mobile browser bar!
             {
-                //
-                // var orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
-                //
-                // if (orientation === "landscape-primary")
-                // {
-                //   console.log("That looks good.");
-                // }
-                // else if (orientation === "landscape-secondary")
-                // {
-                //   console.log("Mmmh... the screen is upside down!");
-                // }
-                // else if (orientation === "portrait-secondary" || orientation === "portrait-primary")
-                // {
-                //   console.log("Mmmh... you should rotate your device to landscape");
-                // }
-                // else if (orientation === undefined)
-                // {
-                //   console.log("The orientation API isn't supported in this browser :(");
-                // }
-                //
-                // const wso = window.screen.orientation;
-                // wso.lock("portrait");
-                //
-                // // const locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock || false;
-                // // if(locOrientation) locOrientation('portrait');
-                //
-                // // screen.addEventListener("orientationchange", function () {
-                // //   console.log("The orientation of the screen is: " + screen.orientation);
-                // // });
-
-                DOCU.style.height = window.screen.availHeight + 'px';
-                BODY.style.height = window.screen.availHeight + 'px';
-
+                DOCU.style.height = window.innerHeight + 'px';
+                BODY.style.height = window.innerHeight + 'px';
             }
             else
             {
@@ -344,7 +274,7 @@ const ui = (() => {
 
                                     if( contentclasses.includes('settings') && contentclasses.includes('autostartstop') ){ lazyobserverlist.push(element); }
 
-                                    ( getoffsetTop(element) <= (screenview.scrollY||0)+screen.availHeight)
+                                    (getoffsetTop(element)<=(window.scrollTop||document.documentElement.scrollTop)+screen.availHeight)
                                         ? lazyonstartlist.push(element)      // it's in view
                                         : lazywhenviewlist.push(element);    // on scrolling
 
@@ -393,7 +323,7 @@ const ui = (() => {
                                 if(isvalid===true)
                                 {
 
-                                    (getoffsetTop(element)<= (screenview.scrollY||0)+screen.availHeight)
+                                    (getoffsetTop(element)<=(window.scrollTop||document.documentElement.scrollTop)+screen.availHeight)
                                         ? lazyonstartlist.push(element)     // it's in view
                                         : lazywhenviewlist.push(element);   // on scrolling
 
@@ -450,13 +380,13 @@ const ui = (() => {
                 if(lazyobserverlist.length>-1 || lazywhenviewlist.length>-1)
                 {
 
-                    window.addEventListener('onscroll', ev_scrollpage => {
+                    window.onscroll = ev_scrollpage => {
 
                         let scrollpage = setInterval( ()=> {
 
                             window.clearInterval( scrollpage );
 
-                            let wintop      = (screenview.scrollY||0),
+                            let wintop      = window.scrollTop || document.documentElement.scrollTop,
                                 winbottom   = wintop + screen.availHeight;
 
 
@@ -580,7 +510,7 @@ const ui = (() => {
 
                         },300) // 3.x fps;
 
-                    }, false );
+                    }
 
                 }
 
@@ -641,7 +571,7 @@ const ui = (() => {
                                 else
                                 {
                                     let videotag = element.getElementsByTagName('video')[0];
-                                    console.log(videotag);
+
                                     if( videotag.readyState>=3 )
                                     {
                                         setTimeout(()=>{
@@ -1864,7 +1794,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -1891,7 +1821,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -1929,7 +1859,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -2006,7 +1936,7 @@ const ui = (() => {
                         {
                             clearInterval(boxexistcheck); boxexistcheck=null;
 
-                            box.classList.add('[status-off]');
+                            box.classList.add('off');
 
                             setTimeout( () => {
                                 body.classList.remove('gpuboost','vfxtransition-in','vfx-center')
@@ -2305,7 +2235,7 @@ const ui = (() => {
 
 
             //'.checksize',
-            let oversizes = document.querySelectorAll('.checksize, TABLE, CODE, PRE, OUTPUT');
+            let oversizes = [...document.querySelectorAll('.checksize, TABLE, CODE, PRE, OUTPUT')];
 
             for (let sizedbox of oversizes)
             {
@@ -2445,6 +2375,7 @@ const ui = (() => {
             // 2 make dynamic
             //
 
+
             for (let slider of allsnapsliders)
             {
 
@@ -2510,30 +2441,20 @@ const ui = (() => {
                 // let rowboxeswidth = 0;
 
                 if(isHorizontal)
-                {
                     for (let box of allboxes) allboxdims += box.offsetWidth;
                     // rowboxeswidth = allboxdims-slider.offsetWidth;
-
-                }
                 else
-                {
                     for (let box of allboxes) allboxdims += box.offsetHeight;
                     // rowboxeswidth = allboxdims-slider.offsetHeight;
-                }
-
-
-                // if(isblocks) snapsmainwrap.offsetWidth = rowboxeswidth;
 
 
 
                 // start to initial position
-                if(isHorizontal)
+                if(isHorizontal && active.offsetLeft!=0)
                 {
-
-                    if(isblocks && active.offsetLeft==0 && allboxdims>=snapsmainwrap.offsetWidth ) dragbox.style.transform = 'translateX(-'+slider.offsetWidth/2+'px)';
-                    else if(isblocks)                                                              dragbox.style.transform = 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
-                    else                                                                           dragbox.style.transform = 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
-
+                    dragbox.style.transform = (isblocks)
+                        ? 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
+                        : 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
                 }
 
                 else if(!isHorizontal && active.offsetTop!=0)
@@ -2700,6 +2621,7 @@ const ui = (() => {
 
                     }
 
+
                     // check dragging position respect the cage limitss
 
                     let positon,actualposition,minimum,maximum;
@@ -2707,15 +2629,13 @@ const ui = (() => {
                     if(isHorizontal)
                     {
 
-
                         actualposition = (isblocks)
                            ? parseInt( (actual.offsetLeft+(actual.offsetWidth/2)) - dir )
                            : parseInt(  actual.offsetLeft - dir );
 
-                           //snapsmainwrap.offsetLeft
-                        minimum = (isblocks) ? getoffsetLeft(snapsmainwrap) : snapsmainwrap.offsetWidth/2,
-                        maximum = allboxdims-minimum;
 
+                        minimum = (isblocks) ? snapsmainwrap.offsetLeft : snapsmainwrap.offsetWidth/2,
+                        maximum = allboxdims-minimum;
 
 
                     }
@@ -2754,7 +2674,6 @@ const ui = (() => {
 
                     document.ontouchend = snap_dragEnd;
                     document.onmouseup = snap_dragEnd;
-                    dragbox.onclick = snap_dragEnd;
 
 
                 }
@@ -3472,8 +3391,6 @@ const ui = (() => {
         {
 
 
-
-
             ///// SET GRAB INACTIVE
             // :: when you start to drag, it's true.
 
@@ -3547,8 +3464,8 @@ const ui = (() => {
                 parentY = (T.closest('.scroll-y')) ? T.closest('.scroll-y').scrollTop : 0;
                 parentX = (T.closest('.scroll-x')) ? T.closest('.scroll-x').scrollLeft : 0;
 
-                xpos =  (screenview.scrollX || 0)  + parentX + X,
-                ypos =  (screenview.scrollY || 0) + parentY + Y;
+                xpos =  (document.body.scrollLeft || window.pageXOffset)  + parentX + X,
+                ypos =  (document.body.scrollTop  || window.pageYOffset ) + parentY + Y;
 
                 TTop    = getoffsetTop(T),  TBottom = (TTop+T.offsetHeight),
                 TLeft   = getoffsetLeft(T), TRight  = (TLeft+T.offsetWidth);
@@ -3575,8 +3492,6 @@ const ui = (() => {
 
                     function startgrab(event)
                     {
-                        console.log(ui);
-
                         ev_grabs_start = event || window.event;
 
                         let tagTarget = ev_grabs_start.target.tagName.toLowerCase();
@@ -3633,30 +3548,25 @@ const ui = (() => {
 
 
                                     // get box position
-                                    let xScroll = (screenview.scrollX||0),
-                                        yScroll = (screenview.scrollY||0),
+                                    let xScroll = document.documentElement.scrollLeft || window.pageXOffset,
+                                        yScroll = document.documentElement.scrollTop || window.pageYOffset,
                                         xBoxPos = getoffsetLeft(startbox),
                                         yBoxPos = getoffsetTop(startbox);
 
-
-                                    if(startbox.closest('.scroll-x')) xScroll =  xScroll + (startbox.closest('.scroll-x').scrollLeft || 0 );
-                                    if(startbox.closest('.scroll-y')) yScroll =  yScroll + (startbox.closest('.scroll-y').scrollTop || 0);
-
+                                    if(startbox.closest('.scroll-x')) xScroll =  xScroll+startbox.closest('.scroll-x').scrollTop;
+                                    if(startbox.closest('.scroll-y')) yScroll =  yScroll+startbox.closest('.scroll-y').scrollTop;
 
 
                                     if ( is_touch_device() )
                                     {
-                                        yPointerStart = ev_grabs_start.touches[0].clientY + yScroll;
-                                        xPointerStart = ev_grabs_start.touches[0].clientX + xScroll;
-                                        // yPointerStart =ev_grabs_start.touches[0].clientY + yScroll;
-                                        // xPointerStart  =ev_grabs_start.touches[0].clientX  + xScroll;
+                                        xPointerStart  =ev_grabs_start.touches[0].clientX  + xScroll;
+                                        yPointerStart =ev_grabs_start.touches[0].clientY + yScroll;
                                     }
                                     else
                                     {
-                                        yPointerStart = ev_grabs_start.clientY + yScroll;
-                                        xPointerStart = ev_grabs_start.clientX + xScroll;
+                                        xPointerStart  =ev_grabs_start.clientX  + xScroll;
+                                        yPointerStart =ev_grabs_start.clientY + yScroll;
                                     }
-
 
                                     // storicize edge wrapper limit
                                     // if you're in proximity of it, scroll container.
@@ -3671,8 +3581,8 @@ const ui = (() => {
                                     {
                                         if(isntScroller)
                                         {
-                                            edgetop    = (screenview.scrollY||0)+33,
-                                            edgeleft   = (screenview.scrollX||0)+33,
+                                            edgetop    = parseInt(document.body.scrollTop  || window.pageYOffset)+33,
+                                            edgeleft   = parseInt(document.body.scrollLeft || window.pageXOffset)+33,
                                             edgeright  = edgeleft+scroller.offsetWidth-33,
                                             edgebottom = edgetop+scroller.offsetHeight-33;
                                         }
@@ -3721,25 +3631,25 @@ const ui = (() => {
 
                                         if ( is_touch_device() )
                                         {
-                                            mY   = ev_grabs_move.touches[0].clientY;
                                             mX   = ev_grabs_move.touches[0].clientX;
+                                            mY   = ev_grabs_move.touches[0].clientY;
                                         }
                                         else
                                         {
-                                            mY   = ev_grabs_move.clientY;
                                             mX   = ev_grabs_move.clientX;
+                                            mY   = ev_grabs_move.clientY;
                                         }
 
 
                                         // move box in position
 
-                                        startbox.style.top  = parseInt( ((mY-yPointerStart)+yBoxPos) ) + "px";
                                         startbox.style.left = parseInt( ((mX-xPointerStart)+xBoxPos) ) + "px";
+                                        startbox.style.top  = parseInt( ((mY-yPointerStart)+yBoxPos) ) + "px";
 
                                         // scroll container with box
 
-                                        let YCoord = ( (screenview.scrollY||0) + mY ),
-                                            XCoord = ( (screenview.scrollX||0) + mX );
+                                        let YCoord = parseInt( (document.body.scrollTop  || window.pageYOffset) + mY ),
+                                            XCoord = parseInt( (document.body.scrollLeft || window.pageXOffset) + mX );
 
                                         let scrolltarget = (isntScroller)?scroller:scroller.firstElementChild;
 
@@ -4129,17 +4039,7 @@ const ui = (() => {
 
                     // build the numbers into cage
 
-                    if(btn.querySelectorAll('.number-slider').length<=0)
-                    {
-                        btn.insertAdjacentHTML('beforeEnd','<div class="number-slider"></div>')
-                    }
-                    else
-                    {
-                        btn.querySelectorAll('.number-slider')[0].innerHTML='';
-                        btn.insertAdjacentHTML('beforeEnd','<div class="number-slider"></div>')
-                    }
-
-
+                    btn.insertAdjacentHTML('beforeEnd','<div class="number-slider"></div>');
                     let slide = btn.querySelectorAll('.number-slider')[0];
 
                     for (let i = min; i <= max; i++) slide.insertAdjacentHTML('beforeEnd',`<span class="number-[`+i+`]"><small>`+i+`</small></span>`);
@@ -4462,6 +4362,7 @@ const ui = (() => {
 
                                 if (dirX > -1 && dirX < containerwidth+1)
                                 {
+                                    console.log('draggg',dirX);
 
                                     let bulletpercent, newval;
 
@@ -5617,13 +5518,10 @@ const ui = (() => {
                         event_clockdrag.stopPropagation();
 
                         let rect = ClockPivot.getBoundingClientRect();
-
-
                         center = {
-                            x:  (screenview.scrollX||0) + rect.left,
-                            y:  (screenview.scrollY||0) + rect.top
+                            x: window.scrollX + rect.left,
+                            y: window.scrollY + rect.top
                         };
-
 
                         if(event.target == RayHours)
                         {
@@ -5648,16 +5546,16 @@ const ui = (() => {
 
                         if(is_touch_device())
                         {
-                            deltaX = event.touches[0].pageX - center.x;
-                            deltaY = event.touches[0].pageY - center.y;
+                            deltaX = event.touches[0].clientX - center.x,
+                            deltaY = event.touches[0].clientY - center.y,
+                            angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI);
                         }
                         else
                         {
-                            deltaX = event.pageX - center.x;
-                            deltaY = event.pageY - center.y;
+                            deltaX = event.pageX - center.x,
+                            deltaY = event.pageY - center.y,
+                            angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI) ;
                         }
-
-                        angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI);
 
                         if(isHours)
                         {
@@ -10465,7 +10363,7 @@ const ui = (() => {
                 pop.classList.remove('[status-off]');
                 pop.classList.remove('[status-active]');
 
-                if(pop.parentNode.tagName.toLowerCase()=='p' && !is_touch_device())
+                if(pop.parentNode.tagName.toLowerCase()=='p')
                 {
                     pop.addEventListener('mouseenter', ev_togglepopover => {
 
@@ -10475,11 +10373,13 @@ const ui = (() => {
                     },false);
                 }
 
-                pop.addEventListener( 'click', ev_togglepopover => {
+                let crossclick = is_touch_device() ? 'ontouchstart' : 'click';
+
+                pop.addEventListener( crossclick, ev_togglepopover => {
 
                     togglepopover(ev_togglepopover,allpops,pop);
 
-                    document.addEventListener('click', ev_closeallpops=>{ closeallpops(allpops) },true)
+                    document.addEventListener(crossclick, ev_closeallpops=>{ closeallpops(allpops) },true)
 
                 },false);
 
@@ -10537,8 +10437,7 @@ const ui = (() => {
             {
 
 
-                let isfirstplay = true,
-                    audio       = playerbox.getElementsByTagName('audio')[0],
+                let audio       = playerbox.getElementsByTagName('audio')[0],
                     play        = playerbox.querySelectorAll('.play')[0],
                     loop        = playerbox.querySelectorAll('.loop')[0],
                     timer       = playerbox.querySelectorAll('.duration>*')[0],
@@ -10547,8 +10446,6 @@ const ui = (() => {
                     volume      = playerbox.querySelectorAll('.volume')[0],
                     volumeIcon,
                     power;
-
-                audio.muted=true;
 
                 audio.load();
 
@@ -10634,21 +10531,15 @@ const ui = (() => {
                     }
 
 
+                    /// actions
+
+                    let crossclick = is_touch_device() ? 'touchstart' : 'click';
+
                     // play/pause audio
                     if(play)
                     {
 
-                        play.addEventListener( 'click', ev_audio_playclick => {
-
-                            if(isfirstplay)
-                            {
-                                isfirstplay=false;
-                                audio.muted=false;
-                                audio.volume=1.0;
-                                audio.removeAttribute("muted");
-                                audio.setAttribute('volume',1.0)
-
-                            }
+                        play.addEventListener( crossclick, ev_audio_playclick => {
 
                             updateRuntime();
 
@@ -10675,7 +10566,7 @@ const ui = (() => {
                     if(loop)
                     {
 
-                        loop.addEventListener( 'click', ev_audio_loopclick => {
+                        loop.addEventListener( crossclick, ev_audio_loopclick => {
 
                             if(!audio.loop)
                             {
@@ -10704,7 +10595,7 @@ const ui = (() => {
                     if(timeline)
                     {
 
-                        progressor.addEventListener('click', ev_audio_progressclick => {
+                        progressor.addEventListener(crossclick, ev_audio_progressclick => {
 
                             //progressbar
                             let percent = fromWidthToPercent(progressor, ( is_touch_device() ? ev_audio_progressclick.touches[0].pageX : ev_audio_progressclick.pageX )-getoffsetLeft(progressor) );
@@ -10723,11 +10614,11 @@ const ui = (() => {
                     if(volume)
                     {
 
-                        volume.addEventListener('click', ev_audio_powerclick => {
+                        volume.addEventListener(crossclick, ev_audio_powerclick => {
 
                             if(ev_audio_powerclick.target!=power)
                             {
-                                if( !audio.muted || audio.muted==null )
+                                if( !audio.muted )
                                 {
                                     audio.muted = true;
                                     volume.classList.add('[status-off]');
@@ -10850,7 +10741,6 @@ const ui = (() => {
 
                 //// set for start
 
-                video.setAttribute('muted',true); // anti safari "block content with audio"
 
                 if(video.autoplay)
                 {
@@ -10925,25 +10815,23 @@ const ui = (() => {
 
                 }
 
-                video.addEventListener('canplaythrough', ev_videoready =>
-                {
+
+                video.onloadedmetadata = ev_videoready => {
+
+
+                    var crossclick = is_touch_device() ? 'ontouchstart' : 'click';
+
 
                     // on buffering start...
 
+                    if (video.buffered.length === 0)
+                    {
 
-                    var checkbuffer = setInterval( () =>{
+                        console.log('no buffer for a video'); return;
 
-                        if(video.buffered.length !== 0)
-                        {
-                            videodatastart()
-                            window.clearInterval(checkbuffer);
-                            checkbuffer = null;
-                        }
+                    }
 
-                    },500);
-
-
-                    let videodatastart = () =>
+                    else
                     {
 
                         //// Print load progress
@@ -10952,18 +10840,18 @@ const ui = (() => {
                         {
 
                             let bufferedSeconds = (video.buffered.end(0) - video.buffered.start(0)),
-                                buffering = setInterval( () =>{
+                                checkvideobuffer = setInterval( () =>{
                                     let loadpercent = ~~((bufferedSeconds / video.duration) * 100);
                                     if(loadpercent>=99 || bufferedSeconds==video.duration)
                                     {
                                         streamprogress.className = 'progress-[100]';
-                                        window.clearInterval(buffering);
+                                        window.clearInterval(checkvideobuffer);
                                     }
                                     else
                                     {
                                         streamprogress.className = 'progress-['+((loadpercent<10)?'0'+loadpercent:''+loadpercent)+']'
                                     }
-                                },250);
+                                },500);
 
                         }
 
@@ -11015,7 +10903,7 @@ const ui = (() => {
                                 return ~~(x / e.offsetWidth * 100)
                             }
 
-                            volume.addEventListener( 'click', ev_video_powerclick => {
+                            volume.addEventListener( crossclick, ev_video_powerclick => {
 
                                 if(ev_video_powerclick.target!=power)
                                 {
@@ -11066,7 +10954,7 @@ const ui = (() => {
                         if(loop)
                         {
 
-                            loop.addEventListener( 'click', ev_loopvideo => {
+                            loop.addEventListener( crossclick, ev_loopvideo => {
 
                                 if(!video.loop)
                                 {
@@ -11096,13 +10984,10 @@ const ui = (() => {
                         let playpause = () =>
                         {
 
-
                             var checkvals;
 
                             function playvideo()
                             {
-
-                                video.removeAttribute("muted");
 
                                 videobox.classList.remove('[display-active]');
                                 videobox.classList.add('[display-off]');
@@ -11156,14 +11041,11 @@ const ui = (() => {
 
                         }
 
-                        if(video.autoplay) playpause();
+                        if(video.autoplay){ playpause(); };
+                        if(starter) starter.addEventListener( crossclick, ev_playvideo => { playpause(ev_playvideo) },false);
+                        if(play) play.addEventListener( crossclick, ev_playvideo => { playpause(ev_playvideo) },false);
 
-                        if(starter) starter.addEventListener( 'click', ev_playvideo => {  playpause(ev_playvideo); },false);
-
-                        if(play) play.addEventListener( 'click', ev_playvideo => {  playpause(ev_playvideo); },false);
-
-                        display.addEventListener( 'click', ev_playvideo => {
-
+                        display.addEventListener( crossclick, ev_playvideo => {
                             if(ev_playvideo.target === display)
                             {
 
@@ -11189,7 +11071,7 @@ const ui = (() => {
 
                         if(playprogress)
                         {
-                            playprogress.addEventListener( 'click', ev_clickvideoprogress => {
+                            playprogress.addEventListener( crossclick, ev_clickvideoprogress => {
 
                                 let pointX = (ev_clickvideoprogress.pageX - getoffsetLeft(playprogress)),
                                 clickpercent = ~~((pointX/playprogress.offsetWidth) * 100 ),
@@ -11209,8 +11091,7 @@ const ui = (() => {
                         if(maximized)
                         {
 
-                            maximized.addEventListener( 'click',  ev_maximizedvideo => {
-                                alert("click all maximized!");
+                            maximized.addEventListener( crossclick,  ev_maximizedvideo => {
 
                                 ev_maximizedvideo.preventDefault();
                                 setfullscreen()
@@ -11270,7 +11151,7 @@ const ui = (() => {
                         if(cinema)
                         {
 
-                            cinema.addEventListener( 'click', ev_cinemavideo => {
+                            cinema.addEventListener( crossclick, ev_cinemavideo => {
 
                                 ev_cinemavideo.preventDefault();
                                 setcinemode();
@@ -11361,9 +11242,7 @@ const ui = (() => {
                     }
 
 
-
-
-                }, false);
+                }
 
             }
 
@@ -11751,55 +11630,6 @@ const ui = (() => {
         }
 
 
-
-    //--------------------------------------------------//
-
-
-        const fullscreener = () =>
-        {
-
-            const requestFullScreen = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullScreen || document.documentElement.mozRequestFullScreen || document.documentElement.msRequestFullScreen;
-            const cancellFullScreen = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen;
-
-            var gofullscreeners   = document.querySelectorAll(".screenmode");
-
-            for (let screenerbutton of gofullscreeners)
-            {
-
-                screenerbutton.addEventListener('click', () => {
-
-                    if(screenview.fullscreen===false)
-                    {
-
-                        screenview.fullscreen = true;
-                        requestFullScreen.call(document.documentElement);
-
-                        for (let sbtm of gofullscreeners)
-                        {
-                            sbtm.classList.add('[status-active]')
-                            sbtm.classList.remove('[status-off]')
-                        }
-
-                    }
-
-                    else
-                    {
-
-                        screenview.fullscreen = false;
-                        cancellFullScreen.call(document);
-
-                        for (let sbtm of gofullscreeners)
-                        {
-                            sbtm.classList.add('[status-off]')
-                            sbtm.classList.remove('[status-active]')
-                        }
-
-                    }
-
-                }, false);
-
-            }
-        }
 
     //--------------------------------------------------//
 
@@ -12264,6 +12094,7 @@ const ui = (() => {
             tagcode();
             retagpre();
             lazyloader();
+            nomobar();
             modeapp();
             absolute();
             paginations();
@@ -12279,7 +12110,6 @@ const ui = (() => {
             audiobox();
             grid_y();
             grabs();
-            nomobar();
 
         },false);
 
@@ -12295,7 +12125,6 @@ const ui = (() => {
             fitup();
             flange();
             outbox();
-            fullscreener();
             effectors();
             exitloader();
 
@@ -12333,6 +12162,7 @@ const ui = (() => {
             else if(fn == 'scrollers')      standardscroll();
             else if(fn == 'snaps')          snapscroll();
             else if(fn == 'anchors')        anchors();
+            else if(fn == 'buttons')        buttons();
             else if(fn == 'fileloader')     fileloader();
             else if(fn == 'cards')          expandercard();
             else if(fn == 'paginations')    paginations();
@@ -12351,31 +12181,12 @@ const ui = (() => {
             else if(fn == 'flanges')        flange();
             else if(fn == 'grabs')          grabs();
             else if(fn == 'effectors')      effectors();
-
-            else if(fn == 'buttons')        buttons();
-
-            else if(fn == 'filereaders')    filereaders();
-
-            else if(fn == 'passwords')      passwords();
-            else if(fn == 'starts')         starts();
-            else if(fn == 'numbers')        numbers();
-            else if(fn == 'ranges')         ranges();
-            else if(fn == 'selects')        selects();
-            else if(fn == 'dropsdown')      dropsdown();
-            else if(fn == 'clocks')         clocks();
-            else if(fn == 'checks')         checks();
-            else if(fn == 'radios')         radios();
-            else if(fn == 'datepikers')     datepikers();
-            else if(fn == 'stopwatch')      stopwatch();
-
-
-            else debug(':: [⚠ ui alert]: wrong reload\n   ⮑ The name "'+fn+'" is not valid!\n      Read the wiki on: https://git.io/vldt456\n      Actual valid names: ["buttons","filereaders","passwords","starts","numbers","ranges","selects","dropsdown","clocks","checks","radios","datepikers","stopwatch","condingtag","absolute","checksize","scrollers","snaps","anchors","cards","paginations","tab-x","tab-y,"spoilers","videobox","audiobox","gridx-y","warning","outbox","parallax","autocrop","fitheight","fitup","flanges","grabs","effectors"');
-
+            else debug(`:: [⚠ ui alert]: wrong reload\n   ⮑ The name "`+fn+`" is not valid!\n      Actual valid names: https://git.io/vldt456`);
+            //condingtag, absolute, checksize, scrollers, snaps, anchors, cards, paginations, tab-x, tab-y, spoilers, videobox, audiobox, grid-y, buttons, warning, outbox, parallax, autocrop, fitheight, fitup, flanges, grabs, effectors
         }
 
         return {
             warning,
-            screenview,
             loaderslist,
             draganddrop,
             reload: reload
