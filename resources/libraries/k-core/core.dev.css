@@ -1,5 +1,5 @@
 /*
-//	kimera framework V 2.8.31-a3
+//	kimera framework V 2.8.31-a3b
 //	Credits: Alberto Marà & Shape group
 //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
 //	https://www.facebook.com/kimeraframework/
@@ -5281,13 +5281,6 @@ textarea {
 .overlay .selectorbox>* {
 
     overflow: hidden;
-
-}
-
-
-.overlay .selectorbox div:nth-child(3) /*.hide-bar-y limit*/ {
-
-    max-height: 450px;
 
 }
 
