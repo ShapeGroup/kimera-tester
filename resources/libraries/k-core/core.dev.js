@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32e kimera`);
+        debug(`:: [🛈 Version] V2.8.32f kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -382,7 +382,9 @@ const ui = (() => {
                 if(lazyobserverlist.length>-1 || lazywhenviewlist.length>-1)
                 {
 
-                    window.onscroll = ev_scrollpage => {
+
+
+                    document.documentElement.onscroll = ev_scrollpage => {
 
                         let scrollpage = setInterval( ()=> {
 
@@ -12122,7 +12124,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32e"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f"
 
         })),false);
 
