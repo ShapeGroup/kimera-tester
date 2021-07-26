@@ -590,10 +590,11 @@ const ui = (() => {
 
                                     let tagimg = imglist[i];
 
+									tagimg.src = tagimg.dataset.src;
+
                                     tagimg.onload = () =>
                                     {
                                         loaded[i] = true;
-										tagimg.src = tagimg.dataset.src;
                                     }
 
                                     tagimg.onerror = () =>
