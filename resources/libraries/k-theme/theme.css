@@ -616,12 +616,6 @@
 
     }
 
-	[class*=button-dropdown]  div:nth-child(2) /*hide-bar-y*/ {
-
-	    height: 200px;
-
-	}
-
     .button-dropdown .button {
 
         margin-bottom:15px;
