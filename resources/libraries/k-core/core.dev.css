@@ -2468,6 +2468,12 @@ span[class*="card"] {
 
 }
 
+
+[class*='videobox'] .display div * {
+	position: relative;
+	z-index: 999;
+}
+
 [class*='videobox-[custom]']>.display>div:first-of-type {
 
     position:absolute;

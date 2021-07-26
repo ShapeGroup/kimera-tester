@@ -1457,10 +1457,6 @@
 
     }
 
-	[class*='videobox'] .display div {
-		z-index: 999;
-	}
-
     [class*='videobox'][class*='display-active'] .display,
     [class*='videobox']:hover .display {
 
