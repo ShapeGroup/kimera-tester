@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32f9 ]
+        //	[ kimera framework V 2.8.32f10 ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32f9 kimera`);
+        debug(`:: [🛈 Version] V2.8.32f10 kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -194,11 +194,11 @@ const ui = (() => {
 
                 document.querySelectorAll('body[class*="mode-"]')[0].style.opacity='1';
 
-                // setTimeout(()=>{
+                setTimeout(()=>{
 
                     Loader.classList.add('[status-off]');
 
-                // },100); // wait elements call
+                },10); // wait elements call
 
                 setTimeout(()=>{
 
@@ -224,9 +224,7 @@ const ui = (() => {
                 if(lazyelements.length<=0)
                 {
 
-					// console.log("lazyelements",lazyelements);
-					// postLazy();
-					return lazy_sets_is_end();
+					postLazy(); return lazy_sets_is_end();
 
                 }
 
@@ -385,11 +383,7 @@ const ui = (() => {
                 if(lazyobserverlist.length>-1 || lazywhenviewlist.length>-1)
                 {
 
-					console.log('test: observing element exists');
-
                     document.body.addEventListener('scroll', ev_scrollpage => {
-
-						console.log("you're scrolling");
 
                         let scrollpage = setInterval( ()=> {
 
@@ -518,7 +512,7 @@ const ui = (() => {
                                 }
                             }
 
-                        },300) // 3.x fps;
+                        },200) // 3.x fps;
 
                     },false);
 
@@ -12130,7 +12124,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f9"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f10"
 
         })),false);
 
