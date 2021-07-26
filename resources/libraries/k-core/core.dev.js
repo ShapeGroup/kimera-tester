@@ -355,10 +355,13 @@ const ui = (() => {
             {
 				console.log(lazyobserverlist.length);
 				console.log(lazywhenviewlist.length);
+
                 if(lazyobserverlist.length>=0 || lazywhenviewlist.length>=0)
                 {
 
-                    window.document.body.addEventListener('scroll',()=>{
+                    window.addEventListener('scroll',()=>{
+
+						console.log('you scroll');
 
 						let scrollpage = setInterval( ()=> {
 
@@ -486,7 +489,7 @@ const ui = (() => {
                                 }
                             }
 
-                        },20) // 333 = 3.x fps;
+                        },200) // 333 = 3.x fps;
 
 					},true);
 
