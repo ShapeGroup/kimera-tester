@@ -4,7 +4,7 @@ const ui = (() => {
 
         /*
         //	[ kimera framework V 2.8.31 ]
-        //	Credits: Alberto Marà & Shape group 
+        //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
         */
@@ -10373,7 +10373,7 @@ const ui = (() => {
                     },false);
                 }
 
-                let crossclick = is_touch_device() ? 'ontouchstart' : 'click';
+                let crossclick = is_touch_device() ? 'touchstart' : 'click';
 
                 pop.addEventListener( crossclick, ev_togglepopover => {
 
@@ -10819,7 +10819,7 @@ const ui = (() => {
                 video.onloadedmetadata = ev_videoready => {
 
 
-                    var crossclick = is_touch_device() ? 'ontouchstart' : 'click';
+                    var crossclick = is_touch_device() ? 'touchstart' : 'click';
 
 
                     // on buffering start...
