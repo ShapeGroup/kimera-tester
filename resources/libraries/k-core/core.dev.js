@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32f11n ]
+        //	[ kimera framework V 2.8.32f11o ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32f11n kimera`);
+        debug(`:: [🛈 Version] V2.8.32f11o kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -382,12 +382,9 @@ const ui = (() => {
                 if(lazyobserverlist.length>-1 || lazywhenviewlist.length>-1)
                 {
 
-					var winbody = window.document.body;
+                    window.document.body.addEventListener('scroll',()=>{
 
-					const checkdistance = () =>
-					{
-
-                        let scrollpage = setInterval( ()=> {
+						let scrollpage = setInterval( ()=> {
 
                             window.clearInterval( scrollpage );
 
@@ -515,9 +512,7 @@ const ui = (() => {
 
                         },333) // 333 = 3.x fps;
 
-                    }
-
-                    window.document.body.addEventListener('scroll',checkdistance(),false);
+					},true);
 
                 }
 
@@ -12127,7 +12122,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11n"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11o"
 
         })),false);
 
