@@ -6135,6 +6135,7 @@ nav.type-y>ul {
 	position: relative;
 
 }
+
 @media only screen and (min-width : 900px)
 {
 
@@ -6158,6 +6159,7 @@ nav.type-y>ul {
     visibility: hidden;
 
 }
+
 .visible {
 
     visibility: visible;
