@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32f11i ]
+        //	[ kimera framework V 2.8.32f11l ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32f11i kimera`);
+        debug(`:: [🛈 Version] V2.8.32f11l kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -194,18 +194,18 @@ const ui = (() => {
 
                 document.querySelectorAll('body[class*="mode-"]')[0].style.opacity='1';
 
-                // setTimeout(()=>{
+                setTimeout(()=>{
 
                     Loader.classList.add('[status-off]');
 
-                // },10); // wait elements call
+                },50); // wait elements call
 
                 setTimeout(()=>{
 
                     Loader.classList.add('[status---]');
                     Loader.classList.remove('[status-active]','[status-off]','gpuboost');
 
-                },650); // wait css exit out animation
+                },720); // wait css exit out animation
 
             });
 
@@ -519,7 +519,7 @@ const ui = (() => {
 
                     }
 
-                    winbody.addEventListener('scroll',checkdistance);
+                    winbody.addEventListener('scroll',checkdistance(),false);
 
                 }
 
@@ -12129,7 +12129,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11i"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11l"
 
         })),false);
 
