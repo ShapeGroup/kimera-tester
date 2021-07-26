@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.31-b2 ]
+        //	[ kimera framework V 2.8.32a ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -158,24 +158,24 @@ const ui = (() => {
 
 
 
-        const nomobar = () =>
-        {
-
-            let DOCU = document.querySelector('html'),
-                BODY = document.querySelector('body');
-
-            if(document.documentElement.clientWidth <= 920) // fuck mobile browser bar!
-            {
-                DOCU.style.height = window.innerHeight + 'px';
-                BODY.style.height = window.innerHeight + 'px';
-            }
-            else
-            {
-                DOCU.style.height = ''; if(DOCU.style=='') DOCU.removeAttribute('style');
-                BODY.style.height = ''; if(BODY.style=='') BODY.removeAttribute('style');
-            }
-
-        }
+        // const nomobar = () =>
+        // {
+		//
+        //     let DOCU = document.querySelector('html'),
+        //         BODY = document.querySelector('body');
+		//
+        //     if(document.documentElement.clientWidth <= 920) // fuck mobile browser bar!
+        //     {
+        //         DOCU.style.height = window.innerHeight + 'px';
+        //         BODY.style.height = window.innerHeight + 'px';
+        //     }
+        //     else
+        //     {
+        //         DOCU.style.height = ''; if(DOCU.style=='') DOCU.removeAttribute('style');
+        //         BODY.style.height = ''; if(BODY.style=='') BODY.removeAttribute('style');
+        //     }
+		//
+        // }
 
 
 
