@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32f11q ]
+        //	[ kimera framework V 2.8.32f11r ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32f11q kimera`);
+        debug(`:: [🛈 Version] V2.8.32f11r kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -178,9 +178,9 @@ const ui = (() => {
 	                    Loader.classList.add('[status---]');
 	                    Loader.classList.remove('[status-active]','[status-off]','gpuboost');
 
-	                },650); // wait css exit out animation
+	                },300); // wait css exit out animation
 
-				},300); // wait elements call
+				},10); // wait elements call
 
             });
 
@@ -353,15 +353,11 @@ const ui = (() => {
             // on scroll observe.. what is in start, else stop
             function lazyobserver(lazywhenviewlist,lazyobserverlist)
             {
-				console.log("checknotempty 1:",lazyobserverlist[0]);
-				console.log("checknotempty 2:",lazywhenviewlist[0]);
 
-                if(lazyobserverlist.length>0 || lazywhenviewlist.length>0)
+                if(lazyobserverlist[0]!=undefined || lazywhenviewlist[0]!=undefined)
                 {
 
                     window.addEventListener('scroll',()=>{
-
-						console.log('you scroll');
 
 						let scrollpage = setInterval( ()=> {
 
@@ -373,7 +369,7 @@ const ui = (() => {
 
                             //is it in or under screen view?
 
-                            if(lazywhenviewlist.length>0)
+                            if(lazywhenviewlist[0]!=undefined)
                             {
 
                                 let index=0;
@@ -400,7 +396,7 @@ const ui = (() => {
 
 
                             //is it in or out screen view? (players controllers)
-                            if(lazyobserverlist.length>0)
+                            if(lazyobserverlist[0]!=undefined)
                             {
 
 
@@ -12103,7 +12099,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11q"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11r"
 
         })),false);
 
