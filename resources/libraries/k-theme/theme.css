@@ -550,9 +550,10 @@
         padding: calc(var(--basepad)*1.5);
 
     }
-	.overlay .selectorbox div:nth-child(3) /*.hide-bar-y limit*/ {
+	.overlay .selectorbox>div:nth-child(3) /*.hide-bar-y limit*/ {
 
-	    height: 450px;
+		height: 999vh;
+		max-height: 350px;
 
 	}
     .overlay .selectorbox>div:nth-child(4) {
