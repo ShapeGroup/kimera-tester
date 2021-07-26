@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32f11zg ]
+        //	[ kimera framework V 2.8.33 ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32f11zg kimera`);
+        debug(`:: [🛈 Version] V2.8.33 kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -178,9 +178,9 @@ const ui = (() => {
 	                    Loader.classList.add('[status---]');
 	                    Loader.classList.remove('[status-active]','[status-off]','gpuboost');
 
-	                },300); // wait css exit out animation
+	                },650); // wait css exit out animation
 
-				},10); // wait elements call
+				},150); // wait elements call
 
             });
 
@@ -275,7 +275,7 @@ const ui = (() => {
                             else if(contenttype=='img')
                             {
 
-                                let classes    = [...element.classList].join(''),
+                                let classes    = element.classList.join(''),
                                     imgs       = element.querySelectorAll('*>img'),
                                     isvalid    = true;
 
@@ -368,7 +368,6 @@ const ui = (() => {
                             let wintop      = document.body.scrollTop , //|| document.documentElement.scrollTop || window.scrollTop
                                 winbottom   = wintop + screen.availHeight
 
-								console.log("wintop",wintop);
                             //is it in or under screen view?
 
                             if(lazywhenviewlist[0]!=undefined)
@@ -594,6 +593,7 @@ const ui = (() => {
                                     tagimg.onload = () =>
                                     {
                                         loaded[i] = true;
+										tagimg.src = tagimg.dataset.src;
                                     }
 
                                     tagimg.onerror = () =>
@@ -611,7 +611,6 @@ const ui = (() => {
 
                                     }
 
-                                    tagimg.src = tagimg.dataset.src;
 
                                 }
 
@@ -12101,7 +12100,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11zg"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.33"
 
         })),false);
 
