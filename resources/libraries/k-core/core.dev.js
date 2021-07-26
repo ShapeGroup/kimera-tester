@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32f11r ]
+        //	[ kimera framework V 2.8.32f11t ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32f11r kimera`);
+        debug(`:: [🛈 Version] V2.8.32f11t kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -359,14 +359,14 @@ const ui = (() => {
 
                     window.addEventListener('scroll',()=>{
 
-						let scrollpage = setInterval( ()=> {
+						// let scrollpage = setInterval( ()=> {
+						//
+                        //     window.clearInterval( scrollpage );
 
-                            window.clearInterval( scrollpage );
+                            let wintop      = window.scrollTop , //|| document.documentElement.scrollTop || window.scrollTop
+                                winbottom   = wintop + screen.availHeight
 
-                            let wintop      = window.document.body.scrollTop , //|| document.documentElement.scrollTop || window.scrollTop
-                                winbottom   = wintop + screen.availHeight;
-
-
+								console.log(wintop);
                             //is it in or under screen view?
 
                             if(lazywhenviewlist[0]!=undefined)
@@ -402,6 +402,7 @@ const ui = (() => {
 
                                 for (let element of lazyobserverlist)
                                 {
+
                                     let elementcontent;
 
                                     if(element.getElementsByTagName('iframe')[0])
@@ -419,14 +420,15 @@ const ui = (() => {
 
                                     let classelist      = element.firstElementChild.classList.toString().toLowerCase(),
                                         ePosition       = getoffsetTop(element),
-                                        isInView        = (ePosition<winbottom&&(ePosition+element.offsetHeight)>wintop);
+                                        isInView        = (ePosition<winbottom&&(ePosition+element.offsetHeight)>wintop)
 
                                     //if not in view
                                     if(isInView)
                                     {
 
 
-                                        element.classList.remove('[status-active]'); element.classList.add('[status-off]');
+                                        element.classList.remove('[status-active]')
+										element.classList.add('[status-off]')
 
                                         if(classelist.includes('social','autostartstop'))
                                         {
@@ -485,7 +487,7 @@ const ui = (() => {
                                 }
                             }
 
-                        },200) // 333 = 3.x fps;
+                        // },200) // 333 = 3.x fps;
 
 					},true);
 
@@ -12099,7 +12101,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11r"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11t"
 
         })),false);
 
