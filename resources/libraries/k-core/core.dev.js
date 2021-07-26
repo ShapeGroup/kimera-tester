@@ -275,7 +275,7 @@ const ui = (() => {
                             else if(contenttype=='img')
                             {
 
-                                let classes    = element.classList.join(''),
+                                let classes    = [...element.classList].join(''),
                                     imgs       = element.querySelectorAll('*>img'),
                                     isvalid    = true;
 
