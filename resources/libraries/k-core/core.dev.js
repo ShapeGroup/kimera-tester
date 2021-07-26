@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32f11o ]
+        //	[ kimera framework V 2.8.32f11p ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32f11o kimera`);
+        debug(`:: [🛈 Version] V2.8.32f11p kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -198,14 +198,14 @@ const ui = (() => {
 
                     Loader.classList.add('[status-off]');
 
-                },50); // wait elements call
+	                setTimeout(()=>{
 
-                setTimeout(()=>{
+	                    Loader.classList.add('[status---]');
+	                    Loader.classList.remove('[status-active]','[status-off]','gpuboost');
 
-                    Loader.classList.add('[status---]');
-                    Loader.classList.remove('[status-active]','[status-off]','gpuboost');
+	                },650); // wait css exit out animation
 
-                },720); // wait css exit out animation
+				},300); // wait elements call
 
             });
 
@@ -379,7 +379,7 @@ const ui = (() => {
             function lazyobserver(lazywhenviewlist,lazyobserverlist)
             {
 
-                if(lazyobserverlist.length>-1 || lazywhenviewlist.length>-1)
+                if(lazyobserverlist.length || lazywhenviewlist.length)
                 {
 
                     window.document.body.addEventListener('scroll',()=>{
@@ -394,7 +394,7 @@ const ui = (() => {
 
                             //is it in or under screen view?
 
-                            if(lazywhenviewlist.length>-1)
+                            if(lazywhenviewlist.length)
                             {
 
                                 let index=0;
@@ -421,7 +421,7 @@ const ui = (() => {
 
 
                             //is it in or out screen view? (players controllers)
-                            if(lazyobserverlist.length>-1 )
+                            if(lazyobserverlist.length )
                             {
 
 
@@ -510,7 +510,7 @@ const ui = (() => {
                                 }
                             }
 
-                        },333) // 333 = 3.x fps;
+                        },20) // 333 = 3.x fps;
 
 					},true);
 
@@ -12122,7 +12122,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11o"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11p"
 
         })),false);
 
