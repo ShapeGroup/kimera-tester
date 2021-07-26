@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32f11ze ]
+        //	[ kimera framework V 2.8.32f11zf ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32f11ze kimera`);
+        debug(`:: [🛈 Version] V2.8.32f11zf kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -355,9 +355,10 @@ const ui = (() => {
                 if(lazyobserverlist[0]!=undefined||lazywhenviewlist[0]!=undefined)
                 {
 
-					document.body.onscroll = ()=>{ console.log("SCROLLING"); };
 
-                    document.body.addEventListener('scroll',()=>{
+                    document.body.addEventListener('scroll', ev_observerscroller=>{
+
+							ev_observerscroller.preventDefault();
 
 						// let scrollpage = setInterval( ()=> {
 						//
@@ -403,20 +404,10 @@ const ui = (() => {
                                 for (let element of lazyobserverlist)
                                 {
 
-                                    let elementcontent;
-
-                                    if(element.getElementsByTagName('iframe')[0])
-                                    {
-                                        elementcontent  = element.getElementsByTagName('iframe')[0]
-                                    }
-                                    else if (element.getElementsByTagName('video')[0])
-                                    {
-                                        elementcontent  = element.getElementsByTagName('video')[0]
-                                    }
-                                    else
-                                    {
-                                        elementcontent  = element.firstElementChild;
-                                    }
+                                    let elementcontent =
+										  element.getElementsByTagName('iframe')[0]) ? element.getElementsByTagName('iframe')[0]
+										: element.getElementsByTagName('video')[0] ? element.getElementsByTagName('video')[0]
+                                        : element.firstElementChild;
 
                                     let classelist      = element.firstElementChild.classList.toString().toLowerCase(),
                                         ePosition       = getoffsetTop(element),
@@ -425,30 +416,33 @@ const ui = (() => {
                                     //if not in view
                                     if(isInView)
                                     {
+										if(!classelist.includes('[status-active]'))
+										{
 
+	                                        if(classelist.includes('social','autostartstop'))
+	                                        {
+
+	                                                 if( (classelist.includes('facebook') || classelist.includes('instagram')) && elementcontent.getAttribute('src')=='')
+	                                                 {
+	                                                     elementcontent.setAttribute("src",elementcontent.dataset.relink);
+	                                                 }
+
+	                                                 else if(classelist.includes('youtube'))       { elementcontent.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}','*');}
+	                                                 else if(classelist.includes('vimeo'))         { elementcontent.contentWindow.postMessage('{"method":"play"}','*');}
+
+	                                        }
+
+	                                        else if(classelist.includes('videobox'))
+	                                        {
+	                                            elementcontent.tagName.toLowerCase() == 'video'
+	                                                ? elementcontent.play()
+	                                                : elementcontent.getElementsByTagName('video')[0].play();
+	                                        }
+
+										}
 
                                         element.classList.remove('[status-active]')
 										element.classList.add('[status-off]')
-
-                                        if(classelist.includes('social','autostartstop'))
-                                        {
-
-                                                 if( (classelist.includes('facebook') || classelist.includes('instagram')) && elementcontent.getAttribute('src')=='')
-                                                 {
-                                                     elementcontent.setAttribute("src",elementcontent.dataset.relink);
-                                                 }
-
-                                                 else if(classelist.includes('youtube'))       { elementcontent.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}','*');}
-                                                 else if(classelist.includes('vimeo'))         { elementcontent.contentWindow.postMessage('{"method":"play"}','*');}
-
-                                        }
-
-                                        else if(classelist.includes('videobox'))
-                                        {
-                                            elementcontent.tagName.toLowerCase() == 'video'
-                                                ? elementcontent.play()
-                                                : elementcontent.getElementsByTagName('video')[0].play();
-                                        }
 
 
                                     }
@@ -457,36 +451,38 @@ const ui = (() => {
                                     else
                                     {
 
+										if(!classelist.includes('[status-off]'))
+										{
+	                                        if(classelist.includes('social','autostartstop'))
+	                                        {
 
-                                        element.classList.remove('[status-off]'); element.classList.add('[status-active]');
+	                                             if( (classelist.includes('facebook') || classelist.includes('instagram')) && elementcontent.getAttribute('src')!='' )
+	                                             {
+	                                                 elementcontent.setAttribute("src",'');
+	                                             }
 
-                                        if(classelist.includes('social','autostartstop'))
-                                        {
+	                                             else if(classelist.includes('youtube'))     { elementcontent.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*'); }
+	                                             else if(classelist.includes('vimeo'))       { elementcontent.contentWindow.postMessage('{"method":"pause"}', '*'); }
 
-                                             if( (classelist.includes('facebook') || classelist.includes('instagram')) && elementcontent.getAttribute('src')!='' )
-                                             {
-                                                 elementcontent.setAttribute("src",'');
-                                             }
+	                                        }
 
-                                             else if(classelist.includes('youtube'))     { elementcontent.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*'); }
-                                             else if(classelist.includes('vimeo'))       { elementcontent.contentWindow.postMessage('{"method":"pause"}', '*'); }
+	                                        else if(classelist.includes('videobox'))
+	                                        {
+	                                            elementcontent.tagName.toLowerCase() == 'video'
+	                                                ? elementcontent.pause()
+	                                                : elementcontent.getElementsByTagName('video')[0].pause();
 
-                                        }
+	                                        }
 
-                                        else if(classelist.includes('videobox'))
-                                        {
-                                            elementcontent.tagName.toLowerCase() == 'video'
-                                                ? elementcontent.pause()
-                                                : elementcontent.getElementsByTagName('video')[0].pause();
-
-                                        }
-
+										element.classList.remove('[status-off]');
+										element.classList.add('[status-active]');
 
                                     }
 
                                 }
                             }
 
+							ev_observerscroller = null;
                         // },200) // 333 = 3.x fps;
 
 					},true);
@@ -12101,7 +12097,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11ze"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11zf"
 
         })),false);
 
