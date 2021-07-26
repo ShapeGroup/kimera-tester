@@ -405,7 +405,7 @@ const ui = (() => {
                                 {
 
                                     let elementcontent =
-										  element.getElementsByTagName('iframe')[0]) ? element.getElementsByTagName('iframe')[0]
+										  element.getElementsByTagName('iframe')[0] ? element.getElementsByTagName('iframe')[0]
 										: element.getElementsByTagName('video')[0] ? element.getElementsByTagName('video')[0]
                                         : element.firstElementChild;
 
