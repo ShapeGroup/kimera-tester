@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32f11t ]
+        //	[ kimera framework V 2.8.32f11u ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32f11t kimera`);
+        debug(`:: [🛈 Version] V2.8.32f11u kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -196,17 +196,15 @@ const ui = (() => {
                     lazyobserverlist = []; // on/off start on view (forever active if have an element)
 
 
-                if(lazyelements.length<=0)
+                if(!lazyelements.length)
                 {
 
-					postLazy(); return lazy_sets_is_end();
+					return lazy_sets_is_end();
 
                 }
 
                 else
                 {
-
-					console.log("lazyelements finded:",lazyelements);
 
                     for (let element of lazyelements)
                     {
@@ -335,11 +333,11 @@ const ui = (() => {
                     }
 
 
+					//load if in view now
+                    lazynow(lazyonstartlist,null,true);
+
                     //load when in view or when is ready
                     lazyobserver(lazywhenviewlist,lazyobserverlist);
-
-                    //load if in view now
-                    lazynow(lazyonstartlist,null,true);
 
 
                 }
@@ -354,10 +352,10 @@ const ui = (() => {
             function lazyobserver(lazywhenviewlist,lazyobserverlist)
             {
 
-                if(lazyobserverlist[0]!=undefined || lazywhenviewlist[0]!=undefined)
+                if(lazyobserverlist[0]!=undefined||lazywhenviewlist[0]!=undefined)
                 {
 
-                    window.addEventListener('scroll',()=>{
+                    window.document.addEventListener('scroll',()=>{
 
 						// let scrollpage = setInterval( ()=> {
 						//
@@ -12101,7 +12099,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11t"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f11u"
 
         })),false);
 
