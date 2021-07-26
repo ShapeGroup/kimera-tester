@@ -482,8 +482,11 @@ const ui = (() => {
                                 }
                             }
 
-							ev_observerscroller = null;
+
+							}
                         // },200) // 333 = 3.x fps;
+
+						ev_observerscroller = null;
 
 					},true);
 
