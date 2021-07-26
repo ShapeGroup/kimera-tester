@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32f5 ]
+        //	[ kimera framework V 2.8.32f6 ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32f5 kimera`);
+        debug(`:: [🛈 Version] V2.8.32f6 kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -194,11 +194,11 @@ const ui = (() => {
 
                 document.querySelectorAll('body[class*="mode-"]')[0].style.opacity='1';
 
-                setTimeout(()=>{
+                // setTimeout(()=>{
 
                     Loader.classList.add('[status-off]');
 
-                },25); // wait elements call
+                // },100); // wait elements call
 
                 setTimeout(()=>{
 
@@ -232,6 +232,8 @@ const ui = (() => {
 
                 else
                 {
+
+					console.log("lazyelements finded:",lazyelements);
 
                     for (let element of lazyelements)
                     {
@@ -380,10 +382,13 @@ const ui = (() => {
             {
 
 				console.log('test:observing',lazyobserverlist.length);
+				console.log('test:observing',lazywhenviewlist.length);
 
                 if(lazyobserverlist.length>-1 || lazywhenviewlist.length>-1)
                 {
-					console.log('test:observing');
+
+					console.log('test:observing...');
+
 					if (window.scrollY) {console.log("WIN SCROLLLL!!!"); }
 
                     window.document.body.onscroll = ev_scrollpage => {
@@ -394,7 +399,7 @@ const ui = (() => {
 
                             window.clearInterval( scrollpage );
 
-                            let wintop      = window.scrollTop || document.documentElement.scrollTop,
+                            let wintop      = window.document.body.scrollTop || document.documentElement.scrollTop,
                                 winbottom   = wintop + screen.availHeight;
 
 
@@ -12128,7 +12133,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f5"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f6"
 
         })),false);
 
@@ -12150,21 +12155,21 @@ const ui = (() => {
         window.onresize = () =>{ /*nomobar();*/ grid_y(); }
 
 
-		function postLazy()
-		{
-			expandercard();
-            tabx();
-            taby();
-            spoilers();
-            videobox();
-            audiobox();
-            grabs();
-            flange();
-            outbox();
-            effectors();
-            expandercard();
-
-		}
+		// function postLazy()
+		// {
+		// 	expandercard();
+        //     tabx();
+        //     taby();
+        //     spoilers();
+        //     videobox();
+        //     audiobox();
+        //     grabs();
+        //     flange();
+        //     outbox();
+        //     effectors();
+        //     expandercard();
+		//
+		// }
 
 
     //--------------------------------------------------//
