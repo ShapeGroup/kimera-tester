@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32a ]
+        //	[ kimera framework V 2.8.32b ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.31-b2 kimera`);
+        debug(`:: [🛈 Version] V2.8.32b kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -12089,7 +12089,7 @@ const ui = (() => {
             tagcode();
             retagpre();
             lazyloader();
-            nomobar();
+            //nomobar();
             modeapp();
             absolute();
             paginations();
@@ -12140,7 +12140,7 @@ const ui = (() => {
 
         })),false);
 
-        window.onresize = () =>{ nomobar(); grid_y(); }
+        window.onresize = () =>{ /*nomobar();*/ grid_y(); }
 
 
 		function postLazy()
