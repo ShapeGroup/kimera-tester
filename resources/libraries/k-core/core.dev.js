@@ -10818,8 +10818,7 @@ const ui = (() => {
 
                 video.onloadedmetadata = ev_videoready => {
 
-
-                    var crossclick = is_touch_device() ? 'touchstart' : 'click';
+					alert("VIDEO READY")
 
 
                     // on buffering start...
@@ -10903,7 +10902,7 @@ const ui = (() => {
                                 return ~~(x / e.offsetWidth * 100)
                             }
 
-                            volume.addEventListener( crossclick, ev_video_powerclick => {
+                            volume.addEventListener( 'click', ev_video_powerclick => {
 
                                 if(ev_video_powerclick.target!=power)
                                 {
@@ -10954,7 +10953,7 @@ const ui = (() => {
                         if(loop)
                         {
 
-                            loop.addEventListener( crossclick, ev_loopvideo => {
+                            loop.addEventListener( 'click', ev_loopvideo => {
 
                                 if(!video.loop)
                                 {
@@ -11042,10 +11041,10 @@ const ui = (() => {
                         }
 
                         if(video.autoplay){ playpause(); };
-                        if(starter) starter.addEventListener( crossclick, ev_playvideo => { playpause(ev_playvideo) },false);
-                        if(play) play.addEventListener( crossclick, ev_playvideo => { playpause(ev_playvideo) },false);
+                        if(starter) starter.addEventListener( 'click', ev_playvideo => { playpause(ev_playvideo) },false);
+                        if(play) play.addEventListener( 'click', ev_playvideo => { playpause(ev_playvideo) },false);
 
-                        display.addEventListener( crossclick, ev_playvideo => {
+                        display.addEventListener( 'click', ev_playvideo => {
                             if(ev_playvideo.target === display)
                             {
 
@@ -11071,7 +11070,7 @@ const ui = (() => {
 
                         if(playprogress)
                         {
-                            playprogress.addEventListener( crossclick, ev_clickvideoprogress => {
+                            playprogress.addEventListener( 'click', ev_clickvideoprogress => {
 
                                 let pointX = (ev_clickvideoprogress.pageX - getoffsetLeft(playprogress)),
                                 clickpercent = ~~((pointX/playprogress.offsetWidth) * 100 ),
@@ -11091,7 +11090,7 @@ const ui = (() => {
                         if(maximized)
                         {
 
-                            maximized.addEventListener( crossclick,  ev_maximizedvideo => {
+                            maximized.addEventListener( 'click',  ev_maximizedvideo => {
 
                                 ev_maximizedvideo.preventDefault();
                                 setfullscreen()
@@ -11151,7 +11150,7 @@ const ui = (() => {
                         if(cinema)
                         {
 
-                            cinema.addEventListener( crossclick, ev_cinemavideo => {
+                            cinema.addEventListener( 'click', ev_cinemavideo => {
 
                                 ev_cinemavideo.preventDefault();
                                 setcinemode();
