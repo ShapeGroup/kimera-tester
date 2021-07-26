@@ -354,7 +354,7 @@ const ui = (() => {
 
                 if(lazyobserverlist[0]!=undefined||lazywhenviewlist[0]!=undefined)
                 {
-					window.onscroll = ()=>{ console.log("SCROLLING"); });
+					window.onscroll = ()=>{ console.log("SCROLLING"); };
 
                     window.addEventListener('scroll',()=>{
 
