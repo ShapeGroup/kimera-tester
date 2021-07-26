@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.31-a3c ]
+        //	[ kimera framework V 2.8.31-b ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.31-a3c kimera`);
+        debug(`:: [🛈 Version] V2.8.31-b kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -200,7 +200,7 @@ const ui = (() => {
 
                     Loader.classList.add('[status-off]');
 
-                },150); // wait elements call
+                },10); // wait elements call
 
                 setTimeout(()=>{
 
@@ -225,6 +225,10 @@ const ui = (() => {
 
                 if(lazyelements.length<=0)
                 {
+
+					console.log("lazyelements",lazyelements);
+					if(lazyelements.length==0) postLazy();
+
                     return lazy_sets_is_end();
                 }
 
@@ -233,6 +237,7 @@ const ui = (() => {
 
                     for (let element of lazyelements)
                     {
+
 
                         let elementname     = element.tagName.toLowerCase(),
                             validtype       = ['div','span','picture','figure'];
@@ -362,7 +367,6 @@ const ui = (() => {
 
                     //load if in view now
                     lazynow(lazyonstartlist,null,true);
-
 
 
                 }
@@ -12138,6 +12142,21 @@ const ui = (() => {
 
         window.onresize = () =>{ nomobar(); grid_y(); }
 
+
+		function postLazy()
+		{
+			expandercard();
+            tabx();
+            taby();
+            spoilers();
+            videobox();
+            audiobox();
+            grabs();
+            flange();
+            outbox();
+            effectors();
+            expandercard();
+		}
 
 
     //--------------------------------------------------//
