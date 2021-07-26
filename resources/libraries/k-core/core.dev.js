@@ -353,8 +353,8 @@ const ui = (() => {
             // on scroll observe.. what is in start, else stop
             function lazyobserver(lazywhenviewlist,lazyobserverlist)
             {
-				console.log(lazyobserverlist[0]);
-				console.log(lazywhenviewlist[0]);
+				console.log("checknotempty:",lazyobserverlist[0]);
+				console.log("checknotempty:",lazywhenviewlist[0]);
 
                 if(lazyobserverlist.length>0 || lazywhenviewlist.length>0)
                 {
