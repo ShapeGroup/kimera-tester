@@ -17,8 +17,6 @@ const ui = (() => {
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
 
-		document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32d"
-
 
     //--------------------------------------------------//
 
@@ -12156,6 +12154,7 @@ const ui = (() => {
             outbox();
             effectors();
             expandercard();
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32d"
 		}
 
 
