@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.32f4 ]
+        //	[ kimera framework V 2.8.32f5 ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.32f4 kimera`);
+        debug(`:: [🛈 Version] V2.8.32f5 kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -224,8 +224,9 @@ const ui = (() => {
                 if(lazyelements.length<=0)
                 {
 
-					console.log("lazyelements",lazyelements);
-					postLazy(); return lazy_sets_is_end();
+					// console.log("lazyelements",lazyelements);
+					// postLazy();
+					return lazy_sets_is_end();
 
                 }
 
@@ -12127,7 +12128,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f4"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.32f5"
 
         })),false);
 
