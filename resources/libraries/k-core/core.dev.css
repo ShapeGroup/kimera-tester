@@ -1,5 +1,5 @@
 /*
-//	kimera framework V 2.8.31-a1
+//	kimera framework V 2.8.31-a2
 //	Credits: Alberto Marà & Shape group
 //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
 //	https://www.facebook.com/kimeraframework/
@@ -5284,7 +5284,8 @@ textarea {
 
 }
 
-.overlay .selectorbox .hide-bar-y {
+
+.overlay .selectorbox div:nth-child(3) /*.hide-bar-y limit*/ {
 
     max-height: 450px;
 
@@ -5341,7 +5342,7 @@ textarea {
 
 }
 
-[class*=button-dropdown]  div+.hide-bar-y {
+[class*=button-dropdown]  div:nth-child(2) /*hide-bar-y*/ {
 
     max-height: 190px;
 
