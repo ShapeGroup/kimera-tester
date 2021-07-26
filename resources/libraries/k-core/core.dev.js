@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.31 ]
+        //	[ kimera framework V 2.8.31-a ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.31 kimera`);
+        debug(`:: [🛈 Version] V2.8.31-a kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -10373,13 +10373,11 @@ const ui = (() => {
                     },false);
                 }
 
-                let crossclick = is_touch_device() ? 'touchstart' : 'click';
-
-                pop.addEventListener( crossclick, ev_togglepopover => {
+                pop.addEventListener( 'click', ev_togglepopover => {
 
                     togglepopover(ev_togglepopover,allpops,pop);
 
-                    document.addEventListener(crossclick, ev_closeallpops=>{ closeallpops(allpops) },true)
+                    document.addEventListener('click', ev_closeallpops=>{ closeallpops(allpops) },true)
 
                 },false);
 
@@ -10531,15 +10529,11 @@ const ui = (() => {
                     }
 
 
-                    /// actions
-
-                    let crossclick = is_touch_device() ? 'touchstart' : 'click';
-
                     // play/pause audio
                     if(play)
                     {
 
-                        play.addEventListener( crossclick, ev_audio_playclick => {
+                        play.addEventListener( 'click', ev_audio_playclick => {
 
                             updateRuntime();
 
@@ -10566,7 +10560,7 @@ const ui = (() => {
                     if(loop)
                     {
 
-                        loop.addEventListener( crossclick, ev_audio_loopclick => {
+                        loop.addEventListener( 'click', ev_audio_loopclick => {
 
                             if(!audio.loop)
                             {
@@ -10595,7 +10589,7 @@ const ui = (() => {
                     if(timeline)
                     {
 
-                        progressor.addEventListener(crossclick, ev_audio_progressclick => {
+                        progressor.addEventListener('click', ev_audio_progressclick => {
 
                             //progressbar
                             let percent = fromWidthToPercent(progressor, ( is_touch_device() ? ev_audio_progressclick.touches[0].pageX : ev_audio_progressclick.pageX )-getoffsetLeft(progressor) );
@@ -10614,7 +10608,7 @@ const ui = (() => {
                     if(volume)
                     {
 
-                        volume.addEventListener(crossclick, ev_audio_powerclick => {
+                        volume.addEventListener('click', ev_audio_powerclick => {
 
                             if(ev_audio_powerclick.target!=power)
                             {
@@ -10817,8 +10811,6 @@ const ui = (() => {
 
 
                 video.onloadedmetadata = ev_videoready => {
-
-					alert("VIDEO READY")
 
 
                     // on buffering start...
