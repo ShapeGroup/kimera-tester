@@ -66,6 +66,8 @@ body {
     z-index: 1;
     font-size: 1rem;
 	scroll-behavior: smooth;
+	overflow-scrolling: touch;
+	-webkit-overflow-scrolling: touch;
     font-size-adjust: none;
     -webkit-transition: ease font-size .25s;
     -o-transition: ease font-size .25s;
