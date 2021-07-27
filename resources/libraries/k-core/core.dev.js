@@ -366,35 +366,35 @@ const ui = (() => {
                         //     window.clearInterval( scrollpage );
 
                             let wintop      = window.scrollTop||document.body.scrollTop||document.documentElement.scrollTop,
-                                winbottom   = wintop + screen.availHeight
+                                winbottom   = wintop + screen.availHeight;
 
 								console.log(screen.availHeight);
                             //is it in or under screen view?
 
-                            if(lazywhenviewlist[0]!=undefined)
-                            {
-
-                                let index=0;
-                                for (let element of lazywhenviewlist)
-                                {
-
-                                    if(getoffsetTop(element)<winbottom )
-                                    {
-                                        if(!element.className.includes('status'))
-                                        {
-                                            lazynow(lazywhenviewlist,index,false);
-                                        }
-                                        else
-                                        {
-                                            lazywhenviewlist.splice(index,1);
-                                        }
-                                    }
-
-                                    index++;
-
-                                }
-
-                            }
+                            // if(lazywhenviewlist[0]!=undefined)
+                            // {
+							//
+                            //     let index=0;
+                            //     for (let element of lazywhenviewlist)
+                            //     {
+							//
+                            //         if(getoffsetTop(element)<winbottom )
+                            //         {
+                            //             if(!element.className.includes('status'))
+                            //             {
+                            //                 lazynow(lazywhenviewlist,index,false);
+                            //             }
+                            //             else
+                            //             {
+                            //                 lazywhenviewlist.splice(index,1);
+                            //             }
+                            //         }
+							//
+                            //         index++;
+							//
+                            //     }
+							//
+                            // }
 
 
                             //is it in or out screen view? (players controllers)
