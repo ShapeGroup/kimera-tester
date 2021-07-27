@@ -372,6 +372,7 @@ const ui = (() => {
 
                             //is it in or under screen view?
 
+							console.log("tester1");
                             if(lazywhenviewlist[0]!=undefined)
                             {
 
