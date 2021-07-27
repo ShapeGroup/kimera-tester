@@ -415,7 +415,7 @@ const ui = (() => {
                                         ePosition       = getoffsetTop(element),
                                         isInView        = (ePosition<winbottom&&(ePosition+element.offsetHeight)>wintop)
 
-									console.log("test6 /",element," eP:",ePosition," wb:",winbottom);
+									// console.log("test6 /",element," eP:",ePosition," wb:",winbottom);
 
                                     //if not in view
                                     if(isInView)
