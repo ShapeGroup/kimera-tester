@@ -368,7 +368,7 @@ const ui = (() => {
                             let wintop      = window.scrollTop||document.body.scrollTop||document.documentElement.scrollTop,
                                 winbottom   = wintop + screen.availHeight
 
-
+								console.log(screen.availHeight);
                             //is it in or under screen view?
 
                             if(lazywhenviewlist[0]!=undefined)
