@@ -411,11 +411,12 @@ const ui = (() => {
 										: element.getElementsByTagName('video')[0]  ? element.getElementsByTagName('video')[0]
                                         : element.firstElementChild;
 
-										console.log(ePosition);
 
                                     let classelist      = element.firstElementChild.classList.toString().toLowerCase(),
                                         ePosition       = getoffsetTop(element),
                                         isInView        = (ePosition<winbottom&&(ePosition+element.offsetHeight)>wintop)
+
+									console.log(ePosition);
 
                                     //if not in view
                                     if(isInView)
