@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.34b ]
+        //	[ kimera framework V 2.8.34c ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.34b kimera`);
+        debug(`:: [🛈 Version] V2.8.34c kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -365,8 +365,10 @@ const ui = (() => {
 						//
                         //     window.clearInterval( scrollpage );
 
-                            let wintop      = window.scrollTop||document.body.scrollTop|| document.documentElement.scrollTop, //|| window.scrollTop
+                            let wintop      = window.scrollTop||document.body.scrollTop|| document.documentElement.scrollTop,
                                 winbottom   = wintop + screen.availHeight
+
+								console.log("WINTOP:",wintop,"WINBOTTOM",winbottom);
 
                             //is it in or under screen view?
 
@@ -377,7 +379,7 @@ const ui = (() => {
                                 for (let element of lazywhenviewlist)
                                 {
 
-                                    if(getoffsetTop(element)<winbottom )
+                                    if((getoffsetTop(element)+wintop)<winbottom )
                                     {
                                         if(!element.className.includes('status'))
                                         {
@@ -12102,7 +12104,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.34b"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.34c"
 
         })),false);
 
