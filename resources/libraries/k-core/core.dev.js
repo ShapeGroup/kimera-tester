@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.34c ]
+        //	[ kimera framework V 2.8.34c10 ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.34c kimera`);
+        debug(`:: [🛈 Version] V2.8.34c10 kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -397,7 +397,7 @@ const ui = (() => {
 
 
                             //is it in or out screen view? (players controllers)
-                            if(lazyobserverlist.length>-1)
+                            if(lazyobserverlist[0]!=undefined)
                             {
 
                                 for (let element of lazyobserverlist)
@@ -415,14 +415,13 @@ const ui = (() => {
                                         ePosition       = getoffsetTop(element),
                                         isInView        = (ePosition<winbottom&&(ePosition+element.offsetHeight)>wintop)
 
-									// console.log("test6 /",element," eP:",ePosition," wb:",winbottom);
 
                                     //if not in view
                                     if(isInView)
                                     {
 
-										// if(!classelist.includes('[status-active]'))
-										// {
+										if(!classelist.includes('[status-active]'))
+										{
 
 	                                        if(classelist.includes('social','autostartstop'))
 	                                        {
@@ -444,7 +443,7 @@ const ui = (() => {
 	                                                : elementcontent.getElementsByTagName('video')[0].play();
 	                                        }
 
-										// }
+										}
 
                                         element.classList.remove('[status-active]')
 										element.classList.add('[status-off]')
@@ -455,8 +454,8 @@ const ui = (() => {
                                     else
                                     {
 
-										// if(!classelist.includes('[status-off]'))
-										// {
+										if(!classelist.includes('[status-off]'))
+										{
 
 	                                        if(classelist.includes('social','autostartstop'))
 	                                        {
@@ -479,7 +478,7 @@ const ui = (() => {
 
 	                                        }
 
-										// }
+										}
 
 										element.classList.remove('[status-off]');
 										element.classList.add('[status-active]');
@@ -12107,7 +12106,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.34c"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.34c10"
 
         })),false);
 
