@@ -368,7 +368,7 @@ const ui = (() => {
                             let wintop      = window.scrollTop||document.body.scrollTop|| document.documentElement.scrollTop,
                                 winbottom   = wintop + screen.availHeight
 
-								console.log("WINTOP:",wintop,"WINBOTTOM",winbottom);
+								// console.log("WINTOP:",wintop,"WINBOTTOM",winbottom);
 
                             //is it in or under screen view?
 
@@ -379,10 +379,11 @@ const ui = (() => {
                                 for (let element of lazywhenviewlist)
                                 {
 
-                                    if((getoffsetTop(element)+wintop)<winbottom )
+                                    if(getoffsetTop(element)<winbottom )
                                     {
                                         if(!element.className.includes('status'))
                                         {
+											console.log(getoffsetTop(element),'<',winbottom);
                                             lazynow(lazywhenviewlist,index,false);
                                         }
                                         else
