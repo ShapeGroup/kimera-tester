@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.34a ]
+        //	[ kimera framework V 2.8.34b ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.34a kimera`);
+        debug(`:: [🛈 Version] V2.8.34b kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -250,7 +250,7 @@ const ui = (() => {
 
                                     if( contentclasses.includes('settings') && contentclasses.includes('autostartstop') ){ lazyobserverlist.push(element); }
 
-                                    (getoffsetTop(element)<=(window.scrollTop||document.documentElement.scrollTop)+screen.availHeight)
+                                    (getoffsetTop(element)<=(window.scrollTop||document.body.scrollTop||document.documentElement.scrollTop)+screen.availHeight)
                                         ? lazyonstartlist.push(element)      // it's in view
                                         : lazywhenviewlist.push(element);    // on scrolling
 
@@ -299,7 +299,7 @@ const ui = (() => {
                                 if(isvalid===true)
                                 {
 
-                                    (getoffsetTop(element)<=(window.scrollTop||document.documentElement.scrollTop)+screen.availHeight)
+                                    (getoffsetTop(element)<=(window.scrollTop||document.body.scrollTop||document.documentElement.scrollTop)+screen.availHeight)
                                         ? lazyonstartlist.push(element)     // it's in view
                                         : lazywhenviewlist.push(element);   // on scrolling
 
@@ -365,7 +365,7 @@ const ui = (() => {
 						//
                         //     window.clearInterval( scrollpage );
 
-                            let wintop      = document.body.scrollTop , //|| document.documentElement.scrollTop || window.scrollTop
+                            let wintop      = window.scrollTop||document.body.scrollTop|| document.documentElement.scrollTop, //|| window.scrollTop
                                 winbottom   = wintop + screen.availHeight
 
                             //is it in or under screen view?
@@ -12102,7 +12102,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.34a"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.34b"
 
         })),false);
 
