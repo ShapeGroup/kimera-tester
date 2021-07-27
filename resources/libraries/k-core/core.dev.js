@@ -368,41 +368,42 @@ const ui = (() => {
                             let wintop      = window.scrollTop||document.body.scrollTop||document.documentElement.scrollTop,
                                 winbottom   = wintop + (document.documentElement.clientHeight || window.innerHeight || 0);
 
-								console.log("w-h:",window.innerHeight);
                             //is it in or under screen view?
 
-                            // if(lazywhenviewlist[0]!=undefined)
-                            // {
-							//
-                            //     let index=0;
-                            //     for (let element of lazywhenviewlist)
-                            //     {
-							//
-                            //         if(getoffsetTop(element)<winbottom )
-                            //         {
-                            //             if(!element.className.includes('status'))
-                            //             {
-                            //                 lazynow(lazywhenviewlist,index,false);
-                            //             }
-                            //             else
-                            //             {
-                            //                 lazywhenviewlist.splice(index,1);
-                            //             }
-                            //         }
-							//
-                            //         index++;
-							//
-                            //     }
-							//
-                            // }
+                            if(lazywhenviewlist[0]!=undefined)
+                            {
+
+                                let index=0;
+                                for (let element of lazywhenviewlist)
+                                {
+
+                                    if(getoffsetTop(element)<winbottom )
+                                    {
+                                        if(!element.className.includes('status'))
+                                        {
+                                            lazynow(lazywhenviewlist,index,false);
+                                        }
+                                        else
+                                        {
+                                            lazywhenviewlist.splice(index,1);
+                                        }
+                                    }
+
+                                    index++;
+
+                                }
+
+                            }
 
 
                             //is it in or out screen view? (players controllers)
-                            if(lazyobserverlist[0]!=undefined)
+                            if(lazyobserverlist.length>-1)
                             {
 
                                 for (let element of lazyobserverlist)
                                 {
+
+									console.log("TEST OK 9",element);
 
                                     let elementcontent =
 										  element.getElementsByTagName('iframe')[0] ? element.getElementsByTagName('iframe')[0]
