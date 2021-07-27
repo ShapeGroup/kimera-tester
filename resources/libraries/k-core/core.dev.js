@@ -366,9 +366,9 @@ const ui = (() => {
                         //     window.clearInterval( scrollpage );
 
                             let wintop      = window.scrollTop||document.body.scrollTop||document.documentElement.scrollTop,
-                                winbottom   = wintop + screen.availHeight;
+                                winbottom   = wintop + Window.innerHeight; //screen.availHeight
 
-								console.log(screen.availHeight);
+								console.log("wh:",Window.innerHeight);
                             //is it in or under screen view?
 
                             // if(lazywhenviewlist[0]!=undefined)
