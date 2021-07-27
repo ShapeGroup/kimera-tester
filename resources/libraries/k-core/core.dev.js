@@ -3528,8 +3528,6 @@ const ui = (() => {
 
                                     // get box position
 
-									console.log(document.body.scrollTop);
-
                                     let xScroll = (document.documentElement.scrollLeft || window.pageXOffset)+document.body.scrollLeft,
                                         yScroll = (document.documentElement.scrollTop || window.pageYOffset)+document.body.scrollTop,
                                         xBoxPos = getoffsetLeft(startbox),
