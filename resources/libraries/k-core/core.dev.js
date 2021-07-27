@@ -368,11 +368,9 @@ const ui = (() => {
                             let wintop      = window.scrollTop||document.body.scrollTop|| document.documentElement.scrollTop,
                                 winbottom   = wintop + screen.availHeight
 
-								// console.log("WINTOP:",wintop,"WINBOTTOM",winbottom);
 
                             //is it in or under screen view?
 
-							console.log("tester1");
                             if(lazywhenviewlist[0]!=undefined)
                             {
 
@@ -384,7 +382,6 @@ const ui = (() => {
                                     {
                                         if(!element.className.includes('status'))
                                         {
-											console.log(getoffsetTop(element),'<',winbottom);
                                             lazynow(lazywhenviewlist,index,false);
                                         }
                                         else
@@ -404,14 +401,17 @@ const ui = (() => {
                             if(lazyobserverlist[0]!=undefined)
                             {
 
+								console.log("WINTOP:",wintop,"WINBOTTOM",winbottom);
 
                                 for (let element of lazyobserverlist)
                                 {
 
                                     let elementcontent =
 										  element.getElementsByTagName('iframe')[0] ? element.getElementsByTagName('iframe')[0]
-										: element.getElementsByTagName('video')[0] ? element.getElementsByTagName('video')[0]
+										: element.getElementsByTagName('video')[0]  ? element.getElementsByTagName('video')[0]
                                         : element.firstElementChild;
+
+										console.log(ePosition);
 
                                     let classelist      = element.firstElementChild.classList.toString().toLowerCase(),
                                         ePosition       = getoffsetTop(element),
@@ -420,6 +420,7 @@ const ui = (() => {
                                     //if not in view
                                     if(isInView)
                                     {
+
 										if(!classelist.includes('[status-active]'))
 										{
 
@@ -447,7 +448,6 @@ const ui = (() => {
 
                                         element.classList.remove('[status-active]')
 										element.classList.add('[status-off]')
-
 
                                     }
 
@@ -478,13 +478,13 @@ const ui = (() => {
 
 	                                        }
 
-										element.classList.remove('[status-off]');
-										element.classList.add('[status-active]');
+											element.classList.remove('[status-off]');
+											element.classList.add('[status-active]');
 
-                                    }
+										}
 
-                                }
-                            }
+                                	}
+                            	}
 
 
 							}
