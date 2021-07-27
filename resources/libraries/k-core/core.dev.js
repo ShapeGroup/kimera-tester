@@ -365,7 +365,7 @@ const ui = (() => {
 						//
                         //     window.clearInterval( scrollpage );
 
-                            let wintop      = window.scrollTop||document.body.scrollTop|| document.documentElement.scrollTop,
+                            let wintop      = window.scrollTop||document.body.scrollTop||document.documentElement.scrollTop,
                                 winbottom   = wintop + screen.availHeight
 
 
@@ -401,7 +401,7 @@ const ui = (() => {
                             if(lazyobserverlist[0]!=undefined)
                             {
 
-								console.log("WINTOP:",wintop,"WINBOTTOM",winbottom);
+								// console.log("WINTOP:",wintop,"WINBOTTOM",winbottom);
 
                                 for (let element of lazyobserverlist)
                                 {
@@ -416,7 +416,7 @@ const ui = (() => {
                                         ePosition       = getoffsetTop(element),
                                         isInView        = (ePosition<winbottom&&(ePosition+element.offsetHeight)>wintop)
 
-									console.log(ePosition);
+									console.log("test2:",ePosition);
 
                                     //if not in view
                                     if(isInView)
@@ -458,6 +458,7 @@ const ui = (() => {
 
 										if(!classelist.includes('[status-off]'))
 										{
+
 	                                        if(classelist.includes('social','autostartstop'))
 	                                        {
 
@@ -479,10 +480,10 @@ const ui = (() => {
 
 	                                        }
 
-											element.classList.remove('[status-off]');
-											element.classList.add('[status-active]');
-
 										}
+
+										element.classList.remove('[status-off]');
+										element.classList.add('[status-active]');
 
                                 	}
                             	}
