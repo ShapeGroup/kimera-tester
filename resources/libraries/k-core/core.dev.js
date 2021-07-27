@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.33 ]
+        //	[ kimera framework V 2.8.34a ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.33 kimera`);
+        debug(`:: [🛈 Version] V2.8.34a kimera`);
         debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -579,18 +579,17 @@ const ui = (() => {
                                     loaded  = [];
 
 
-                                for (let i=0;i<imgqnt;i++)
+                                for (let i=0; i<imgqnt; i++)
                                 {
                                     imglist[i].classList.add('hidden');
                                     loaded.push(false);
                                 }
 
-                                for (let i=0;i<imgqnt;i++)
+                                for (let i=0; i<imgqnt; i++)
                                 {
 
                                     let tagimg = imglist[i];
 
-									tagimg.src = tagimg.dataset.src;
 
                                     tagimg.onload = () =>
                                     {
@@ -612,6 +611,7 @@ const ui = (() => {
 
                                     }
 
+									tagimg.src = tagimg.dataset.src;
 
                                 }
 
@@ -3527,8 +3527,8 @@ const ui = (() => {
 
 
                                     // get box position
-                                    let xScroll = document.documentElement.scrollLeft || window.pageXOffset,
-                                        yScroll = document.documentElement.scrollTop || window.pageYOffset,
+                                    let xScroll = (document.documentElement.scrollLeft || window.pageXOffset) -document.body.scrollLeft,
+                                        yScroll = (document.documentElement.scrollTop || window.pageYOffset) -document.body.scrollTop,
                                         xBoxPos = getoffsetLeft(startbox),
                                         yBoxPos = getoffsetTop(startbox);
 
@@ -12101,7 +12101,7 @@ const ui = (() => {
             exitloader();
 
 			if(document.querySelectorAll('.k-version')[0])
-			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.33"
+			document.querySelectorAll('.k-version')[0].innerHTML = "V2.8.34a"
 
         })),false);
 
@@ -12122,22 +12122,6 @@ const ui = (() => {
 
         window.onresize = () =>{ /*nomobar();*/ grid_y(); }
 
-
-		// function postLazy()
-		// {
-		// 	expandercard();
-        //     tabx();
-        //     taby();
-        //     spoilers();
-        //     videobox();
-        //     audiobox();
-        //     grabs();
-        //     flange();
-        //     outbox();
-        //     effectors();
-        //     expandercard();
-		//
-		// }
 
 
     //--------------------------------------------------//
