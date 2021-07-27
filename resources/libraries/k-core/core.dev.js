@@ -414,7 +414,7 @@ const ui = (() => {
 
                                     let classelist      = element.firstElementChild.classList.toString().toLowerCase(),
                                         ePosition       = getoffsetTop(element),
-                                        isInView        = (ePosition<winbottom+element.offsetHeight&&(ePosition+element.offsetHeight)>wintop)
+                                        isInView        = (ePosition<winbottom-element.offsetHeight&&(ePosition+element.offsetHeight)>wintop)
 
 									console.log("test2:",ePosition);
 
