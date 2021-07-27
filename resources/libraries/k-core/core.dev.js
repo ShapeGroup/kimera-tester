@@ -401,8 +401,6 @@ const ui = (() => {
                             if(lazyobserverlist[0]!=undefined)
                             {
 
-								// console.log("WINTOP:",wintop,"WINBOTTOM",winbottom);
-
                                 for (let element of lazyobserverlist)
                                 {
 
@@ -416,14 +414,14 @@ const ui = (() => {
                                         ePosition       = getoffsetTop(element),
                                         isInView        = (ePosition<winbottom&&(ePosition+element.offsetHeight)>wintop)
 
-									console.log("test5 / eP:",ePosition," wb:",winbottom);
+									console.log("test6 /",element," eP:",ePosition," wb:",winbottom);
 
                                     //if not in view
                                     if(isInView)
                                     {
 
-										if(!classelist.includes('[status-active]'))
-										{
+										// if(!classelist.includes('[status-active]'))
+										// {
 
 	                                        if(classelist.includes('social','autostartstop'))
 	                                        {
@@ -445,7 +443,7 @@ const ui = (() => {
 	                                                : elementcontent.getElementsByTagName('video')[0].play();
 	                                        }
 
-										}
+										// }
 
                                         element.classList.remove('[status-active]')
 										element.classList.add('[status-off]')
@@ -456,8 +454,8 @@ const ui = (() => {
                                     else
                                     {
 
-										if(!classelist.includes('[status-off]'))
-										{
+										// if(!classelist.includes('[status-off]'))
+										// {
 
 	                                        if(classelist.includes('social','autostartstop'))
 	                                        {
@@ -480,7 +478,7 @@ const ui = (() => {
 
 	                                        }
 
-										}
+										// }
 
 										element.classList.remove('[status-off]');
 										element.classList.add('[status-active]');
