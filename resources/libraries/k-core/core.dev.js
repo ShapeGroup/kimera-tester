@@ -1,25 +1,21 @@
 
-
 const ui = (() => {
 
 
         /*
-        //  [ kimera framework V 2.8.X ]
-        //  Credits: Alberto Marà & Shape group - All right reserved
-        //  https://github.com/ShapeGroup/kimera-frontend-framework/wiki
-        //  https://www.facebook.com/kimeraframework/
+        //	[ kimera framework V 2.8.34c12 ]
+        //	Credits: Alberto Marà & Shape group
+        //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
+        //	https://www.facebook.com/kimeraframework/
         */
 
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] Kimera V2.8.30f5 - VisorBeta`);
-        debug(`:: [🛈 Project] https://git.io/JIJEt`);
+        debug(`:: [🛈 Version] V2.8.34c12 kimera`);
+        // debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
-
-
-
 
 
     //--------------------------------------------------//
@@ -45,21 +41,6 @@ const ui = (() => {
             }
 
         }
-
-
-        // micro-libs // get scrollY/X standard + mobile
-
-
-         const screenview = { "fullscreen":false };
-
-         (()=>{
-             window.addEventListener('scroll', ev_scroll => {
-
-                 screenview.scrollX = parseInt( (document.getElementsByTagName('BODY')[0].scrollLeft) ? document.getElementsByTagName('BODY')[0].scrollLeft :  (document.documentElement.scrollX) ?  document.documentElement.scrollX :  (document.scrollLeft) ? document.scrollLeft :  (window.scrollLeft) ? window.scrollLeft :  (window.pageXOffset) ? window.pageXOffset : (window.scrollX) ? window.scrollX : false ) || false;
-                 screenview.scrollY = parseInt( (document.getElementsByTagName('BODY')[0].scrollTop) ? document.getElementsByTagName('BODY')[0].scrollTop : (document.documentElement.scrollY) ?  document.documentElement.scrollY : (document.scrollTop) ? document.scrollTop : (window.scrollTop) ? window.scrollTop : (window.pageYOffset) ? window.pageYOffset : (window.scrollY) ? window.scrollY : false ) || false;
-
-             },false)
-         })()
 
 
         // micro-libs // get real offeset top
@@ -149,30 +130,6 @@ const ui = (() => {
         })
 
 
-
-        // micro-libs // safari suck
-
-        document.addEventListener('DOMContentLoaded',
-        () => {
-
-            let videostag = document.getElementsByTagName('video');
-
-            for(let v of videostag)
-            {
-
-                if( v.getAttribute('playsinline') == null || v.getAttribute('muted') == null ) {
-                    debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari "need playsinline" and "muted" attribute on all videos. Note: It's not possible to add dynamically via script.`, v);
-                }
-
-                if(v.src) { if(!v.src.includes('http') && !v.src.includes('https')) {
-                    debug(`:: [⚠ ui alert]: Safari Wrong video asset\n   ⮑ Apple Safari doesn't like relative aurochs on videos. Video may not start.`, v);
-                }}
-
-            }
-
-        },false);
-
-
     //--------------------------------------------------//
 
 
@@ -180,69 +137,15 @@ const ui = (() => {
         const checkLessJs = () =>
         {
 
-            if( document.querySelector('script[src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"]')||document.querySelector('script[src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"]') )
+            if( document.querySelector('script[src="//cdnjs.cloudflare.com/ajax/libs/less.js/4.1.1/less.min.js"]')||document.querySelector('script[src="https://cdnjs.cloudflare.com/ajax/libs/less.js/4.1.1/less.min.js"]') )
             {
 
-                debug(`:: [⚠ ui alert]: LessJs via simple script\n   ⮑ if you are using lessjs via script remember to put async='true' or something will not work!\n   -> Comment the Less script and load the compiled css parameters into a css file.\n\n::::  -> Remember that even if excellent, the script version is extremely slow!\n::::     We recommend using compilation via node js or php.\n::::     via php: shorturl.at/apy09\n::::     via node: shorturl.at/esSUY\n\n`);
+                debug(`:: [⚠ ui alert]: LessJs via simple script\n   ⮑ if you are using lessjs via script remember to put async='true' or something will not work!\n   -> Comment the Less script and load the compiled css parameters into a css file.\n\n::::  -> Remember that even if excellent, the script version is extremely slow!\n::::     We recommend using compilation via node js or php.\n::::     via php: https://git.io/J4hHn\n::::     via node: https://git.io/J4hHS\n\n`);
 
                 let themecompiled = document.querySelector('style[id^="less:').innerHTML;
                 alert("\n\n[⚠ ui alert]: LessJs Finished - you can copy the theme and deactivate less.js\n\n");
                 prompt("Compiled code:", ""+themecompiled);
 
-            }
-
-        }
-
-    //--------------------------------------------------//
-
-
-
-        const nomobar = () =>
-        {
-
-            let DOCU = document.getElementsByTagName('html')[0],
-                BODY = document.getElementsByTagName('body')[0];
-
-            if(document.documentElement.clientWidth <= 920 || is_touch_device() ) // fuck mobile browser bar! // document.documentElement.clientWidth <= 920
-            {
-                //
-                // var orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
-                //
-                // if (orientation === "landscape-primary")
-                // {
-                //   console.log("That looks good.");
-                // }
-                // else if (orientation === "landscape-secondary")
-                // {
-                //   console.log("Mmmh... the screen is upside down!");
-                // }
-                // else if (orientation === "portrait-secondary" || orientation === "portrait-primary")
-                // {
-                //   console.log("Mmmh... you should rotate your device to landscape");
-                // }
-                // else if (orientation === undefined)
-                // {
-                //   console.log("The orientation API isn't supported in this browser :(");
-                // }
-                //
-                // const wso = window.screen.orientation;
-                // wso.lock("portrait");
-                //
-                // // const locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock || false;
-                // // if(locOrientation) locOrientation('portrait');
-                //
-                // // screen.addEventListener("orientationchange", function () {
-                // //   console.log("The orientation of the screen is: " + screen.orientation);
-                // // });
-
-                DOCU.style.height = window.screen.availHeight + 'px';
-                BODY.style.height = window.screen.availHeight + 'px';
-
-            }
-            else
-            {
-                DOCU.style.height = ''; if(DOCU.style=='') DOCU.removeAttribute('style');
-                BODY.style.height = ''; if(BODY.style=='') BODY.removeAttribute('style');
             }
 
         }
@@ -270,14 +173,14 @@ const ui = (() => {
 
                     Loader.classList.add('[status-off]');
 
-                },150); // wait elements call
+	                setTimeout(()=>{
 
-                setTimeout(()=>{
+	                    Loader.classList.add('[status---]');
+	                    Loader.classList.remove('[status-active]','[status-off]','gpuboost');
 
-                    Loader.classList.add('[status---]');
-                    Loader.classList.remove('[status-active]','[status-off]','gpuboost');
+	                },650); // wait css exit out animation
 
-                },750); // wait css exit out animation
+				},150); // wait elements call
 
             });
 
@@ -293,9 +196,11 @@ const ui = (() => {
                     lazyobserverlist = []; // on/off start on view (forever active if have an element)
 
 
-                if(lazyelements.length<=0)
+                if(!lazyelements.length)
                 {
-                    return lazy_sets_is_end();
+
+					return lazy_sets_is_end();
+
                 }
 
                 else
@@ -304,13 +209,14 @@ const ui = (() => {
                     for (let element of lazyelements)
                     {
 
+
                         let elementname     = element.tagName.toLowerCase(),
                             validtype       = ['div','span','picture','figure'];
 
 
                         if( element.classList.contains('lazy') && validtype.indexOf(elementname)<0 )
                         {
-                            debug(`:: [⚠ ui alert]: wrong lazy preload\n   ⮑ The tag "`+elementname+`" is not valid for a preload action!\n      Read more on: https://git.io/vldt456`);
+                            debug(`:: [⚠ ui alert]: wrong lazy preload\n   ⮑ The tag "`+elementname+`" is not valid for a preload action!\n      Read more on: https://git.io/J4hQ7`);
                         }
 
                         else
@@ -344,7 +250,7 @@ const ui = (() => {
 
                                     if( contentclasses.includes('settings') && contentclasses.includes('autostartstop') ){ lazyobserverlist.push(element); }
 
-                                    ( getoffsetTop(element) <= (screenview.scrollY||0)+screen.availHeight)
+                                    (getoffsetTop(element)<=(window.scrollTop||document.body.scrollTop||document.documentElement.scrollTop)+screen.availHeight)
                                         ? lazyonstartlist.push(element)      // it's in view
                                         : lazywhenviewlist.push(element);    // on scrolling
 
@@ -357,7 +263,7 @@ const ui = (() => {
                             {
                                 if(!elementcontent.dataset.src)
                                 {
-                                    debug(`:: [⚠ ui alert]: wrong preload\n   ⮑ data-src not found on element div/span\n      Read more on: https://git.io/vldt456`);
+                                    debug(`:: [⚠ ui alert]: wrong preload\n   ⮑ data-src not found on element div/span\n      Read more on: https://git.io/J4hQ7`);
                                     element.classList.add('[status-error]');
                                 }
                                 else
@@ -379,7 +285,7 @@ const ui = (() => {
 
                                     if(!elementcontent.dataset.src)
                                     {
-                                        isvalid = `:: [⚠ ui alert]: wrong preload\n   ⮑ data-src not found on image\n      Read more on: https://git.io/vldt456`;
+                                        isvalid = `:: [⚠ ui alert]: wrong preload\n   ⮑ data-src not found on image\n      Read more on: https://git.io/J4hQ7`;
                                         element.classList.add('[status-error]');
                                     }
                                     else if(!classes.match(/ratio/g))
@@ -393,7 +299,7 @@ const ui = (() => {
                                 if(isvalid===true)
                                 {
 
-                                    (getoffsetTop(element)<= (screenview.scrollY||0)+screen.availHeight)
+                                    (getoffsetTop(element)<=(window.scrollTop||document.body.scrollTop||document.documentElement.scrollTop)+screen.availHeight)
                                         ? lazyonstartlist.push(element)     // it's in view
                                         : lazywhenviewlist.push(element);   // on scrolling
 
@@ -408,7 +314,7 @@ const ui = (() => {
 
                             else
                             {
-                                debug(`:: [⚠ ui alert]: wrong preload\n   ⮑ validation of content fail (div|span|img|iframe|videobox) \n      Read more on: https://git.io/vldt456`);
+                                debug(`:: [⚠ ui alert]: wrong preload\n   ⮑ validation of content fail (div|span|img|iframe|videobox) \n      Read more on: https://git.io/J4hQ7`);
                             }
 
                         }
@@ -427,12 +333,11 @@ const ui = (() => {
                     }
 
 
-                    //load when in view or when is ready
-                    lazyobserver(lazywhenviewlist,lazyobserverlist);
-
-                    //load if in view now
+					//load if in view now
                     lazynow(lazyonstartlist,null,true);
 
+                    //load when in view or when is ready
+                    lazyobserver(lazywhenviewlist,lazyobserverlist);
 
 
                 }
@@ -447,22 +352,25 @@ const ui = (() => {
             function lazyobserver(lazywhenviewlist,lazyobserverlist)
             {
 
-                if(lazyobserverlist.length>-1 || lazywhenviewlist.length>-1)
+                if(lazyobserverlist[0]!=undefined||lazywhenviewlist[0]!=undefined)
                 {
 
-                    window.addEventListener('onscroll', ev_scrollpage => {
 
-                        let scrollpage = setInterval( ()=> {
+                    document.body.addEventListener('scroll', ev_observerscroller=>
+					{
 
-                            window.clearInterval( scrollpage );
+						ev_observerscroller.preventDefault();
 
-                            let wintop      = (screenview.scrollY||0),
-                                winbottom   = wintop + screen.availHeight;
+						// let scrollpage = setInterval( ()=> {
+						//
+                        //     window.clearInterval( scrollpage );
 
+                            let wintop      = window.scrollTop||document.body.scrollTop||document.documentElement.scrollTop,
+                                winbottom   = wintop + (document.documentElement.clientHeight || window.innerHeight || 0);
 
                             //is it in or under screen view?
 
-                            if(lazywhenviewlist.length>-1)
+                            if(lazywhenviewlist[0]!=undefined)
                             {
 
                                 let index=0;
@@ -489,58 +397,54 @@ const ui = (() => {
 
 
                             //is it in or out screen view? (players controllers)
-                            if(lazyobserverlist.length>-1 )
+                            if(lazyobserverlist[0]!=undefined)
                             {
-
 
                                 for (let element of lazyobserverlist)
                                 {
-                                    let elementcontent;
 
-                                    if(element.getElementsByTagName('iframe')[0])
-                                    {
-                                        elementcontent  = element.getElementsByTagName('iframe')[0]
-                                    }
-                                    else if (element.getElementsByTagName('video')[0])
-                                    {
-                                        elementcontent  = element.getElementsByTagName('video')[0]
-                                    }
-                                    else
-                                    {
-                                        elementcontent  = element.firstElementChild;
-                                    }
+                                    let elementcontent =
+										  element.getElementsByTagName('iframe')[0] ? element.getElementsByTagName('iframe')[0]
+										: element.getElementsByTagName('video')[0]  ? element.getElementsByTagName('video')[0]
+                                        : element.firstElementChild;
+
 
                                     let classelist      = element.firstElementChild.classList.toString().toLowerCase(),
                                         ePosition       = getoffsetTop(element),
-                                        isInView        = (ePosition<winbottom&&(ePosition+element.offsetHeight)>wintop);
+                                        isInView        = (ePosition<winbottom&&(ePosition+element.offsetHeight)>wintop)
+
 
                                     //if not in view
                                     if(isInView)
                                     {
 
+										if(!classelist.includes('[status-active]'))
+										{
 
-                                        element.classList.remove('[status-active]'); element.classList.add('[status-off]');
+	                                        if(classelist.includes('social','autostartstop'))
+	                                        {
 
-                                        if(classelist.includes('social','autostartstop'))
-                                        {
+	                                                 if( (classelist.includes('facebook') || classelist.includes('instagram')) && elementcontent.getAttribute('src')=='')
+	                                                 {
+	                                                     elementcontent.setAttribute("src",elementcontent.dataset.relink);
+	                                                 }
 
-                                                 if( (classelist.includes('facebook') || classelist.includes('instagram')) && elementcontent.getAttribute('src')=='')
-                                                 {
-                                                     elementcontent.setAttribute("src",elementcontent.dataset.relink);
-                                                 }
+	                                                 else if(classelist.includes('youtube'))       { elementcontent.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}','*');}
+	                                                 else if(classelist.includes('vimeo'))         { elementcontent.contentWindow.postMessage('{"method":"play"}','*');}
 
-                                                 else if(classelist.includes('youtube'))       { elementcontent.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}','*');}
-                                                 else if(classelist.includes('vimeo'))         { elementcontent.contentWindow.postMessage('{"method":"play"}','*');}
+	                                        }
 
-                                        }
+	                                        else if(classelist.includes('videobox'))
+	                                        {
+	                                            elementcontent.tagName.toLowerCase() == 'video'
+	                                                ? elementcontent.play()
+	                                                : elementcontent.getElementsByTagName('video')[0].play();
+	                                        }
 
-                                        else if(classelist.includes('videobox'))
-                                        {
-                                            elementcontent.tagName.toLowerCase() == 'video'
-                                                ? elementcontent.play()
-                                                : elementcontent.getElementsByTagName('video')[0].play();
-                                        }
+										}
 
+                                        element.classList.remove('[status-active]')
+										element.classList.add('[status-off]')
 
                                     }
 
@@ -548,39 +452,45 @@ const ui = (() => {
                                     else
                                     {
 
+										if(!classelist.includes('[status-off]'))
+										{
 
-                                        element.classList.remove('[status-off]'); element.classList.add('[status-active]');
+	                                        if(classelist.includes('social','autostartstop'))
+	                                        {
 
-                                        if(classelist.includes('social','autostartstop'))
-                                        {
+	                                             if( (classelist.includes('facebook') || classelist.includes('instagram')) && elementcontent.getAttribute('src')!='' )
+	                                             {
+	                                                 elementcontent.setAttribute("src",'');
+	                                             }
 
-                                             if( (classelist.includes('facebook') || classelist.includes('instagram')) && elementcontent.getAttribute('src')!='' )
-                                             {
-                                                 elementcontent.setAttribute("src",'');
-                                             }
+	                                             else if(classelist.includes('youtube'))     { elementcontent.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*'); }
+	                                             else if(classelist.includes('vimeo'))       { elementcontent.contentWindow.postMessage('{"method":"pause"}', '*'); }
 
-                                             else if(classelist.includes('youtube'))     { elementcontent.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*'); }
-                                             else if(classelist.includes('vimeo'))       { elementcontent.contentWindow.postMessage('{"method":"pause"}', '*'); }
+	                                        }
 
-                                        }
+	                                        else if(classelist.includes('videobox'))
+	                                        {
+	                                            elementcontent.tagName.toLowerCase() == 'video'
+	                                                ? elementcontent.pause()
+	                                                : elementcontent.getElementsByTagName('video')[0].pause();
 
-                                        else if(classelist.includes('videobox'))
-                                        {
-                                            elementcontent.tagName.toLowerCase() == 'video'
-                                                ? elementcontent.pause()
-                                                : elementcontent.getElementsByTagName('video')[0].pause();
+	                                        }
 
-                                        }
+										}
+
+										element.classList.remove('[status-off]');
+										element.classList.add('[status-active]');
+
+                                	}
+                            	}
 
 
-                                    }
+							}
+                        // },200) // 333 = 3.x fps;
 
-                                }
-                            }
+						ev_observerscroller = null;
 
-                        },300) // 3.x fps;
-
-                    }, false );
+					},false);
 
                 }
 
@@ -641,7 +551,7 @@ const ui = (() => {
                                 else
                                 {
                                     let videotag = element.getElementsByTagName('video')[0];
-                                    console.log(videotag);
+
                                     if( videotag.readyState>=3 )
                                     {
                                         setTimeout(()=>{
@@ -671,16 +581,17 @@ const ui = (() => {
                                     loaded  = [];
 
 
-                                for (let i=0;i<imgqnt;i++)
+                                for (let i=0; i<imgqnt; i++)
                                 {
                                     imglist[i].classList.add('hidden');
                                     loaded.push(false);
                                 }
 
-                                for (let i=0;i<imgqnt;i++)
+                                for (let i=0; i<imgqnt; i++)
                                 {
 
                                     let tagimg = imglist[i];
+
 
                                     tagimg.onload = () =>
                                     {
@@ -702,7 +613,7 @@ const ui = (() => {
 
                                     }
 
-                                    tagimg.src = tagimg.dataset.src;
+									tagimg.src = tagimg.dataset.src;
 
                                 }
 
@@ -1864,7 +1775,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -1891,7 +1802,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -1929,7 +1840,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -2006,7 +1917,7 @@ const ui = (() => {
                         {
                             clearInterval(boxexistcheck); boxexistcheck=null;
 
-                            box.classList.add('[status-off]');
+                            box.classList.add('off');
 
                             setTimeout( () => {
                                 body.classList.remove('gpuboost','vfxtransition-in','vfx-center')
@@ -2305,7 +2216,7 @@ const ui = (() => {
 
 
             //'.checksize',
-            let oversizes = document.querySelectorAll('.checksize, TABLE, CODE, PRE, OUTPUT');
+            let oversizes = [...document.querySelectorAll('.checksize, TABLE, CODE, PRE, OUTPUT')];
 
             for (let sizedbox of oversizes)
             {
@@ -2445,6 +2356,7 @@ const ui = (() => {
             // 2 make dynamic
             //
 
+
             for (let slider of allsnapsliders)
             {
 
@@ -2510,30 +2422,20 @@ const ui = (() => {
                 // let rowboxeswidth = 0;
 
                 if(isHorizontal)
-                {
                     for (let box of allboxes) allboxdims += box.offsetWidth;
                     // rowboxeswidth = allboxdims-slider.offsetWidth;
-
-                }
                 else
-                {
                     for (let box of allboxes) allboxdims += box.offsetHeight;
                     // rowboxeswidth = allboxdims-slider.offsetHeight;
-                }
-
-
-                // if(isblocks) snapsmainwrap.offsetWidth = rowboxeswidth;
 
 
 
                 // start to initial position
-                if(isHorizontal)
+                if(isHorizontal && active.offsetLeft!=0)
                 {
-
-                    if(isblocks && active.offsetLeft==0 && allboxdims>=snapsmainwrap.offsetWidth ) dragbox.style.transform = 'translateX(-'+slider.offsetWidth/2+'px)';
-                    else if(isblocks)                                                              dragbox.style.transform = 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
-                    else                                                                           dragbox.style.transform = 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
-
+                    dragbox.style.transform = (isblocks)
+                        ? 'translateX(-'+(snapsmainwrap.offsetLeft+active.offsetWidth/2)+'px)'
+                        : 'translateX(-'+(snapsmainwrap.offsetLeft)+'px)';
                 }
 
                 else if(!isHorizontal && active.offsetTop!=0)
@@ -2700,6 +2602,7 @@ const ui = (() => {
 
                     }
 
+
                     // check dragging position respect the cage limitss
 
                     let positon,actualposition,minimum,maximum;
@@ -2707,15 +2610,13 @@ const ui = (() => {
                     if(isHorizontal)
                     {
 
-
                         actualposition = (isblocks)
                            ? parseInt( (actual.offsetLeft+(actual.offsetWidth/2)) - dir )
                            : parseInt(  actual.offsetLeft - dir );
 
-                           //snapsmainwrap.offsetLeft
-                        minimum = (isblocks) ? getoffsetLeft(snapsmainwrap) : snapsmainwrap.offsetWidth/2,
-                        maximum = allboxdims-minimum;
 
+                        minimum = (isblocks) ? snapsmainwrap.offsetLeft : snapsmainwrap.offsetWidth/2,
+                        maximum = allboxdims-minimum;
 
 
                     }
@@ -2754,7 +2655,6 @@ const ui = (() => {
 
                     document.ontouchend = snap_dragEnd;
                     document.onmouseup = snap_dragEnd;
-                    dragbox.onclick = snap_dragEnd;
 
 
                 }
@@ -3472,8 +3372,6 @@ const ui = (() => {
         {
 
 
-
-
             ///// SET GRAB INACTIVE
             // :: when you start to drag, it's true.
 
@@ -3547,8 +3445,8 @@ const ui = (() => {
                 parentY = (T.closest('.scroll-y')) ? T.closest('.scroll-y').scrollTop : 0;
                 parentX = (T.closest('.scroll-x')) ? T.closest('.scroll-x').scrollLeft : 0;
 
-                xpos =  (screenview.scrollX || 0)  + parentX + X,
-                ypos =  (screenview.scrollY || 0) + parentY + Y;
+                xpos =  (document.body.scrollLeft || window.pageXOffset)  + parentX + X,
+                ypos =  (document.body.scrollTop  || window.pageYOffset ) + parentY + Y;
 
                 TTop    = getoffsetTop(T),  TBottom = (TTop+T.offsetHeight),
                 TLeft   = getoffsetLeft(T), TRight  = (TLeft+T.offsetWidth);
@@ -3575,8 +3473,6 @@ const ui = (() => {
 
                     function startgrab(event)
                     {
-                        console.log(ui);
-
                         ev_grabs_start = event || window.event;
 
                         let tagTarget = ev_grabs_start.target.tagName.toLowerCase();
@@ -3633,30 +3529,26 @@ const ui = (() => {
 
 
                                     // get box position
-                                    let xScroll = (screenview.scrollX||0),
-                                        yScroll = (screenview.scrollY||0),
+
+                                    let xScroll = (document.documentElement.scrollLeft || window.pageXOffset)+document.body.scrollLeft,
+                                        yScroll = (document.documentElement.scrollTop || window.pageYOffset)+document.body.scrollTop,
                                         xBoxPos = getoffsetLeft(startbox),
                                         yBoxPos = getoffsetTop(startbox);
 
-
-                                    if(startbox.closest('.scroll-x')) xScroll =  xScroll + (startbox.closest('.scroll-x').scrollLeft || 0 );
-                                    if(startbox.closest('.scroll-y')) yScroll =  yScroll + (startbox.closest('.scroll-y').scrollTop || 0);
-
+                                    if(startbox.closest('.scroll-x')) xScroll =  xScroll+startbox.closest('.scroll-x').scrollTop;
+                                    if(startbox.closest('.scroll-y')) yScroll =  yScroll+startbox.closest('.scroll-y').scrollTop;
 
 
                                     if ( is_touch_device() )
                                     {
-                                        yPointerStart = ev_grabs_start.touches[0].clientY + yScroll;
-                                        xPointerStart = ev_grabs_start.touches[0].clientX + xScroll;
-                                        // yPointerStart =ev_grabs_start.touches[0].clientY + yScroll;
-                                        // xPointerStart  =ev_grabs_start.touches[0].clientX  + xScroll;
+                                        xPointerStart  =ev_grabs_start.touches[0].clientX  + xScroll;
+                                        yPointerStart =ev_grabs_start.touches[0].clientY + yScroll;
                                     }
                                     else
                                     {
-                                        yPointerStart = ev_grabs_start.clientY + yScroll;
-                                        xPointerStart = ev_grabs_start.clientX + xScroll;
+                                        xPointerStart  =ev_grabs_start.clientX  + xScroll;
+                                        yPointerStart =ev_grabs_start.clientY + yScroll;
                                     }
-
 
                                     // storicize edge wrapper limit
                                     // if you're in proximity of it, scroll container.
@@ -3671,8 +3563,8 @@ const ui = (() => {
                                     {
                                         if(isntScroller)
                                         {
-                                            edgetop    = (screenview.scrollY||0)+33,
-                                            edgeleft   = (screenview.scrollX||0)+33,
+                                            edgetop    = parseInt(document.body.scrollTop  || window.pageYOffset)+33,
+                                            edgeleft   = parseInt(document.body.scrollLeft || window.pageXOffset)+33,
                                             edgeright  = edgeleft+scroller.offsetWidth-33,
                                             edgebottom = edgetop+scroller.offsetHeight-33;
                                         }
@@ -3721,25 +3613,25 @@ const ui = (() => {
 
                                         if ( is_touch_device() )
                                         {
-                                            mY   = ev_grabs_move.touches[0].clientY;
                                             mX   = ev_grabs_move.touches[0].clientX;
+                                            mY   = ev_grabs_move.touches[0].clientY;
                                         }
                                         else
                                         {
-                                            mY   = ev_grabs_move.clientY;
                                             mX   = ev_grabs_move.clientX;
+                                            mY   = ev_grabs_move.clientY;
                                         }
 
 
                                         // move box in position
 
-                                        startbox.style.top  = parseInt( ((mY-yPointerStart)+yBoxPos) ) + "px";
                                         startbox.style.left = parseInt( ((mX-xPointerStart)+xBoxPos) ) + "px";
+                                        startbox.style.top  = parseInt( ((mY-yPointerStart)+yBoxPos) ) + "px";
 
                                         // scroll container with box
 
-                                        let YCoord = ( (screenview.scrollY||0) + mY ),
-                                            XCoord = ( (screenview.scrollX||0) + mX );
+                                        let YCoord = parseInt( (document.body.scrollTop  || window.pageYOffset) + mY ),
+                                            XCoord = parseInt( (document.body.scrollLeft || window.pageXOffset) + mX );
 
                                         let scrolltarget = (isntScroller)?scroller:scroller.firstElementChild;
 
@@ -3942,1491 +3834,789 @@ const ui = (() => {
     //--------------------------------------------------//
 
 
-            const passwords = () =>
+        const passwords = () =>
+        {
+
+            let btnpasslist = document.querySelectorAll('*[class*="button-password"]');
+
+            for (let btn of btnpasslist)
             {
 
-                let btnpasslist = document.querySelectorAll('*[class*="button-password"]');
+                let iconText = btn.getElementsByTagName('img')[0],
+                    iconPass = btn.getElementsByTagName('img')[1],
+                    _Text = btn.getElementsByTagName('input')[0],
+                    _Pass = btn.getElementsByTagName('input')[1];
 
-                for (let btn of btnpasslist)
+                iconText.classList.add('active');
+                iconPass.classList.add('off');
+                _Text.classList.add('off');
+                _Pass.classList.add('active');
+
+                _Pass.value=_Text.value;
+
+                iconText.onclick = () =>
                 {
+                    iconText.classList.replace('active','off');
+                    iconPass.classList.replace('off','active');
+                    _Text.classList.replace('off','active');
+                    _Pass.classList.replace('active','off');
+                }
 
-                    let iconText = btn.getElementsByTagName('img')[0],
-                        iconPass = btn.getElementsByTagName('img')[1],
-                        _Text = btn.getElementsByTagName('input')[0],
-                        _Pass = btn.getElementsByTagName('input')[1];
-
-                    iconText.classList.add('active');
-                    iconPass.classList.add('off');
-                    _Text.classList.add('off');
-                    _Pass.classList.add('active');
-
-                    _Pass.value=_Text.value;
-
-                    iconText.onclick = () =>
-                    {
-                        iconText.classList.replace('active','off');
-                        iconPass.classList.replace('off','active');
-                        _Text.classList.replace('off','active');
-                        _Pass.classList.replace('active','off');
-                    }
-
-                    iconPass.onclick = () =>
-                    {
-                        iconText.classList.replace('off','active');
-                        iconPass.classList.replace('active','off');
-                        _Text.classList.replace('active','off');
-                        _Pass.classList.replace('off','active');
-                    }
+                iconPass.onclick = () =>
+                {
+                    iconText.classList.replace('off','active');
+                    iconPass.classList.replace('active','off');
+                    _Text.classList.replace('active','off');
+                    _Pass.classList.replace('off','active');
+                }
 
 
-                    btn.addEventListener('focus',()=>{
+                btn.addEventListener('focus',()=>{
 
-                        let copy = setInterval(()=>{
-                            btn.querySelectorAll('input.off')[0].value = btn.querySelectorAll('input.active')[0].value;
-                        }, 200);
+                    let copy = setInterval(()=>{
+                        btn.querySelectorAll('input.off')[0].value = btn.querySelectorAll('input.active')[0].value;
+                    }, 200);
 
-                        btn.addEventListener('blur',()=>{
-                            window.clearInterval(copy);
-                        },true)
-
+                    btn.addEventListener('blur',()=>{
+                        window.clearInterval(copy);
                     },true)
 
-                }
+                },true)
 
-            };
+            }
+
+        };
 
 
-            const starts = () =>
+        const starts = () =>
+        {
+
+            let buttonstarsboxlist = document.querySelectorAll('.stars');
+
+            for (let btn of buttonstarsboxlist)
             {
 
-                let buttonstarsboxlist = document.querySelectorAll('.stars');
+                let actual = btn.previousElementSibling.value,
+                    emotion = ['very bad','not good','normal/good','very good','exellent'],
+                    html_output,
+                    allstarsbox,
+                    alllabelbox;
 
-                for (let btn of buttonstarsboxlist)
+                // set to start
+
+                html_output = `<span class="all-stars"></span><span class="all-labels"></span>`
+                btn.innerHTML = html_output;
+
+                allstarsbox = btn.querySelectorAll('.all-stars')[0];
+
+                for (let s = 0; s < 5; s++)
+                {
+                    html_output = `<svg class="off" data-rating="`+(s+1)+`"><path d="M12.6504 17.8019L18.8304 21.5319L17.1904 14.5019L22.6504 9.77186L15.4604 9.16186L12.6504 2.53186L9.84039 9.16186L2.65039 9.77186L8.11039 14.5019L6.47039 21.5319L12.6504 17.8019Z"/></svg>`;
+                    allstarsbox.innerHTML += html_output;
+                }
+
+                alllabelbox = btn.querySelectorAll('.all-labels')[0];
+
+                for (let l = 0; l < 5; l++)
+                {
+                    let visibility = (l==actual) ? "show" : "hide";
+                    html_output = `<p class="`+visibility+`">`+emotion[l]+`</p>`;
+                    alllabelbox.innerHTML += html_output;
+                }
+
+
+                let allstars = allstarsbox.getElementsByTagName('svg'),
+                    alllabel = alllabelbox.getElementsByTagName('p');
+
+
+                // reset active
+
+                for (let s = 0; s < 5; s++)
+                {
+                    allstars[s].classList.remove('active');
+                }
+
+
+                for (let s = 0; s < 5; s++)
+                {
+                    let star = allstars[s];
+                    if (actual == allstars[s].dataset.rating)
+                    {
+                        star.classList.add('active')
+                        star.classList.remove('off');
+                    }
+                }
+
+                for (let s = 0; s < 5; s++)
                 {
 
-                    let actual = btn.previousElementSibling.value,
-                        emotion = ['very bad','not good','normal/good','very good','exellent'],
-                        html_output,
-                        allstarsbox,
-                        alllabelbox;
+                    let star = allstars[s];
 
-                    // set to start
+                    // set to hover
+                    star.addEventListener('mouseover',()=>{
 
-                    html_output = `<span class="all-stars"></span><span class="all-labels"></span>`
-                    btn.innerHTML = html_output;
-
-                    allstarsbox = btn.querySelectorAll('.all-stars')[0];
-
-                    for (let s = 0; s < 5; s++)
-                    {
-                        html_output = `<svg class="off" data-rating="`+(s+1)+`"><path d="M12.6504 17.8019L18.8304 21.5319L17.1904 14.5019L22.6504 9.77186L15.4604 9.16186L12.6504 2.53186L9.84039 9.16186L2.65039 9.77186L8.11039 14.5019L6.47039 21.5319L12.6504 17.8019Z"/></svg>`;
-                        allstarsbox.innerHTML += html_output;
-                    }
-
-                    alllabelbox = btn.querySelectorAll('.all-labels')[0];
-
-                    for (let l = 0; l < 5; l++)
-                    {
-                        let visibility = (l==actual) ? "show" : "hide";
-                        html_output = `<p class="`+visibility+`">`+emotion[l]+`</p>`;
-                        alllabelbox.innerHTML += html_output;
-                    }
-
-
-                    let allstars = allstarsbox.getElementsByTagName('svg'),
-                        alllabel = alllabelbox.getElementsByTagName('p');
-
-
-                    // reset active
-
-                    for (let s = 0; s < 5; s++)
-                    {
-                        allstars[s].classList.remove('active');
-                    }
-
-
-                    for (let s = 0; s < 5; s++)
-                    {
-                        let star = allstars[s];
-                        if (actual == allstars[s].dataset.rating)
+                        for (let t = 0; t < 5; t++)
                         {
-                            star.classList.add('active')
-                            star.classList.remove('off');
+                            (t<=s)
+                                ? allstars[t].classList.add('focus')
+                                : allstars[t].classList.remove('focus');
+
+                            (t==s)
+                                ? alllabel[t].classList.replace('hide','show')
+                                : alllabel[t].classList.replace('show','hide');
                         }
-                    }
 
-                    for (let s = 0; s < 5; s++)
-                    {
-
-                        let star = allstars[s];
-
-                        // set to hover
-                        star.addEventListener('mouseover',()=>{
-
-                            for (let t = 0; t < 5; t++)
-                            {
-                                (t<=s)
-                                    ? allstars[t].classList.add('focus')
-                                    : allstars[t].classList.remove('focus');
-
-                                (t==s)
-                                    ? alllabel[t].classList.replace('hide','show')
-                                    : alllabel[t].classList.replace('show','hide');
-                            }
-
-                        },true);
+                    },true);
 
 
-                        // reset on blur
-                        star.addEventListener('mouseleave',()=>{
-                            for (let t = 0; t < 5; t++){    allstars[t].classList.remove('focus');     alllabel[t].classList.replace('show','hide');}
-                            for (let t = 0; t < 5; t++){ if(allstars[t].classList.contains('active')) {alllabel[t].classList.replace('hide','show');} }
-                        },true);
+                    // reset on blur
+                    star.addEventListener('mouseleave',()=>{
+                        for (let t = 0; t < 5; t++){    allstars[t].classList.remove('focus');     alllabel[t].classList.replace('show','hide');}
+                        for (let t = 0; t < 5; t++){ if(allstars[t].classList.contains('active')) {alllabel[t].classList.replace('hide','show');} }
+                    },true);
 
-                        // set to click
-                        star.addEventListener('click',()=>{
+                    // set to click
+                    star.addEventListener('click',()=>{
 
-                            // reset active
-                            for (let t = 0; t < 5; t++){ allstars[t].classList.replace('active','off');  alllabel[t].classList.replace('show','hide');}
+                        // reset active
+                        for (let t = 0; t < 5; t++){ allstars[t].classList.replace('active','off');  alllabel[t].classList.replace('show','hide');}
 
-                            // make active
-                            btn.setAttribute('data-stars', star.dataset.rating);
-                            star.classList.replace('off','active');
-                            alllabel[s].classList.replace('hide','show');
+                        // make active
+                        btn.setAttribute('data-stars', star.dataset.rating);
+                        star.classList.replace('off','active');
+                        alllabel[s].classList.replace('hide','show');
 
 
-                            if(btn.previousElementSibling.tagName == 'INPUT')
-                            {
-                                btn.previousElementSibling.value = star.dataset.rating;
-                                btn.previousElementSibling.setAttribute('value',star.dataset.rating)
-                            }
+                        if(btn.previousElementSibling.tagName == 'INPUT')
+                        {
+                            btn.previousElementSibling.value = star.dataset.rating;
+                            btn.previousElementSibling.setAttribute('value',star.dataset.rating)
+                        }
 
-                        },true);
-
-                    }
+                    },true);
 
                 }
 
+            }
 
-            };
+
+        };
 
 
-            const numbers = () =>
+        const numbers = () =>
+        {
+
+            let buttonnumberslist = document.querySelectorAll('*[class*="button-number"]');
+
+            for (let btn of buttonnumberslist)
             {
 
-                let buttonnumberslist = document.querySelectorAll('*[class*="button-number"]');
 
-                for (let btn of buttonnumberslist)
+                // get input values
+
+                let taginput = btn.querySelectorAll('input[type="number"]')[0],
+                    val      = taginput.getAttribute('value'),
+                    min      = taginput.getAttribute('min'),
+                    max      = taginput.getAttribute('max');
+
+                // build the numbers into cage
+
+                btn.insertAdjacentHTML('beforeEnd','<div class="number-slider"></div>');
+                let slide = btn.querySelectorAll('.number-slider')[0];
+
+                for (let i = min; i <= max; i++) slide.insertAdjacentHTML('beforeEnd',`<span class="number-[`+i+`]"><small>`+i+`</small></span>`);
+
+
+                //set active by input
+
+                slide.querySelectorAll('[class*="number-['+val+']"]')[0].classList.add('active');
+
+                //slide to start
+
+                function refreshActivation()
+                {
+                    setTimeout(()=>{
+
+                        let numberactive   = slide.querySelectorAll('.number-slider .active')[0],
+                            activeposition = ((numberactive.offsetLeft+(numberactive.offsetWidth/2))-(btn.offsetWidth/2));
+                            slide.style.transform = 'translateX('+( activeposition*-1 )+'px)';
+
+                    },200);
+                }
+
+                refreshActivation();
+
+                // on drag it
+
+                slide.ontouchstart = dragStart;
+                slide.onmousedown = dragStart;
+                slide.ontouchmove = dragMove;
+                slide.ontouchend = dragEnd;
+
+                let startX, dirX;
+
+                function dragStart(ev_drag_btn_numbers)
                 {
 
+                    let actualposition = slide.style.transform.replace(/[^\d.]/g, '')*-1;
 
-                    // get input values
+                    slide.classList.add('[status-active]');
+                    slide.classList.remove('[status-off]');
 
-                    let taginput = btn.querySelectorAll('input[type="number"]')[0],
-                        val      = taginput.getAttribute('value'),
-                        min      = taginput.getAttribute('min'),
-                        max      = taginput.getAttribute('max');
-
-                    // build the numbers into cage
-
-                    if(btn.querySelectorAll('.number-slider').length<=0)
+                    if (is_touch_device())
                     {
-                        btn.insertAdjacentHTML('beforeEnd','<div class="number-slider"></div>')
+                        startX = ev_drag_btn_numbers.touches[0].clientX - actualposition;
                     }
                     else
                     {
-                        btn.querySelectorAll('.number-slider')[0].innerHTML='';
-                        btn.insertAdjacentHTML('beforeEnd','<div class="number-slider"></div>')
-                    }
-
-
-                    let slide = btn.querySelectorAll('.number-slider')[0];
-
-                    for (let i = min; i <= max; i++) slide.insertAdjacentHTML('beforeEnd',`<span class="number-[`+i+`]"><small>`+i+`</small></span>`);
-
-
-                    //set active by input
-
-                    slide.querySelectorAll('[class*="number-['+val+']"]')[0].classList.add('active');
-
-                    //slide to start
-
-                    function refreshActivation()
-                    {
-                        setTimeout(()=>{
-
-                            let numberactive   = slide.querySelectorAll('.number-slider .active')[0],
-                                activeposition = ((numberactive.offsetLeft+(numberactive.offsetWidth/2))-(btn.offsetWidth/2));
-                                slide.style.transform = 'translateX('+( activeposition*-1 )+'px)';
-
-                        },200);
-                    }
-
-                    refreshActivation();
-
-                    // on drag it
-
-                    slide.ontouchstart = dragStart;
-                    slide.onmousedown = dragStart;
-                    slide.ontouchmove = dragMove;
-                    slide.ontouchend = dragEnd;
-
-                    let startX, dirX;
-
-                    function dragStart(ev_drag_btn_numbers)
-                    {
-
-                        let actualposition = slide.style.transform.replace(/[^\d.]/g, '')*-1;
-
-                        slide.classList.add('[status-active]');
-                        slide.classList.remove('[status-off]');
-
-                        if (is_touch_device())
-                        {
-                            startX = ev_drag_btn_numbers.touches[0].clientX - actualposition;
-                        }
-                        else
-                        {
-                            ev_drag_btn_numbers.preventDefault();
-                            startX = event.clientX - actualposition;
-                            document.onmousemove = dragMove;
-                            document.onmouseup = dragEnd;
-                        }
-
-                    }
-
-                    function dragMove(ev_drag_btn_numbers)
-                    {
-
                         ev_drag_btn_numbers.preventDefault();
-
-                        if (is_touch_device())
-                        {
-                            dirX = ev_drag_btn_numbers.touches[0].clientX - startX;
-                        }
-                        else
-                        {
-                            dirX = ev_drag_btn_numbers.clientX - startX;
-                        }
-
-                        slide.style.transform = "translateX("+dirX+"px)";
-
-                        checkactive();
-
-                    }
-
-                    function dragEnd(ev_drag_btn_numbers)
-                    {
-
-                        slide.classList.remove('[status-active]');
-                        slide.classList.add('[status-off]');
-
-                        startX = dirX*-1;
-                        startvalueposition = startX*-1;
-                        document.onmouseup = null;
-                        document.onmousemove = null;
-
-                        let actualposition = slide.style.transform.replace(/[^\d.]/g, '')*-1,
-                            active = slide.querySelectorAll('.number-slider>.active')[0],
-                            activepos = (active.offsetLeft+active.offsetWidth/2)-btn.offsetWidth/2;
-
-                        slide.classList.add('smooth');
-                        slide.style.transform = 'translateX('+( activepos*-1 )+'px)'; //activepos or correction
-
-                        setTimeout(()=>{
-                            slide.classList.remove('smooth');
-                        },300);
-
-                        taginput.setAttribute('value', active.getElementsByTagName('small')[0].innerText );
-
-                        ev_drag_btn_numbers=null;
-
-                    }
-
-                    function checkactive()
-                    {
-
-                        let actualposition = slide.style.transform.replace(/[^\d.]/g, '');
-
-                        //aclual active position
-                        let actualactive   = [...slide.querySelectorAll('.number-slider>.active')][0],
-                            activeposition = (actualactive.offsetLeft+actualactive.offsetWidth/2)-btn.offsetWidth/2;
-
-                        if( actualposition > activeposition+actualactive.offsetWidth/2 )
-                        {
-
-                            if(actualactive.nextElementSibling)
-                            {
-                                actualactive.nextElementSibling.classList.add('active');
-                                actualactive.classList.remove('active');
-                                actualactive = [...slide.querySelectorAll('.number-slider>.active')][0];
-                            }
-
-                        }
-
-                        else if( actualposition < activeposition-actualactive.offsetWidth/2 )
-                        {
-
-                            if(actualactive.previousElementSibling)
-                            {
-                                actualactive.previousElementSibling.classList.add('active');
-                                actualactive.classList.remove('active');
-                                actualactive = [...slide.querySelectorAll('.number-slider>.active')][0];
-                            }
-                        }
-
-                    }
-
-
-                    // on click next/prev
-
-                    let minus = btn.getElementsByTagName('span')[0],
-                        plus  = btn.getElementsByTagName('span')[1];
-
-                    minus.onclick = ()=>
-                    {
-                        let exactive  = slide.querySelectorAll('.number-slider>.active')[0],
-                            newactive = exactive.previousElementSibling;
-                        movefromon(exactive,newactive);
-                    }
-                    plus.onclick = ()=>
-                    {
-                        let exactive  = slide.querySelectorAll('.number-slider>.active')[0],
-                            newactive = exactive.nextElementSibling;
-                        movefromon(exactive,newactive);
-                    }
-
-                    function movefromon(exactive,newactive)
-                    {
-                        newactive.classList.add('active');
-                        exactive.classList.remove('active');
-
-                        setTimeout(()=>{
-
-                            taginput.setAttribute('value', newactive.getElementsByTagName('small')[0].innerText );
-
-                            let reposition = (newactive.offsetLeft+newactive.offsetWidth/2)-btn.offsetWidth/2;
-                            slide.classList.add('smooth');
-                            slide.style.transform = 'translateX('+(reposition*-1)+'px)';
-
-                            setTimeout(()=>{
-                                slide.classList.remove('smooth');
-                            },250);
-
-                        },250);
-
+                        startX = event.clientX - actualposition;
+                        document.onmousemove = dragMove;
+                        document.onmouseup = dragEnd;
                     }
 
                 }
 
-            };
-
-
-            const ranges = () =>
-            {
-
-                let buttonrangeslist = document.querySelectorAll('*[class*="button-range"]');
-
-                for (let btn of buttonrangeslist)
+                function dragMove(ev_drag_btn_numbers)
                 {
 
+                    ev_drag_btn_numbers.preventDefault();
 
-                    let slider    = btn.querySelectorAll('.slider')[0],
-                        monitor   = btn.querySelectorAll('.monitor')[0],
-                        inputtags = btn.querySelectorAll('input'),
-                        inputsqnt = inputtags.length;
+                    if (is_touch_device())
+                    {
+                        dirX = ev_drag_btn_numbers.touches[0].clientX - startX;
+                    }
+                    else
+                    {
+                        dirX = ev_drag_btn_numbers.clientX - startX;
+                    }
 
-                    monitor.classList.add("[status-off]");
+                    slide.style.transform = "translateX("+dirX+"px)";
 
-                    for (let i = 0; i < inputsqnt; i++)
+                    checkactive();
+
+                }
+
+                function dragEnd(ev_drag_btn_numbers)
+                {
+
+                    slide.classList.remove('[status-active]');
+                    slide.classList.add('[status-off]');
+
+                    startX = dirX*-1;
+                    startvalueposition = startX*-1;
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+
+                    let actualposition = slide.style.transform.replace(/[^\d.]/g, '')*-1,
+                        active = slide.querySelectorAll('.number-slider>.active')[0],
+                        activepos = (active.offsetLeft+active.offsetWidth/2)-btn.offsetWidth/2;
+
+                    slide.classList.add('smooth');
+                    slide.style.transform = 'translateX('+( activepos*-1 )+'px)'; //activepos or correction
+
+                    setTimeout(()=>{
+                        slide.classList.remove('smooth');
+                    },300);
+
+                    taginput.setAttribute('value', active.getElementsByTagName('small')[0].innerText );
+
+                    ev_drag_btn_numbers=null;
+
+                }
+
+                function checkactive()
+                {
+
+                    let actualposition = slide.style.transform.replace(/[^\d.]/g, '');
+
+                    //aclual active position
+                    let actualactive   = [...slide.querySelectorAll('.number-slider>.active')][0],
+                        activeposition = (actualactive.offsetLeft+actualactive.offsetWidth/2)-btn.offsetWidth/2;
+
+                    if( actualposition > activeposition+actualactive.offsetWidth/2 )
                     {
 
+                        if(actualactive.nextElementSibling)
+                        {
+                            actualactive.nextElementSibling.classList.add('active');
+                            actualactive.classList.remove('active');
+                            actualactive = [...slide.querySelectorAll('.number-slider>.active')][0];
+                        }
+
+                    }
+
+                    else if( actualposition < activeposition-actualactive.offsetWidth/2 )
+                    {
+
+                        if(actualactive.previousElementSibling)
+                        {
+                            actualactive.previousElementSibling.classList.add('active');
+                            actualactive.classList.remove('active');
+                            actualactive = [...slide.querySelectorAll('.number-slider>.active')][0];
+                        }
+                    }
+
+                }
+
+
+                // on click next/prev
+
+                let minus = btn.getElementsByTagName('span')[0],
+                    plus  = btn.getElementsByTagName('span')[1];
+
+                minus.onclick = ()=>
+                {
+                    let exactive  = slide.querySelectorAll('.number-slider>.active')[0],
+                        newactive = exactive.previousElementSibling;
+                    movefromon(exactive,newactive);
+                }
+                plus.onclick = ()=>
+                {
+                    let exactive  = slide.querySelectorAll('.number-slider>.active')[0],
+                        newactive = exactive.nextElementSibling;
+                    movefromon(exactive,newactive);
+                }
+
+                function movefromon(exactive,newactive)
+                {
+                    newactive.classList.add('active');
+                    exactive.classList.remove('active');
+
+                    setTimeout(()=>{
+
+                        taginput.setAttribute('value', newactive.getElementsByTagName('small')[0].innerText );
+
+                        let reposition = (newactive.offsetLeft+newactive.offsetWidth/2)-btn.offsetWidth/2;
+                        slide.classList.add('smooth');
+                        slide.style.transform = 'translateX('+(reposition*-1)+'px)';
+
                         setTimeout(()=>{
+                            slide.classList.remove('smooth');
+                        },250);
 
-                            let range = inputtags[i];
+                    },250);
 
-                            // start inputs values
-                            let min            = range.getAttribute('min'),
-                                max            = range.getAttribute('max'),
-                                val            = range.getAttribute('value'),
-                                containerwidth = range.offsetWidth,
-                                bullet         = range.nextElementSibling.nextElementSibling,
-                                haveline;
+                }
 
-                            // is it flaot?
+            }
 
-                            let type = range.getAttribute('type'),
-                                dot = (type.match('float')) ? 2 : 0 ;
+        };
 
-                            //get steps (% and not)
 
-                            let matchpercent = ""+range.step,
-                                isPercent,
-                                stepper;
+        const ranges = () =>
+        {
 
-                            if(matchpercent.match('%'))
+            let buttonrangeslist = document.querySelectorAll('*[class*="button-range"]');
+
+            for (let btn of buttonrangeslist)
+            {
+
+
+                let slider    = btn.querySelectorAll('.slider')[0],
+                    monitor   = btn.querySelectorAll('.monitor')[0],
+                    inputtags = btn.querySelectorAll('input'),
+                    inputsqnt = inputtags.length;
+
+                monitor.classList.add("[status-off]");
+
+                for (let i = 0; i < inputsqnt; i++)
+                {
+
+                    setTimeout(()=>{
+
+                        let range = inputtags[i];
+
+                        // start inputs values
+                        let min            = range.getAttribute('min'),
+                            max            = range.getAttribute('max'),
+                            val            = range.getAttribute('value'),
+                            containerwidth = range.offsetWidth,
+                            bullet         = range.nextElementSibling.nextElementSibling,
+                            haveline;
+
+                        // is it flaot?
+
+                        let type = range.getAttribute('type'),
+                            dot = (type.match('float')) ? 2 : 0 ;
+
+                        //get steps (% and not)
+
+                        let matchpercent = ""+range.step,
+                            isPercent,
+                            stepper;
+
+                        if(matchpercent.match('%'))
+                        {
+                            isPercent = 1;
+                            let stepstring = ""+range.step,
+                            stepsplit = stepstring.split('%')[0];
+                            stepper = parseFloat(stepsplit);
+                        }
+                        else
+                        {
+                            isPercent = 0;
+                            stepper = parseFloat(range.step);
+                        }
+
+                        //Dot on start position
+
+                        let presetdot = GetPercentage(min,max,val);
+
+                        bullet.style.left = presetdot+"%";
+
+                        setLine();
+
+
+                        // on drag elements
+
+                        bullet.ontouchstart = btnrange_dragStart;
+                        bullet.onmousedown = btnrange_dragStart;
+
+
+                        let startX, dirX;
+
+                        function btnrange_dragStart(ev_drag_btn_range)
+                        {
+
+                            //update drag on click for outbox
+                            containerwidth = range.offsetWidth
+
+                            let actualposition = bullet.offsetLeft;
+                            if (ev_drag_btn_range.type === "touchstart")
                             {
-                                isPercent = 1;
-                                let stepstring = ""+range.step,
-                                stepsplit = stepstring.split('%')[0];
-                                stepper = parseFloat(stepsplit);
+
+                                let touchX = (ev_drag_btn_range.touches[0].clientX);
+                                    startX = (touchX - actualposition);
+
+                                bullet.ontouchmove = btnrange_dragMove;
+                                bullet.ontouchend = btnrange_dragEnd;
+
                             }
                             else
                             {
-                                isPercent = 0;
-                                stepper = parseFloat(range.step);
+
+                                ev_drag_btn_range.preventDefault();
+
+                                let mouseX = (event.clientX);
+                                    startX =  (mouseX - actualposition);
+
+                                document.onmousemove = btnrange_dragMove;
+                                document.onmouseup = btnrange_dragEnd;
+
                             }
 
-                            //Dot on start position
+                            bullet.classList.add('[status-active]');
+                            bullet.classList.remove('[status-off]');
 
-                            let presetdot = GetPercentage(min,max,val);
-
-                            bullet.style.left = presetdot+"%";
-
-                            setLine();
+                        }
 
 
-                            // on drag elements
-
-                            bullet.ontouchstart = btnrange_dragStart;
-                            bullet.onmousedown = btnrange_dragStart;
+                        function btnrange_dragMove(ev_drag_btn_range)
+                        {
 
 
-                            let startX, dirX;
-
-                            function btnrange_dragStart(ev_drag_btn_range)
+                            let prevBullet = range.closest('.sliders').querySelectorAll('b')[i-1], prevElemPosition, prevPercentage;
+                            if(prevBullet)
                             {
+                                prevElemPosition = parseInt(prevBullet.offsetLeft),
+                                prevPercentage = parseInt(GetPercentage(0,containerwidth,prevElemPosition));
+                            }
+                            else { prevPercentage=-1 }
 
-                                //update drag on click for outbox
-                                containerwidth = range.offsetWidth
 
-                                let actualposition = bullet.offsetLeft;
-                                if (ev_drag_btn_range.type === "touchstart")
+                            let nextBullet = range.closest('.sliders').querySelectorAll('b')[i+1],nextElemPosition,nextPercentage;
+                            if(nextBullet)
+                            {
+                                nextElemPosition = parseInt(nextBullet.offsetLeft),
+                                nextPercentage = parseInt(GetPercentage(0,containerwidth,nextElemPosition));
+                            } else(nextPercentage=101)
+
+
+                            ev_drag_btn_range.preventDefault();
+
+
+                            dirX = ( is_touch_device() )
+                                ? (ev_drag_btn_range.touches[0].clientX - startX)
+                                : (ev_drag_btn_range.clientX - startX);
+
+
+
+                            if (dirX > -1 && dirX < containerwidth+1)
+                            {
+                                console.log('draggg',dirX);
+
+                                let bulletpercent, newval;
+
+                                if(!range.step)
                                 {
 
-                                    let touchX = (ev_drag_btn_range.touches[0].clientX);
-                                        startX = (touchX - actualposition);
+                                    bulletpercent  = GetPercentage(0,containerwidth,dirX);
+                                    newval  = GetVal(min,max,bulletpercent);
 
-                                    bullet.ontouchmove = btnrange_dragMove;
-                                    bullet.ontouchend = btnrange_dragEnd;
+
+                                    if(bulletpercent > prevPercentage && bulletpercent < nextPercentage)
+                                    {
+                                        setdot(bulletpercent,newval);
+                                    }
 
                                 }
                                 else
                                 {
 
-                                    ev_drag_btn_range.preventDefault();
 
-                                    let mouseX = (event.clientX);
-                                        startX =  (mouseX - actualposition);
-
-                                    document.onmousemove = btnrange_dragMove;
-                                    document.onmouseup = btnrange_dragEnd;
-
-                                }
-
-                                bullet.classList.add('[status-active]');
-                                bullet.classList.remove('[status-off]');
-
-                            }
-
-
-                            function btnrange_dragMove(ev_drag_btn_range)
-                            {
-
-
-                                let prevBullet = range.closest('.sliders').querySelectorAll('b')[i-1], prevElemPosition, prevPercentage;
-                                if(prevBullet)
-                                {
-                                    prevElemPosition = parseInt(prevBullet.offsetLeft),
-                                    prevPercentage = parseInt(GetPercentage(0,containerwidth,prevElemPosition));
-                                }
-                                else { prevPercentage=-1 }
-
-
-                                let nextBullet = range.closest('.sliders').querySelectorAll('b')[i+1],nextElemPosition,nextPercentage;
-                                if(nextBullet)
-                                {
-                                    nextElemPosition = parseInt(nextBullet.offsetLeft),
-                                    nextPercentage = parseInt(GetPercentage(0,containerwidth,nextElemPosition));
-                                } else(nextPercentage=101)
-
-
-                                ev_drag_btn_range.preventDefault();
-
-
-                                dirX = ( is_touch_device() )
-                                    ? (ev_drag_btn_range.touches[0].clientX - startX)
-                                    : (ev_drag_btn_range.clientX - startX);
-
-
-
-                                if (dirX > -1 && dirX < containerwidth+1)
-                                {
-
-                                    let bulletpercent, newval;
-
-                                    if(!range.step)
+                                    if(isPercent)
                                     {
 
-                                        bulletpercent  = GetPercentage(0,containerwidth,dirX);
-                                        newval  = GetVal(min,max,bulletpercent);
 
+                                        let stepcut = Number( (containerwidth*stepper)/100 ).toFixed(dot); //is a step in px of container
 
-                                        if(bulletpercent > prevPercentage && bulletpercent < nextPercentage)
+                                        let pass = -1;
+                                        for (let i = min; i < max; i++)
                                         {
-                                            setdot(bulletpercent,newval);
+
+                                            pass++;
+
+                                            let rangemid = (stepcut*pass);
+                                                rangemin = (rangemid)-(stepcut/2),
+                                                rangemax = (rangemid)+(stepcut/2)
+
+
+                                            if(dirX > rangemin && dirX < rangemax)
+                                            {
+
+                                                let actualstep = rangemin+(stepcut/2),
+                                                    bulletpercent = GetPercentage(0,containerwidth,actualstep),
+                                                    newval  = GetVal(min,max,bulletpercent);
+
+                                                if(bulletpercent > prevPercentage && bulletpercent < nextPercentage)
+                                                {
+                                                    setdot(bulletpercent,newval);
+                                                }
+
+                                            }
+
                                         }
+
 
                                     }
                                     else
                                     {
 
 
-                                        if(isPercent)
+                                        bulletpercent  = GetPercentage(0,containerwidth,dirX);
+                                        newval  = GetVal(min,max,bulletpercent);
+
+
+                                        let pass = 0;
+                                        for (let i = min; i < max; i++)
                                         {
 
+                                            pass++;
+                                            let valuepass = Number( ((min-stepper)+(stepper*pass)) );
 
-                                            let stepcut = Number( (containerwidth*stepper)/100 ).toFixed(dot); //is a step in px of container
+                                            if(valuepass > max) { return false; }
 
-                                            let pass = -1;
-                                            for (let i = min; i < max; i++)
+
+                                            let rangemin = (valuepass-(stepper/2))
+                                                rangemax = (valuepass+(stepper/2));
+
+                                            if(newval > rangemin && newval < rangemax)
                                             {
 
-                                                pass++;
-
-                                                let rangemid = (stepcut*pass);
-                                                    rangemin = (rangemid)-(stepcut/2),
-                                                    rangemax = (rangemid)+(stepcut/2)
-
-
-                                                if(dirX > rangemin && dirX < rangemax)
-                                                {
-
-                                                    let actualstep = rangemin+(stepcut/2),
-                                                        bulletpercent = GetPercentage(0,containerwidth,actualstep),
-                                                        newval  = GetVal(min,max,bulletpercent);
-
-                                                    if(bulletpercent > prevPercentage && bulletpercent < nextPercentage)
-                                                    {
-                                                        setdot(bulletpercent,newval);
-                                                    }
-
-                                                }
-
-                                            }
-
-
-                                        }
-                                        else
-                                        {
-
-
-                                            bulletpercent  = GetPercentage(0,containerwidth,dirX);
-                                            newval  = GetVal(min,max,bulletpercent);
-
-
-                                            let pass = 0;
-                                            for (let i = min; i < max; i++)
-                                            {
-
-                                                pass++;
-                                                let valuepass = Number( ((min-stepper)+(stepper*pass)) );
-
-                                                if(valuepass > max) { return false; }
-
-
-                                                let rangemin = (valuepass-(stepper/2))
-                                                    rangemax = (valuepass+(stepper/2));
-
-                                                if(newval > rangemin && newval < rangemax)
-                                                {
-
-                                                    range.setAttribute('value', valuepass);
-                                                    val = range.value;
-
-                                                    let newmax = max,
-                                                        newmin = min;
-
-                                                    bulletpercent = GetPercentage(min,max,val)
-
-                                                    if(bulletpercent > prevPercentage && bulletpercent < nextPercentage)
-                                                    {
-                                                        setdot(bulletpercent,val);
-                                                    }
-
-                                                }
-
-                                            }
-
-
-                                        }
-
-                                    }
-
-                                    function setdot(bulletpercent,newval,dot)
-                                    {
-
-                                        bullet.style.left  = bulletpercent+"%";
-                                        monitor.style.left = bulletpercent+"%";
-
-                                        if(dot<=0)
-                                        {
-                                            let roundval = Math.ceil(newval);
-                                                monitor.innerHTML = '<small>'+roundval+'</small>';
-                                                range.setAttribute('value', roundval);
+                                                range.setAttribute('value', valuepass);
                                                 val = range.value;
+
+                                                let newmax = max,
+                                                    newmin = min;
+
+                                                bulletpercent = GetPercentage(min,max,val)
+
+                                                if(bulletpercent > prevPercentage && bulletpercent < nextPercentage)
+                                                {
+                                                    setdot(bulletpercent,val);
+                                                }
+
+                                            }
+
                                         }
 
-                                        else
-                                        {
-                                            monitor.innerHTML = '<small>'+String(newval)+'</small>';
-                                            range.setAttribute('value', newval);
-                                            val = range.value;
-                                        }
-
-                                        monitor.classList.add("[status-active]");
-                                        monitor.classList.remove("[status-off]");
 
                                     }
 
-                                    setLine();
-
                                 }
 
-
-                            }
-
-                            function btnrange_dragEnd(ev_drag_btn_range)
-                            {
-
-                                bullet.classList.add('[status-off]');
-                                bullet.classList.remove('[status-active]');
-
-                                monitor.classList.add("[status-off]");
-
-                                setTimeout(()=>{
-                                    monitor.classList.remove("[status-active]");
-                                },500)
-
-                                document.onmouseup = null;
-                                document.onmousemove = null;
-
-                            }
-
-
-                            //sub functions...
-
-                            function GetPercentage(min,max,position)
-                            {
-                                let percentval = Number( ((position-min)/(min-max)) * -100 ).toFixed(dot);
-                                return percentval;
-                            }
-
-                            function GetVal(min,max,percent)
-                            {
-                                let fromPerToVal = Number( ((min-max)*percent/100-min)*-1 ).toFixed(dot);
-                                return fromPerToVal;
-                            }
-
-                            function setLine()
-                            {
-
-                                let Lines = [...range.closest('.sliders').querySelectorAll('input+span')],
-                                    lineslength = Lines.length;
-
-                                for (let i = 0; i < lineslength; i++)
+                                function setdot(bulletpercent,newval,dot)
                                 {
 
-                                    let prev   = [...range.closest('.sliders').querySelectorAll('B')][i-1], from,
-                                        actual = [...range.closest('.sliders').querySelectorAll('B')][i], to;
+                                    bullet.style.left  = bulletpercent+"%";
+                                    monitor.style.left = bulletpercent+"%";
 
-                                    if(prev){ from = GetPercentage(0,containerwidth,prev.offsetLeft); }else { from = 0 }
+                                    if(dot<=0)
+                                    {
+                                        let roundval = Math.ceil(newval);
+                                            monitor.innerHTML = '<small>'+roundval+'</small>';
+                                            range.setAttribute('value', roundval);
+                                            val = range.value;
+                                    }
 
-                                    to = GetPercentage(0,containerwidth,actual.offsetLeft);
+                                    else
+                                    {
+                                        monitor.innerHTML = '<small>'+String(newval)+'</small>';
+                                        range.setAttribute('value', newval);
+                                        val = range.value;
+                                    }
 
-                                    let getStartPx = (GetVal(0,containerwidth,from)) ;
-                                        getFinishPx = (GetVal(0,containerwidth,to)) ;
-                                        widthDifference = getFinishPx-getStartPx;
-
-                                    Lines[i].style.width = widthDifference+"px";
-                                    Lines[i].style.left  = from+"%";
-
-                                }
-
-                            }
-
-                        },500)
-
-                    }
-
-                }
-
-
-            };
-
-
-            const selects = () =>
-            {
-
-
-                let btnselectslist = document.querySelectorAll('*[class*="button-select"]');
-
-
-                for (let btn of btnselectslist)
-                {
-
-
-                    let Select    = btn.getElementsByTagName('select')[0],
-                        Searcher  = btn.querySelectorAll('[type=search]')[0],
-                        Outlabel  = btn.getElementsByTagName('label')[0],
-                        Outfield  = btn.querySelectorAll('input')[0],
-
-                        exvalues   = Outfield.value.split(',') || select.value.split(','),
-                        isMultiple = (Outfield.multiple)?1:0,
-
-                        Outbox,
-                        Accept,
-                        selectorbox;
-
-
-                    // make and set outbox
-
-                    if(Select!=undefined)
-                    {
-
-
-                        //for all, generate a random id from 0 to 1000
-                        let SELECTID = Math.floor(Math.random() * 9999);
-
-
-                        //set target of off canvas
-                        btn.setAttribute('target','outbox#select-'+SELECTID);
-
-
-                        //generate the empty output
-
-                        let searchbar =  (Searcher)? `<div class=button></div>`:``;
-
-
-                        let select_empty_outbox =
-                        `
-                            <div class="outbox" id="select-`+SELECTID+`">
-                                <div class="overlay">
-                                    <div class="side-center">
-
-                                        <div class="selectorbox">
-
-                                            <div><a class="close"><p>Select your option</p> </a></div>
-
-                                            <div>
-                                                `+searchbar+`
-                                            </div>
-
-                                            <div>
-                                                <div class="hide-bar-y">
-                                                    <div class="scroll-y">
-                                                        <div class="optiongroup">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <div class="button align-center">
-                                                    <a class="accept">Close</a>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-
-
-                        //print empty output & get it
-                        document.getElementsByTagName('BODY')[0].insertAdjacentHTML('beforeEnd',select_empty_outbox);
-
-                        //get/update elements
-                        Outbox = document.getElementById("select-"+SELECTID).querySelectorAll('.optiongroup')[0];
-                        selectorbox = document.getElementById("select-"+SELECTID).querySelectorAll('.selectorbox')[0];
-                        Accept = [...document.getElementById("select-"+SELECTID).querySelectorAll('.selectorbox .accept')][0];
-
-                        //move searcher
-                        if(Searcher)
-                        {
-                            selectorbox.querySelectorAll('.button')[0].appendChild(Searcher);
-                            Searcher = [...selectorbox.querySelectorAll('[type=search]')][0];
-                        }
-
-
-                        //get options groups value...
-                        let Groups = [...btn.querySelectorAll('OPTGROUP')];
-
-                        let l = Groups.length;
-                        for (let i = 0; i < l; i++)
-                        {
-
-                            let Group = Groups[i];
-
-                            let Labels = Group.getAttribute('label'), //get all label
-                                Options = [...Group.querySelectorAll('option')];  //get all options
-
-                            if(Labels == null)
-                            {
-                                Labels = '<p></p>';
-                            }
-                            else
-                            {
-                                Labels = '<p>'+Group.getAttribute('label')+'</p>';
-                            }
-
-
-
-                            // create a options list
-                            let optslist = [];
-                            let l = Options.length;
-
-                            for (let i = 0; i < l; i++)
-                            {
-
-                                if(isMultiple)
-                                {
-                                    let included = exvalues.includes( String(Options[i].value) ),
-                                        ischeck = (included) ? 'checked="true"' : '',
-                                        istrue  = (included) ? 1 : 0;
-
-                                    let check_html =
-                                    `
-                                        <div class="button-checkbox" data-option="`+Options[i].value+`">
-                                            <input type="checkbox" value="`+istrue+`" `+ischeck+` />
-                                            <label>`+Options[i].text+`</label>
-                                        </div>
-                                    `;
-                                    optslist.push(check_html);
+                                    monitor.classList.add("[status-active]");
+                                    monitor.classList.remove("[status-off]");
 
                                 }
 
-                                else
-                                {
-                                    optslist.push('<a data-option="'+Options[i].value+'">'+Options[i].text+'</a>')
-                                }
+                                setLine();
 
                             }
 
 
-                            //from array list to list of strings
-                            let optionslist = String(optslist.join(' '));
+                        }
+
+                        function btnrange_dragEnd(ev_drag_btn_range)
+                        {
+
+                            bullet.classList.add('[status-off]');
+                            bullet.classList.remove('[status-active]');
+
+                            monitor.classList.add("[status-off]");
+
+                            setTimeout(()=>{
+                                monitor.classList.remove("[status-active]");
+                            },500)
+
+                            document.onmouseup = null;
+                            document.onmousemove = null;
+
+                        }
 
 
-                            // print new output contents
-                            let output;
-                            if(Labels=="<p></p>")
+                        //sub functions...
+
+                        function GetPercentage(min,max,position)
+                        {
+                            let percentval = Number( ((position-min)/(min-max)) * -100 ).toFixed(dot);
+                            return percentval;
+                        }
+
+                        function GetVal(min,max,percent)
+                        {
+                            let fromPerToVal = Number( ((min-max)*percent/100-min)*-1 ).toFixed(dot);
+                            return fromPerToVal;
+                        }
+
+                        function setLine()
+                        {
+
+                            let Lines = [...range.closest('.sliders').querySelectorAll('input+span')],
+                                lineslength = Lines.length;
+
+                            for (let i = 0; i < lineslength; i++)
                             {
-                                output =
-                                `
-                                    <div class="nolabel hide"></div>
-                                    <div class="options">
-                                    `+optionslist+`
-                                    </div>
-                                `;
-                            }
-                            else
-                            {
-                                output =
-                                `
-                                    <div class="label">
-                                        `+Labels+`
-                                    </div>
-                                    <div class="options">
-                                        `+optionslist+`
-                                    </div>
-                                `;
-                            }
 
-                            Outbox.insertAdjacentHTML('beforeEnd',output);
+                                let prev   = [...range.closest('.sliders').querySelectorAll('B')][i-1], from,
+                                    actual = [...range.closest('.sliders').querySelectorAll('B')][i], to;
 
-                        }
+                                if(prev){ from = GetPercentage(0,containerwidth,prev.offsetLeft); }else { from = 0 }
 
-                        Select.parentNode.removeChild(Select);
+                                to = GetPercentage(0,containerwidth,actual.offsetLeft);
 
-                    }
+                                let getStartPx = (GetVal(0,containerwidth,from)) ;
+                                    getFinishPx = (GetVal(0,containerwidth,to)) ;
+                                    widthDifference = getFinishPx-getStartPx;
 
-
-
-                    Accept.innerHTML = "wainting a choose";
-
-                    let AllVoice  = [...selectorbox.querySelectorAll('.options>*')],
-                        vlength   = AllVoice.length,
-                        valuelist = [],
-                        textslist = [],
-                        active    = null;
-
-                    for (let v = 0; v < vlength; v++)
-                    {
-
-                        let voice = AllVoice[v];
-
-                        if(isMultiple)
-                        {
-
-                            if( voice.firstElementChild.value==1 || voice.firstElementChild.checked==true )
-                            {
-                                valuelist.push(voice.getAttribute('data-option'));
-                                textslist.push(voice.getElementsByTagName('label')[0].innerText);
-                            }
-
-                            else if(v>=vlength-1)
-                            {
-                                Outfield.value     = valuelist.join();
-                                Outlabel.innerHTML = textslist.join();
-                            }
-
-                        }
-
-                        else
-                        {
-                            if(voice.innerText == Outlabel.innerText) voice.classList.add('active');
-                        }
-
-                    }
-
-
-                    for (let v = 0; v < vlength; v++)
-                    {
-                        AllVoice[v].addEventListener('click', () =>{
-
-                            (valuelist.length<=0) ? Accept.innerHTML = "Accept" :  "Close";
-                            let clicked = AllVoice[v];
-                            settingValues(AllVoice,clicked,valuelist,textslist,isMultiple);
-
-                        },false);
-                    }
-
-
-                    function settingValues (AllVoice,clicked,valuelist,textslist,isMultiple)
-                    {
-
-                        Accept.innerHTML = "OK - SAVE";
-
-
-                        if(isMultiple)
-                        {
-
-                            let valuedata  = clicked.getAttribute('data-option'),
-                                valuelabel = clicked.getElementsByTagName('label')[0].innerText,
-                                indexdata  = valuelist.indexOf(valuedata),
-                                indexlabel = textslist.indexOf(valuelabel);
-
-                            if(clicked.classList.contains('active') || clicked.firstElementChild.value==0 || clicked.firstElementChild.checked==false)
-                            {
-                                clicked.classList.remove("active");
-                                valuelist.push(valuedata);
-                                textslist.push(valuelabel)
-                            }
-                            else if(!clicked.classList.contains('active') || clicked.firstElementChild.value==1 || clicked.firstElementChild.checked==true)
-                            {
-                                clicked.classList.add("active");
-                                valuelist.splice(indexdata, 1);
-                                textslist.splice(indexlabel, 1);
-                            }
-
-                        }
-
-                        else
-                        {
-
-                            for (let t = 0; t < AllVoice.length; t++) AllVoice[t].classList.remove("active");
-
-                            clicked.classList.add("active");
-                            active = clicked;
-                        }
-
-                    }
-
-
-                    Accept.onclick = () =>{ printValues(Outfield,Outlabel,valuelist,textslist,isMultiple,active) };
-
-                    function printValues (Outfield,Outlabel,valuelist,textslist,isMultiple,active)
-                    {
-
-                        if(isMultiple)
-                        {
-                            Outfield.value     = valuelist.join();
-                            Outlabel.innerHTML = textslist.join();
-                        }
-                        else
-                        {
-                            Outlabel.innerText = active.innerText;
-                            Outfield.value     = active.value;
-                        }
-
-                        setTimeout(()=>{ Accept.innerHTML = "CLOSE" },300);
-
-                    }
-
-
-                    //if have a search
-
-                    if(Searcher)
-                    {
-
-                        Searcher.addEventListener('input', () => {
-
-                            let searched = Searcher.value.toLowerCase();
-
-                            for (let v = 0; v < vlength; v++)
-                            {
-                                let voice = AllVoice[v]; (!voice.innerText.toLowerCase().startsWith(searched))?voice.classList.add('hide'):voice.classList.remove('hide');
-                            }
-
-                            for (let v = 0; v < vlength; v++)
-                            {
-                                let voice       = AllVoice[v],
-                                    voiceparent = voice.parentNode,
-                                    parentLabel = voiceparent.previousElementSibling;
-
-                                if(parentLabel.classList.contains('label'))
-                                {
-                                    (voiceparent.childElementCount == voiceparent.querySelectorAll(".hide").length )?parentLabel.classList.add('hide'):parentLabel.classList.remove('hide');
-                                }
+                                Lines[i].style.width = widthDifference+"px";
+                                Lines[i].style.left  = from+"%";
 
                             }
 
-                        },false);
-
-                    }
-
-
-                }
-
-
-            };
-
-
-            const dropsdown = () =>
-            {
-
-                let buttondropdownlist = [...document.querySelectorAll('*[class*="button-dropdown"]')];
-
-                for (let Btn of buttondropdownlist)
-                {
-
-                    let Outlabel   = [...Btn.querySelectorAll('label')][0],
-                        Searcher   = [...Btn.querySelectorAll('[type=search]')][0],
-                        Outfield   = [...Btn.querySelectorAll('input')][0],
-                        exvalues   = Outfield.value.split(',') || select.value.split(','),
-                        isMultiple = (Outfield.multiple)?1:0,
-                        selectorbox;
-
-
-                    // make and set outbox
-
-                    if(Btn.getElementsByTagName('select'))
-                    {
-
-                        let select = Outlabel.nextElementSibling;
-
-                        //for all, generate a random id from 0 to 1000
-                        let SELECTID = Math.floor(Math.random() * 9999);
-
-                        //generate the empty output
-                        let select_empty_outbox;
-
-                        if(Searcher)
-                        {
-                          select_empty_outbox =`
-                            <div class="selectorbox off">
-
-                              <div>
-                                <div class=button></div>
-                              </div>
-
-                              <div class="hide-bar-y">
-                                <div class="scroll-y">
-                                  <div class="optiongroup">
-                                  </div>
-                                </div>
-                              </div>
-
-                            </div>`;
                         }
 
-                        else
-                        {
-                          select_empty_outbox =`
-                            <div class="selectorbox off">
-                              <div class="hide-bar-y">
-                                <div class="scroll-y">
-                                  <div class="optiongroup">
-                                  </div>
-                                </div>
-                              </div>
-                            </div>`;
-                        }
-
-                        //print empty output & get it
-                        Btn.insertAdjacentHTML('beforeEnd',select_empty_outbox);
-
-                        //get/update elements
-                        selectorbox = [...Btn.querySelectorAll('.selectorbox')][0];
-
-                        //move searcher
-                        if(Searcher)
-                        {
-                          [...selectorbox.querySelectorAll('.button')][0].appendChild(Searcher);
-                          Searcher = [...selectorbox.querySelectorAll('[type=search]')][0];
-                        }
-
-
-                        //get options groups value...
-                        let Groups = [...Btn.querySelectorAll('OPTGROUP')];
-
-                        let l = Groups.length;
-                        for (let i = 0; i < l; i++)
-                        {
-
-                          let Group = Groups[i];
-
-                          let Labels = Group.getAttribute('label'), //get all label
-                              Options = [...Group.querySelectorAll('option')];  //get all options
-
-                          if(Labels == null)
-                          {
-                            Labels = '<p></p>';
-                          }
-                          else {
-                            Labels = '<p>'+Group.getAttribute('label')+'</p>';
-                          }
-
-
-                          // create a options list
-                          let optslist = [],
-                              l = Options.length;
-
-                          for (let i = 0; i < l; i++)
-                          {
-
-                            if(isMultiple)
-                            {
-                              let included = exvalues.includes( String(Options[i].value) ),
-                                  ischeck = (included) ? 'checked="true"' : '',
-                                  istrue  = (included) ? 1 : 0;
-
-                              let check_html =
-                              `
-                                <div class="button-checkbox" data-option="`+Options[i].value+`">
-                                    <input type="checkbox" value="`+istrue+`" `+ischeck+` />
-                                    <label>`+Options[i].text+`</label>
-                                </div>
-                              `;
-                              optslist.push(check_html);
-                            }
-                            else {
-                              optslist.push('<a data-option="'+Options[i].value+'">'+Options[i].text+'</a>')
-                            }
-                          }
-
-                          //from array list to list of strings
-                          let optionslist = String(optslist.join(' '));
-
-                          // print new output contents
-                          let output;
-                          if(Labels=="<p></p>")
-                          {
-                            output =
-                            `
-                            <div class="nolabel hide"></div>
-                            <div class="options">
-                              `+optionslist+`
-                            </div>`;
-                          }
-                          else
-                          {
-                            output =
-                            `<div class="label">
-                             `+Labels+`
-                            </div>
-                            <div class="options">
-                              `+optionslist+`
-                            </div>`;
-                          }
-
-                          selectorbox.querySelectorAll('.optiongroup')[0].insertAdjacentHTML('beforeEnd',output);
-
-                        }
-
-                        if(isMultiple)
-                        {
-                            selectorbox.classList.add('multiple');
-                        }
-
-                        select.remove();
-
-                    }
-
-
-                    setTimeout(()=>{
-                        selectorbox.style.width = Btn.offsetWidth+'px';
                     },500)
 
-
-                    let clickprevent = false;
-                    document.addEventListener('click', event_dropdownclick => {
-
-                      if(!clickprevent)
-                      {
-
-                        clickprevent=true;
-
-                        if (!Btn.contains(event_dropdownclick.target))
-                        {
-                          selectorbox.classList.add('off');
-                          setTimeout(()=>{
-                            selectorbox.classList.remove('active');
-                            setTimeout(()=>{
-                              selectorbox.classList.remove('off');
-                            },350)
-                          },200)
-                        }
-                        else if(!event_dropdownclick.target.closest('[type=search]') && !event_dropdownclick.target.closest('.button-checkbox'))
-                        {
-
-                          if(selectorbox.classList.contains('active'))
-                          {
-                            selectorbox.classList.add('off');
-                            selectorbox.classList.remove('active');
-                            setTimeout(()=>{
-                              setTimeout(()=>{
-                                selectorbox.classList.remove('off');
-                              },350)
-                            },200)
-
-                          }
-                          else
-                          {
-                            selectorbox.classList.add('active');
-                            setTimeout(()=>{
-                              selectorbox.classList.remove('off');
-                            },200)
-                          }
-                        }
-
-                        setTimeout(()=>{
-                          clickprevent=false;
-                        },600)
-
-                      }
-
-                    });
-
-
-                    //on click into voice of relative select popup or searcher change
-
-
-                    let AllVoice  = [...selectorbox.querySelectorAll('.options>*')],
-                        vlength   = AllVoice.length,
-                        valuelist = [],
-                        textslist = [];
-
-
-                    for (let v = 0; v < vlength; v++)
-                    {
-
-                        let voice = AllVoice[v];
-
-                        if(isMultiple)
-                        {
-
-                            if( voice.firstElementChild.value==1 || voice.firstElementChild.checked==true )
-                            {
-                                valuelist.push(voice.getAttribute('data-option'));
-                                textslist.push(voice.getElementsByTagName('label')[0].innerText);
-                            }
-
-                            else if(v>=vlength-1)
-                            {
-                                Outfield.value     = valuelist.join();
-                                Outlabel.innerHTML = textslist.join();
-                            }
-
-                        }
-
-                        else
-                        {
-                            if(voice.innerText == Outlabel.innerText)
-                            {
-                                voice.classList.add('active');
-                            }
-                        }
-
-                    }
-
-
-                    for (let v = 0; v < vlength; v++)
-                    {
-
-                        AllVoice[v].addEventListener('click', () =>{
-
-                            let clicked = AllVoice[v];
-                            printValues(AllVoice,clicked,valuelist,textslist,isMultiple);
-
-                        },false);
-
-                    }
-
-
-                    function printValues (AllVoice,clicked,valuelist,textslist,isMultiple)
-                    {
-
-                        if(isMultiple)
-                        {
-
-                            let valuedata  = clicked.getAttribute('data-option'),
-                                valuelabel = clicked.getElementsByTagName('label')[0].innerText,
-                                indexdata  = valuelist.indexOf(valuedata),
-                                indexlabel = textslist.indexOf(valuelabel);
-
-                            if(clicked.classList.contains('active') || clicked.firstElementChild.value==0 || clicked.firstElementChild.checked==false)
-                            {
-                                clicked.classList.remove("active");
-                                valuelist.push(valuedata);
-                                textslist.push(valuelabel)
-                            }
-                            else if(!clicked.classList.contains('active') || clicked.firstElementChild.value==1 || clicked.firstElementChild.checked==true)
-                            {
-                                clicked.classList.add("active");
-                                valuelist.splice(indexdata, 1);
-                                textslist.splice(indexlabel, 1);
-                            }
-
-                            Outfield.value     = valuelist.join();
-                            Outlabel.innerHTML = textslist.join();
-
-                        }
-
-                        else
-                        {
-
-                            for (let t = 0; t < AllVoice.length; t++) AllVoice[t].classList.remove("active");
-
-                            clicked.classList.add("active");
-                            Outlabel.innerText = clicked.innerText;
-                            Outfield.value = clicked.value;
-                        }
-
-                    }
-
-
-                    //if have a search
-
-                    if(Searcher)
-                    {
-
-                        Searcher.addEventListener('input', () => {
-
-                            let searched = Searcher.value.toLowerCase();
-
-                            for (let v = 0; v < vlength; v++)
-                            {
-                                let voice = AllVoice[v]; (!voice.innerText.toLowerCase().startsWith(searched))?voice.classList.add('hide'):voice.classList.remove('hide');
-                            }
-
-                            for (let v = 0; v < vlength; v++)
-                            {
-                                let voice       = AllVoice[v],
-                                    voiceparent = voice.parentNode,
-                                    parentLabel = voiceparent.previousElementSibling;
-
-                                if(parentLabel.classList.contains('label'))
-                                {
-                                    (voiceparent.childElementCount == voiceparent.querySelectorAll(".hide").length )?parentLabel.classList.add('hide'):parentLabel.classList.remove('hide');
-                                }
-
-                            }
-
-                        },false);
-
-                    }
-
-                    //on resize...
-
-                    window.onresize = () =>{ selectorbox.style.width = Btn.offsetWidth+'px'; }
-
                 }
 
+            }
 
-            };
+
+        };
 
 
-            const clocks = () =>
+        const selects = () =>
+        {
+
+
+            let btnselectslist = document.querySelectorAll('*[class*="button-select"]');
+
+
+            for (let btn of btnselectslist)
             {
 
-                let buttonclocklist = document.querySelectorAll('*[class*="button-clock"]');
 
-                for (let Btn of buttonclocklist)
+                let Select    = btn.getElementsByTagName('select')[0],
+                    Searcher  = btn.querySelectorAll('[type=search]')[0],
+                    Outlabel  = btn.getElementsByTagName('label')[0],
+                    Outfield  = btn.querySelectorAll('input')[0],
+
+                    exvalues   = Outfield.value.split(',') || select.value.split(','),
+                    isMultiple = (Outfield.multiple)?1:0,
+
+                    Outbox,
+                    Accept,
+                    selectorbox;
+
+
+                // make and set outbox
+
+                if(Select!=undefined)
                 {
 
 
                     //for all, generate a random id from 0 to 1000
-                    let TIMEPICKERID = Math.floor(Math.random() * 999);
+                    let SELECTID = Math.floor(Math.random() * 9999);
+
 
                     //set target of off canvas
-                    Btn.setAttribute('target','outbox#times-'+TIMEPICKERID);
+                    btn.setAttribute('target','outbox#select-'+SELECTID);
 
 
                     //generate the empty output
+
+                    let searchbar =  (Searcher)? `<div class=button></div>`:``;
+
+
                     let select_empty_outbox =
                     `
-                        <div class="outbox" id="times-`+TIMEPICKERID+`">
+                        <div class="outbox" id="select-`+SELECTID+`">
                             <div class="overlay">
                                 <div class="side-center">
 
-                                    <div class="clockbox">
+                                    <div class="selectorbox">
+
+                                        <div><a class="close"><p>Select your option</p> </a></div>
 
                                         <div>
-                                            <a class="close">
-                                                <p>Select a time</p>
-                                            </a>
+                                            `+searchbar+`
                                         </div>
 
                                         <div>
-
-                                            <span class="clock">
-
-                                                <div class="rayline-hours">
+                                            <div class="hide-bar-y">
+                                                <div class="scroll-y">
+                                                    <div class="optiongroup">
+                                                    </div>
                                                 </div>
-
-                                                <div class="rayline-minutes">
-                                                </div>
-
-                                                <div class="pivot"></div>
-
-                                            </span>
-
-                                        </div>
-
-                                        <div>
-
-                                            <div class="display">
-                                                <span>
-                                                    <span class="button hours"><input type="number" pattern="[0-9]{2}" value="12"/></span>
-                                                    <span class="doubledot"><small>:</small></span>
-                                                    <span class="button minutes"><input type="number" pattern="[0-9]{2}" value="20"/></span>
-                                                </span>
-                                                <span>
-                                                    <small class="am [status-active]">AM</small>
-                                                    <small class="pm [status-off]">PM</small>
-                                                </span>
                                             </div>
-
                                         </div>
 
                                         <div>
-                                            <p class="warning border-error hide"></p>
                                             <div class="button align-center">
-                                                <a class="accept">OK - SAVE</a>
+                                                <a class="accept">Close</a>
                                             </div>
                                         </div>
 
@@ -5439,1585 +4629,644 @@ const ui = (() => {
 
 
                     //print empty output & get it
-
                     document.getElementsByTagName('BODY')[0].insertAdjacentHTML('beforeEnd',select_empty_outbox);
-                    let Outbox = document.getElementById("times-"+TIMEPICKERID);
 
+                    //get/update elements
+                    Outbox = document.getElementById("select-"+SELECTID).querySelectorAll('.optiongroup')[0];
+                    selectorbox = document.getElementById("select-"+SELECTID).querySelectorAll('.selectorbox')[0];
+                    Accept = [...document.getElementById("select-"+SELECTID).querySelectorAll('.selectorbox .accept')][0];
 
-                    let Am = Outbox.querySelectorAll('.am')[0],
-                        Pm = Outbox.querySelectorAll('.pm')[0],
-
-                        Hours = Outbox.querySelectorAll('.hours>input')[0],
-                        Minutes = Outbox.querySelectorAll('.minutes>input')[0],
-
-                        Clock = Outbox.querySelectorAll('.clock')[0],
-                        RayHours = Outbox.querySelectorAll('.rayline-hours')[0],
-                        RayMinutes = Outbox.querySelectorAll('.rayline-minutes')[0],
-                        ClockPivot = Outbox.querySelectorAll('.pivot')[0],
-
-                        Accept = Outbox.querySelectorAll('a.accept')[0];
-
-
-                    Hours.onmousedown = () =>{ selectfullstring(Hours)  }
-                    Hours.ontouchstart = () =>{  selectfullstring(Hours) }
-                    Minutes.onmousedown = () =>{  selectfullstring(Minutes) }
-                    Minutes.ontouchstart = () =>{  selectfullstring(Minutes) }
-                    function selectfullstring (I){ I.select() }
-
-
-                    //set to start
-                    if(Btn.getElementsByTagName('input')[0].value!='')
+                    //move searcher
+                    if(Searcher)
                     {
-
-                        let start = Btn.getElementsByTagName('input')[0].value,
-                            startH = parseInt(start.split(':')[0]),
-                            startM = parseInt(start.split(':')[1]);
-
-                        setTimeout(()=>{
-                          RayHours.style.transform   = 'rotate('+((360/12*startH)-90)+'deg)' ;
-                          RayMinutes.style.transform = 'rotate('+((360/60*startM)-90)+'deg)' ;
-                        },500)
-
-                        if(startH>=1 && startH<=9) {startH='0'+startH}; Hours.value = startH;
-                        if(startM>=1 && startM<=9) {startM='0'+startM}; Minutes.value = startM;
-
+                        selectorbox.querySelectorAll('.button')[0].appendChild(Searcher);
+                        Searcher = [...selectorbox.querySelectorAll('[type=search]')][0];
                     }
 
 
-                    // set via buttons
+                    //get options groups value...
+                    let Groups = [...btn.querySelectorAll('OPTGROUP')];
 
-                    Hours.onkeyup = () => { if(String(Hours.value).length>=2){ checkhours();  } }
-                    Hours.onblur = () => { checkhours(); }
-
-
-                    function checkhours()
+                    let l = Groups.length;
+                    for (let i = 0; i < l; i++)
                     {
 
-                        let nH = parseInt(Hours.value);
+                        let Group = Groups[i];
 
-                        if(Am.classList.contains('status-active'))
-                        { if(nH>12) {nH='01'} else if(nH<1) {nH='12'} else if(nH>=1 && nH<=9) {nH='0'+nH }; }
+                        let Labels = Group.getAttribute('label'), //get all label
+                            Options = [...Group.querySelectorAll('option')];  //get all options
 
-                        else
-                        { if(nH>23) {nH='00'} else if(nH<=-1) {nH='23'} else if(nH<=9) {nH='0'+nH }; }
-
-                        if(nH.length>=3) nH='01';
-
-
-                        RayHours.classList.add('smooth');
-                        RayHours.style.transform = 'rotate('+((360/12*parseInt(nH))-90)+'deg)' ;
-                        setTimeout(()=>{ RayHours.classList.remove('smooth'); },300)
-
-                        Hours.value = nH;
-
-                    }
-
-                    Minutes.onkeyup = () => { if(String(Minutes.value).length>=2){ checkMinutes(); } }
-                    Minutes.onblur = () => { checkMinutes(); }
-
-                    function checkMinutes()
-                    {
-
-                        let nM = Minutes.value;
-
-                        if(nM>59) {nM='00'} else if(nM<0) {nM='59'} else { if(nM>=0 && nM<=9) {nM='0'+nM } };
-
-                        if(nM.length>2) nM='01';
-
-                        RayMinutes.classList.add('smooth');
-                        RayMinutes.style.transform = 'rotate('+((360/60*parseInt(nM))-90)+'deg)' ;
-                        setTimeout(()=>{ RayMinutes.classList.remove('smooth'); },300)
-
-                        Minutes.value = nM;
-
-                    }
-
-                    // set Am or Pm
-
-                    Am.onclick = () =>
-                    {
-
-                        if(!Am.className.includes('status-active'))
+                        if(Labels == null)
                         {
-
-                            Am.classList.add('[status-active]'),
-                            Am.classList.remove('[status-off]'),
-                            Pm.classList.add('[status-off]'),
-                            Pm.classList.remove('[status-active]');
-
-                            let hours = parseInt(Hours.value);
-
-                            if(hours == 00)       { hours = 12}
-                            if(hours>12)
-                            {
-                                if(hours <= 22)     { hours = "0"+(hours-12)}
-                                else if(hours > 22) { hours = (hours-12)}
-                            }
-
-                            Hours.value = hours;
-                            checkvalue(Btn,Hours,Minutes,Outbox,Accept)
-                        }
-
-                    }
-
-                    Pm.onclick = () =>
-                    {
-
-                        if(!Pm.className.includes('status-active'))
-                        {
-
-                            Am.classList.add('[status-off]'),
-                            Am.classList.remove('[status-active]'),
-                            Pm.classList.add('[status-active]'),
-                            Pm.classList.remove('[status-off]');
-
-                            let hours = parseInt(Hours.value);
-
-                            if(hours == 12) { hours = "00"}
-                            else            { hours = hours+12; }
-
-                            Hours.value = hours;
-                            checkvalue(Btn,Hours,Minutes,Outbox,Accept)
-                        }
-
-                    }
-
-
-                    // set start angle
-
-                    let startHoursangle = Math.atan2(-90,0) * 180 / Math.PI;
-                    RayHours.style.transform = 'rotate('+startHoursangle+'deg)' ;
-
-                    let startMinutesangle = Math.atan2(0,15) * 180 / Math.PI;
-                    RayMinutes.style.transform = 'rotate('+startMinutesangle+'deg)' ;
-
-
-                    //start moving
-
-                    if(is_touch_device())
-                    {
-                        RayHours.ontouchstart = clockStart;
-                        RayMinutes.ontouchstart = clockStart;
-                    }
-                    else
-                    {
-                        RayHours.onmousedown = clockStart;
-                        RayMinutes.onmousedown = clockStart;
-                    }
-
-
-                    let center,isHours,isMinutes;
-
-
-                    function clockStart(event_clockdrag)
-                    {
-
-
-                        event_clockdrag.preventDefault();
-                        event_clockdrag.stopPropagation();
-
-                        let rect = ClockPivot.getBoundingClientRect();
-
-
-                        center = {
-                            x:  (screenview.scrollX||0) + rect.left,
-                            y:  (screenview.scrollY||0) + rect.top
-                        };
-
-
-                        if(event.target == RayHours)
-                        {
-                            isHours = true;
-                            isMinutes = false;
-                        }
-                        else if(event.target == RayMinutes)
-                        {
-                            isHours = false;
-                            isMinutes = true;
-                        }
-
-                        (is_touch_device())
-                            ? document.ontouchmove = clockMove
-                            : document.onmousemove = clockMove;
-                    }
-
-                    function clockMove(event)
-                    {
-
-                        let deltaX, deltaY, angle;
-
-                        if(is_touch_device())
-                        {
-                            deltaX = event.touches[0].pageX - center.x;
-                            deltaY = event.touches[0].pageY - center.y;
+                            Labels = '<p></p>';
                         }
                         else
                         {
-                            deltaX = event.pageX - center.x;
-                            deltaY = event.pageY - center.y;
+                            Labels = '<p>'+Group.getAttribute('label')+'</p>';
                         }
 
-                        angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI);
 
-                        if(isHours)
+
+                        // create a options list
+                        let optslist = [];
+                        let l = Options.length;
+
+                        for (let i = 0; i < l; i++)
                         {
 
-                            //calc percent of angle
-
-                            let min = -180, max = 180,
-                                anglepercent = parseInt( ((angle-min)/(min-max)) * -100 );
-
-                            //calc percent steps
-
-                            let steppercent = [];
-                            for (let i = 0; i < 14; i++)
+                            if(isMultiple)
                             {
-                                let step = parseInt( (i*100)/12 );
-                                steppercent.push(step)
-                            }
-
-                            //loop step on percent
-
-                            let sl = steppercent.length;
-                            for (let i = 0; i < sl; i++)
-                            {
-
-                                if(anglepercent > steppercent[i-1] && anglepercent < steppercent[i+1])
-                                {
-
-                                    let fromPertoDeg = Math.round( (min-max)*steppercent[i]/100-min )*-1; //from % to degree
-
-                                    RayHours.style.transform = 'rotate('+fromPertoDeg+'deg)' ;
-
-                                    let hours = parseInt(i-3);
-
-                                    if(Am.className.includes('status-active'))
-                                    {
-                                        if(hours == 0)              { hours = "12"}
-                                        else if(hours<0 && hours<10){ hours = i+9; }
-                                        else if(hours <= 9)         { hours = "0"+hours}
-                                    }
-                                    else
-                                    {
-                                        if(hours == 0)              { hours = "00"}
-                                        else if(hours<0 && hours<10){ hours = i+(9+12); }
-                                        else if(hours <= 9)         { hours = (hours+12)}
-                                    }
-
-                                    Hours.value = hours;
-
-                                }
-                            }
-
-                        }
-
-                        else if(isMinutes)
-                        {
-
-                            //calc percent of angle
-
-                            let min = -180,
-                                max = 180,
-                                anglepercent = parseInt( ((angle-min)/(min-max)) * -100 );
-
-
-                            //calc percent steps
-
-                            let steppercent = [];
-                            for (let i = 0; i < 62; i++)
-                            {
-                                let step = parseInt( (i*100)/60 );
-                                steppercent.push(step)
-                            }
-
-                            //loop step on percent
-                            let sl = steppercent.length;
-                            for (let i = 0; i < sl; i++)
-                            {
-
-                                if(anglepercent > steppercent[i-1] && anglepercent < steppercent[i+1])
-                                {
-
-                                    let fromPertoDeg = Math.round( (min-max)*steppercent[i]/100-min )*-1 ; //from % to degree
-
-                                    RayMinutes.style.transform = 'rotate('+fromPertoDeg+'deg)';
-
-                                    let minuts = i-15;
-
-                                    if(minuts<0)        { minuts = i+45; }
-
-                                    if(minuts == 60)    { minuts = "00"}
-                                    else if(minuts <= 9){ minuts = "0"+minuts}
-
-                                    Minutes.value = minuts;
-
-                                }
-
-                            }
-
-                        }
-
-                        RayHours.ontouchend   = clockStop;
-                        RayMinutes.ontouchend = clockStop;
-                        document.onmouseup    = clockStop;
-                    }
-
-
-                    function clockStop(event)
-                    {
-
-                        event_clockdrag = null;
-                        document.ontouchstart = null;
-                        document.onmousedown = null;
-                        document.ontouchmove = null;
-                        document.onmousemove = null;
-                        document.onmouseup = null;
-
-
-                        checkvalue(Btn,Hours,Minutes,Outbox,Accept)
-
-                    }
-
-
-                    function checkvalue(Btn,Hours,Minutes,Outbox,Accept)
-                    {
-
-                        let selectedHours   = Hours.value,
-                            selectedMinutes = Minutes.value;
-
-                        let btnImp = Btn.getElementsByTagName('input')[0];
-
-
-                        if(btnImp.min&&btnImp.max)
-                        {
-
-                            if(btnImp.min&&!btnImp.max || !btnImp.min&&btnImp.max)
-                            {
-                                debug(`:: [⚠ ui alert]: wrong clock, no min/max valid\n   ⮑ If you use one, it is mandatory to enter both values`);
-                            }
-                            else
-                            {
-
-                                let Warning     = [...Outbox.querySelectorAll('.warning')][0],
-                                    minHours    = btnImp.min.split(':')[0],
-                                    minMintes   = btnImp.min.split(':')[1],
-                                    maxHours    = btnImp.max.split(':')[0],
-                                    maxMinutes  = btnImp.max.split(':')[0];
-
-                                if(selectedHours<minHours || selectedHours>maxHours)
-                                {
-
-                                    Warning.innerHTML = 'This Time is not available';
-                                    Warning.classList.remove('hide');
-                                    Accept.classList.add('disabled');
-                                    Accept.innerText= 'OUT OF RANGE'
-
-                                }
-                                else
-                                {
-
-                                    Warning.classList.replace('active','off');
-                                    Warning.classList.add('hide');
-                                    Accept.classList.remove('disabled');
-                                    Accept.innerText= 'OK - SAVE';
-
-                                    Accept.addEventListener('click', event_acceptClockTime => {
-                                        Btn.querySelectorAll('.button-clock>label')[0].innerText = selectedHours+":"+selectedMinutes;
-                                        Btn.querySelectorAll('.button-clock>input')[0].value = selectedHours+":"+selectedMinutes;
-                                    },false)
-
-                                }
-
-                            }
-
-                        }
-                        else
-                        {
-                            Accept.innerText= 'OK - SAVE';
-                            Accept.addEventListener('click', event_acceptClockTime => {
-                                Btn.querySelectorAll('.button-clock>label')[0].innerText = selectedHours+":"+selectedMinutes;
-                                Btn.querySelectorAll('.button-clock>input')[0].value = selectedHours+":"+selectedMinutes;
-                            },false)
-
-                        }
-
-                    }
-
-                }
-
-            };
-
-
-            const checks = () =>
-            {
-
-                let btncheckboxlist = document.querySelectorAll('*[class*="button-checkbox"]');
-
-                for (let btn of btncheckboxlist)
-                {
-
-                    let inputtag = btn.firstElementChild;
-
-                    //if is empty = uncheck
-                    if(!inputtag.checked || inputtag.value=='')
-                    {
-                        inputtag.setAttribute("checked", false);
-                        inputtag.checked = false;
-                        inputtag.value = 0;
-                    }
-                    else
-                    {
-                        inputtag.setAttribute("checked", true);
-                        inputtag.checked = true;
-                        inputtag.value = 1;
-                    }
-
-                    btn.onclick = ev_click_checkboxbutton =>
-                    {
-
-                        if(!inputtag.checked)
-                        {
-                            inputtag.setAttribute('checked',true);
-                            inputtag.checked = true;
-                            inputtag.value = 1;
-                        }
-                        else
-                        {
-                            inputtag.setAttribute('checked',false);
-                            inputtag.checked = false;
-                            inputtag.value = 0;
-                        }
-
-                    }
-
-                }
-
-            };
-
-
-            const radios = () =>
-            {
-
-                let buttonradiolist = document.querySelectorAll('*[class*="button-radio"]');
-
-                for (let btn of buttonradiolist)
-                {
-
-                    let inputtag = btn.firstElementChild;
-
-                    //if is empty = uncheck
-                    if(!inputtag.checked || inputtag.value=='')
-                    {
-                        inputtag.setAttribute("checked", false);
-                        inputtag.checked = false;
-                        inputtag.value = 0;
-                    }
-                    else
-                    {
-                        inputtag.setAttribute("checked", true);
-                        inputtag.checked = true;
-                        inputtag.value = 1;
-                    }
-
-                    btn.onclick = ev_click_radiobutton =>
-                    {
-
-                        let inpgroup = document.querySelectorAll('[name="'+inputtag.getAttribute('name')+'"]'),
-                            btnsqnt  = inpgroup.length;
-
-                            for (let i = 0; i < btnsqnt; i++)
-                            {
-                                inpgroup[i].setAttribute("checked", false);
-                                inpgroup[i].checked = false;
-                                inpgroup[i].value = 0;
-                            }
-
-                            inputtag.setAttribute("checked", true);
-                            inputtag.checked = true;
-                            inputtag.value = 1;
-
-                    }
-
-                }
-
-
-            };
-
-
-            const datepikers = () =>
-            {
-
-
-                let buttondatepickerslist = [...document.querySelectorAll('*[class*=button-date]')];
-
-                for (let Btn of buttondatepickerslist)
-                {
-
-                    let Outlabel  = [...Btn.getElementsByTagName('label')][0],
-                        OutFields = [...Btn.getElementsByTagName('input')],
-                        FieldsQnt = OutFields.length,
-                        onfocus   = 1,
-                        datelist  = [];
-
-                    if(FieldsQnt>2)
-                    {
-                        debug(`:: [🛈 viƨor info]: button-date oversized\n   ⮑ The maximum amount of inputs is two: "start date", "end date".`);
-                        Btn.classList.add('debug-error');
-                    }
-                    else if(FieldsQnt<1)
-                    {
-                        debug(`:: [🛈 viƨor info]: button-date subsized\n   ⮑ The minumum amount of inputs is one: are you kidding me?`);
-                        Btn.classList.add('debug-error');
-                    }
-
-                    else
-                    {
-
-
-                        //
-                        //  1: get type and format of dates
-                        //
-
-
-                        let isUTC, isEUR, Yi,Mi,Di;
-
-
-                        // is it UTC or EUR? // not EUR.. then UTC
-
-                        (Btn.classList.contains("EUR")) ? (isUTC=!1,isEUR=!0) : (isUTC=!0,isEUR=!1) ;
-
-
-                        // check date format
-
-                        let dateformat,
-                            datepickerclasses = [...String(Btn.className).split(' ')],
-                            formatkey = ["DMY","DYM","MYD","MDY","YDM","YMD"],
-                            fkl = formatkey.length;
-
-                        for (let i=0;i<fkl;i++)
-                            if(!(datepickerclasses.indexOf(formatkey[i]) === -1))
-                                dateformat = String(formatkey[i]);
-
-                        // get order of format
-                        Yi =  dateformat.indexOf('Y');
-                        Mi =  dateformat.indexOf('M');
-                        Di =  dateformat.indexOf('D');
-
-
-                        //
-                        //  2: get basic params
-                        //
-
-
-                        // set unselected start / end
-
-                        for (let i = 0; i < FieldsQnt; i++)
-                          datelist.push({ 'year':null, 'month':null, 'day':null });
-
-
-                        //
-                        //  3: get actual/start selected date via input or UTC
-                        //
-
-
-                        if(OutFields[0].value=='')
-                        {
-
-                            let todaydate  = new Date(),
-                                format     = todaydate.toUTCString(),
-                                utc_year   = parseInt(todaydate.getUTCFullYear()),
-                                utc_month  = parseInt(todaydate.getUTCMonth()),
-                                utc_day    = parseInt(todaydate.getUTCDate());
-                            // this_week = date.getUTCDay();
-
-                            datelist[0].year  = utc_year;
-                            datelist[0].month = utc_month;
-                            datelist[0].day   = utc_day;
-
-                            if(FieldsQnt==2)
-                            {
-                                datelist[1].year = utc_year;
-                                datelist[1].month= utc_month;
-                                datelist[1].day  = utc_day+1;
-                            }
-
-                        }
-
-                        else
-                        {
-
-                            let datestart = OutFields[0].value,
-                                format;
-
-                            if(datestart.match('-'))
-                            {
-                                datelist[0].year  = parseInt(datestart.split('-')[Yi]);
-                                datelist[0].month = parseInt(datestart.split('-')[Mi])-1;
-                                datelist[0].day   = parseInt(datestart.split('-')[Di]);
-                            }
-                            else
-                            {
-                                datestart         = new Date(parseInt(datestart));
-                                format            = datestart.toUTCString();
-                                datelist[0].year  = parseInt(datestart.getUTCFullYear());
-                                datelist[0].month = parseInt(datestart.getUTCMonth());
-                                datelist[0].day   = parseInt(datestart.getUTCDate());
-                            }
-
-
-                            if(FieldsQnt==2)
-                            {
-
-                                let dateend   = OutFields[1].value;
-
-                                if(dateend.match('-'))
-                                {
-                                    datelist[1].year  = parseInt(dateend.split('-')[Yi]);
-                                    datelist[1].month = parseInt(dateend.split('-')[Mi])-1;
-                                    datelist[1].day   = parseInt(dateend.split('-')[Di]);
-                                }
-                                else
-                                {
-                                    dateend           = new Date( parseInt(dateend) );
-                                    format            = dateend.toUTCString();
-                                    datelist[1].year  = parseInt(dateend.getUTCFullYear());
-                                    datelist[1].month = parseInt(dateend.getUTCMonth());
-                                    datelist[1].day   = parseInt(dateend.getUTCDate());
-                                }
-
-                            }
-
-                        }
-
-
-                        //
-                        //  3: create, connect empty datepicker outbox / get from it
-                        //
-
-                        // for all, generate a random id from 0 to 1000
-
-                        let DATEID = Math.floor(Math.random() * 999);
-
-                        // set target of off canvas
-
-                        Btn.setAttribute("target","outbox#datepicker-"+DATEID);
-
-                        // generate the empty output
-
-                        let fromto = (FieldsQnt==2) ? `<div class="grid-x fromto"><small class="box-[50-50-50] active"> FRIST DATE </small><small class="box-[50-50-50] off"> END DATE </small></div>` : `<!--singledate-->` ;
-
-                        let empty_output_datepicker =
-                        `
-                        <div class="outbox gpuboost" id="datepicker-`+DATEID+`">
-                            <div class="overlay">
-                                <div class="side-center">
-
-                                    <div class="datepicker">
-
-                                        <div>
-                                            <a class="close"><p>Select a date</p></a>
-                                        </div>
-
-                                        <div>`+fromto+`</div>
-
-                                        <div>
-
-                                            <div>
-
-                                                <span class="years">
-                                                    <span class="prev">&nbsp;</span>
-                                                    <span class="year_list"></span>
-                                                    <span class="next">&nbsp;</span>
-                                                </span>
-
-                                            </div>
-
-                                            <div>
-
-                                                <span class="months">
-                                                    <span class="prev">&nbsp;</span>
-                                                    <span class="month_list"></span>
-                                                    <span class="next">&nbsp;</span>
-                                                </span>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div>
-
-                                            <div class="weekday_list">
-                                                <div class="grid-x align-center">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div>
-
-                                            <div class="day_list">
-                                                <div class="grid-x">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div>
-
-                                            <div class="button align-center">
-                                                <a class="accept">OK - SAVE</a>
-                                            </div>
-
-                                        </div>
-
+                                let included = exvalues.includes( String(Options[i].value) ),
+                                    ischeck = (included) ? 'checked="true"' : '',
+                                    istrue  = (included) ? 1 : 0;
+
+                                let check_html =
+                                `
+                                    <div class="button-checkbox" data-option="`+Options[i].value+`">
+                                        <input type="checkbox" value="`+istrue+`" `+ischeck+` />
+                                        <label>`+Options[i].text+`</label>
                                     </div>
+                                `;
+                                optslist.push(check_html);
 
+                            }
+
+                            else
+                            {
+                                optslist.push('<a data-option="'+Options[i].value+'">'+Options[i].text+'</a>')
+                            }
+
+                        }
+
+
+                        //from array list to list of strings
+                        let optionslist = String(optslist.join(' '));
+
+
+                        // print new output contents
+                        let output;
+                        if(Labels=="<p></p>")
+                        {
+                            output =
+                            `
+                                <div class="nolabel hide"></div>
+                                <div class="options">
+                                `+optionslist+`
                                 </div>
-                            </div>
-                        </div>
-                        `;
-
-                        // print output in page
-
-                        document.getElementsByTagName('BODY')[0].insertAdjacentHTML('beforeEnd',empty_output_datepicker);
-
-                        // get output in page
-
-                        let Datepicker = document.querySelectorAll("#datepicker-"+DATEID)[0];
-
-                        // get datepiker elements
-
-                        let Accept        = Datepicker.querySelectorAll(".accept")[0],
-                            year_list     = Datepicker.querySelectorAll(".year_list")[0],
-                            month_list    = Datepicker.querySelectorAll(".month_list")[0],
-                            weekday_list  = Datepicker.querySelectorAll(".weekday_list>div")[0],
-                            day_list      = Datepicker.querySelectorAll(".day_list>div")[0];
-
-
-                        //
-                        // 4.1: populate years for a start
-                        //
-
-                        // create year list
-
-                        let y_htmlcontents = [],
-                            yearmin,
-                            yearmax;
-
-                        let ininputmin = parseInt(Btn.firstElementChild.min),
-                            ininputmax = parseInt(Btn.firstElementChild.max);
-
-
-                        if(!ininputmin || ininputmin=='' && !ininputmax || ininputmax=='')
-                        {
-
-                            yearmin = 1950;
-                            yearmax = 2050;
-
+                            `;
                         }
-
                         else
                         {
-
-                            if(!ininputmax || ininputmin>ininputmax)
-                            {
-                                debug(`:: [🛈 viƨor info]: button-date strange min/max\n   ⮑ The max value is undefined or min is over to max.\n      Will be applied standard max "2050"`);
-                                yearmin = ininputmin;
-                                yearmax = 2050;
-                            }
-
-                            else if(!ininputmin)
-                            {
-                                debug(`:: [🛈 viƨor info]: button-date strange min/max\n   ⮑ The min value is undefined.\n      Will be applied standard min "1950"`);
-                                yearmin = 1950;
-                                yearmax = ininputmax;
-                            }
-
-                            else
-                            {
-                                yearmin = ininputmin;
-                                yearmax = ininputmax;
-                            }
-
+                            output =
+                            `
+                                <div class="label">
+                                    `+Labels+`
+                                </div>
+                                <div class="options">
+                                    `+optionslist+`
+                                </div>
+                            `;
                         }
 
-                        for (let i = yearmin; i <= yearmax; i++)
-                            y_htmlcontents.push('<p class="off hide">'+ i +'</p>');
+                        Outbox.insertAdjacentHTML('beforeEnd',output);
+
+                    }
+
+                    Select.parentNode.removeChild(Select);
+
+                }
 
 
-                        y_htmlcontents =  String( y_htmlcontents.join(' ') );
-                        year_list.innerHTML =  y_htmlcontents;
 
+                Accept.innerHTML = "wainting a choose";
 
-                        // set for start
+                let AllVoice  = [...selectorbox.querySelectorAll('.options>*')],
+                    vlength   = AllVoice.length,
+                    valuelist = [],
+                    textslist = [],
+                    active    = null;
 
-                        let Years    = [...year_list.querySelectorAll("p")],
-                            yearsQnt = Years.length;
+                for (let v = 0; v < vlength; v++)
+                {
 
-                        if(ininputmin == ininputmax)
+                    let voice = AllVoice[v];
+
+                    if(isMultiple)
+                    {
+
+                        if( voice.firstElementChild.value==1 || voice.firstElementChild.checked==true )
                         {
-
-                            for (let i = 0; i < yearsQnt; i++)
-                            {
-                                Years[i].classList.remove("off","hide");
-                                Years[i].classList.add("active");
-                            }
-
+                            valuelist.push(voice.getAttribute('data-option'));
+                            textslist.push(voice.getElementsByTagName('label')[0].innerText);
                         }
 
-                        else
+                        else if(v>=vlength-1)
                         {
-                            for (let i = 0; i < yearsQnt; i++)
-                            {
-                                if(parseInt(Years[i].textContent) == datelist[0].year )
-                                {
-                                    Years[i].classList.remove("off","hide");
-                                    Years[i].classList.add("active");
-                                }
-                            }
+                            Outfield.value     = valuelist.join();
+                            Outlabel.innerHTML = textslist.join();
                         }
 
-
-                        //
-                        // 4.2: populate months for a start
-                        //
-
-
-                        // create month list
-
-                        let m_htmlcontents = [],
-                            monthArray = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
-                        for (let i = 0; i <= 11; i++)
-                            m_htmlcontents.push('<p class="off hide">'+ monthArray[i] +'</p>');
-
-                        m_htmlcontents =  String( m_htmlcontents.join(' ') );
-                        month_list.innerHTML =  m_htmlcontents;
-
-
-                        // set for start
-
-                        let Months = [...month_list.querySelectorAll("p")],
-                            monthsQnt = Months.length;
-
-                        for (let i = 0; i < monthsQnt; i++)
-                        {
-                            if(i == datelist[0].month)
-                            {
-                                Months[i].classList.remove("off","hide");
-                                Months[i].classList.add("active");
-                            }
-                        }
-
-
-                        //
-                        // 4.3: populate weekdays
-                        //
-
-                        // create weekday list
-
-                        let dw_htmlcontents = [], dayweeks;
-
-                        if(isEUR) { dayweeks = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]; }
-                        else      { dayweeks = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]; }
-
-                        // if(isEUR) { dayweeks = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"]; }
-                        // else      { dayweeks = ["Dom","Lun","Mar","Mer","Gio","Ven","Sab"]; }
-
-
-                        for (let i = 0; i < dayweeks.length; i++)
-                            dw_htmlcontents.push( '<div class="box-[14-14-14]"><small>'+ dayweeks[i] +'</small></div>' );
-
-                        //print dayweek
-                        dw_htmlcontents = String( dw_htmlcontents.join(' ') );
-                        weekday_list.innerHTML =  dw_htmlcontents;
-
-
-
-                        //
-                        // 4.4: populate days...
-                        //
-
-
-                        // ::: daylist not have a start print. It's auto created by utc data
-                        // ::: after selected, or have in start, an year and month sys can "get days list of that date"
-                        // ::: ex: get days quantity of "May" "2001" -> get the days qnt of that date
-                        // ::: attention get days qnt start to 0 and need +1 (8+1 = sept) ...
-
-
-                        let get_DaysQntOfMounth = (YY,MM) =>
-                        {
-                            // get day list of year/month
-                            let getDate = new Date( Date.UTC(YY,MM+1,null) );
-                            return parseInt(  getDate.getUTCDate() );
-                        }
-
-                        // ::: Since calendars start with different weeks
-                        // ::: (for example in EU start from Monday, not Sunday),
-                        // ::: it will be necessary to understand what day 1 is
-                        // ::: compared to the first day of the week
-                        // ::: attention get weekday start to 1 (8 is sept) and return 0 Sunday, 1 Monday, 2 Tuesday, ...
-
-
-                        let get_FirstDayOfweek = (YY,MM) =>
-                        {
-                            // get first dayweek of year/month
-                            let getDate = new Date( Date.UTC(YY,MM,1) );
-                            return parseInt( getDate.getUTCDay() );
-                        }
-
-
-                        // ::: having the methods created above, we can
-                        // ::: get a daylist of specific date (in this case, the start).
-
-                        let make_days_table = (YY,MM,DD) =>
-                        {
-
-
-                            day_list.innerHTML = '';
-
-
-                            let firstdayweek     = get_FirstDayOfweek(YY,MM),
-                                dayinactualmonth = get_DaysQntOfMounth(YY,MM),
-                                calendarcell     = 44, // remember: start to 0
-                                d_htmlcontents   = [],
-                                daytabulator     = parseInt(  (calendarcell-(firstdayweek+1)) );
-
-                            for (let i = (isEUR)?(firstdayweek+5)*-1:(firstdayweek-1)*-1; i <= daytabulator; i++)
-                            {
-
-                                let day = i, status = "off", style="";
-
-                                if(day>=1 && day<=9) { day="0"+i }
-                                if(day<=0 || i>dayinactualmonth){ day = "░", style='style="opacity:0.5"', status = "off disabled" }
-                                else if(day == DD) { status = "active", style='' }
-
-                                d_htmlcontents.push('<div class="box-[14-14-14]" '+style+'><p class="day '+status+'">'+ day +'</p></div>'); //dayout
-
-                            }
-
-
-                            d_htmlcontents = String(d_htmlcontents.join(' '));
-                            day_list.innerHTML =  d_htmlcontents;
-
-
-                            // in case of line of day is empty (compact mode)
-
-                            if(Btn.className.includes('-compact'))
-                            {
-
-                                (() =>{
-
-                                    let FirsLineDays = [...Datepicker.querySelectorAll('.day_list .day')].slice(0,7),
-                                        firstline = 0;
-
-                                    for (let i = 0; i <= 6; i++)
-                                        if(FirsLineDays[i].textContent === "░") { firstline++; };
-
-                                    if(firstline===7)
-                                        for (let i = 0; i <= 6; i++)
-                                            FirsLineDays[i].parentNode.innerHTML = "";
-
-                                })();
-
-
-                                (() =>{
-
-                                    //let LastLineDays = [...Datepicker.querySelectorAll('.day_list .day')].slice(35,42);
-                                    let LastLineDays = [...Datepicker.querySelectorAll('.day_list .day')].slice(-7),
-                                        lastline = 0;
-
-                                    for (let i = 0; i <= 6; i++)
-                                        if(LastLineDays[i].textContent === "░") { lastline++; };
-
-                                    if(lastline===7)
-                                        for (let i = 0; i <= 6; i++)
-                                            LastLineDays[i].parentNode.innerHTML = "";
-
-                                })();
-
-                            }
-
-
-                            if(FieldsQnt==2){ printDate(); }
-
-                        }
-
-
-                        make_days_table(datelist[0].year,datelist[0].month,datelist[0].day); //<== create start
-
-
-                        //
-                        //  5: set contents via actions
-                        //
-
-                        // find actual static values on call
-
-                        let getActualMonth = () =>
-                        {
-
-                            for (let i = 0; i < monthsQnt; i++)
-                                if(Months[i].classList.contains("active"))
-                                    return i;
-
-                        }
-
-                        let getActualYear = () =>
-                        {
-
-                            for (let i = 0; i < yearsQnt; i++)
-                                if(Years[i].classList.contains("active"))
-                                    return parseInt(Years[i].innerText);
-
-                        }
-
-                        let getActualDay = () =>
-                        {
-
-                            let days = [...Datepicker.querySelectorAll('.day_list .day')],
-                                daysQnt = days.length;
-
-                            for (let i = 0; i < daysQnt; i++)
-                                if(days[i].classList.contains("active"))
-                                    return parseInt(days[i].innerText);
-
-                        }
-
-                        // A) switch years
-
-                        let YearPrev = Datepicker.querySelector('.years>.prev'),
-                            YearNext = Datepicker.querySelector('.years>.next');
-
-                        YearPrev.onclick = () => { goToPrevYear() };
-                        YearNext.onclick = () => { goToNextYear() };
-
-                        if(is_touch_device())
-                        {
-
-                            year_list.ontouchstart = event_datepiking =>
-                            {
-
-                                let dir    = event_datepiking.touches[0].clientX;
-
-                                year_list.ontouchmove = event_datepiking =>
-                                {
-
-                                    if (event_datepiking.target != year_list){event_datepiking.preventDefault();}//prevent body scroll
-                                    if(dir > event_datepiking.changedTouches[0].clientX+75){dir = event_datepiking.touches[0].clientX; goToPrevYear()}
-                                    if(dir < event_datepiking.changedTouches[0].clientX-75){dir = event_datepiking.touches[0].clientX; goToNextYear()}
-
-                                }
-
-                                year_list.ontouchend = event_datepiking =>
-                                {
-
-                                    dir = null;
-                                    event_datepiking = null;
-                                    window.ontouchmove = null;
-
-                                }
-
-                            }
-
-                        }
-
-                        else
-                        {
-
-                            year_list.onmousedown = event_datepiking =>
-                            {
-
-                                let dir = event_datepiking.clientX;
-
-                                window.onmousemove = event_datepiking =>
-                                {
-                                    if(dir > event_datepiking.clientX+5){dir = event_datepiking.clientX; goToPrevYear()}
-                                    if(dir < event_datepiking.clientX-5){dir = event_datepiking.clientX; goToNextYear()}
-                                }
-
-                                window.onmouseup = event_datepiking =>
-                                {
-                                    dir = null;
-                                    event_datepiking = null;
-                                    window.onmousemove = null;
-                                }
-
-                            }
-
-                        }
-
-                        function goToPrevYear()
-                        {
-
-                            for (let i = 0; i < yearsQnt; i++)
-                            {
-
-                                if(Years[i].classList.contains("active") && Years[i-1])
-                                {
-
-                                    Years[i].classList.add("off","hide");
-                                    Years[i].classList.remove("active");
-
-                                    Years[i-1].classList.add("active");
-                                    Years[i-1].classList.remove("off","hide");
-
-                                    let f = (onfocus==2 && onfocus==2)?1:0;
-
-                                    datelist[f].year = Years[i-1].innerText;
-                                    datelist[f].month = getActualMonth();
-                                    datelist[f].day = getActualDay();
-                                    make_days_table(datelist[f].year, datelist[f].month, datelist[f].day);
-
-                                    return false;
-                                }
-
-                            }
-
-                        }
-
-                        function goToNextYear()
-                        {
-
-                            for (let i = 0; i < yearsQnt; i++)
-                            {
-
-                                if(Years[i].classList.contains("active") && Years[i+1])
-                                {
-                                    Years[i].classList.add("off","hide");
-                                    Years[i].classList.remove("active");
-
-                                    Years[i+1].classList.add("active");
-                                    Years[i+1].classList.remove("off","hide");
-
-                                    let f = (onfocus==2 && onfocus==2)?1:0;
-
-                                    datelist[f].year = Years[i+1].innerText;
-                                    datelist[f].month = getActualMonth();
-                                    datelist[f].day = getActualDay();
-                                    make_days_table(datelist[f].year, datelist[f].month, datelist[f].day);
-
-                                    return false;
-                                }
-
-                            }
-
-                        }
-
-
-                        // B) switch month
-
-                        let MonthPrev = Datepicker.querySelector('.months>.prev'),
-                            MonthNext = Datepicker.querySelector('.months>.next');
-
-                        MonthPrev.onclick = () => { goToPrevMonth() };
-                        MonthNext.onclick = () => { goToNextMonth() };
-
-
-                        if(is_touch_device())
-                        {
-                            month_list.ontouchstart = event_datepiking =>
-                            {
-
-                                let dir = event_datepiking.touches[0].clientX;
-                                month_list.ontouchmove = event_datepiking =>
-                                {
-                                    if (event_datepiking.target != month_list){ event_datepiking.preventDefault(); }//prevent body scroll
-                                    if(dir > event_datepiking.changedTouches[0].clientX+175){dir = event_datepiking.touches[0].clientX; goToPrevMonth()}
-                                    if(dir < event_datepiking.changedTouches[0].clientX-175){dir = event_datepiking.touches[0].clientX; goToNextMonth()}
-                                }
-
-                                window.ontouchend = event_datepiking =>
-                                {
-                                    dir = null;
-                                    event_datepiking = null;
-                                    window.ontouchmove = null;
-                                }
-                            }
-                        }
-
-                        else
-                        {
-                            month_list.onmousedown = event_datepiking =>
-                            {
-                                let dir = event_datepiking.clientX;
-                                window.onmousemove = event_datepiking =>
-                                {
-                                    if(dir > event_datepiking.clientX+35){dir = event_datepiking.clientX; goToPrevMonth()}
-                                    if(dir < event_datepiking.clientX-35){dir = event_datepiking.clientX; goToNextMonth()}
-                                }
-                                window.onmouseup = event_datepiking =>
-                                {
-                                    dir = null;
-                                    event_datepiking = null;
-                                    window.onmousemove = null;
-                                }
-                            }
-                        }
-
-                        function goToPrevMonth()
-                        {
-
-                            for (let i = 0; i < monthsQnt; i++)
-                            {
-
-                                if(Months[i].classList.contains("active") && Months[i-1])
-                                {
-
-                                    Months[i].classList.replace("active","off");
-                                    Months[i].classList.add("hide");
-
-                                    Months[i-1].classList.add("active");
-                                    Months[i-1].classList.remove("off","hide");
-
-                                    let f = (onfocus==2 && onfocus==2)?1:0;
-
-                                    datelist[f].year = getActualYear();
-                                    datelist[f].month = i-1;
-                                    datelist[f].day = getActualDay();
-                                    make_days_table(datelist[f].year, datelist[f].month, datelist[f].day);
-
-                                    return false;
-
-                                }
-
-                            }
-
-                        }
-
-                        function goToNextMonth()
-                        {
-
-                            for (let i = 0; i < monthsQnt; i++)
-                            {
-
-                                if(Months[i].classList.contains("active") && Months[i+1])
-                                {
-
-                                    Months[i].classList.replace("active","off");
-                                    Months[i].classList.add("hide");
-
-                                    Months[i+1].classList.add("active");
-                                    Months[i+1].classList.remove("off","hide");
-
-                                    let f = (onfocus==2 && onfocus==2)?1:0;
-
-                                    datelist[f].year = getActualYear();
-                                    datelist[f].month = i+1;
-                                    datelist[f].day = getActualDay();
-                                    make_days_table(datelist[f].year, datelist[f].month, datelist[f].day);
-
-                                    return false;
-
-                                }
-
-                            }
-
-                        }
-
-
-
-                        // C) switch/make days
-
-                        Datepicker.addEventListener('click', event_dayselection => //update date on every click
-                        {
-
-                            let dateselected ={},
-                                Days = [...Datepicker.querySelectorAll('.day_list .day')],
-                                daysQnt = Days.length;
-
-                            for (let i = 0; i < daysQnt; i++)
-                            {
-
-                                Days[i].onclick = () => {
-
-                                    for (let i = 0; i < daysQnt; i++)
-                                    {
-                                        Days[i].classList.remove("active");
-                                        Days[i].classList.add("off");
-                                    }
-
-                                    event_dayselection.target.classList.remove("off","hide");
-                                    event_dayselection.target.classList.add("active");
-
-                                    let f = (onfocus==2 && onfocus==2)?1:0;
-
-                                    datelist[f].year = getActualYear();
-                                    datelist[f].month = getActualMonth();
-                                    datelist[f].day = parseInt(event_dayselection.target.innerText);
-
-                                    printDate();
-                                }
-
-                            }
-
-                        },true);
-
-                        // D) switch selector from-to
-
-                        if(FieldsQnt==2)
-                        {
-
-                            let dateOne = [...Datepicker.querySelectorAll('.fromto>small')][0],
-                                dateTwo = [...Datepicker.querySelectorAll('.fromto>small')][1];
-
-                            dateOne.onclick = event_dateSelector =>
-                            {
-
-                                //update focus
-                                onfocus  = 1; dateOne.classList.replace('off','active'), dateTwo.classList.replace('active','off');
-
-                                //update yeara label
-                                for (let i = 0; i < yearsQnt; i++)
-                                {
-
-                                    if(datelist[0].year == Years[i].innerText){ Years[i].classList.remove('off','hide'), Years[i].classList.add('active') }
-                                    else { Years[i].classList.remove('active'), Years[i].classList.add('off','hide')}
-                                }
-
-                                //update month label
-                                for (let i = 0; i < monthsQnt; i++)
-                                {
-                                    if(datelist[0].month == i){ Months[i].classList.remove('off','hide'), Months[i].classList.add('active') }
-                                    else { Months[i].classList.remove('active'), Months[i].classList.add('off','hide')}
-                                }
-
-                                //update daytable
-                                make_days_table(datelist[0].year, datelist[0].month, datelist[0].day);
-
-                                event_dateSelector=null;
-
-                            }
-
-                            dateTwo.onclick = event_dateSelector =>
-                            {
-
-                                //update focus
-                                onfocus  = 2; dateTwo.classList.replace('off','active'), dateOne.classList.replace('active','off');
-
-                                //update yeara label
-                                for (let i = 0; i < yearsQnt; i++)
-                                {
-                                    if(datelist[1].year == Years[i].innerText){ Years[i].classList.remove('off','hide'), Years[i].classList.add('active') }
-                                    else { Years[i].classList.remove('active'), Years[i].classList.add('off','hide')}
-                                }
-
-                                //update month label
-                                for (let i = 0; i < monthsQnt; i++)
-                                {
-                                    if(datelist[1].month == i){ Months[i].classList.remove('off','hide'), Months[i].classList.add('active') }
-                                    else { Months[i].classList.remove('active'), Months[i].classList.add('off','hide')}
-                                }
-
-                                //update daytable
-                                make_days_table(datelist[1].year, datelist[1].month, datelist[1].day);
-
-                                event_dateSelector=null;
-
-                            }
-
-                        }
-
-
-                        //
-                        // 7: update the datepiker and input values
-                        //
-
-                        // check date switcher
-
-                        function printDate()
-                        {
-
-                            if(FieldsQnt==2)
-                            {
-
-                                let datetime1 = new Date(datelist[0].year,datelist[0].month,datelist[0].day+1).getTime(),
-                                    datetime2 = new Date(datelist[1].year,datelist[1].month,datelist[1].day+1).getTime(); //sys subtract 1 to refresh D:
-
-                                if(datetime1>=datetime2)
-                                {
-                                    Accept.parentNode.classList.add('disabled');
-                                    Accept.innerText = 'NO VALID DATES!';
-                                }
-
-                                else
-                                {
-
-                                    let days = [...Datepicker.querySelectorAll('.day_list .day')],
-                                        daysQnt = days.length;
-
-                                    //reset
-                                    for (let i = 0; i < daysQnt; i++)
-                                        days[i].classList.remove('off','date-range','date-range-first','date-range-last');
-
-                                    //setit
-
-                                    let daystart    = datelist[0].day,
-                                        dayend      = datelist[1].day,
-
-                                        actualMonth = (onfocus==2)?datelist[1].month:datelist[0].month,
-                                        minMonth    = datelist[0].month,
-                                        maxMonth    = datelist[1].month,
-
-                                        actualYear  = (onfocus==2)?datelist[1].year:datelist[0].year,
-                                        minYear     = datelist[0].year,
-                                        maxYear     = datelist[1].year;
-
-                                    for (let i = 0; i < daysQnt; i++)
-                                    {
-
-                                        let dayclass    = days[i].classList,
-                                            daynumber   = parseInt(days[i].innerText);
-
-                                        if(Number.isInteger(daynumber))
-                                        {
-
-                                            if( actualYear >= minYear && actualYear <= maxYear )
-                                            {
-
-                                                if(actualYear==minYear && actualMonth == minMonth && daynumber==daystart)
-                                                {
-                                                    dayclass.remove('date-range');
-                                                    dayclass.add('date-range-first');
-                                                }
-
-                                                else if(actualYear==maxYear && actualMonth == maxMonth && daynumber==dayend)
-                                                {
-                                                    dayclass.remove('date-range');
-                                                    dayclass.add('date-range-last');
-                                                }
-
-                                                else
-                                                {
-
-                                                    if(actualMonth == minMonth && actualMonth == maxMonth && daynumber>daystart && daynumber<dayend)
-                                                    {
-                                                        dayclass.add('date-range');
-                                                    }
-
-                                                    else if(actualMonth != minMonth || actualMonth != maxMonth)
-                                                    {
-
-                                                        if(actualMonth == minMonth && daynumber>daystart)
-                                                        {
-                                                            dayclass.add('date-range');
-                                                        }
-                                                        else if(actualMonth == maxMonth && daynumber<dayend)
-                                                        {
-                                                            dayclass.add('date-range');
-                                                        }
-                                                        else if(actualMonth > minMonth && actualMonth < maxMonth)
-                                                        {
-                                                            dayclass.add('date-range');
-                                                        }
-                                                        else
-                                                        {
-                                                            dayclass.remove('date-range');
-                                                            dayclass.add('off');
-                                                        }
-
-                                                    }
-
-                                                    else
-                                                    {
-                                                        dayclass.remove('date-range');
-                                                        dayclass.add('off');
-                                                    }
-
-                                                }
-
-                                            }
-
-                                            else
-                                            {
-                                                dayclass.remove('date-range');
-                                                dayclass.add('off');
-                                            }
-
-                                        }
-
-
-                                    }
-
-                                    Accept.parentNode.classList.remove('disabled');
-                                    Accept.innerText = 'OK - SAVE';
-                                }
-
-                            }
-
-                            else
-                            {
-                              OutFields[0].value = new Date(datelist[0].year,datelist[0].month,datelist[0].day).getTime();
-                              Outlabel.innerText = datelist[0].day+'-'+(datelist[0].month+1)+'-'+datelist[0].year
-                            }
-
-                        }
-
-
-                        Accept.onclick = () => {
-
-                            if(FieldsQnt==2)
-                            {
-                                let datetime1 = new Date(datelist[0].year,datelist[0].month,datelist[0].day+1).getTime(); //sys subtract 1 to refresh D:
-                                let datetime2 = new Date(datelist[1].year,datelist[1].month,datelist[1].day+1).getTime();
-
-                                if(datetime1!=OutFields[0].value) OutFields[0].value = datetime1;
-                                if(datetime2!=OutFields[1].value) OutFields[1].value = datetime2;
-                                Outlabel.innerText = datelist[0].day+'-'+(datelist[0].month+1)+'-'+datelist[0].year+' // '+datelist[1].day+'-'+(datelist[1].month+1)+'-'+datelist[1].year
-
-                            }
-                            else
-                            {
-                              OutFields[0].value = new Date(datelist[0].year,datelist[0].month,datelist[0].day).getTime();
-                              Outlabel.innerText = datelist[0].day+'-'+(datelist[0].month+1)+'-'+datelist[0].year
-                            }
-
-                        }
-
-                        // //active/off week
-                        // let weekinbox = [...weekday_list.querySelectorAll("p")];
-                        // for (let i = 0; i < weekinbox.length; i++)
-                        // {
-                        //
-                        //     weekinbox[i].classList.add("off","disabled");
-                        //
-                        //     if( i == this_week-1 )
-                        //     {
-                        //       weekinbox[i].classList.remove("off","disabled");
-                        //       weekinbox[i].classList.add("active");
-                        //     }
-                        //
-                        // }
-
+                    }
+
+                    else
+                    {
+                        if(voice.innerText == Outlabel.innerText) voice.classList.add('active');
                     }
 
                 }
 
 
-            };
+                for (let v = 0; v < vlength; v++)
+                {
+                    AllVoice[v].addEventListener('click', () =>{
+
+                        (valuelist.length<=0) ? Accept.innerHTML = "Accept" :  "Close";
+                        let clicked = AllVoice[v];
+                        settingValues(AllVoice,clicked,valuelist,textslist,isMultiple);
+
+                    },false);
+                }
 
 
-            const stopwatch = () =>
+                function settingValues (AllVoice,clicked,valuelist,textslist,isMultiple)
+                {
+
+                    Accept.innerHTML = "OK - SAVE";
+
+
+                    if(isMultiple)
+                    {
+
+                        let valuedata  = clicked.getAttribute('data-option'),
+                            valuelabel = clicked.getElementsByTagName('label')[0].innerText,
+                            indexdata  = valuelist.indexOf(valuedata),
+                            indexlabel = textslist.indexOf(valuelabel);
+
+                        if(clicked.classList.contains('active') || clicked.firstElementChild.value==0 || clicked.firstElementChild.checked==false)
+                        {
+                            clicked.classList.remove("active");
+                            valuelist.push(valuedata);
+                            textslist.push(valuelabel)
+                        }
+                        else if(!clicked.classList.contains('active') || clicked.firstElementChild.value==1 || clicked.firstElementChild.checked==true)
+                        {
+                            clicked.classList.add("active");
+                            valuelist.splice(indexdata, 1);
+                            textslist.splice(indexlabel, 1);
+                        }
+
+                    }
+
+                    else
+                    {
+
+                        for (let t = 0; t < AllVoice.length; t++) AllVoice[t].classList.remove("active");
+
+                        clicked.classList.add("active");
+                        active = clicked;
+                    }
+
+                }
+
+
+                Accept.onclick = () =>{ printValues(Outfield,Outlabel,valuelist,textslist,isMultiple,active) };
+
+                function printValues (Outfield,Outlabel,valuelist,textslist,isMultiple,active)
+                {
+
+                    if(isMultiple)
+                    {
+                        Outfield.value     = valuelist.join();
+                        Outlabel.innerHTML = textslist.join();
+                    }
+                    else
+                    {
+                        Outlabel.innerText = active.innerText;
+                        Outfield.value     = active.value;
+                    }
+
+                    setTimeout(()=>{ Accept.innerHTML = "CLOSE" },300);
+
+                }
+
+
+                //if have a search
+
+                if(Searcher)
+                {
+
+                    Searcher.addEventListener('input', () => {
+
+                        let searched = Searcher.value.toLowerCase();
+
+                        for (let v = 0; v < vlength; v++)
+                        {
+                            let voice = AllVoice[v]; (!voice.innerText.toLowerCase().startsWith(searched))?voice.classList.add('hide'):voice.classList.remove('hide');
+                        }
+
+                        for (let v = 0; v < vlength; v++)
+                        {
+                            let voice       = AllVoice[v],
+                                voiceparent = voice.parentNode,
+                                parentLabel = voiceparent.previousElementSibling;
+
+                            if(parentLabel.classList.contains('label'))
+                            {
+                                (voiceparent.childElementCount == voiceparent.querySelectorAll(".hide").length )?parentLabel.classList.add('hide'):parentLabel.classList.remove('hide');
+                            }
+
+                        }
+
+                    },false);
+
+                }
+
+
+            }
+
+
+        };
+
+
+        const dropsdown = () =>
+        {
+
+            let buttondropdownlist = [...document.querySelectorAll('*[class*="button-dropdown"]')];
+
+            for (let Btn of buttondropdownlist)
             {
 
-                let buttonclocks = [...document.querySelectorAll('*[class*=button-chronos]')];
+                let Outlabel   = [...Btn.querySelectorAll('label')][0],
+                    Searcher   = [...Btn.querySelectorAll('[type=search]')][0],
+                    Outfield   = [...Btn.querySelectorAll('input')][0],
+                    exvalues   = Outfield.value.split(',') || select.value.split(','),
+                    isMultiple = (Outfield.multiple)?1:0,
+                    selectorbox;
 
-                for (let btn of buttonclocks)
+
+                // make and set outbox
+
+                if(Btn.getElementsByTagName('select'))
                 {
+
+                    let select = Outlabel.nextElementSibling;
 
                     //for all, generate a random id from 0 to 1000
-                    let CHRONOSRID = Math.floor(Math.random() * 999);
-
-                    //set target of off canvas
-                    btn.setAttribute('target','outbox#chronos-'+CHRONOSRID);
+                    let SELECTID = Math.floor(Math.random() * 9999);
 
                     //generate the empty output
-                    let chronos_html_outbox =
-                    `
-                    <div class="outbox" id="chronos-`+CHRONOSRID+`">
+                    let select_empty_outbox;
+
+                    if(Searcher)
+                    {
+                      select_empty_outbox =`
+                        <div class="selectorbox off">
+
+                          <div>
+                            <div class=button></div>
+                          </div>
+
+                          <div class="hide-bar-y">
+                            <div class="scroll-y">
+                              <div class="optiongroup">
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>`;
+                    }
+
+                    else
+                    {
+                      select_empty_outbox =`
+                        <div class="selectorbox off">
+                          <div class="hide-bar-y">
+                            <div class="scroll-y">
+                              <div class="optiongroup">
+                              </div>
+                            </div>
+                          </div>
+                        </div>`;
+                    }
+
+                    //print empty output & get it
+                    Btn.insertAdjacentHTML('beforeEnd',select_empty_outbox);
+
+                    //get/update elements
+                    selectorbox = [...Btn.querySelectorAll('.selectorbox')][0];
+
+                    //move searcher
+                    if(Searcher)
+                    {
+                      [...selectorbox.querySelectorAll('.button')][0].appendChild(Searcher);
+                      Searcher = [...selectorbox.querySelectorAll('[type=search]')][0];
+                    }
+
+
+                    //get options groups value...
+                    let Groups = [...Btn.querySelectorAll('OPTGROUP')];
+
+                    let l = Groups.length;
+                    for (let i = 0; i < l; i++)
+                    {
+
+                      let Group = Groups[i];
+
+                      let Labels = Group.getAttribute('label'), //get all label
+                          Options = [...Group.querySelectorAll('option')];  //get all options
+
+                      if(Labels == null)
+                      {
+                        Labels = '<p></p>';
+                      }
+                      else {
+                        Labels = '<p>'+Group.getAttribute('label')+'</p>';
+                      }
+
+
+                      // create a options list
+                      let optslist = [],
+                          l = Options.length;
+
+                      for (let i = 0; i < l; i++)
+                      {
+
+                        if(isMultiple)
+                        {
+                          let included = exvalues.includes( String(Options[i].value) ),
+                              ischeck = (included) ? 'checked="true"' : '',
+                              istrue  = (included) ? 1 : 0;
+
+                          let check_html =
+                          `
+                            <div class="button-checkbox" data-option="`+Options[i].value+`">
+                                <input type="checkbox" value="`+istrue+`" `+ischeck+` />
+                                <label>`+Options[i].text+`</label>
+                            </div>
+                          `;
+                          optslist.push(check_html);
+                        }
+                        else {
+                          optslist.push('<a data-option="'+Options[i].value+'">'+Options[i].text+'</a>')
+                        }
+                      }
+
+                      //from array list to list of strings
+                      let optionslist = String(optslist.join(' '));
+
+                      // print new output contents
+                      let output;
+                      if(Labels=="<p></p>")
+                      {
+                        output =
+                        `
+                        <div class="nolabel hide"></div>
+                        <div class="options">
+                          `+optionslist+`
+                        </div>`;
+                      }
+                      else
+                      {
+                        output =
+                        `<div class="label">
+                         `+Labels+`
+                        </div>
+                        <div class="options">
+                          `+optionslist+`
+                        </div>`;
+                      }
+
+                      selectorbox.querySelectorAll('.optiongroup')[0].insertAdjacentHTML('beforeEnd',output);
+
+                    }
+
+                    if(isMultiple)
+                    {
+                        selectorbox.classList.add('multiple');
+                    }
+
+                    select.remove();
+
+                }
+
+
+                setTimeout(()=>{
+                    selectorbox.style.width = Btn.offsetWidth+'px';
+                },500)
+
+
+                let clickprevent = false;
+                document.addEventListener('click', event_dropdownclick => {
+
+                  if(!clickprevent)
+                  {
+
+                    clickprevent=true;
+
+                    if (!Btn.contains(event_dropdownclick.target))
+                    {
+                      selectorbox.classList.add('off');
+                      setTimeout(()=>{
+                        selectorbox.classList.remove('active');
+                        setTimeout(()=>{
+                          selectorbox.classList.remove('off');
+                        },350)
+                      },200)
+                    }
+                    else if(!event_dropdownclick.target.closest('[type=search]') && !event_dropdownclick.target.closest('.button-checkbox'))
+                    {
+
+                      if(selectorbox.classList.contains('active'))
+                      {
+                        selectorbox.classList.add('off');
+                        selectorbox.classList.remove('active');
+                        setTimeout(()=>{
+                          setTimeout(()=>{
+                            selectorbox.classList.remove('off');
+                          },350)
+                        },200)
+
+                      }
+                      else
+                      {
+                        selectorbox.classList.add('active');
+                        setTimeout(()=>{
+                          selectorbox.classList.remove('off');
+                        },200)
+                      }
+                    }
+
+                    setTimeout(()=>{
+                      clickprevent=false;
+                    },600)
+
+                  }
+
+                });
+
+
+                //on click into voice of relative select popup or searcher change
+
+
+                let AllVoice  = [...selectorbox.querySelectorAll('.options>*')],
+                    vlength   = AllVoice.length,
+                    valuelist = [],
+                    textslist = [];
+
+
+                for (let v = 0; v < vlength; v++)
+                {
+
+                    let voice = AllVoice[v];
+
+                    if(isMultiple)
+                    {
+
+                        if( voice.firstElementChild.value==1 || voice.firstElementChild.checked==true )
+                        {
+                            valuelist.push(voice.getAttribute('data-option'));
+                            textslist.push(voice.getElementsByTagName('label')[0].innerText);
+                        }
+
+                        else if(v>=vlength-1)
+                        {
+                            Outfield.value     = valuelist.join();
+                            Outlabel.innerHTML = textslist.join();
+                        }
+
+                    }
+
+                    else
+                    {
+                        if(voice.innerText == Outlabel.innerText)
+                        {
+                            voice.classList.add('active');
+                        }
+                    }
+
+                }
+
+
+                for (let v = 0; v < vlength; v++)
+                {
+
+                    AllVoice[v].addEventListener('click', () =>{
+
+                        let clicked = AllVoice[v];
+                        printValues(AllVoice,clicked,valuelist,textslist,isMultiple);
+
+                    },false);
+
+                }
+
+
+                function printValues (AllVoice,clicked,valuelist,textslist,isMultiple)
+                {
+
+                    if(isMultiple)
+                    {
+
+                        let valuedata  = clicked.getAttribute('data-option'),
+                            valuelabel = clicked.getElementsByTagName('label')[0].innerText,
+                            indexdata  = valuelist.indexOf(valuedata),
+                            indexlabel = textslist.indexOf(valuelabel);
+
+                        if(clicked.classList.contains('active') || clicked.firstElementChild.value==0 || clicked.firstElementChild.checked==false)
+                        {
+                            clicked.classList.remove("active");
+                            valuelist.push(valuedata);
+                            textslist.push(valuelabel)
+                        }
+                        else if(!clicked.classList.contains('active') || clicked.firstElementChild.value==1 || clicked.firstElementChild.checked==true)
+                        {
+                            clicked.classList.add("active");
+                            valuelist.splice(indexdata, 1);
+                            textslist.splice(indexlabel, 1);
+                        }
+
+                        Outfield.value     = valuelist.join();
+                        Outlabel.innerHTML = textslist.join();
+
+                    }
+
+                    else
+                    {
+
+                        for (let t = 0; t < AllVoice.length; t++) AllVoice[t].classList.remove("active");
+
+                        clicked.classList.add("active");
+                        Outlabel.innerText = clicked.innerText;
+                        Outfield.value = clicked.value;
+                    }
+
+                }
+
+
+                //if have a search
+
+                if(Searcher)
+                {
+
+                    Searcher.addEventListener('input', () => {
+
+                        let searched = Searcher.value.toLowerCase();
+
+                        for (let v = 0; v < vlength; v++)
+                        {
+                            let voice = AllVoice[v]; (!voice.innerText.toLowerCase().startsWith(searched))?voice.classList.add('hide'):voice.classList.remove('hide');
+                        }
+
+                        for (let v = 0; v < vlength; v++)
+                        {
+                            let voice       = AllVoice[v],
+                                voiceparent = voice.parentNode,
+                                parentLabel = voiceparent.previousElementSibling;
+
+                            if(parentLabel.classList.contains('label'))
+                            {
+                                (voiceparent.childElementCount == voiceparent.querySelectorAll(".hide").length )?parentLabel.classList.add('hide'):parentLabel.classList.remove('hide');
+                            }
+
+                        }
+
+                    },false);
+
+                }
+
+                //on resize...
+
+                window.onresize = () =>{ selectorbox.style.width = Btn.offsetWidth+'px'; }
+
+            }
+
+
+        };
+
+
+        const clocks = () =>
+        {
+
+            let buttonclocklist = document.querySelectorAll('*[class*="button-clock"]');
+
+            for (let Btn of buttonclocklist)
+            {
+
+
+                //for all, generate a random id from 0 to 1000
+                let TIMEPICKERID = Math.floor(Math.random() * 999);
+
+                //set target of off canvas
+                Btn.setAttribute('target','outbox#times-'+TIMEPICKERID);
+
+
+                //generate the empty output
+                let select_empty_outbox =
+                `
+                    <div class="outbox" id="times-`+TIMEPICKERID+`">
                         <div class="overlay">
                             <div class="side-center">
 
-                                <div class="chronobox">
+                                <div class="clockbox">
 
                                     <div>
                                         <a class="close">
@@ -7025,21 +5274,14 @@ const ui = (() => {
                                         </a>
                                     </div>
 
-                                    <!--
                                     <div>
 
-                                        <span class="chrono">
+                                        <span class="clock">
 
-                                            <div class="dash-hours">
+                                            <div class="rayline-hours">
                                             </div>
 
-                                            <div class="dash-minutes">
-                                            </div>
-
-                                            <div class="dash-seconds">
-                                            </div>
-
-                                            <div class="dash-milliseconds">
+                                            <div class="rayline-minutes">
                                             </div>
 
                                             <div class="pivot"></div>
@@ -7047,30 +5289,25 @@ const ui = (() => {
                                         </span>
 
                                     </div>
-                                    -->
 
                                     <div>
 
                                         <div class="display">
-                                            <div>
-                                                <span class="button hours" title="hours"><input type="number" pattern="[0-9]{2}" value="00"/></span>
+                                            <span>
+                                                <span class="button hours"><input type="number" pattern="[0-9]{2}" value="12"/></span>
                                                 <span class="doubledot"><small>:</small></span>
-                                                <span class="button minutes" title="minutes"><input type="number" pattern="[0-9]{2}" value="00"/></span>
-                                                <span class="doubledot"><small>:</small></span>
-                                                <span class="button seconds" title="seconds"><input type="number" pattern="[0-9]{2}" value="00"/></span>
-                                                <span class="doubledot"><small>.</small></span>
-                                                <span class="button milliseconds"><input disabled type="number" value="000"/></span>
-                                            </div>
-                                            <div>
-                                                <small class="start off">START</small>
-                                                <small class="pause off">PAUSE</small>
-                                                <small class="reset off">RESET</small>
-                                            </div>
+                                                <span class="button minutes"><input type="number" pattern="[0-9]{2}" value="20"/></span>
+                                            </span>
+                                            <span>
+                                                <small class="am [status-active]">AM</small>
+                                                <small class="pm [status-off]">PM</small>
+                                            </span>
                                         </div>
 
                                     </div>
 
                                     <div>
+                                        <p class="warning border-error hide"></p>
                                         <div class="button align-center">
                                             <a class="accept">OK - SAVE</a>
                                         </div>
@@ -7081,214 +5318,1799 @@ const ui = (() => {
                             </div>
                         </div>
                     </div>
-                    `;
+                `;
 
 
-                    //print empty output & get it
+                //print empty output & get it
 
-                    document.getElementsByTagName('BODY')[0].insertAdjacentHTML('beforeEnd',chronos_html_outbox);
-                    let Outbox = document.getElementById("chronos-"+CHRONOSRID);
-                    let accept = Outbox.querySelectorAll('.accept')[0];
-
-
-                    let reversed = (!btn.className.includes('-reversed')) ? false : true;
+                document.getElementsByTagName('BODY')[0].insertAdjacentHTML('beforeEnd',select_empty_outbox);
+                let Outbox = document.getElementById("times-"+TIMEPICKERID);
 
 
-                    let Hours = Outbox.querySelectorAll('.hours>input')[0],
-                        Minutes = Outbox.querySelectorAll('.minutes>input')[0],
-                        Seconds = Outbox.querySelectorAll('.seconds>input')[0],
-                        Milliseconds = Outbox.querySelectorAll('.milliseconds>input')[0];
+                let Am = Outbox.querySelectorAll('.am')[0],
+                    Pm = Outbox.querySelectorAll('.pm')[0],
 
-                    Hours.onmousedown = () =>{ selectfullstring(Hours)  }
-                    Hours.ontouchstart = () =>{  selectfullstring(Hours) }
-                    Minutes.onmousedown = () =>{  selectfullstring(Minutes) }
-                    Minutes.ontouchstart = () =>{  selectfullstring(Minutes) }
-                    Seconds.onmousedown = () =>{  selectfullstring(Seconds) }
-                    Seconds.ontouchstart = () =>{  selectfullstring(Seconds) }
-                    function selectfullstring (I){ I.select() }
+                    Hours = Outbox.querySelectorAll('.hours>input')[0],
+                    Minutes = Outbox.querySelectorAll('.minutes>input')[0],
 
+                    Clock = Outbox.querySelectorAll('.clock')[0],
+      				RayHours = Outbox.querySelectorAll('.rayline-hours')[0],
+      				RayMinutes = Outbox.querySelectorAll('.rayline-minutes')[0],
+                    ClockPivot = Outbox.querySelectorAll('.pivot')[0],
 
-                    let label     = btn.querySelectorAll('label')[0],
-                        datainput = btn.getElementsByTagName('input')[0],
-                        start     = Outbox.querySelectorAll('.display .start')[0],
-                        pause     = Outbox.querySelectorAll('.display .pause')[0],
-                        reset     = Outbox.querySelectorAll('.display .reset')[0];
-
-                    let startlabel = label.innerText,
-                        start_hh = Hours.value,
-                        start_mm = Minutes.value,
-                        start_ss = Seconds.value,
-                        start_ms = 0,
-
-                        timeOnStart = null,
-                        timeOnPause = null,
-                        pauseDuration = 0,
-                        started = null;
+                    Accept = Outbox.querySelectorAll('a.accept')[0];
 
 
-                    let inputs = [Hours,Minutes,Seconds,Milliseconds];
-                    for (let i of inputs)
+                Hours.onmousedown = () =>{ selectfullstring(Hours)  }
+                Hours.ontouchstart = () =>{  selectfullstring(Hours) }
+                Minutes.onmousedown = () =>{  selectfullstring(Minutes) }
+                Minutes.ontouchstart = () =>{  selectfullstring(Minutes) }
+                function selectfullstring (I){ I.select() }
+
+
+                //set to start
+                if(Btn.getElementsByTagName('input')[0].value!='')
+                {
+
+                    let start = Btn.getElementsByTagName('input')[0].value,
+                        startH = parseInt(start.split(':')[0]),
+                        startM = parseInt(start.split(':')[1]);
+
+                    setTimeout(()=>{
+                      RayHours.style.transform   = 'rotate('+((360/12*startH)-90)+'deg)' ;
+                      RayMinutes.style.transform = 'rotate('+((360/60*startM)-90)+'deg)' ;
+                    },500)
+
+                    if(startH>=1 && startH<=9) {startH='0'+startH}; Hours.value = startH;
+                    if(startM>=1 && startM<=9) {startM='0'+startM}; Minutes.value = startM;
+
+                }
+
+
+                // set via buttons
+
+                Hours.onkeyup = () => { if(String(Hours.value).length>=2){ checkhours();  } }
+                Hours.onblur = () => { checkhours(); }
+
+
+                function checkhours()
+                {
+
+                    let nH = parseInt(Hours.value);
+
+                    if(Am.classList.contains('status-active'))
+                    { if(nH>12) {nH='01'} else if(nH<1) {nH='12'} else if(nH>=1 && nH<=9) {nH='0'+nH }; }
+
+                    else
+                    { if(nH>23) {nH='00'} else if(nH<=-1) {nH='23'} else if(nH<=9) {nH='0'+nH }; }
+
+                    if(nH.length>=3) nH='01';
+
+
+                    RayHours.classList.add('smooth');
+                    RayHours.style.transform = 'rotate('+((360/12*parseInt(nH))-90)+'deg)' ;
+                    setTimeout(()=>{ RayHours.classList.remove('smooth'); },300)
+
+                    Hours.value = nH;
+
+                }
+
+                Minutes.onkeyup = () => { if(String(Minutes.value).length>=2){ checkMinutes(); } }
+                Minutes.onblur = () => { checkMinutes(); }
+
+                function checkMinutes()
+                {
+
+                    let nM = Minutes.value;
+
+                    if(nM>59) {nM='00'} else if(nM<0) {nM='59'} else { if(nM>=0 && nM<=9) {nM='0'+nM } };
+
+                    if(nM.length>2) nM='01';
+
+                    RayMinutes.classList.add('smooth');
+                    RayMinutes.style.transform = 'rotate('+((360/60*parseInt(nM))-90)+'deg)' ;
+                    setTimeout(()=>{ RayMinutes.classList.remove('smooth'); },300)
+
+                    Minutes.value = nM;
+
+                }
+
+                // set Am or Pm
+
+                Am.onclick = () =>
+                {
+
+                    if(!Am.className.includes('status-active'))
                     {
-                        i.oninput = ev_chronos =>
+
+                        Am.classList.add('[status-active]'),
+                        Am.classList.remove('[status-off]'),
+                        Pm.classList.add('[status-off]'),
+                        Pm.classList.remove('[status-active]');
+
+                        let hours = parseInt(Hours.value);
+
+                        if(hours == 00)       { hours = 12}
+                        if(hours>12)
+                        {
+                            if(hours <= 22)     { hours = "0"+(hours-12)}
+                            else if(hours > 22) { hours = (hours-12)}
+                        }
+
+                        Hours.value = hours;
+                        checkvalue(Btn,Hours,Minutes,Outbox,Accept)
+                    }
+
+                }
+
+                Pm.onclick = () =>
+                {
+
+                    if(!Pm.className.includes('status-active'))
+                    {
+
+                        Am.classList.add('[status-off]'),
+                        Am.classList.remove('[status-active]'),
+                        Pm.classList.add('[status-active]'),
+                        Pm.classList.remove('[status-off]');
+
+                        let hours = parseInt(Hours.value);
+
+                        if(hours == 12) { hours = "00"}
+                        else            { hours = hours+12; }
+
+                        Hours.value = hours;
+                        checkvalue(Btn,Hours,Minutes,Outbox,Accept)
+                    }
+
+                }
+
+
+                // set start angle
+
+                let startHoursangle = Math.atan2(-90,0) * 180 / Math.PI;
+                RayHours.style.transform = 'rotate('+startHoursangle+'deg)' ;
+
+                let startMinutesangle = Math.atan2(0,15) * 180 / Math.PI;
+                RayMinutes.style.transform = 'rotate('+startMinutesangle+'deg)' ;
+
+
+                //start moving
+
+                if(is_touch_device())
+                {
+                    RayHours.ontouchstart = clockStart;
+                    RayMinutes.ontouchstart = clockStart;
+                }
+                else
+                {
+                    RayHours.onmousedown = clockStart;
+                    RayMinutes.onmousedown = clockStart;
+                }
+
+
+                let center,isHours,isMinutes;
+
+
+                function clockStart(event_clockdrag)
+                {
+
+
+                    event_clockdrag.preventDefault();
+                    event_clockdrag.stopPropagation();
+
+                    let rect = ClockPivot.getBoundingClientRect();
+                    center = {
+                        x: window.scrollX + rect.left,
+                        y: window.scrollY + rect.top
+                    };
+
+                    if(event.target == RayHours)
+                    {
+                        isHours = true;
+                        isMinutes = false;
+                    }
+                    else if(event.target == RayMinutes)
+                    {
+                        isHours = false;
+                        isMinutes = true;
+                    }
+
+                    (is_touch_device())
+                        ? document.ontouchmove = clockMove
+                        : document.onmousemove = clockMove;
+                }
+
+		        function clockMove(event)
+                {
+
+                    let deltaX, deltaY, angle;
+
+                    if(is_touch_device())
+                    {
+                        deltaX = event.touches[0].clientX - center.x,
+                        deltaY = event.touches[0].clientY - center.y,
+                        angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI);
+                    }
+                    else
+                    {
+                        deltaX = event.pageX - center.x,
+                        deltaY = event.pageY - center.y,
+                        angle = (Math.atan2(deltaY, deltaX) * 180 / Math.PI) ;
+                    }
+
+                    if(isHours)
+                    {
+
+                        //calc percent of angle
+
+                        let min = -180, max = 180,
+                            anglepercent = parseInt( ((angle-min)/(min-max)) * -100 );
+
+                        //calc percent steps
+
+                        let steppercent = [];
+                        for (let i = 0; i < 14; i++)
+                        {
+                            let step = parseInt( (i*100)/12 );
+                            steppercent.push(step)
+                        }
+
+                        //loop step on percent
+
+                        let sl = steppercent.length;
+                        for (let i = 0; i < sl; i++)
                         {
 
-                            setTimeout(()=>{
-                                let iv = parseInt(i.value);
-                                i.value = (iv > 9 ? iv : "0"+iv);
-                                i.setAttribute('value',(iv > 9 ? iv : "0"+iv));
-                            },250)
+                            if(anglepercent > steppercent[i-1] && anglepercent < steppercent[i+1])
+                            {
 
-                            start_hh = Hours.value;
-                            start_mm = Minutes.value;
-                            start_ss = Seconds.value;
-                            start_ms = Milliseconds.value;
+                                let fromPertoDeg = Math.round( (min-max)*steppercent[i]/100-min )*-1; //from % to degree
 
+                                RayHours.style.transform = 'rotate('+fromPertoDeg+'deg)' ;
+
+                                let hours = parseInt(i-3);
+
+                                if(Am.className.includes('status-active'))
+                                {
+                                    if(hours == 0)              { hours = "12"}
+                                    else if(hours<0 && hours<10){ hours = i+9; }
+                                    else if(hours <= 9)         { hours = "0"+hours}
+                                }
+                                else
+                                {
+                                    if(hours == 0)              { hours = "00"}
+                                    else if(hours<0 && hours<10){ hours = i+(9+12); }
+                                    else if(hours <= 9)         { hours = (hours+12)}
+                                }
+
+                                Hours.value = hours;
+
+                            }
+                        }
+
+                    }
+
+                    else if(isMinutes)
+                    {
+
+                        //calc percent of angle
+
+                        let min = -180,
+                            max = 180,
+                            anglepercent = parseInt( ((angle-min)/(min-max)) * -100 );
+
+
+                        //calc percent steps
+
+                        let steppercent = [];
+                        for (let i = 0; i < 62; i++)
+                        {
+                            let step = parseInt( (i*100)/60 );
+                            steppercent.push(step)
+                        }
+
+                        //loop step on percent
+                        let sl = steppercent.length;
+                        for (let i = 0; i < sl; i++)
+                        {
+
+                            if(anglepercent > steppercent[i-1] && anglepercent < steppercent[i+1])
+                            {
+
+                                let fromPertoDeg = Math.round( (min-max)*steppercent[i]/100-min )*-1 ; //from % to degree
+
+                                RayMinutes.style.transform = 'rotate('+fromPertoDeg+'deg)';
+
+                                let minuts = i-15;
+
+                                if(minuts<0)        { minuts = i+45; }
+
+                                if(minuts == 60)    { minuts = "00"}
+                                else if(minuts <= 9){ minuts = "0"+minuts}
+
+                                Minutes.value = minuts;
+
+                            }
+
+                        }
+
+                    }
+
+                    RayHours.ontouchend   = clockStop;
+                    RayMinutes.ontouchend = clockStop;
+                    document.onmouseup    = clockStop;
+                }
+
+
+  				function clockStop(event)
+                {
+
+                    event_clockdrag = null;
+                    document.ontouchstart = null;
+                    document.onmousedown = null;
+                    document.ontouchmove = null;
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+
+
+                    checkvalue(Btn,Hours,Minutes,Outbox,Accept)
+
+  				}
+
+
+                function checkvalue(Btn,Hours,Minutes,Outbox,Accept)
+                {
+
+                    let selectedHours   = Hours.value,
+                        selectedMinutes = Minutes.value;
+
+                    let btnImp = Btn.getElementsByTagName('input')[0];
+
+
+                    if(btnImp.min&&btnImp.max)
+                    {
+
+                        if(btnImp.min&&!btnImp.max || !btnImp.min&&btnImp.max)
+                        {
+                            debug(`:: [⚠ ui alert]: wrong clock, no min/max valid\n   ⮑ If you use one, it is mandatory to enter both values`);
+                        }
+                        else
+                        {
+
+                            let Warning     = [...Outbox.querySelectorAll('.warning')][0],
+                                minHours    = btnImp.min.split(':')[0],
+                                minMintes   = btnImp.min.split(':')[1],
+                                maxHours    = btnImp.max.split(':')[0],
+                                maxMinutes  = btnImp.max.split(':')[0];
+
+                            if(selectedHours<minHours || selectedHours>maxHours)
+                            {
+
+                                Warning.innerHTML = 'This Time is not available';
+                                Warning.classList.remove('hide');
+                                Accept.classList.add('disabled');
+                                Accept.innerText= 'OUT OF RANGE'
+
+                            }
+                            else
+                            {
+
+                                Warning.classList.replace('active','off');
+                                Warning.classList.add('hide');
+                                Accept.classList.remove('disabled');
+                                Accept.innerText= 'OK - SAVE';
+
+                                Accept.addEventListener('click', event_acceptClockTime => {
+                                    Btn.querySelectorAll('.button-clock>label')[0].innerText = selectedHours+":"+selectedMinutes;
+                                    Btn.querySelectorAll('.button-clock>input')[0].value = selectedHours+":"+selectedMinutes;
+                                },false)
+
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        Accept.innerText= 'OK - SAVE';
+                        Accept.addEventListener('click', event_acceptClockTime => {
+                            Btn.querySelectorAll('.button-clock>label')[0].innerText = selectedHours+":"+selectedMinutes;
+                            Btn.querySelectorAll('.button-clock>input')[0].value = selectedHours+":"+selectedMinutes;
+                        },false)
+
+                    }
+
+                }
+
+            }
+
+        };
+
+
+        const checks = () =>
+        {
+
+            let btncheckboxlist = document.querySelectorAll('*[class*="button-checkbox"]');
+
+            for (let btn of btncheckboxlist)
+            {
+
+                let inputtag = btn.firstElementChild;
+
+                //if is empty = uncheck
+                if(!inputtag.checked || inputtag.value=='')
+                {
+                    inputtag.setAttribute("checked", false);
+                    inputtag.checked = false;
+                    inputtag.value = 0;
+                }
+                else
+                {
+                    inputtag.setAttribute("checked", true);
+                    inputtag.checked = true;
+                    inputtag.value = 1;
+                }
+
+                btn.onclick = ev_click_checkboxbutton =>
+                {
+
+                    if(!inputtag.checked)
+                    {
+                        inputtag.setAttribute('checked',true);
+                        inputtag.checked = true;
+                        inputtag.value = 1;
+                    }
+                    else
+                    {
+                        inputtag.setAttribute('checked',false);
+                        inputtag.checked = false;
+                        inputtag.value = 0;
+                    }
+
+                }
+
+            }
+
+        };
+
+
+        const radios = () =>
+        {
+
+            let buttonradiolist = document.querySelectorAll('*[class*="button-radio"]');
+
+            for (let btn of buttonradiolist)
+            {
+
+                let inputtag = btn.firstElementChild;
+
+                //if is empty = uncheck
+                if(!inputtag.checked || inputtag.value=='')
+                {
+                    inputtag.setAttribute("checked", false);
+                    inputtag.checked = false;
+                    inputtag.value = 0;
+                }
+                else
+                {
+                    inputtag.setAttribute("checked", true);
+                    inputtag.checked = true;
+                    inputtag.value = 1;
+                }
+
+                btn.onclick = ev_click_radiobutton =>
+                {
+
+                    let inpgroup = document.querySelectorAll('[name="'+inputtag.getAttribute('name')+'"]'),
+                        btnsqnt  = inpgroup.length;
+
+                        for (let i = 0; i < btnsqnt; i++)
+                        {
+                            inpgroup[i].setAttribute("checked", false);
+                            inpgroup[i].checked = false;
+                            inpgroup[i].value = 0;
+                        }
+
+                        inputtag.setAttribute("checked", true);
+                        inputtag.checked = true;
+                        inputtag.value = 1;
+
+                }
+
+            }
+
+
+        };
+
+
+        const datepikers = () =>
+        {
+
+
+            let buttondatepickerslist = [...document.querySelectorAll('*[class*=button-date]')];
+
+            for (let Btn of buttondatepickerslist)
+            {
+
+                let Outlabel  = [...Btn.getElementsByTagName('label')][0],
+                    OutFields = [...Btn.getElementsByTagName('input')],
+                    FieldsQnt = OutFields.length,
+                    onfocus   = 1,
+                    datelist  = [];
+
+                if(FieldsQnt>2)
+                {
+                    debug(`:: [🛈 viƨor info]: button-date oversized\n   ⮑ The maximum amount of inputs is two: "start date", "end date".`);
+                    Btn.classList.add('debug-error');
+                }
+                else if(FieldsQnt<1)
+                {
+                    debug(`:: [🛈 viƨor info]: button-date subsized\n   ⮑ The minumum amount of inputs is one: are you kidding me?`);
+                    Btn.classList.add('debug-error');
+                }
+
+                else
+                {
+
+
+                    //
+                    //  1: get type and format of dates
+                    //
+
+
+                    let isUTC, isEUR, Yi,Mi,Di;
+
+
+                    // is it UTC or EUR? // not EUR.. then UTC
+
+                    (Btn.classList.contains("EUR")) ? (isUTC=!1,isEUR=!0) : (isUTC=!0,isEUR=!1) ;
+
+
+                    // check date format
+
+                    let dateformat,
+                        datepickerclasses = [...String(Btn.className).split(' ')],
+                        formatkey = ["DMY","DYM","MYD","MDY","YDM","YMD"],
+                        fkl = formatkey.length;
+
+                    for (let i=0;i<fkl;i++)
+                        if(!(datepickerclasses.indexOf(formatkey[i]) === -1))
+                            dateformat = String(formatkey[i]);
+
+                    // get order of format
+                    Yi =  dateformat.indexOf('Y');
+                    Mi =  dateformat.indexOf('M');
+                    Di =  dateformat.indexOf('D');
+
+
+                    //
+                    //  2: get basic params
+                    //
+
+
+                    // set unselected start / end
+
+                    for (let i = 0; i < FieldsQnt; i++)
+                      datelist.push({ 'year':null, 'month':null, 'day':null });
+
+
+                    //
+                    //  3: get actual/start selected date via input or UTC
+                    //
+
+
+                    if(OutFields[0].value=='')
+                    {
+
+                        let todaydate  = new Date(),
+                            format     = todaydate.toUTCString(),
+                            utc_year   = parseInt(todaydate.getUTCFullYear()),
+                            utc_month  = parseInt(todaydate.getUTCMonth()),
+                            utc_day    = parseInt(todaydate.getUTCDate());
+                        // this_week = date.getUTCDay();
+
+                        datelist[0].year  = utc_year;
+                        datelist[0].month = utc_month;
+                        datelist[0].day   = utc_day;
+
+                        if(FieldsQnt==2)
+                        {
+                            datelist[1].year = utc_year;
+                            datelist[1].month= utc_month;
+                            datelist[1].day  = utc_day+1;
+                        }
+
+                    }
+
+                    else
+                    {
+
+                        let datestart = OutFields[0].value,
+                            format;
+
+                        if(datestart.match('-'))
+                        {
+                            datelist[0].year  = parseInt(datestart.split('-')[Yi]);
+                            datelist[0].month = parseInt(datestart.split('-')[Mi])-1;
+                            datelist[0].day   = parseInt(datestart.split('-')[Di]);
+                        }
+                        else
+                        {
+                            datestart         = new Date(parseInt(datestart));
+                            format            = datestart.toUTCString();
+                            datelist[0].year  = parseInt(datestart.getUTCFullYear());
+                            datelist[0].month = parseInt(datestart.getUTCMonth());
+                            datelist[0].day   = parseInt(datestart.getUTCDate());
+                        }
+
+
+                        if(FieldsQnt==2)
+                        {
+
+                            let dateend   = OutFields[1].value;
+
+                            if(dateend.match('-'))
+                            {
+                                datelist[1].year  = parseInt(dateend.split('-')[Yi]);
+                                datelist[1].month = parseInt(dateend.split('-')[Mi])-1;
+                                datelist[1].day   = parseInt(dateend.split('-')[Di]);
+                            }
+                            else
+                            {
+                                dateend           = new Date( parseInt(dateend) );
+                                format            = dateend.toUTCString();
+                                datelist[1].year  = parseInt(dateend.getUTCFullYear());
+                                datelist[1].month = parseInt(dateend.getUTCMonth());
+                                datelist[1].day   = parseInt(dateend.getUTCDate());
+                            }
+
+                        }
+
+                    }
+
+
+                    //
+                    //  3: create, connect empty datepicker outbox / get from it
+                    //
+
+                    // for all, generate a random id from 0 to 1000
+
+                    let DATEID = Math.floor(Math.random() * 999);
+
+                    // set target of off canvas
+
+                    Btn.setAttribute("target","outbox#datepicker-"+DATEID);
+
+                    // generate the empty output
+
+                    let fromto = (FieldsQnt==2) ? `<div class="grid-x fromto"><small class="box-[50-50-50] active"> FRIST DATE </small><small class="box-[50-50-50] off"> END DATE </small></div>` : `<!--singledate-->` ;
+
+                    let empty_output_datepicker =
+                    `
+                    <div class="outbox gpuboost" id="datepicker-`+DATEID+`">
+                        <div class="overlay">
+                            <div class="side-center">
+
+                                <div class="datepicker">
+
+                                    <div>
+                                        <a class="close"><p>Select a date</p></a>
+                                    </div>
+
+                                    <div>`+fromto+`</div>
+
+                                    <div>
+
+                                        <div>
+
+                                            <span class="years">
+                                                <span class="prev">&nbsp;</span>
+                                                <span class="year_list"></span>
+                                                <span class="next">&nbsp;</span>
+                                            </span>
+
+                                        </div>
+
+                                        <div>
+
+                                            <span class="months">
+                                                <span class="prev">&nbsp;</span>
+                                                <span class="month_list"></span>
+                                                <span class="next">&nbsp;</span>
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div>
+
+                                        <div class="weekday_list">
+                                            <div class="grid-x align-center">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div>
+
+                                        <div class="day_list">
+                                            <div class="grid-x">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div>
+
+                                        <div class="button align-center">
+                                            <a class="accept">OK - SAVE</a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    `;
+
+                    // print output in page
+
+                    document.getElementsByTagName('BODY')[0].insertAdjacentHTML('beforeEnd',empty_output_datepicker);
+
+                    // get output in page
+
+                    let Datepicker = document.querySelectorAll("#datepicker-"+DATEID)[0];
+
+                    // get datepiker elements
+
+                    let Accept        = Datepicker.querySelectorAll(".accept")[0],
+                        year_list     = Datepicker.querySelectorAll(".year_list")[0],
+                        month_list    = Datepicker.querySelectorAll(".month_list")[0],
+                        weekday_list  = Datepicker.querySelectorAll(".weekday_list>div")[0],
+                        day_list      = Datepicker.querySelectorAll(".day_list>div")[0];
+
+
+                    //
+                    // 4.1: populate years for a start
+                    //
+
+                    // create year list
+
+                    let y_htmlcontents = [],
+                        yearmin,
+                        yearmax;
+
+                    let ininputmin = parseInt(Btn.firstElementChild.min),
+                        ininputmax = parseInt(Btn.firstElementChild.max);
+
+
+                    if(!ininputmin || ininputmin=='' && !ininputmax || ininputmax=='')
+                    {
+
+                        yearmin = 1950;
+                        yearmax = 2050;
+
+                    }
+
+                    else
+                    {
+
+                        if(!ininputmax || ininputmin>ininputmax)
+                        {
+                            debug(`:: [🛈 viƨor info]: button-date strange min/max\n   ⮑ The max value is undefined or min is over to max.\n      Will be applied standard max "2050"`);
+                            yearmin = ininputmin;
+                            yearmax = 2050;
+                        }
+
+                        else if(!ininputmin)
+                        {
+                            debug(`:: [🛈 viƨor info]: button-date strange min/max\n   ⮑ The min value is undefined.\n      Will be applied standard min "1950"`);
+                            yearmin = 1950;
+                            yearmax = ininputmax;
+                        }
+
+                        else
+                        {
+                            yearmin = ininputmin;
+                            yearmax = ininputmax;
+                        }
+
+                    }
+
+                    for (let i = yearmin; i <= yearmax; i++)
+                        y_htmlcontents.push('<p class="off hide">'+ i +'</p>');
+
+
+                    y_htmlcontents =  String( y_htmlcontents.join(' ') );
+                    year_list.innerHTML =  y_htmlcontents;
+
+
+                    // set for start
+
+                    let Years    = [...year_list.querySelectorAll("p")],
+                        yearsQnt = Years.length;
+
+                    if(ininputmin == ininputmax)
+                    {
+
+                        for (let i = 0; i < yearsQnt; i++)
+                        {
+                            Years[i].classList.remove("off","hide");
+                            Years[i].classList.add("active");
+                        }
+
+                    }
+
+                    else
+                    {
+                        for (let i = 0; i < yearsQnt; i++)
+                        {
+                            if(parseInt(Years[i].textContent) == datelist[0].year )
+                            {
+                                Years[i].classList.remove("off","hide");
+                                Years[i].classList.add("active");
+                            }
                         }
                     }
 
-                    start.onclick = ev_chronos =>
+
+                    //
+                    // 4.2: populate months for a start
+                    //
+
+
+                    // create month list
+
+                    let m_htmlcontents = [],
+                        monthArray = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+                    for (let i = 0; i <= 11; i++)
+                        m_htmlcontents.push('<p class="off hide">'+ monthArray[i] +'</p>');
+
+                    m_htmlcontents =  String( m_htmlcontents.join(' ') );
+                    month_list.innerHTML =  m_htmlcontents;
+
+
+                    // set for start
+
+                    let Months = [...month_list.querySelectorAll("p")],
+                        monthsQnt = Months.length;
+
+                    for (let i = 0; i < monthsQnt; i++)
+                    {
+                        if(i == datelist[0].month)
+                        {
+                            Months[i].classList.remove("off","hide");
+                            Months[i].classList.add("active");
+                        }
+                    }
+
+
+                    //
+                    // 4.3: populate weekdays
+                    //
+
+                    // create weekday list
+
+                    let dw_htmlcontents = [], dayweeks;
+
+                    if(isEUR) { dayweeks = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]; }
+                    else      { dayweeks = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]; }
+
+                    // if(isEUR) { dayweeks = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"]; }
+                    // else      { dayweeks = ["Dom","Lun","Mar","Mer","Gio","Ven","Sab"]; }
+
+
+                    for (let i = 0; i < dayweeks.length; i++)
+                        dw_htmlcontents.push( '<div class="box-[14-14-14]"><small>'+ dayweeks[i] +'</small></div>' );
+
+                    //print dayweek
+                    dw_htmlcontents = String( dw_htmlcontents.join(' ') );
+                    weekday_list.innerHTML =  dw_htmlcontents;
+
+
+
+                    //
+                    // 4.4: populate days...
+                    //
+
+
+                    // ::: daylist not have a start print. It's auto created by utc data
+                    // ::: after selected, or have in start, an year and month sys can "get days list of that date"
+                    // ::: ex: get days quantity of "May" "2001" -> get the days qnt of that date
+                    // ::: attention get days qnt start to 0 and need +1 (8+1 = sept) ...
+
+
+                    let get_DaysQntOfMounth = (YY,MM) =>
+                    {
+                        // get day list of year/month
+                        let getDate = new Date( Date.UTC(YY,MM+1,null) );
+                        return parseInt(  getDate.getUTCDate() );
+                    }
+
+                    // ::: Since calendars start with different weeks
+                    // ::: (for example in EU start from Monday, not Sunday),
+                    // ::: it will be necessary to understand what day 1 is
+                    // ::: compared to the first day of the week
+                    // ::: attention get weekday start to 1 (8 is sept) and return 0 Sunday, 1 Monday, 2 Tuesday, ...
+
+
+                    let get_FirstDayOfweek = (YY,MM) =>
+                    {
+                        // get first dayweek of year/month
+                        let getDate = new Date( Date.UTC(YY,MM,1) );
+                        return parseInt( getDate.getUTCDay() );
+                    }
+
+
+                    // ::: having the methods created above, we can
+                    // ::: get a daylist of specific date (in this case, the start).
+
+                    let make_days_table = (YY,MM,DD) =>
                     {
 
-                        start.classList.add('active');
-                        start.classList.remove('off');
-                        pause.classList.remove('active');
-                        pause.classList.add('off');
-                        reset.classList.remove('active');
-                        reset.classList.add('off');
 
-                        if(timeOnStart == null)
+                        day_list.innerHTML = '';
+
+
+                        let firstdayweek     = get_FirstDayOfweek(YY,MM),
+                            dayinactualmonth = get_DaysQntOfMounth(YY,MM),
+                            calendarcell     = 44, // remember: start to 0
+                            d_htmlcontents   = [],
+                            daytabulator     = parseInt(  (calendarcell-(firstdayweek+1)) );
+
+                        for (let i = (isEUR)?(firstdayweek+5)*-1:(firstdayweek-1)*-1; i <= daytabulator; i++)
                         {
 
-                            timeOnStart = new Date(); // - ex date of actual time passed?
+                            let day = i, status = "off", style="";
 
-                            if(reversed)
+                            if(day>=1 && day<=9) { day="0"+i }
+                            if(day<=0 || i>dayinactualmonth){ day = "░", style='style="opacity:0.5"', status = "off disabled" }
+                            else if(day == DD) { status = "active", style='' }
+
+                            d_htmlcontents.push('<div class="box-[14-14-14]" '+style+'><p class="day '+status+'">'+ day +'</p></div>'); //dayout
+
+                        }
+
+
+                        d_htmlcontents = String(d_htmlcontents.join(' '));
+                        day_list.innerHTML =  d_htmlcontents;
+
+
+                        // in case of line of day is empty (compact mode)
+
+                        if(Btn.className.includes('-compact'))
+                        {
+
+                            (() =>{
+
+                                let FirsLineDays = [...Datepicker.querySelectorAll('.day_list .day')].slice(0,7),
+                                    firstline = 0;
+
+                                for (let i = 0; i <= 6; i++)
+                                    if(FirsLineDays[i].textContent === "░") { firstline++; };
+
+                                if(firstline===7)
+                                    for (let i = 0; i <= 6; i++)
+                                        FirsLineDays[i].parentNode.innerHTML = "";
+
+                            })();
+
+
+                            (() =>{
+
+                                //let LastLineDays = [...Datepicker.querySelectorAll('.day_list .day')].slice(35,42);
+                                let LastLineDays = [...Datepicker.querySelectorAll('.day_list .day')].slice(-7),
+                                    lastline = 0;
+
+                                for (let i = 0; i <= 6; i++)
+                                    if(LastLineDays[i].textContent === "░") { lastline++; };
+
+                                if(lastline===7)
+                                    for (let i = 0; i <= 6; i++)
+                                        LastLineDays[i].parentNode.innerHTML = "";
+
+                            })();
+
+                        }
+
+
+                        if(FieldsQnt==2){ printDate(); }
+
+                    }
+
+
+                    make_days_table(datelist[0].year,datelist[0].month,datelist[0].day); //<== create start
+
+
+                    //
+                    //  5: set contents via actions
+                    //
+
+                    // find actual static values on call
+
+                    let getActualMonth = () =>
+                    {
+
+                        for (let i = 0; i < monthsQnt; i++)
+                            if(Months[i].classList.contains("active"))
+                                return i;
+
+                    }
+
+                    let getActualYear = () =>
+                    {
+
+                        for (let i = 0; i < yearsQnt; i++)
+                            if(Years[i].classList.contains("active"))
+                                return parseInt(Years[i].innerText);
+
+                    }
+
+                    let getActualDay = () =>
+                    {
+
+                        let days = [...Datepicker.querySelectorAll('.day_list .day')],
+                            daysQnt = days.length;
+
+                        for (let i = 0; i < daysQnt; i++)
+                            if(days[i].classList.contains("active"))
+                                return parseInt(days[i].innerText);
+
+                    }
+
+                    // A) switch years
+
+                    let YearPrev = Datepicker.querySelector('.years>.prev'),
+                        YearNext = Datepicker.querySelector('.years>.next');
+
+                    YearPrev.onclick = () => { goToPrevYear() };
+                    YearNext.onclick = () => { goToNextYear() };
+
+                    if(is_touch_device())
+                    {
+
+                        year_list.ontouchstart = event_datepiking =>
+                        {
+
+                            let dir    = event_datepiking.touches[0].clientX;
+
+                            year_list.ontouchmove = event_datepiking =>
                             {
-                                timeOnStart.setHours( timeOnStart.getHours() + parseInt(start_hh) );
-                                timeOnStart.setMinutes( timeOnStart.getMinutes() + parseInt(start_mm));
-                                timeOnStart.setSeconds( timeOnStart.getSeconds() + parseInt(start_ss));
-                                timeOnStart.setMilliseconds( timeOnStart.getMilliseconds() + parseInt(start_ms));
+
+                                if (event_datepiking.target != year_list){event_datepiking.preventDefault();}//prevent body scroll
+                                if(dir > event_datepiking.changedTouches[0].clientX+75){dir = event_datepiking.touches[0].clientX; goToPrevYear()}
+                                if(dir < event_datepiking.changedTouches[0].clientX-75){dir = event_datepiking.touches[0].clientX; goToNextYear()}
+
+                            }
+
+                            year_list.ontouchend = event_datepiking =>
+                            {
+
+                                dir = null;
+                                event_datepiking = null;
+                                window.ontouchmove = null;
+
+                            }
+
+                        }
+
+                    }
+
+                    else
+                    {
+
+                        year_list.onmousedown = event_datepiking =>
+                        {
+
+                            let dir = event_datepiking.clientX;
+
+                            window.onmousemove = event_datepiking =>
+                            {
+                                if(dir > event_datepiking.clientX+5){dir = event_datepiking.clientX; goToPrevYear()}
+                                if(dir < event_datepiking.clientX-5){dir = event_datepiking.clientX; goToNextYear()}
+                            }
+
+                            window.onmouseup = event_datepiking =>
+                            {
+                                dir = null;
+                                event_datepiking = null;
+                                window.onmousemove = null;
+                            }
+
+                        }
+
+                    }
+
+                    function goToPrevYear()
+                    {
+
+                        for (let i = 0; i < yearsQnt; i++)
+                        {
+
+                            if(Years[i].classList.contains("active") && Years[i-1])
+                            {
+
+                                Years[i].classList.add("off","hide");
+                                Years[i].classList.remove("active");
+
+                                Years[i-1].classList.add("active");
+                                Years[i-1].classList.remove("off","hide");
+
+                                let f = (onfocus==2 && onfocus==2)?1:0;
+
+                                datelist[f].year = Years[i-1].innerText;
+                                datelist[f].month = getActualMonth();
+                                datelist[f].day = getActualDay();
+                                make_days_table(datelist[f].year, datelist[f].month, datelist[f].day);
+
+                                return false;
+                            }
+
+                        }
+
+                    }
+
+                    function goToNextYear()
+                    {
+
+                        for (let i = 0; i < yearsQnt; i++)
+                        {
+
+                            if(Years[i].classList.contains("active") && Years[i+1])
+                            {
+                                Years[i].classList.add("off","hide");
+                                Years[i].classList.remove("active");
+
+                                Years[i+1].classList.add("active");
+                                Years[i+1].classList.remove("off","hide");
+
+                                let f = (onfocus==2 && onfocus==2)?1:0;
+
+                                datelist[f].year = Years[i+1].innerText;
+                                datelist[f].month = getActualMonth();
+                                datelist[f].day = getActualDay();
+                                make_days_table(datelist[f].year, datelist[f].month, datelist[f].day);
+
+                                return false;
+                            }
+
+                        }
+
+                    }
+
+
+                    // B) switch month
+
+                    let MonthPrev = Datepicker.querySelector('.months>.prev'),
+                        MonthNext = Datepicker.querySelector('.months>.next');
+
+                    MonthPrev.onclick = () => { goToPrevMonth() };
+                    MonthNext.onclick = () => { goToNextMonth() };
+
+
+                    if(is_touch_device())
+                    {
+                        month_list.ontouchstart = event_datepiking =>
+                        {
+
+                            let dir = event_datepiking.touches[0].clientX;
+                            month_list.ontouchmove = event_datepiking =>
+                            {
+                                if (event_datepiking.target != month_list){ event_datepiking.preventDefault(); }//prevent body scroll
+                                if(dir > event_datepiking.changedTouches[0].clientX+175){dir = event_datepiking.touches[0].clientX; goToPrevMonth()}
+                                if(dir < event_datepiking.changedTouches[0].clientX-175){dir = event_datepiking.touches[0].clientX; goToNextMonth()}
+                            }
+
+                            window.ontouchend = event_datepiking =>
+                            {
+                                dir = null;
+                                event_datepiking = null;
+                                window.ontouchmove = null;
+                            }
+                        }
+                    }
+
+                    else
+                    {
+                        month_list.onmousedown = event_datepiking =>
+                        {
+                            let dir = event_datepiking.clientX;
+                            window.onmousemove = event_datepiking =>
+                            {
+                                if(dir > event_datepiking.clientX+35){dir = event_datepiking.clientX; goToPrevMonth()}
+                                if(dir < event_datepiking.clientX-35){dir = event_datepiking.clientX; goToNextMonth()}
+                            }
+                            window.onmouseup = event_datepiking =>
+                            {
+                                dir = null;
+                                event_datepiking = null;
+                                window.onmousemove = null;
+                            }
+                        }
+                    }
+
+                    function goToPrevMonth()
+                    {
+
+                        for (let i = 0; i < monthsQnt; i++)
+                        {
+
+                            if(Months[i].classList.contains("active") && Months[i-1])
+                            {
+
+                                Months[i].classList.replace("active","off");
+                                Months[i].classList.add("hide");
+
+                                Months[i-1].classList.add("active");
+                                Months[i-1].classList.remove("off","hide");
+
+                                let f = (onfocus==2 && onfocus==2)?1:0;
+
+                                datelist[f].year = getActualYear();
+                                datelist[f].month = i-1;
+                                datelist[f].day = getActualDay();
+                                make_days_table(datelist[f].year, datelist[f].month, datelist[f].day);
+
+                                return false;
+
+                            }
+
+                        }
+
+                    }
+
+                    function goToNextMonth()
+                    {
+
+                        for (let i = 0; i < monthsQnt; i++)
+                        {
+
+                            if(Months[i].classList.contains("active") && Months[i+1])
+                            {
+
+                                Months[i].classList.replace("active","off");
+                                Months[i].classList.add("hide");
+
+                                Months[i+1].classList.add("active");
+                                Months[i+1].classList.remove("off","hide");
+
+                                let f = (onfocus==2 && onfocus==2)?1:0;
+
+                                datelist[f].year = getActualYear();
+                                datelist[f].month = i+1;
+                                datelist[f].day = getActualDay();
+                                make_days_table(datelist[f].year, datelist[f].month, datelist[f].day);
+
+                                return false;
+
+                            }
+
+                        }
+
+                    }
+
+
+
+                    // C) switch/make days
+
+                    Datepicker.addEventListener('click', event_dayselection => //update date on every click
+                    {
+
+                        let dateselected ={},
+                            Days = [...Datepicker.querySelectorAll('.day_list .day')],
+                            daysQnt = Days.length;
+
+                        for (let i = 0; i < daysQnt; i++)
+                        {
+
+                            Days[i].onclick = () => {
+
+                                for (let i = 0; i < daysQnt; i++)
+                                {
+                                    Days[i].classList.remove("active");
+                                    Days[i].classList.add("off");
+                                }
+
+                                event_dayselection.target.classList.remove("off","hide");
+                                event_dayselection.target.classList.add("active");
+
+                                let f = (onfocus==2 && onfocus==2)?1:0;
+
+                                datelist[f].year = getActualYear();
+                                datelist[f].month = getActualMonth();
+                                datelist[f].day = parseInt(event_dayselection.target.innerText);
+
+                                printDate();
+                            }
+
+                        }
+
+                    },true);
+
+                    // D) switch selector from-to
+
+                    if(FieldsQnt==2)
+                    {
+
+                        let dateOne = [...Datepicker.querySelectorAll('.fromto>small')][0],
+                            dateTwo = [...Datepicker.querySelectorAll('.fromto>small')][1];
+
+                        dateOne.onclick = event_dateSelector =>
+                        {
+
+                            //update focus
+                            onfocus  = 1; dateOne.classList.replace('off','active'), dateTwo.classList.replace('active','off');
+
+                            //update yeara label
+                            for (let i = 0; i < yearsQnt; i++)
+                            {
+
+                                if(datelist[0].year == Years[i].innerText){ Years[i].classList.remove('off','hide'), Years[i].classList.add('active') }
+                                else { Years[i].classList.remove('active'), Years[i].classList.add('off','hide')}
+                            }
+
+                            //update month label
+                            for (let i = 0; i < monthsQnt; i++)
+                            {
+                                if(datelist[0].month == i){ Months[i].classList.remove('off','hide'), Months[i].classList.add('active') }
+                                else { Months[i].classList.remove('active'), Months[i].classList.add('off','hide')}
+                            }
+
+                            //update daytable
+                            make_days_table(datelist[0].year, datelist[0].month, datelist[0].day);
+
+                            event_dateSelector=null;
+
+                        }
+
+                        dateTwo.onclick = event_dateSelector =>
+                        {
+
+                            //update focus
+                            onfocus  = 2; dateTwo.classList.replace('off','active'), dateOne.classList.replace('active','off');
+
+                            //update yeara label
+                            for (let i = 0; i < yearsQnt; i++)
+                            {
+                                if(datelist[1].year == Years[i].innerText){ Years[i].classList.remove('off','hide'), Years[i].classList.add('active') }
+                                else { Years[i].classList.remove('active'), Years[i].classList.add('off','hide')}
+                            }
+
+                            //update month label
+                            for (let i = 0; i < monthsQnt; i++)
+                            {
+                                if(datelist[1].month == i){ Months[i].classList.remove('off','hide'), Months[i].classList.add('active') }
+                                else { Months[i].classList.remove('active'), Months[i].classList.add('off','hide')}
+                            }
+
+                            //update daytable
+                            make_days_table(datelist[1].year, datelist[1].month, datelist[1].day);
+
+                            event_dateSelector=null;
+
+                        }
+
+                    }
+
+
+                    //
+                    // 7: update the datepiker and input values
+                    //
+
+                    // check date switcher
+
+                    function printDate()
+                    {
+
+                        if(FieldsQnt==2)
+                        {
+
+                            let datetime1 = new Date(datelist[0].year,datelist[0].month,datelist[0].day+1).getTime(),
+                                datetime2 = new Date(datelist[1].year,datelist[1].month,datelist[1].day+1).getTime(); //sys subtract 1 to refresh D:
+
+                            if(datetime1>=datetime2)
+                            {
+                                Accept.parentNode.classList.add('disabled');
+                                Accept.innerText = 'NO VALID DATES!';
+                            }
+
+                            else
+                            {
+
+                                let days = [...Datepicker.querySelectorAll('.day_list .day')],
+                                    daysQnt = days.length;
+
+                                //reset
+                                for (let i = 0; i < daysQnt; i++)
+                                    days[i].classList.remove('off','date-range','date-range-first','date-range-last');
+
+                                //setit
+
+                                let daystart    = datelist[0].day,
+                                    dayend      = datelist[1].day,
+
+                                    actualMonth = (onfocus==2)?datelist[1].month:datelist[0].month,
+                                    minMonth    = datelist[0].month,
+                                    maxMonth    = datelist[1].month,
+
+                                    actualYear  = (onfocus==2)?datelist[1].year:datelist[0].year,
+                                    minYear     = datelist[0].year,
+                                    maxYear     = datelist[1].year;
+
+                                for (let i = 0; i < daysQnt; i++)
+                                {
+
+                                    let dayclass    = days[i].classList,
+                                        daynumber   = parseInt(days[i].innerText);
+
+                                    if(Number.isInteger(daynumber))
+                                    {
+
+                                        if( actualYear >= minYear && actualYear <= maxYear )
+                                        {
+
+                                            if(actualYear==minYear && actualMonth == minMonth && daynumber==daystart)
+                                            {
+                                                dayclass.remove('date-range');
+                                                dayclass.add('date-range-first');
+                                            }
+
+                                            else if(actualYear==maxYear && actualMonth == maxMonth && daynumber==dayend)
+                                            {
+                                                dayclass.remove('date-range');
+                                                dayclass.add('date-range-last');
+                                            }
+
+                                            else
+                                            {
+
+                                                if(actualMonth == minMonth && actualMonth == maxMonth && daynumber>daystart && daynumber<dayend)
+                                                {
+                                                    dayclass.add('date-range');
+                                                }
+
+                                                else if(actualMonth != minMonth || actualMonth != maxMonth)
+                                                {
+
+                                                    if(actualMonth == minMonth && daynumber>daystart)
+                                                    {
+                                                        dayclass.add('date-range');
+                                                    }
+                                                    else if(actualMonth == maxMonth && daynumber<dayend)
+                                                    {
+                                                        dayclass.add('date-range');
+                                                    }
+                                                    else if(actualMonth > minMonth && actualMonth < maxMonth)
+                                                    {
+                                                        dayclass.add('date-range');
+                                                    }
+                                                    else
+                                                    {
+                                                        dayclass.remove('date-range');
+                                                        dayclass.add('off');
+                                                    }
+
+                                                }
+
+                                                else
+                                                {
+                                                    dayclass.remove('date-range');
+                                                    dayclass.add('off');
+                                                }
+
+                                            }
+
+                                        }
+
+                                        else
+                                        {
+                                            dayclass.remove('date-range');
+                                            dayclass.add('off');
+                                        }
+
+                                    }
+
+
+                                }
+
+                                Accept.parentNode.classList.remove('disabled');
+                                Accept.innerText = 'OK - SAVE';
+                            }
+
+                        }
+
+                        else
+                        {
+                          OutFields[0].value = new Date(datelist[0].year,datelist[0].month,datelist[0].day).getTime();
+                          Outlabel.innerText = datelist[0].day+'-'+(datelist[0].month+1)+'-'+datelist[0].year
+                        }
+
+                    }
+
+
+                    Accept.onclick = () => {
+
+                        if(FieldsQnt==2)
+                        {
+                            let datetime1 = new Date(datelist[0].year,datelist[0].month,datelist[0].day+1).getTime(); //sys subtract 1 to refresh D:
+                            let datetime2 = new Date(datelist[1].year,datelist[1].month,datelist[1].day+1).getTime();
+
+                            if(datetime1!=OutFields[0].value) OutFields[0].value = datetime1;
+                            if(datetime2!=OutFields[1].value) OutFields[1].value = datetime2;
+                            Outlabel.innerText = datelist[0].day+'-'+(datelist[0].month+1)+'-'+datelist[0].year+' // '+datelist[1].day+'-'+(datelist[1].month+1)+'-'+datelist[1].year
+
+                        }
+                        else
+                        {
+                          OutFields[0].value = new Date(datelist[0].year,datelist[0].month,datelist[0].day).getTime();
+                          Outlabel.innerText = datelist[0].day+'-'+(datelist[0].month+1)+'-'+datelist[0].year
+                        }
+
+                    }
+
+                    // //active/off week
+                    // let weekinbox = [...weekday_list.querySelectorAll("p")];
+                    // for (let i = 0; i < weekinbox.length; i++)
+                    // {
+                    //
+                    //     weekinbox[i].classList.add("off","disabled");
+                    //
+                    //     if( i == this_week-1 )
+                    //     {
+                    //       weekinbox[i].classList.remove("off","disabled");
+                    //       weekinbox[i].classList.add("active");
+                    //     }
+                    //
+                    // }
+
+                }
+
+            }
+
+
+        };
+
+
+        const stopwatch = () =>
+        {
+
+            let buttonclocks = [...document.querySelectorAll('*[class*=button-chronos]')];
+
+            for (let btn of buttonclocks)
+            {
+
+                //for all, generate a random id from 0 to 1000
+                let CHRONOSRID = Math.floor(Math.random() * 999);
+
+                //set target of off canvas
+                btn.setAttribute('target','outbox#chronos-'+CHRONOSRID);
+
+                //generate the empty output
+                let chronos_html_outbox =
+                `
+                <div class="outbox" id="chronos-`+CHRONOSRID+`">
+                    <div class="overlay">
+                        <div class="side-center">
+
+                            <div class="chronobox">
+
+                                <div>
+                                    <a class="close">
+                                        <p>Select a time</p>
+                                    </a>
+                                </div>
+
+                                <!--
+                                <div>
+
+                                    <span class="chrono">
+
+                                        <div class="dash-hours">
+                                        </div>
+
+                                        <div class="dash-minutes">
+                                        </div>
+
+                                        <div class="dash-seconds">
+                                        </div>
+
+                                        <div class="dash-milliseconds">
+                                        </div>
+
+                                        <div class="pivot"></div>
+
+                                    </span>
+
+                                </div>
+                                -->
+
+                                <div>
+
+                                    <div class="display">
+                                        <div>
+                                            <span class="button hours" title="hours"><input type="number" pattern="[0-9]{2}" value="00"/></span>
+                                            <span class="doubledot"><small>:</small></span>
+                                            <span class="button minutes" title="minutes"><input type="number" pattern="[0-9]{2}" value="00"/></span>
+                                            <span class="doubledot"><small>:</small></span>
+                                            <span class="button seconds" title="seconds"><input type="number" pattern="[0-9]{2}" value="00"/></span>
+                                            <span class="doubledot"><small>.</small></span>
+                                            <span class="button milliseconds"><input disabled type="number" value="000"/></span>
+                                        </div>
+                                        <div>
+                                            <small class="start off">START</small>
+                                            <small class="pause off">PAUSE</small>
+                                            <small class="reset off">RESET</small>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div>
+                                    <div class="button align-center">
+                                        <a class="accept">OK - SAVE</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                `;
+
+
+                //print empty output & get it
+
+                document.getElementsByTagName('BODY')[0].insertAdjacentHTML('beforeEnd',chronos_html_outbox);
+                let Outbox = document.getElementById("chronos-"+CHRONOSRID);
+                let accept = Outbox.querySelectorAll('.accept')[0];
+
+
+                let reversed = (!btn.className.includes('-reversed')) ? false : true;
+
+
+                let Hours = Outbox.querySelectorAll('.hours>input')[0],
+                    Minutes = Outbox.querySelectorAll('.minutes>input')[0],
+                    Seconds = Outbox.querySelectorAll('.seconds>input')[0],
+                    Milliseconds = Outbox.querySelectorAll('.milliseconds>input')[0];
+
+                Hours.onmousedown = () =>{ selectfullstring(Hours)  }
+                Hours.ontouchstart = () =>{  selectfullstring(Hours) }
+                Minutes.onmousedown = () =>{  selectfullstring(Minutes) }
+                Minutes.ontouchstart = () =>{  selectfullstring(Minutes) }
+                Seconds.onmousedown = () =>{  selectfullstring(Seconds) }
+                Seconds.ontouchstart = () =>{  selectfullstring(Seconds) }
+                function selectfullstring (I){ I.select() }
+
+
+                let label     = btn.querySelectorAll('label')[0],
+                    datainput = btn.getElementsByTagName('input')[0],
+                    start     = Outbox.querySelectorAll('.display .start')[0],
+                    pause     = Outbox.querySelectorAll('.display .pause')[0],
+                    reset     = Outbox.querySelectorAll('.display .reset')[0];
+
+                let startlabel = label.innerText,
+                    start_hh = Hours.value,
+                    start_mm = Minutes.value,
+                    start_ss = Seconds.value,
+                    start_ms = 0,
+
+                    timeOnStart = null,
+                    timeOnPause = null,
+                    pauseDuration = 0,
+                    started = null;
+
+
+                let inputs = [Hours,Minutes,Seconds,Milliseconds];
+                for (let i of inputs)
+                {
+                    i.oninput = ev_chronos =>
+                    {
+
+                        setTimeout(()=>{
+                            let iv = parseInt(i.value);
+                            i.value = (iv > 9 ? iv : "0"+iv);
+                            i.setAttribute('value',(iv > 9 ? iv : "0"+iv));
+                        },250)
+
+                        start_hh = Hours.value;
+                        start_mm = Minutes.value;
+                        start_ss = Seconds.value;
+                        start_ms = Milliseconds.value;
+
+                    }
+                }
+
+                start.onclick = ev_chronos =>
+                {
+
+                    start.classList.add('active');
+                    start.classList.remove('off');
+                    pause.classList.remove('active');
+                    pause.classList.add('off');
+                    reset.classList.remove('active');
+                    reset.classList.add('off');
+
+                    if(timeOnStart == null)
+                    {
+
+                        timeOnStart = new Date(); // - ex date of actual time passed?
+
+                        if(reversed)
+                        {
+                            timeOnStart.setHours( timeOnStart.getHours() + parseInt(start_hh) );
+                            timeOnStart.setMinutes( timeOnStart.getMinutes() + parseInt(start_mm));
+                            timeOnStart.setSeconds( timeOnStart.getSeconds() + parseInt(start_ss));
+                            timeOnStart.setMilliseconds( timeOnStart.getMilliseconds() + parseInt(start_ms));
+                        }
+
+                    }
+                    else
+                    {
+                        clearInterval(started);
+                    }
+
+
+                    if (timeOnPause != null)
+                    {
+                        pauseDuration += (new Date() - timeOnPause);
+                    }
+
+                    started = setInterval(()=>{
+
+                        let hour,min,sec,ms,currentTime = new Date();
+
+                        if(reversed)
+                        {
+
+                            let timediff = new Date( timeOnStart.getTime()+pauseDuration ) - currentTime ;
+
+
+                            if(timediff>0)
+                            {
+
+                                let reverseTime =  new Date( Math.abs(timediff ) );
+
+                                hour = reverseTime.getUTCHours();
+                                min = reverseTime.getUTCMinutes();
+                                sec = reverseTime.getUTCSeconds();
+                                ms = reverseTime.getUTCMilliseconds();
+
+                            }
+                            else
+                            {
+                                hour= 0;
+                                min= 0;
+                                sec= 0;
+                                ms= 0;
+                                timeOnStart = null;
+                                clearInterval(started);
+
+                                start.classList.remove('active');
+                                start.classList.add('off');
                             }
 
                         }
                         else
                         {
-                            clearInterval(started);
+                            let timeElapsed = new Date(currentTime - timeOnStart - pauseDuration);
+
+                            hour = timeElapsed.getUTCHours();
+                            min  = timeElapsed.getUTCMinutes();
+                            sec  = timeElapsed.getUTCSeconds();
+                            ms   = timeElapsed.getUTCMilliseconds();
+
                         }
 
-
-                        if (timeOnPause != null)
-                        {
-                            pauseDuration += (new Date() - timeOnPause);
-                        }
-
-                        started = setInterval(()=>{
-
-                            let hour,min,sec,ms,currentTime = new Date();
-
-                            if(reversed)
-                            {
-
-                                let timediff = new Date( timeOnStart.getTime()+pauseDuration ) - currentTime ;
-
-
-                                if(timediff>0)
-                                {
-
-                                    let reverseTime =  new Date( Math.abs(timediff ) );
-
-                                    hour = reverseTime.getUTCHours();
-                                    min = reverseTime.getUTCMinutes();
-                                    sec = reverseTime.getUTCSeconds();
-                                    ms = reverseTime.getUTCMilliseconds();
-
-                                }
-                                else
-                                {
-                                    hour= 0;
-                                    min= 0;
-                                    sec= 0;
-                                    ms= 0;
-                                    timeOnStart = null;
-                                    clearInterval(started);
-
-                                    start.classList.remove('active');
-                                    start.classList.add('off');
-                                }
-
-                            }
-                            else
-                            {
-                                let timeElapsed = new Date(currentTime - timeOnStart - pauseDuration);
-
-                                hour = timeElapsed.getUTCHours();
-                                min  = timeElapsed.getUTCMinutes();
-                                sec  = timeElapsed.getUTCSeconds();
-                                ms   = timeElapsed.getUTCMilliseconds();
-
-                            }
-
-                            hour = (hour > 9 ? hour : "0" + hour);
-                            min = (min > 9 ? min : "0" + min)
-                            sec =(sec > 9 ? sec : "0" + sec)
-                            ms = (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
-
-                            Hours.value = hour;
-                            Hours.setAttribute('value',hour);
-
-                            Minutes.value = min;
-                            Minutes.setAttribute('value',min);
-
-                            Seconds.value = sec;
-                            Seconds.setAttribute('value',sec);
-
-                            Milliseconds.value = ms;
-                            Milliseconds.setAttribute('value',ms);
-
-                        }, 50);
-
-
-                    }
-
-                    pause.onclick = ev_chronos => {
-
-                        start.classList.add('off');
-                        start.classList.remove('active');
-                        pause.classList.remove('off');
-                        pause.classList.add('active');
-                        reset.classList.remove('active');
-                        reset.classList.add('off');
-
-                        paused();
-
-                    }
-
-                    function paused () {
-                        if(timeOnStart != null)
-                        {
-                            timeOnPause = new Date();
-                            clearInterval(started);
-                        }
-                    }
-
-                    reset.onclick = ev_chronos =>
-                    {
-
-                        start.classList.add('off');
-                        start.classList.remove('active');
-                        pause.classList.remove('active');
-                        pause.classList.add('off');
-                        reset.classList.remove('off');
-                        reset.classList.add('active');
-
-                        clearInterval(started);
-                        pauseDuration = 0;
-                        timeOnStart = null;
-                        timeOnPause = null;
-
-                        let hour = (parseInt(start_hh) > 9 ? start_hh : "0" + parseInt(start_hh)),
-                            min = (parseInt(start_mm) > 9 ? start_mm : "0" + parseInt(start_mm))
-                            sec =(parseInt(start_ss) > 9 ? start_ss : "0" + parseInt(start_ss))
-                            ms = (parseInt(start_ms) > 99 ? start_ms : parseInt(start_ms) > 9 ? "0" + start_ms : "00" + parseInt(start_ms));
+                        hour = (hour > 9 ? hour : "0" + hour);
+                        min = (min > 9 ? min : "0" + min)
+                        sec =(sec > 9 ? sec : "0" + sec)
+                        ms = (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
 
                         Hours.value = hour;
                         Hours.setAttribute('value',hour);
@@ -7302,1886 +7124,1492 @@ const ui = (() => {
                         Milliseconds.value = ms;
                         Milliseconds.setAttribute('value',ms);
 
-                        label.innerText = startlabel;
+                    }, 50);
 
-                        setTimeout(()=>{
-                            reset.classList.remove('active');
-                            reset.classList.add('off');
-                        },1000)
 
-                        ev_chronos = null;
+                }
 
-                    }
+                pause.onclick = ev_chronos => {
 
-                    accept.onclick = ev_chronos =>
+                    start.classList.add('off');
+                    start.classList.remove('active');
+                    pause.classList.remove('off');
+                    pause.classList.add('active');
+                    reset.classList.remove('active');
+                    reset.classList.add('off');
+
+                    paused();
+
+                }
+
+                function paused () {
+                    if(timeOnStart != null)
                     {
-                        paused();
-
-                        let hour = Hours.value,
-                            min = Minutes.value,
-                            sec = Seconds.value,
-                            ms = Milliseconds.value;
-
-                        datainput.value = hour+':'+min+':'+sec+'.'+ms;
-                        datainput.setAttribute('value',hour+':'+min+':'+sec+'.'+ms);
-
-                        label.innerText = hour+':'+min+':'+sec+'.'+ms;
-
+                        timeOnPause = new Date();
+                        clearInterval(started);
                     }
+                }
+
+                reset.onclick = ev_chronos =>
+                {
+
+                    start.classList.add('off');
+                    start.classList.remove('active');
+                    pause.classList.remove('active');
+                    pause.classList.add('off');
+                    reset.classList.remove('off');
+                    reset.classList.add('active');
+
+                    clearInterval(started);
+                    pauseDuration = 0;
+                    timeOnStart = null;
+                    timeOnPause = null;
+
+                    let hour = (parseInt(start_hh) > 9 ? start_hh : "0" + parseInt(start_hh)),
+                        min = (parseInt(start_mm) > 9 ? start_mm : "0" + parseInt(start_mm))
+                        sec =(parseInt(start_ss) > 9 ? start_ss : "0" + parseInt(start_ss))
+                        ms = (parseInt(start_ms) > 99 ? start_ms : parseInt(start_ms) > 9 ? "0" + start_ms : "00" + parseInt(start_ms));
+
+                    Hours.value = hour;
+                    Hours.setAttribute('value',hour);
+
+                    Minutes.value = min;
+                    Minutes.setAttribute('value',min);
+
+                    Seconds.value = sec;
+                    Seconds.setAttribute('value',sec);
+
+                    Milliseconds.value = ms;
+                    Milliseconds.setAttribute('value',ms);
+
+                    label.innerText = startlabel;
+
+                    setTimeout(()=>{
+                        reset.classList.remove('active');
+                        reset.classList.add('off');
+                    },1000)
+
+                    ev_chronos = null;
+
+                }
+
+                accept.onclick = ev_chronos =>
+                {
+                    paused();
+
+                    let hour = Hours.value,
+                        min = Minutes.value,
+                        sec = Seconds.value,
+                        ms = Milliseconds.value;
+
+                    datainput.value = hour+':'+min+':'+sec+'.'+ms;
+                    datainput.setAttribute('value',hour+':'+min+':'+sec+'.'+ms);
+
+                    label.innerText = hour+':'+min+':'+sec+'.'+ms;
 
                 }
 
             }
 
+        }
 
-            const loaderslist = {'fileloader':[]};
-            const filereaders = () =>
+
+        const loaderslist = {'fileloader':[]};
+        const filereaders = () =>
+        {
+
+            let btnfilelist = document.querySelectorAll('[class*="button-file"]'), loaderindex = 0;
+
+            for (let btn of btnfilelist)
             {
+                // make a datas record for all btn file
+                loaderslist.fileloader.push(
 
-                let btnfilelist = document.querySelectorAll('[class*="button-file"]'), loaderindex = 0;
+                    ( !btn.closest('.fileloader') )
+                        ? 'not fileloader detected'
+                        : {
+                            'running'             : false,
+                            'firstlaunch'         : true,
 
-                for (let btn of btnfilelist)
-                {
-                    // make a datas record for all btn file
-                    loaderslist.fileloader.push(
+                            'container'           : 'not defined',
+                            'input'               : 'not defined',
+                            'resetter'            : 'not defined',
+                            'display'
+                            :{
+                                'element'         :'not defined',
+                                'container'       :'not defined'
+                            },
 
-                        ( !btn.closest('.fileloader') )
-                            ? 'not fileloader detected'
-                            : {
-                                'running'             : false,
-                                'firstlaunch'         : true,
+                            'settings'
+                            :{
+                                'type'            : 'not defined',
+                                'autoconversion'  : 'not defined',
+                                'preview'         : 'not defined',
+                                'deleter'         : 'not defined',
+                                'grabber'         : 'not defined',
+                                'filters'         : 'not defined',
+                                'minilabels'      : 'not defined'
+                            },
 
-                                'container'           : 'not defined',
-                                'input'               : 'not defined',
-                                'resetter'            : 'not defined',
-                                'display'
-                                :{
-                                    'element'         :'not defined',
-                                    'container'       :'not defined'
-                                },
+                            'compressor'
+                            :{
+                                'imageMaxWidth'   : 'not defined',
+                                'imageMaxHeight'  : 'not defined',
+                                'imageQuality'    : 'not defined'
+                            },
 
-                                'settings'
-                                :{
-                                    'type'            : 'not defined',
-                                    'autoconversion'  : 'not defined',
-                                    'preview'         : 'not defined',
-                                    'deleter'         : 'not defined',
-                                    'grabber'         : 'not defined',
-                                    'filters'         : 'not defined',
-                                    'minilabels'      : 'not defined'
-                                },
-
-                                'compressor'
-                                :{
-                                    'imageMaxWidth'   : 'not defined',
-                                    'imageMaxHeight'  : 'not defined',
-                                    'imageQuality'    : 'not defined'
-                                },
-
-                                'datalist'
-                                :[
-                                    /*databoxmodel added via file upload => search:"makeNewData"*/
-                                ]
-
-                            }
-
-                    );
-
-                }
-
-                for (let btn of btnfilelist)
-                {
-
-                    //
-                    // button file
-                    //
-
-
-                    // get all main elements
-
-                    let inputfield       = btn.querySelectorAll('input[type="file"]')[0],
-                        textfield        = btn.getElementsByTagName('label')[0],
-                        startlabeltext   = textfield.innerText,
-                        fileloader       = loaderslist.fileloader[loaderindex];
-
-
-                    // if not have actions.. make it.
-
-                    if ( !btn.querySelectorAll('.originslist').length )
-                    {
-
-                        let html_output =
-                        `
-                            <span class="originslist hide">
-                                <a class="viewlist">
-                                    list&nbsp;&#x2630
-                                </a>
-                                &nbsp;
-                                <a class="clearlist">
-                                    &#10006
-                                </a>
-                            </span>
-                        `;
-
-                        btn.insertAdjacentHTML('beforeEnd',html_output);
-
-                    }
-
-
-                    // if btn field change of move contents...
-                    inputfield.oninput = ev_buttonfile_inputchange => { updatebuttonfile(btn,inputfield,textfield,startlabeltext,fileloader,true);ev_buttonfile_inputchange=null; }
-
-                    function updatebuttonfile(btn,inputfield,textfield,startlabeltext,fileloader,refreshfromstart)
-                    {
-
-
-                        // (method) check all basic limits requested
-
-                        function checkfilelimits (result)
-                        {
-
-                            let status      = false,
-                                message     = '',
-                                checking    = [],
-                                minqnt      = parseInt(inputfield.getAttribute("minlength")) || 0,
-                                maxqnt      = parseInt(inputfield.getAttribute("maxlength")),
-                                filelimit   = inputfield.getAttribute("size"),
-                                totallimit  = inputfield.getAttribute("maxsize"),
-                                accepted    = inputfield.getAttribute("accept"),
-                                fileslength = inputfield.files.length;
-
-
-                            if(minqnt)
-                            {
-
-                                if(fileslength < minqnt)
-                                {
-                                    textfield.closest("[class*='button-file']").classList.add('border-error');
-                                    checking.push(false); message = ('quantity wrong: '+fileslength+' of min: '+minqnt+'');
-                                }
-
-                            }
-
-                            if(maxqnt)
-                            {
-
-                                if(fileslength > maxqnt)
-                                {
-                                    textfield.closest("[class*='button-file']").classList.add('border-error');
-                                    checking.push(false); message = ('quantity wrong: '+fileslength+' of max: '+maxqnt+'');
-                                }
-
-                            }
-
-
-                            if(totallimit)
-                            {
-
-                                let total=0;
-                                for (let i = 0; i < fileslength; i++)
-                                {
-                                    let filesize = parseFloat( (Math.floor((inputfield.files[i].size/1000))/1024).toFixed(2) );
-                                    total += filesize;
-                                }
-
-                                if(total>totallimit)
-                                {
-                                    textfield.closest("[class*='button-file']").classList.add('border-error');
-                                    checking.push(false); message = ('out of space: '+total+'mb - max: '+totallimit+'mb');
-                                }
-
-                            }
-
-                            if(!btn.closest('.fileloader'))
-                            {
-
-                                if(filelimit)
-                                {
-
-                                    for (let i = 0; i < fileslength; i++)
-                                    {
-                                        let megabyte = (Math.floor((inputfield.files[i].size/1000))/1024).toFixed(2);
-                                        if(megabyte>filelimit)
-                                        {
-                                            textfield.closest("[class*='button-file']").classList.add('border-error');
-                                            checking.push(false); message = ('file overload: '+megabyte+'mb - max: '+filelimit+'mb');
-                                        }
-
-                                    }
-
-                                }
-
-                                if(fileslength!=0 && accepted)
-                                {
-                                    for (let i = 0; i < fileslength; i++)
-                                    {
-
-                                        let file_extension = String( inputfield.files[i].name.match(/\.([^\.]+)$/)[1] ).toLowerCase();
-
-                                        let arrayofkeys = [...accepted.split(", ")].join(' '),
-                                            keys = arrayofkeys.split(' ');
-
-                                        for (let i = 0; i < file_extension.length; i++)
-                                        {
-
-                                            let key = String(keys[i]);
-
-                                            if(keys.indexOf(file_extension) === -1)
-                                            {
-                                                textfield.closest("[class*='button-file']").classList.add('border-error');
-                                                checking.push(false); message = ('error: <i>'+file_extension+'</i> files is not supported');
-                                            }
-
-                                        }
-
-                                    }
-                                }
-                            }
-
-                            status = (checking.includes(false)) ? false : true;
-
-                            result(status,message);
+                            'datalist'
+                            :[
+                                /*databoxmodel added via file upload => search:"makeNewData"*/
+                            ]
 
                         }
 
-                        // if all limits is checked, let's start!
+                );
 
-                        checkfilelimits( (status,message) => {
+            }
 
+            for (let btn of btnfilelist)
+            {
 
-                            let originslist   = btn.querySelectorAll('.originslist')[0],
-                                viewlist      = originslist.firstElementChild,
-                                clearlist     = originslist.lastElementChild,
-                                filesquantity = inputfield.files.length;
-
-
-                            originslist.classList.add('hide');
+                //
+                // button file
+                //
 
 
-                            if(!status)
+                // get all main elements
+
+                let inputfield       = btn.querySelectorAll('input[type="file"]')[0],
+                    textfield        = btn.getElementsByTagName('label')[0],
+                    startlabeltext   = textfield.innerText,
+                    fileloader       = loaderslist.fileloader[loaderindex];
+
+
+                // if not have actions.. make it.
+
+                if ( !btn.querySelectorAll('.originslist').length )
+                {
+
+                    let html_output =
+                    `
+                        <span class="originslist hide">
+                            <a class="viewlist">
+                                list&nbsp;&#x2630
+                            </a>
+                            &nbsp;
+                            <a class="clearlist">
+                                &#10006
+                            </a>
+                        </span>
+                    `;
+
+                    btn.insertAdjacentHTML('beforeEnd',html_output);
+
+                }
+
+
+                // if btn field change of move contents...
+                inputfield.oninput = ev_buttonfile_inputchange => { updatebuttonfile(btn,inputfield,textfield,startlabeltext,fileloader,true);ev_buttonfile_inputchange=null; }
+
+                function updatebuttonfile(btn,inputfield,textfield,startlabeltext,fileloader,refreshfromstart)
+                {
+
+
+                    // (method) check all basic limits requested
+
+                    function checkfilelimits (result)
+                    {
+
+                        let status      = false,
+                            message     = '',
+                            checking    = [],
+                            minqnt      = parseInt(inputfield.getAttribute("minlength")) || 0,
+                            maxqnt      = parseInt(inputfield.getAttribute("maxlength")),
+                            filelimit   = inputfield.getAttribute("size"),
+                            totallimit  = inputfield.getAttribute("maxsize"),
+                            accepted    = inputfield.getAttribute("accept"),
+                            fileslength = inputfield.files.length;
+
+
+                        if(minqnt)
+                        {
+
+                            if(fileslength < minqnt)
                             {
-
-                                //add error labels
-                                btn.classList.add('border-error');
-                                textfield.innerHTML = message;
-
+                                textfield.closest("[class*='button-file']").classList.add('border-error');
+                                checking.push(false); message = ('quantity wrong: '+fileslength+' of min: '+minqnt+'');
                             }
 
+                        }
 
-                            else
+                        if(maxqnt)
+                        {
+
+                            if(fileslength > maxqnt)
+                            {
+                                textfield.closest("[class*='button-file']").classList.add('border-error');
+                                checking.push(false); message = ('quantity wrong: '+fileslength+' of max: '+maxqnt+'');
+                            }
+
+                        }
+
+
+                        if(totallimit)
+                        {
+
+                            let total=0;
+                            for (let i = 0; i < fileslength; i++)
+                            {
+                                let filesize = parseFloat( (Math.floor((inputfield.files[i].size/1000))/1024).toFixed(2) );
+                                total += filesize;
+                            }
+
+                            if(total>totallimit)
+                            {
+                                textfield.closest("[class*='button-file']").classList.add('border-error');
+                                checking.push(false); message = ('out of space: '+total+'mb - max: '+totallimit+'mb');
+                            }
+
+                        }
+
+                        if(!btn.closest('.fileloader'))
+                        {
+
+                            if(filelimit)
                             {
 
-                                //remove error labels
-                                btn.classList.remove('border-error');
-                                originslist.classList.add('hide');
-                                viewlist.classList.add('hide');
-
-
-                                /*------*/
-
-
-                                // set origins list structure
-
-                                // :: "refreshfromstart"
-                                // :: When you drop or change files directly you need to reset all (reset true).
-                                // :: updatebuttonfile is called from dropend and oninput with reset true and
-                                // :: this function remake from zero the structures of main listed files
-
-
-                                if(!refreshfromstart)
+                                for (let i = 0; i < fileslength; i++)
                                 {
-
-                                    originslist.classList.remove('hide');
-
-                                    let selected = String( inputfield.value.split('\\')[inputfield.value.split('\\').length - 1] );
-
-                                    textfield.classList.add('active'),
-                                    textfield.innerHTML = '&#x2714 '+selected,
-
-                                    setTimeout( () =>{
-                                      textfield.classList.remove('active');
-                                    },150);
-
-                                    let outboxid = viewlist.target.split('outbox#')[1];
-
-                                    listupadate(inputfield,textfield,viewlist,originslist,outboxid)
-
-                                }
-
-                                else
-                                {
-
-                                    let id = `filelist-`+String( Math.floor(Math.random() * 999) );
-
-                                    let fileviewer_empty_outbox =
-                                    `
-                                        <div class="outbox" id="`+id+`">
-                                            <div class="overlay">
-                                                <div class="side-center">
-
-                                                    <div class="filelistbox">
-
-                                                        <div>
-                                                            <a class="close">
-                                                                <p>File selected</p>
-                                                            </a>
-                                                        </div>
-
-                                                    <div>
-
-                                                    <div class="hide-bar-y">
-                                                        <div class="scroll-y">
-
-                                                            <div class="filegroup grid-x">
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    `;
-
-                                    //print empty output & get it
-                                    document.getElementsByTagName('BODY')[0].insertAdjacentHTML('beforeEnd',fileviewer_empty_outbox);
-
-                                    listupadate(inputfield,textfield,viewlist,originslist,id)
-
-                                    // refresh fileloader (it exist)
-
-                                    if(btn.closest('.fileloader')) runfileloader(btn,fileloader)
-
-                                }
-
-                                function listupadate(inputfield,textfield,viewlist,originslist,target)
-                                {
-
-                                    if(target!=null)
+                                    let megabyte = (Math.floor((inputfield.files[i].size/1000))/1024).toFixed(2);
+                                    if(megabyte>filelimit)
                                     {
-
-                                        let filegroup = (document.getElementById(target)) ? document.getElementById(target).querySelectorAll('.filegroup')[0] : null;
-
-                                        let filenames = [];
-                                        for (let i=0; i<inputfield.files.length; i++)
-                                        {
-
-                                            let fdt = inputfield.files[i],
-                                                FIN = '',
-                                                FXT = 'file',
-                                                FSZ = (~~((fdt.size/1000))/1024).toFixed(3);
-
-                                            if(fdt.name.split('.')[0]!=null)        FIN = fdt.name.split('.')[0];
-                                            if(fdt.name.match(/\.([^\.]+)$/)!=null) FXT = fdt.name.match(/\.([^\.]+)$/)[1];
-                                            if(FSZ=='0.000')                        FSZ = '≅.001';
-
-                                            filenames.push(`
-
-                                                    <div class="box-[50-50-50] align-left">
-                                                        <div>
-                                                            <p class="ellipsis">
-                                                                `+FIN+`
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="box-[20-20-20] align-center">
-                                                        <div>
-                                                            <p>`+FXT+`</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="box-[30-30-30] align-right">
-                                                        <div>
-                                                            <p>`+FSZ+`mb</p>
-                                                        </div>
-                                                    </div>
-
-                                                `);
-
-                                        }
-
-                                        //from array list to list of strings
-                                        let fileslist = String(filenames.join(' '));
-                                        filegroup.innerHTML = fileslist;
-
-                                        //update input & p & put inside
-                                        textfield.innerHTML = ('&#x2714 '+inputfield.files.length+' files selected');
-
-                                        viewlist.setAttribute('target','outbox#'+target);
-                                        viewlist.classList.remove('hide');
-                                        originslist.classList.remove('hide');
-
-                                        // inputfield.setAttribute('value', inputfield.value);
-                                        textfield.classList.add('active');
-
-                                        ui.reload('outbox');
+                                        textfield.closest("[class*='button-file']").classList.add('border-error');
+                                        checking.push(false); message = ('file overload: '+megabyte+'mb - max: '+filelimit+'mb');
                                     }
 
                                 }
 
+                            }
 
-                                // reset buttonfile when press clear in ui
-
-                                clearlist.addEventListener ('touchstart', ev_buttonfile_inputreset => {btnvaluereset(ev_buttonfile_inputreset)} ,true);
-                                clearlist.addEventListener ('click', ev_buttonfile_inputreset => {btnvaluereset(ev_buttonfile_inputreset)} ,true);
-
-                                function btnvaluereset (ev_buttonfile_inputreset)
+                            if(fileslength!=0 && accepted)
+                            {
+                                for (let i = 0; i < fileslength; i++)
                                 {
 
-                                    inputfield.setAttribute('value','');
-                                    inputfield.value='';
-                                    textfield.innerText = startlabeltext;
-                                    originslist.classList.add('hide');
+                                    let file_extension = String( inputfield.files[i].name.match(/\.([^\.]+)$/)[1] ).toLowerCase();
 
-                                    if(btn.closest('.fileloader')) runfileloader(btn,fileloader)
+                                    let arrayofkeys = [...accepted.split(", ")].join(' '),
+                                        keys = arrayofkeys.split(' ');
 
-                                    ev_buttonfile_inputreset=null;
+                                    for (let i = 0; i < file_extension.length; i++)
+                                    {
+
+                                        let key = String(keys[i]);
+
+                                        if(keys.indexOf(file_extension) === -1)
+                                        {
+                                            textfield.closest("[class*='button-file']").classList.add('border-error');
+                                            checking.push(false); message = ('error: <i>'+file_extension+'</i> files is not supported');
+                                        }
+
+                                    }
 
                                 }
+                            }
+                        }
 
+                        status = (checking.includes(false)) ? false : true;
+
+                        result(status,message);
+
+                    }
+
+                    // if all limits is checked, let's start!
+
+                    checkfilelimits( (status,message) => {
+
+
+                        let originslist   = btn.querySelectorAll('.originslist')[0],
+                            viewlist      = originslist.firstElementChild,
+                            clearlist     = originslist.lastElementChild,
+                            filesquantity = inputfield.files.length;
+
+
+                        originslist.classList.add('hide');
+
+
+                        if(!status)
+                        {
+
+                            //add error labels
+                            btn.classList.add('border-error');
+                            textfield.innerHTML = message;
+
+                        }
+
+
+                        else
+                        {
+
+                            //remove error labels
+                            btn.classList.remove('border-error');
+                            originslist.classList.add('hide');
+                            viewlist.classList.add('hide');
+
+
+                            /*------*/
+
+
+                            // set origins list structure
+
+                            // :: "refreshfromstart"
+                            // :: When you drop or change files directly you need to reset all (reset true).
+                            // :: updatebuttonfile is called from dropend and oninput with reset true and
+                            // :: this function remake from zero the structures of main listed files
+
+
+                            if(!refreshfromstart)
+                            {
+
+                                originslist.classList.remove('hide');
+
+                                let selected = String( inputfield.value.split('\\')[inputfield.value.split('\\').length - 1] );
+
+                                textfield.classList.add('active'),
+                                textfield.innerHTML = '&#x2714 '+selected,
+
+                                setTimeout( () =>{
+                                  textfield.classList.remove('active');
+                                },150);
+
+                                let outboxid = viewlist.target.split('outbox#')[1];
+
+                                listupadate(inputfield,textfield,viewlist,originslist,outboxid)
 
                             }
 
-                        })
+                            else
+                            {
+
+                                let id = `filelist-`+String( Math.floor(Math.random() * 999) );
+
+                                let fileviewer_empty_outbox =
+                                `
+                                    <div class="outbox" id="`+id+`">
+                                        <div class="overlay">
+                                            <div class="side-center">
+
+                                                <div class="filelistbox">
+
+                                                    <div>
+                                                        <a class="close">
+                                                            <p>File selected</p>
+                                                        </a>
+                                                    </div>
+
+                                                <div>
+
+                                                <div class="hide-bar-y">
+                                                    <div class="scroll-y">
+
+                                                        <div class="filegroup grid-x">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+
+                                //print empty output & get it
+                                document.getElementsByTagName('BODY')[0].insertAdjacentHTML('beforeEnd',fileviewer_empty_outbox);
+
+                                listupadate(inputfield,textfield,viewlist,originslist,id)
+
+                                // refresh fileloader (it exist)
+
+                                if(btn.closest('.fileloader')) runfileloader(btn,fileloader)
+
+                            }
+
+                            function listupadate(inputfield,textfield,viewlist,originslist,target)
+                            {
+
+                                if(target!=null)
+                                {
+
+                                    let filegroup = (document.getElementById(target)) ? document.getElementById(target).querySelectorAll('.filegroup')[0] : null;
+
+                                    let filenames = [];
+                                    for (let i=0; i<inputfield.files.length; i++)
+                                    {
+
+                                        let fdt = inputfield.files[i],
+                                            FIN = '',
+                                            FXT = 'file',
+                                            FSZ = (~~((fdt.size/1000))/1024).toFixed(3);
+
+                                        if(fdt.name.split('.')[0]!=null)        FIN = fdt.name.split('.')[0];
+                                        if(fdt.name.match(/\.([^\.]+)$/)!=null) FXT = fdt.name.match(/\.([^\.]+)$/)[1];
+                                        if(FSZ=='0.000')                        FSZ = '≅.001';
+
+                                        filenames.push(`
+
+                                                <div class="box-[50-50-50] align-left">
+                                                    <div>
+                                                        <p class="ellipsis">
+                                                            `+FIN+`
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="box-[20-20-20] align-center">
+                                                    <div>
+                                                        <p>`+FXT+`</p>
+                                                    </div>
+                                                </div>
+                                                <div class="box-[30-30-30] align-right">
+                                                    <div>
+                                                        <p>`+FSZ+`mb</p>
+                                                    </div>
+                                                </div>
+
+                                            `);
+
+                                    }
+
+                                    //from array list to list of strings
+                                    let fileslist = String(filenames.join(' '));
+                                    filegroup.innerHTML = fileslist;
+
+                                    //update input & p & put inside
+                                    textfield.innerHTML = ('&#x2714 '+inputfield.files.length+' files selected');
+
+                                    viewlist.setAttribute('target','outbox#'+target);
+                                    viewlist.classList.remove('hide');
+                                    originslist.classList.remove('hide');
+
+                                    // inputfield.setAttribute('value', inputfield.value);
+                                    textfield.classList.add('active');
+
+                                    ui.reload('outbox');
+                                }
+
+                            }
 
 
-                    }
-                    // The uploader mechs (it's called from updatebuttonfile when button data change, so... also for the drops events)
+                            // reset buttonfile when press clear in ui
 
-                    runfileloader(btn,fileloader)
-                    function runfileloader(btn,fileloader)
+                            clearlist.addEventListener ('touchstart', ev_buttonfile_inputreset => {btnvaluereset(ev_buttonfile_inputreset)} ,true);
+                            clearlist.addEventListener ('click', ev_buttonfile_inputreset => {btnvaluereset(ev_buttonfile_inputreset)} ,true);
+
+                            function btnvaluereset (ev_buttonfile_inputreset)
+                            {
+
+                                inputfield.setAttribute('value','');
+                                inputfield.value='';
+                                textfield.innerText = startlabeltext;
+                                originslist.classList.add('hide');
+
+                                if(btn.closest('.fileloader')) runfileloader(btn,fileloader)
+
+                                ev_buttonfile_inputreset=null;
+
+                            }
+
+
+                        }
+
+                    })
+
+
+                }
+                // The uploader mechs (it's called from updatebuttonfile when button data change, so... also for the drops events)
+
+                runfileloader(btn,fileloader)
+                function runfileloader(btn,fileloader)
+                {
+
+
+                    //
+                    // file loader drag n drop
+                    //
+
+
+                    if( btn.closest('.fileloader') )
                     {
 
 
-                        //
-                        // file loader drag n drop
-                        //
+                        // set basic fileloader params
+
+                        fileloader.input              = inputfield;
+                        fileloader.container          = btn.closest('.fileloader');
+                        fileloader.resetter           = fileloader.container.querySelectorAll('.clearlist')[0] || null;
+                        fileloader.btnsend            = fileloader.container.querySelectorAll('.button-sendnow')[0] || null;
+                        fileloader.display.element    = fileloader.container.querySelectorAll('[class*=display]')[0];
 
 
-                        if( btn.closest('.fileloader') )
+                        // is it supported?
+                        let onstarterrors = (window.File && window.FileReader && window.FileList && window.Blob) ? false : readersnotsupported();
+
+                        // reader engine not supported? No? stop all.
+                        function readersnotsupported()
+                        {
+                                fileloader.classList.add('disabled');
+                                fileloader.input.classList.add('disabled');
+                                fileloader.btnsend.classList.add('disabled');
+                                fileloader.display.element.innerHTML= '<div class="absolute-center"><p>YOUR SYSTEM NOT SUPPORTED FILE READERS</p></div>';
+                                debug(`:: [⚠ ui alert]: fileloader error\n   ⮑ No modern file reader are supported.\n   ⮑ reader message:`+loading.target.error+`\n   ⮑ element:`,Btn.closest('.fileloader'))
+                                onstarterrors = true;
+                        }
+
+                        // display error exist? No? stop all.
+                        if(!fileloader.display.element || fileloader.display.element=='not defined')
+                        {
+                            debug(`:: [⚠ ui alert]: fileloader error\n   ⮑ display not found.\n   ⮑ element:`,btn.closest('.fileloader'));
+                            onstarterrors = true;
+                            fileloader.container.classList.add('disabled');
+                        }
+
+
+                        if(!onstarterrors)
                         {
 
 
-                            // set basic fileloader params
+                            // (method) reprint the list
+                            // :: after drag or display actions need to
+                            // :: reorder/remake the file list with every data.
+                            // :: work for geko and moz (webkit?)
 
-                            fileloader.input              = inputfield;
-                            fileloader.container          = btn.closest('.fileloader');
-                            fileloader.resetter           = fileloader.container.querySelectorAll('.clearlist')[0] || null;
-                            fileloader.btnsend            = fileloader.container.querySelectorAll('.button-sendnow')[0] || null;
-                            fileloader.display.element    = fileloader.container.querySelectorAll('[class*=display]')[0];
-
-
-                            // is it supported?
-                            let onstarterrors = (window.File && window.FileReader && window.FileList && window.Blob) ? false : readersnotsupported();
-
-                            // reader engine not supported? No? stop all.
-                            function readersnotsupported()
+                            function FromArrayToInputFileList(...items)
                             {
-                                    fileloader.classList.add('disabled');
-                                    fileloader.input.classList.add('disabled');
-                                    fileloader.btnsend.classList.add('disabled');
-                                    fileloader.display.element.innerHTML= '<div class="absolute-center"><p>YOUR SYSTEM NOT SUPPORTED FILE READERS</p></div>';
-                                    debug(`:: [⚠ ui alert]: fileloader error\n   ⮑ No modern file reader are supported.\n   ⮑ reader message:`+loading.target.error+`\n   ⮑ element:`,Btn.closest('.fileloader'))
-                                    onstarterrors = true;
+                                items = [].concat(...items);
+                                let dataevent = new ClipboardEvent('').clipboardData || new DataTransfer();
+                                for (let data of items) { dataevent.items.add(data) }  return dataevent.files;
                             }
 
-                            // display error exist? No? stop all.
-                            if(!fileloader.display.element || fileloader.display.element=='not defined')
-                            {
-                                debug(`:: [⚠ ui alert]: fileloader error\n   ⮑ display not found.\n   ⮑ element:`,btn.closest('.fileloader'));
-                                onstarterrors = true;
-                                fileloader.container.classList.add('disabled');
-                            }
+                            // set file drops actions
+                            // :: on drop over get list of data and on leave remove hover panel and...
 
+                            fileloader.container.addEventListener('dragover', ev_buttonfile_filedropover => {
 
-                            if(!onstarterrors)
-                            {
+                                //ev_buttonfile_filedropover.dataTransfer.effectAllowed = "move"; ???
 
+                                ev_buttonfile_filedropover.preventDefault();
+                                ev_buttonfile_filedropover.stopPropagation();
 
-                                // (method) reprint the list
-                                // :: after drag or display actions need to
-                                // :: reorder/remake the file list with every data.
-                                // :: work for geko and moz (webkit?)
-
-                                function FromArrayToInputFileList(...items)
+                                let DT = ev_buttonfile_filedropover.dataTransfer || ev_buttonfile_filedropover.clipboardData;
+                                if(DT.items[0]!=undefined)
                                 {
-                                    items = [].concat(...items);
-                                    let dataevent = new ClipboardEvent('').clipboardData || new DataTransfer();
-                                    for (let data of items) { dataevent.items.add(data) }  return dataevent.files;
-                                }
-
-                                // set file drops actions
-                                // :: on drop over get list of data and on leave remove hover panel and...
-
-                                fileloader.container.addEventListener('dragover', ev_buttonfile_filedropover => {
-
-                                    //ev_buttonfile_filedropover.dataTransfer.effectAllowed = "move"; ???
-
-                                    ev_buttonfile_filedropover.preventDefault();
-                                    ev_buttonfile_filedropover.stopPropagation();
-
-                                    let DT = ev_buttonfile_filedropover.dataTransfer || ev_buttonfile_filedropover.clipboardData;
-                                    if(DT.items[0]!=undefined)
-                                    {
-                                        if (DT.items[0].kind.toLowerCase()=='file')
-                                        {
-
-                                            fileloader.container.classList.add('draghere');
-
-                                            fileloader.container.ondragleave = ev_buttonfile_filedropover => {
-                                                ev_buttonfile_filedropover.preventDefault();
-                                                ev_buttonfile_filedropover.stopPropagation();
-                                                setTimeout(()=>{
-                                                    fileloader.container.classList.remove('draghere');
-                                                },300)
-                                            }
-
-                                        }
-                                    }
-
-                                },false);
-
-                                // :: ...on drop, remake data (with FromArrayToInputFileList)
-
-                                fileloader.container.addEventListener('drop', ev_buttonfile_filedropped => {
-
-                                    ev_buttonfile_filedropped.preventDefault();
-                                    ev_buttonfile_filedropped.stopPropagation();
-
-                                    let DT = ev_buttonfile_filedropped.dataTransfer || ev_buttonfile_filedropped.clipboardData;
                                     if (DT.items[0].kind.toLowerCase()=='file')
                                     {
 
-                                        let filelisted = [];
-                                        for (let F=0; F < DT.files.length; F++)
-                                        {
-                                            let fileorigin  = DT.files[F];
-                                            filelisted.push( new File( [fileorigin], fileorigin.name ) );
+                                        fileloader.container.classList.add('draghere');
+
+                                        fileloader.container.ondragleave = ev_buttonfile_filedropover => {
+                                            ev_buttonfile_filedropover.preventDefault();
+                                            ev_buttonfile_filedropover.stopPropagation();
+                                            setTimeout(()=>{
+                                                fileloader.container.classList.remove('draghere');
+                                            },300)
                                         }
 
-                                        fileloader.container.classList.remove('draghere');
-
-                                        inputfield.files = FromArrayToInputFileList(filelisted);
-
-                                        inputfield       = btn.querySelectorAll('input[type="file"]')[0];
-                                        textfield        = btn.getElementsByTagName('label')[0];
-
-                                        setTimeout(()=>{
-                                            updatebuttonfile(btn,inputfield,textfield,startlabeltext,fileloader,true);
-                                        },300)
                                     }
-
-                                },true);
-
-
-                            }
-
-
-
-
-                            //  get or make id
-
-                            let fileloaderid = (!fileloader.id) ? ~~(Math.random()*100) : fileloader.id;
-
-                            //  is it sortable?
-
-                            let iscustomdock= (fileloader.container.querySelectorAll('.customdock').length>0)?true:false;
-
-                            // get fileloader settings
-
-                            let uploderSets = String(fileloader.container.dataset.settings).replace(/\s/g,'').replace(/\[/g,'').replace(/\]/g,'');
-
-                            // split settings anche change it in true/false ( for type, chunks, icons, ohers, and..
-
-                            if(!uploderSets.includes('type'))
-                            {
-                                fileloader.settings.type = 'single';
-                            }
-                            else
-                            {
-                                fileloader.settings.type = uploderSets.split('type:')[1].split(',')[0]
-                            };
-
-                            if(!uploderSets.includes('chunksize'))
-                            {
-                                fileloader.settings.chunksize = parseInt( 64*1024 )
-                            }
-                            else
-                            {
-                                fileloader.settings.chunksize = parseInt(uploderSets.split('chunksize:')[1].split(',')[0])
-                            }
-
-                            if(!uploderSets.includes('converter'))
-                            {
-                                fileloader.settings.autoconversion = false;
-                            }
-                            else
-                            {
-                                fileloader.settings.autoconversion = (uploderSets.split('converter:')[1].split(',')[0]=='true') ? true : false;
-                            }
-
-                            if(!uploderSets.includes('preview'))
-                            {
-                                fileloader.settings.preview = false;
-                            }
-                            else
-                            {
-                                fileloader.settings.preview = (uploderSets.split('preview:')[1].split(',')[0]=='true') ? true : false;
-                            }
-
-                            if(!uploderSets.includes('linked'))
-                            {
-                                fileloader.settings.linked = false;
-                            }
-                            else
-                            {
-                                fileloader.settings.linked = (uploderSets.split('linked:')[1].split(',')[0]=='true') ? true : false;
-                            }
-
-                            if(!uploderSets.includes('icons'))
-                            {
-                                fileloader.settings.previewicons = false;
-                            }
-                            else
-                            {
-                                fileloader.settings.previewicons = (uploderSets.split('icons:')[1].split(',')[0]=='true') ? true : false;
-                            }
-
-                            if(!uploderSets.includes('deleter'))
-                            {
-                                fileloader.settings.deleter = false;
-                            }
-                            else
-                            {
-                                fileloader.settings.deleter = (uploderSets.split('deleter:')[1].split(',')[0]=='true') ? true : false;
-                            }
-
-                            if(!uploderSets.includes('sortable'))
-                            {
-                                fileloader.settings.sortable = false;
-                            }
-                            else
-                            {
-                                fileloader.settings.sortable = (uploderSets.split('sortable:')[1].split(',')[0]=='true') ? true : false;
-                            }
-
-                            if(!uploderSets.includes('grabber'))
-                            {
-                                fileloader.settings.grabber = false;
-                            }
-                            else
-                            {
-                                fileloader.settings.grabber = (uploderSets.split('grabber:')[1].split(',')[0]=='true') ? true : false;
-                            }
-
-                            if(!uploderSets.includes('filters'))
-                            {
-                                fileloader.settings.filters = false;
-                            }
-                            else
-                            {
-                                fileloader.settings.filters = (uploderSets.split('filters:')[1].split(',')[0]=='true') ? true : false;
-                            }
-
-                            if(!uploderSets.includes('metalabel'))
-                            {
-                                fileloader.settings.metalabel = false;
-                            }
-                            else
-                            {
-                                fileloader.settings.metalabel = (uploderSets.split('metalabel:')[1].split(',')[0]=='true') ? true : false;
-                            }
-
-                            if(!uploderSets.includes('titlelabel'))
-                            {
-                                fileloader.settings.filetitlelabel = false;
-                            }
-                            else
-                            {
-                                fileloader.settings.filetitlelabel = (uploderSets.split('titlelabel:')[1].split(',')[0]=='true') ? true : false;
-                            }
-
-                            if(!uploderSets.includes('customized'))
-                            {
-                                fileloader.settings.customized = false;
-                            }
-                            else
-                            {
-                                fileloader.settings.customized = (uploderSets.split('customized:')[1].split(',')[0]=='true') ? true : false;
-                            }
-
-
-                            //  ...sortable slots settings...
-
-                            let grabboxstart  = (fileloader.settings.sortable==true) ? '<div class="grabslot-['+fileloaderid+']"><div class="grabbox">' : '',
-                                grabboxend    = (fileloader.settings.sortable==true) ? '</div></div>' : '';
-
-
-                            // ...compression settings)
-
-                            let compressorSets = String(fileloader.container.dataset.compressor);
-
-                            if(fileloader.container.dataset.compressor)
-                            {
-                                let resolution = (compressorSets.includes('resolution')) ? compressorSets.split('image-resolution:')[1].split(',')[0] : null;
-
-                                if(!compressorSets.includes('resize-type')){ fileloader.compressor.resizingtype = 'proportional' ;}
-                                else{ fileloader.compressor.resizingtype = (compressorSets.split('resize-type:')[1].split(',')[0]=='proportional')?'proportional':'linear'; }
-
-                                fileloader.compressor.imageMaxWidth  = parseInt( resolution.split('x')[0] ) || 1920;
-                                fileloader.compressor.imageMaxHeight = parseInt( resolution.split('x')[1] ) || 1920;
-                                fileloader.compressor.imageQuality   = parseFloat( compressorSets.split('image-quality:')[1].split(',')[0]/100 ) || .75;
-                            }
-                            else
-                            {
-                                fileloader.settings.preview = false;
-                                fileloader.settings.linked = false;
-                                fileloader.compressor=false;
-                            }
-
-                            if(fileloader.settings.autoconversion==false)
-                            {
-                                fileloader.settings.preview = false;
-                                fileloader.settings.linked = false;
-                                fileloader.compressor=false;
-                            }
-
-
-                            /*----*/
-
-
-                            // (method) set display type
-                            // :: it's called by loopfiles.
-
-                            function makedisplay(fileloader)
-                            {
-
-                                if(fileloader.settings.type == 'single')
-                                {
-
-                                    if(fileloader.settings.sortable==true)
-                                    {
-                                        fileloader.settings.sortable = false;
-                                        debug(':: [⚠ ui alert]: Info on fileloader\n   ⮑ settings work, displaytype single connot have a sortable!\n\n');
-                                    }
-                                    if(fileloader.settings.title==true)
-                                    {
-                                        fileloader.settings.title = false;
-                                        debug(':: [⚠ ui alert]: Info on fileloader\n   ⮑ settings work, displaytype single connot have a titles!\n\n');
-                                    }
-                                    if(fileloader.settings.title==true)
-                                    {
-                                        fileloader.settings.title = false;
-                                        debug(':: [⚠ ui alert]: Info on fileloader\n   ⮑ settings work, displaytype single connot have a titles!\n\n');
-                                    }
-                                    if(fileloader.settings.metalabel==true)
-                                    {
-                                        fileloader.settings.metalabel = false;
-                                        debug(':: [⚠ ui alert]: Info on fileloader\n   ⮑ settings work, displaytype single connot have a labels!\n\n');
-                                    }
-                                    if( fileloader.settings.grabber==true )
-                                    {
-                                        fileloader.settings.grabber = false;
-                                        debug(`:: [⚠ ui alert]: fileloader data-settings error\n   ⮑ type-single not accept a grabber`);
-                                    }
-
-
-                                    fileloader.input.setAttribute('maxlength','1');
-                                    fileloader.display.element.classList.add('type-single');
-                                    fileloader.display.container = fileloader.display.element;
-
-                                }
-                                else if(fileloader.settings.type == 'listed')
-                                {
-
-                                    fileloader.display.element.classList.add('type-list');
-                                    fileloader.display.element.innerHTML = (`<div class="hide-bar-y"><div class="scroll-y"><div></div></div></div>`);
-                                    fileloader.display.container = fileloader.display.element.querySelectorAll('.scroll-y')[0].firstElementChild;
-
-                                }
-                                else if(fileloader.settings.type == 'grid')
-                                {
-
-                                    let gap = (!uploderSets.includes('boxgap')) ? '' : 'gap-'+uploderSets.split('boxgap:')[1].split(',')[0];
-
-                                    fileloader.display.element.classList.add('type-grid');
-                                    fileloader.display.element.innerHTML = (`<div class="hide-bar-y"><div class="scroll-y"><div class="grid-x `+gap+`"></div></div></div>`);
-                                    fileloader.display.container = fileloader.display.element.querySelectorAll('.scroll-y')[0].firstElementChild;
-
-                                }
-                                else if(fileloader.settings.type == 'wall')
-                                {
-
-
-                                    let wallcols = (!uploderSets.includes('wallcols')) ? '04-03-01' : uploderSets.split('wallcols:')[1].split(',')[0];
-                                    let boxgap = (!uploderSets.includes('boxgap')) ? '' : 'gap-'+uploderSets.split('boxgap:')[1].split(',')[0];
-
-                                    fileloader.display.element.classList.add('type-wall');
-                                    fileloader.display.element.innerHTML = (`<div class="hide-bar-y"><div class="scroll-y"><div class="grid-y col-[`+wallcols+`] `+boxgap+` autoset"></div></div></div>`);
-                                    fileloader.display.container = fileloader.display.element.querySelectorAll('.scroll-y')[0].firstElementChild;
-
-                                }
-                                else
-                                {
-                                    debug(`:: [⚠ ui alert]: Error on fileloader\n   ⮑ settings work, displaytype not finded!\n      see more: shorturl.at/esSUY\n\n`);
                                 }
 
+                            },false);
+
+                            // :: ...on drop, remake data (with FromArrayToInputFileList)
+
+                            fileloader.container.addEventListener('drop', ev_buttonfile_filedropped => {
+
+                                ev_buttonfile_filedropped.preventDefault();
+                                ev_buttonfile_filedropped.stopPropagation();
+
+                                let DT = ev_buttonfile_filedropped.dataTransfer || ev_buttonfile_filedropped.clipboardData;
+                                if (DT.items[0].kind.toLowerCase()=='file')
+                                {
+
+                                    let filelisted = [];
+                                    for (let F=0; F < DT.files.length; F++)
+                                    {
+                                        let fileorigin  = DT.files[F];
+                                        filelisted.push( new File( [fileorigin], fileorigin.name ) );
+                                    }
+
+                                    fileloader.container.classList.remove('draghere');
+
+                                    inputfield.files = FromArrayToInputFileList(filelisted);
+
+                                    inputfield       = btn.querySelectorAll('input[type="file"]')[0];
+                                    textfield        = btn.getElementsByTagName('label')[0];
+
+                                    setTimeout(()=>{
+                                        updatebuttonfile(btn,inputfield,textfield,startlabeltext,fileloader,true);
+                                    },300)
+                                }
+
+                            },true);
+
+
+                        }
+
+
+
+
+                        //  get or make id
+
+                        let fileloaderid = (!fileloader.id) ? ~~(Math.random()*100) : fileloader.id;
+
+                        //  is it sortable?
+
+                        let iscustomdock= (fileloader.container.querySelectorAll('.customdock').length>0)?true:false;
+
+                        // get fileloader settings
+
+                        let uploderSets = String(fileloader.container.dataset.settings).replace(/\s/g,'').replace(/\[/g,'').replace(/\]/g,'');
+
+                        // split settings anche change it in true/false ( for type, chunks, icons, ohers, and..
+
+                        if(!uploderSets.includes('type'))
+                        {
+                            fileloader.settings.type = 'single';
+                        }
+                        else
+                        {
+                            fileloader.settings.type = uploderSets.split('type:')[1].split(',')[0]
+                        };
+
+                        if(!uploderSets.includes('chunksize'))
+                        {
+                            fileloader.settings.chunksize = parseInt( 64*1024 )
+                        }
+                        else
+                        {
+                            fileloader.settings.chunksize = parseInt(uploderSets.split('chunksize:')[1].split(',')[0])
+                        }
+
+                        if(!uploderSets.includes('converter'))
+                        {
+                            fileloader.settings.autoconversion = false;
+                        }
+                        else
+                        {
+                            fileloader.settings.autoconversion = (uploderSets.split('converter:')[1].split(',')[0]=='true') ? true : false;
+                        }
+
+                        if(!uploderSets.includes('preview'))
+                        {
+                            fileloader.settings.preview = false;
+                        }
+                        else
+                        {
+                            fileloader.settings.preview = (uploderSets.split('preview:')[1].split(',')[0]=='true') ? true : false;
+                        }
+
+                        if(!uploderSets.includes('linked'))
+                        {
+                            fileloader.settings.linked = false;
+                        }
+                        else
+                        {
+                            fileloader.settings.linked = (uploderSets.split('linked:')[1].split(',')[0]=='true') ? true : false;
+                        }
+
+                        if(!uploderSets.includes('icons'))
+                        {
+                            fileloader.settings.previewicons = false;
+                        }
+                        else
+                        {
+                            fileloader.settings.previewicons = (uploderSets.split('icons:')[1].split(',')[0]=='true') ? true : false;
+                        }
+
+                        if(!uploderSets.includes('deleter'))
+                        {
+                            fileloader.settings.deleter = false;
+                        }
+                        else
+                        {
+                            fileloader.settings.deleter = (uploderSets.split('deleter:')[1].split(',')[0]=='true') ? true : false;
+                        }
+
+                        if(!uploderSets.includes('sortable'))
+                        {
+                            fileloader.settings.sortable = false;
+                        }
+                        else
+                        {
+                            fileloader.settings.sortable = (uploderSets.split('sortable:')[1].split(',')[0]=='true') ? true : false;
+                        }
+
+                        if(!uploderSets.includes('grabber'))
+                        {
+                            fileloader.settings.grabber = false;
+                        }
+                        else
+                        {
+                            fileloader.settings.grabber = (uploderSets.split('grabber:')[1].split(',')[0]=='true') ? true : false;
+                        }
+
+                        if(!uploderSets.includes('filters'))
+                        {
+                            fileloader.settings.filters = false;
+                        }
+                        else
+                        {
+                            fileloader.settings.filters = (uploderSets.split('filters:')[1].split(',')[0]=='true') ? true : false;
+                        }
+
+                        if(!uploderSets.includes('metalabel'))
+                        {
+                            fileloader.settings.metalabel = false;
+                        }
+                        else
+                        {
+                            fileloader.settings.metalabel = (uploderSets.split('metalabel:')[1].split(',')[0]=='true') ? true : false;
+                        }
+
+                        if(!uploderSets.includes('titlelabel'))
+                        {
+                            fileloader.settings.filetitlelabel = false;
+                        }
+                        else
+                        {
+                            fileloader.settings.filetitlelabel = (uploderSets.split('titlelabel:')[1].split(',')[0]=='true') ? true : false;
+                        }
+
+                        if(!uploderSets.includes('customized'))
+                        {
+                            fileloader.settings.customized = false;
+                        }
+                        else
+                        {
+                            fileloader.settings.customized = (uploderSets.split('customized:')[1].split(',')[0]=='true') ? true : false;
+                        }
+
+
+                        //  ...sortable slots settings...
+
+                        let grabboxstart  = (fileloader.settings.sortable==true) ? '<div class="grabslot-['+fileloaderid+']"><div class="grabbox">' : '',
+                            grabboxend    = (fileloader.settings.sortable==true) ? '</div></div>' : '';
+
+
+                        // ...compression settings)
+
+                        let compressorSets = String(fileloader.container.dataset.compressor);
+
+                        if(fileloader.container.dataset.compressor)
+                        {
+                            let resolution = (compressorSets.includes('resolution')) ? compressorSets.split('image-resolution:')[1].split(',')[0] : null;
+
+                            if(!compressorSets.includes('resize-type')){ fileloader.compressor.resizingtype = 'proportional' ;}
+                            else{ fileloader.compressor.resizingtype = (compressorSets.split('resize-type:')[1].split(',')[0]=='proportional')?'proportional':'linear'; }
+
+                            fileloader.compressor.imageMaxWidth  = parseInt( resolution.split('x')[0] ) || 1920;
+                            fileloader.compressor.imageMaxHeight = parseInt( resolution.split('x')[1] ) || 1920;
+                            fileloader.compressor.imageQuality   = parseFloat( compressorSets.split('image-quality:')[1].split(',')[0]/100 ) || .75;
+                        }
+                        else
+                        {
+                            fileloader.settings.preview = false;
+                            fileloader.settings.linked = false;
+                            fileloader.compressor=false;
+                        }
+
+                        if(fileloader.settings.autoconversion==false)
+                        {
+                            fileloader.settings.preview = false;
+                            fileloader.settings.linked = false;
+                            fileloader.compressor=false;
+                        }
+
+
+                        /*----*/
+
+
+                        // (method) set display type
+                        // :: it's called by loopfiles.
+
+                        function makedisplay(fileloader)
+                        {
+
+                            if(fileloader.settings.type == 'single')
+                            {
+
+                                if(fileloader.settings.sortable==true)
+                                {
+                                    fileloader.settings.sortable = false;
+                                    debug(':: [⚠ ui alert]: Info on fileloader\n   ⮑ settings work, displaytype single connot have a sortable!\n\n');
+                                }
+                                if(fileloader.settings.title==true)
+                                {
+                                    fileloader.settings.title = false;
+                                    debug(':: [⚠ ui alert]: Info on fileloader\n   ⮑ settings work, displaytype single connot have a titles!\n\n');
+                                }
+                                if(fileloader.settings.title==true)
+                                {
+                                    fileloader.settings.title = false;
+                                    debug(':: [⚠ ui alert]: Info on fileloader\n   ⮑ settings work, displaytype single connot have a titles!\n\n');
+                                }
+                                if(fileloader.settings.metalabel==true)
+                                {
+                                    fileloader.settings.metalabel = false;
+                                    debug(':: [⚠ ui alert]: Info on fileloader\n   ⮑ settings work, displaytype single connot have a labels!\n\n');
+                                }
+                                if( fileloader.settings.grabber==true )
+                                {
+                                    fileloader.settings.grabber = false;
+                                    debug(`:: [⚠ ui alert]: fileloader data-settings error\n   ⮑ type-single not accept a grabber`);
+                                }
+
+
+                                fileloader.input.setAttribute('maxlength','1');
+                                fileloader.display.element.classList.add('type-single');
+                                fileloader.display.container = fileloader.display.element;
+
+                            }
+                            else if(fileloader.settings.type == 'listed')
+                            {
+
+                                fileloader.display.element.classList.add('type-list');
+                                fileloader.display.element.innerHTML = (`<div class="hide-bar-y"><div class="scroll-y"><div></div></div></div>`);
+                                fileloader.display.container = fileloader.display.element.querySelectorAll('.scroll-y')[0].firstElementChild;
+
+                            }
+                            else if(fileloader.settings.type == 'grid')
+                            {
+
+                                let gap = (!uploderSets.includes('boxgap')) ? '' : 'gap-'+uploderSets.split('boxgap:')[1].split(',')[0];
+
+                                fileloader.display.element.classList.add('type-grid');
+                                fileloader.display.element.innerHTML = (`<div class="hide-bar-y"><div class="scroll-y"><div class="grid-x `+gap+`"></div></div></div>`);
+                                fileloader.display.container = fileloader.display.element.querySelectorAll('.scroll-y')[0].firstElementChild;
+
+                            }
+                            else if(fileloader.settings.type == 'wall')
+                            {
+
+
+                                let wallcols = (!uploderSets.includes('wallcols')) ? '04-03-01' : uploderSets.split('wallcols:')[1].split(',')[0];
+                                let boxgap = (!uploderSets.includes('boxgap')) ? '' : 'gap-'+uploderSets.split('boxgap:')[1].split(',')[0];
+
+                                fileloader.display.element.classList.add('type-wall');
+                                fileloader.display.element.innerHTML = (`<div class="hide-bar-y"><div class="scroll-y"><div class="grid-y col-[`+wallcols+`] `+boxgap+` autoset"></div></div></div>`);
+                                fileloader.display.container = fileloader.display.element.querySelectorAll('.scroll-y')[0].firstElementChild;
+
+                            }
+                            else
+                            {
+                                debug(`:: [⚠ ui alert]: Error on fileloader\n   ⮑ settings work, displaytype not finded!\n      see more: https://git.io/J4hdC\n\n`);
+                            }
+
+                        }
+
+
+                        // autostart or... on change restart...
+
+                        loopfiles(fileloader); fileloader.input.oninput = ()=>{
+
+
+                            let uploader_run_from_other_buttonfile = checkreaderrunning();
+
+                            function checkreaderrunning() {
+                                for (let f of loaderslist.fileloader)
+                                {
+                                    if(f != fileloader)
+                                    {
+                                        if(f.running==true) return true;
+                                    }
+                                }
+                            }
+
+                            if(uploader_run_from_other_buttonfile)
+                            {
+
+                                ui.warning({
+                                    type:'alert',
+                                    content:'Warning! A file upload is already in progress on this page. I cannot continue in your request... wait the end of process.',
+                                    accept:'OK - I UNDERSTAND'
+                                }, result => {
+
+                                    // hard reset:
+                                    // fileloader.display.container.innerHTML = '';
+                                    // fileloader.datalist = [];
+                                    // makedisplay(fileloader)
+                                    // updateButtonFileList(fileloader);
+                                    // fileloader.input.style['pointer-events'] = null;
+                                    // if(fileloader.btnsend) fileloader.btnsend.style['pointer-events'] = null;
+
+                                })
+                            }
+
+                            else
+                            {
+                                loopfiles(fileloader)
                             }
 
 
-                            // autostart or... on change restart...
 
-                            loopfiles(fileloader); fileloader.input.oninput = ()=>{
+                        }
 
 
-                                let uploader_run_from_other_buttonfile = checkreaderrunning();
+                        // loop the files
 
-                                function checkreaderrunning() {
-                                    for (let f of loaderslist.fileloader)
+                        function loopfiles(fileloader)
+                        {
+
+                            // set/reset fileloader
+
+                            fileloader.display.container.innerHTML = '';
+                            fileloader.datalist = [];
+
+                            makedisplay(fileloader);
+
+
+                            // stepperloop: analize file and get all data from all boxes
+
+                            let step = 0; ( init_filesanalyzer = ( fileloader, step, () => {
+
+                                // is the end? you can add one more.
+                                if( step >= fileloader.input.files.length )
+                                {
+
+                                    // unlock input if end
+
+                                    fileloader.input.style['pointer-events'] = null;
+                                    if(fileloader.btnsend) fileloader.btnsend.style['pointer-events'] = null;
+
+
+                                    //if !single addone button exist, set it.
+
+                                    if(fileloader.settings.type != 'single' && fileloader.firstlaunch!=true)
                                     {
-                                        if(f != fileloader)
+
+                                        // remove & recreate addone button
+
+                                        if(fileloader.display.container.parentNode.querySelectorAll('.button-file-addone').length>0)
+                                                fileloader.display.element.querySelectorAll('.button-file-addone')[0].parentNode.remove()
+
+                                        fileloader.display.container.parentNode.insertAdjacentHTML('beforeEnd',`<div class="addone"><div class="button-file-addone"><label>ADD ONE MORE</label><input type="file"/></div></div>`);
+
+
+                                        // add a file via addone button
+
+                                        let inputaddone = fileloader.display.container.parentNode.querySelectorAll('.button-file-addone>input')[0];
+                                        inputaddone.oninput = () =>
                                         {
-                                            if(f.running==true) return true;
-                                        }
-                                    }
-                                }
 
-                                if(uploader_run_from_other_buttonfile)
-                                {
+                                            // lock main input if not end
 
-                                    ui.warning({
-                                        type:'alert',
-                                        content:'Warning! A file upload is already in progress on this page. I cannot continue in your request... wait the end of process.',
-                                        accept:'OK - I UNDERSTAND'
-                                    }, result => {
-
-                                        // hard reset:
-                                        // fileloader.display.container.innerHTML = '';
-                                        // fileloader.datalist = [];
-                                        // makedisplay(fileloader)
-                                        // updateButtonFileList(fileloader);
-                                        // fileloader.input.style['pointer-events'] = null;
-                                        // if(fileloader.btnsend) fileloader.btnsend.style['pointer-events'] = null;
-
-                                    })
-                                }
-
-                                else
-                                {
-                                    loopfiles(fileloader)
-                                }
+                                            fileloader.input.style['pointer-events']='none';
+                                            if(fileloader.btnsend) fileloader.btnsend.style['pointer-events']='none';
 
 
+                                            // lock addone if not end
 
-                            }
+                                            inputaddone.parentNode.querySelectorAll('label')[0].innerHTML = 'wait a moment...';
+                                            inputaddone.parentNode.disabled=true;;
+                                            inputaddone.style.visibility='collapse';
+                                            inputaddone.disabled=true;
 
-
-                            // loop the files
-
-                            function loopfiles(fileloader)
-                            {
-
-                                // set/reset fileloader
-
-                                fileloader.display.container.innerHTML = '';
-                                fileloader.datalist = [];
-
-                                makedisplay(fileloader);
-
-
-                                // stepperloop: analize file and get all data from all boxes
-
-                                let step = 0; ( init_filesanalyzer = ( fileloader, step, () => {
-
-                                    // is the end? you can add one more.
-                                    if( step >= fileloader.input.files.length )
-                                    {
-
-                                        // unlock input if end
-
-                                        fileloader.input.style['pointer-events'] = null;
-                                        if(fileloader.btnsend) fileloader.btnsend.style['pointer-events'] = null;
-
-
-                                        //if !single addone button exist, set it.
-
-                                        if(fileloader.settings.type != 'single' && fileloader.firstlaunch!=true)
-                                        {
-
-                                            // remove & recreate addone button
-
-                                            if(fileloader.display.container.parentNode.querySelectorAll('.button-file-addone').length>0)
-                                                    fileloader.display.element.querySelectorAll('.button-file-addone')[0].parentNode.remove()
-
-                                            fileloader.display.container.parentNode.insertAdjacentHTML('beforeEnd',`<div class="addone"><div class="button-file-addone"><label>ADD ONE MORE</label><input type="file"/></div></div>`);
-
-
-                                            // add a file via addone button
-
-                                            let inputaddone = fileloader.display.container.parentNode.querySelectorAll('.button-file-addone>input')[0];
-                                            inputaddone.oninput = () =>
+                                            if(inputaddone.files.length==1)
                                             {
 
-                                                // lock main input if not end
+                                                let newfile = inputaddone.files[0],
+                                                    newstep = fileloader.input.files.length;
 
-                                                fileloader.input.style['pointer-events']='none';
-                                                if(fileloader.btnsend) fileloader.btnsend.style['pointer-events']='none';
+                                                makeNewData(fileloader,newstep);
 
-
-                                                // lock addone if not end
-
-                                                inputaddone.parentNode.querySelectorAll('label')[0].innerHTML = 'wait a moment...';
-                                                inputaddone.parentNode.disabled=true;;
-                                                inputaddone.style.visibility='collapse';
-                                                inputaddone.disabled=true;
-
-                                                if(inputaddone.files.length==1)
+                                                analyzeStepData( fileloader, newstep, newfile, ()=>
                                                 {
 
-                                                    let newfile = inputaddone.files[0],
-                                                        newstep = fileloader.input.files.length;
+                                                    // unlock inputs
 
-                                                    makeNewData(fileloader,newstep);
+                                                    fileloader.input.style['pointer-events'] = null;
+                                                    if(fileloader.btnsend) fileloader.btnsend.style['pointer-events'] = null;
 
-                                                    analyzeStepData( fileloader, newstep, newfile, ()=>
-                                                    {
+                                                    inputaddone.parentNode.querySelectorAll('label')[0].innerHTML = 'ADD ONE MORE';
+                                                    inputaddone.parentNode.removeAttribute('disabled');
+                                                    inputaddone.removeAttribute('style');
+                                                    inputaddone.removeAttribute('disabled');
 
-                                                        // unlock inputs
+                                                    // update the real file list
 
-                                                        fileloader.input.style['pointer-events'] = null;
-                                                        if(fileloader.btnsend) fileloader.btnsend.style['pointer-events'] = null;
+                                                    updateButtonFileList(fileloader);
 
-                                                        inputaddone.parentNode.querySelectorAll('label')[0].innerHTML = 'ADD ONE MORE';
-                                                        inputaddone.parentNode.removeAttribute('disabled');
-                                                        inputaddone.removeAttribute('style');
-                                                        inputaddone.removeAttribute('disabled');
+                                                })
 
-                                                        // update the real file list
-
-                                                        updateButtonFileList(fileloader);
-
-                                                    })
-
-                                                    eventfilesAddOne=null;
-
-                                                }
+                                                eventfilesAddOne=null;
 
                                             }
 
-
                                         }
 
-
-                                        //update main input list
-
-                                        // updateButtonFileList(fileloader);
-                                        onclickresetter(fileloader);
-
-                                        ui.reload('grabs');
-
-                                        fileloader.running=false;
-
-                                    }
-
-                                    // if not end, run analyzer.
-                                    else
-                                    {
-
-                                        // lock input if not end
-
-                                        fileloader.input.style['pointer-events']='none';
-                                        if(fileloader.btnsend){fileloader.btnsend.style['pointer-events']='none'};
-
-                                        // add new step on object
-                                        // :: preapare all type of data and make display
-                                        // :: the data type is a model, It's empty.
-
-                                        makeNewData(fileloader,step);
-
-                                        // analysys of object steps
-                                        // :: this read all type of file into input
-                                        // :: ad put it into a data model
-
-                                        analyzeStepData(
-                                        fileloader, step, fileloader.input.files[step],
-                                        ()=>{
-                                            init_filesanalyzer(fileloader,step++);
-                                        });
 
                                     }
 
 
-                                    function makeNewData (fileloader,steptarget)
+                                    //update main input list
+
+                                    // updateButtonFileList(fileloader);
+                                    onclickresetter(fileloader);
+
+                                    ui.reload('grabs');
+
+                                    fileloader.running=false;
+
+                                }
+
+                                // if not end, run analyzer.
+                                else
+                                {
+
+                                    // lock input if not end
+
+                                    fileloader.input.style['pointer-events']='none';
+                                    if(fileloader.btnsend){fileloader.btnsend.style['pointer-events']='none'};
+
+                                    // add new step on object
+                                    // :: preapare all type of data and make display
+                                    // :: the data type is a model, It's empty.
+
+                                    makeNewData(fileloader,step);
+
+                                    // analysys of object steps
+                                    // :: this read all type of file into input
+                                    // :: ad put it into a data model
+
+                                    analyzeStepData(
+                                    fileloader, step, fileloader.input.files[step],
+                                    ()=>{
+                                        init_filesanalyzer(fileloader,step++);
+                                    });
+
+                                }
+
+
+                                function makeNewData (fileloader,steptarget)
+                                {
+
+                                    // made new file data
+
+                                    fileloader.datalist.push({
+
+                                            'filedata'
+                                            :{
+                                                'name'     : 'not-defined' ,
+                                                'blob'     : 'not-defined' ,
+                                                'size'     : 'not-defined' ,
+                                                'typed'    : 'not-defined' ,
+                                                'mime'     : 'not-defined' ,
+                                                'chunks'   : 'not-defined'
+                                            },
+
+                                            'container'    : 'not-defined' ,
+                                            'origins'      : 'not-defined' ,
+                                            'buttons'
+                                            :{
+                                                'title'     : 'not-defined' ,
+                                                'deleter'   : 'not-defined' ,
+                                                'grabber'   : 'not-defined' ,
+                                                'view'      : 'not-defined' ,
+                                                'filters'   : 'not-defined'
+                                            }
+
+                                    });
+
+
+                                    // select a type for display the file
+
+                                    let btn_option_panel    = (!fileloader.settings.filters) ?``: `<a class="action-filters" data-index="`+((steptarget>=0)?steptarget:fileloader.contents.length)+`" title="edit this file"></a>`;
+                                    let btn_linked_icon     = (!fileloader.settings.linked)  ?``: `<a class="action-view" title="view this file"></a>`;
+                                    let btn_delete_icon     = (!fileloader.settings.deleter) ?``: `<a class="action-delete" title="remove this file"></a>`;
+                                    let btn_grab_icon       = (!fileloader.settings.grabber) ?``: `<span class="action-grab" title="move on other place"></span>`;
+
+                                    let print_previewbox  = (!fileloader.settings.preview && !fileloader.settings.linked)
+                                                                ?``:`
+                                                                    <div class="preview">
+                                                                        <img alt=" " src=" ">
+                                                                    </div>
+                                                                `;
+
+                                    let print_actionsbox = (fileloader.settings.filters || fileloader.settings.linked || fileloader.settings.deleter || fileloader.settings.grabber)
+                                                                ?`
+                                                                    <span class="actions">
+                                                                        `+btn_option_panel
+                                                                         +btn_linked_icon
+                                                                         +btn_delete_icon
+                                                                         +btn_grab_icon+`
+                                                                     </span>
+                                                                 `:``;
+
+                                    let print_textlabels = (!fileloader.settings.metalabel)
+                                                                ?``:`
+                                                                    <p class="filetype"></p>
+                                                                    <p class="filesize"></p>
+                                                                `;
+
+                                    let print_nameinput  = (!fileloader.settings.filetitlelabel)
+                                                                ?``:`
+                                                                    <div class="action-rename">
+                                                                        <input type="text" class="ellipsis" value="" />
+                                                                    </div>
+                                                                `;
+
+                                    if(fileloader.settings.type == 'listed')
                                     {
 
-                                        // made new file data
+                                        let html_output =
+                                        `
+                                            <div class="databox">
+                                                `+grabboxstart+`
 
-                                        fileloader.datalist.push({
-
-                                                'filedata'
-                                                :{
-                                                    'name'     : 'not-defined' ,
-                                                    'blob'     : 'not-defined' ,
-                                                    'size'     : 'not-defined' ,
-                                                    'typed'    : 'not-defined' ,
-                                                    'mime'     : 'not-defined' ,
-                                                    'chunks'   : 'not-defined'
-                                                },
-
-                                                'container'    : 'not-defined' ,
-                                                'origins'      : 'not-defined' ,
-                                                'buttons'
-                                                :{
-                                                    'title'     : 'not-defined' ,
-                                                    'deleter'   : 'not-defined' ,
-                                                    'grabber'   : 'not-defined' ,
-                                                    'view'      : 'not-defined' ,
-                                                    'filters'   : 'not-defined'
-                                                }
-
-                                        });
-
-
-                                        // select a type for display the file
-
-                                        let btn_option_panel    = (!fileloader.settings.filters) ?``: `<a class="action-filters" data-index="`+((steptarget>=0)?steptarget:fileloader.contents.length)+`" title="edit this file"></a>`;
-                                        let btn_linked_icon     = (!fileloader.settings.linked)  ?``: `<a class="action-view" title="view this file"></a>`;
-                                        let btn_delete_icon     = (!fileloader.settings.deleter) ?``: `<a class="action-delete" title="remove this file"></a>`;
-                                        let btn_grab_icon       = (!fileloader.settings.grabber) ?``: `<span class="action-grab" title="move on other place"></span>`;
-
-                                        let print_previewbox  = (!fileloader.settings.preview && !fileloader.settings.linked)
-                                                                    ?``:`
-                                                                        <div class="preview">
-                                                                            <img alt=" " src=" ">
-                                                                        </div>
-                                                                    `;
-
-                                        let print_actionsbox = (fileloader.settings.filters || fileloader.settings.linked || fileloader.settings.deleter || fileloader.settings.grabber)
-                                                                    ?`
-                                                                        <span class="actions">
-                                                                            `+btn_option_panel
-                                                                             +btn_linked_icon
-                                                                             +btn_delete_icon
-                                                                             +btn_grab_icon+`
-                                                                         </span>
-                                                                     `:``;
-
-                                        let print_textlabels = (!fileloader.settings.metalabel)
-                                                                    ?``:`
-                                                                        <p class="filetype"></p>
-                                                                        <p class="filesize"></p>
-                                                                    `;
-
-                                        let print_nameinput  = (!fileloader.settings.filetitlelabel)
-                                                                    ?``:`
-                                                                        <div class="action-rename">
-                                                                            <input type="text" class="ellipsis" value="" />
-                                                                        </div>
-                                                                    `;
-
-                                        if(fileloader.settings.type == 'listed')
-                                        {
-
-                                            let html_output =
-                                            `
-                                                <div class="databox">
-                                                    `+grabboxstart+`
-
-                                                        <div class="contents">
-
-                                                            `+print_previewbox+`
-                                                            `+print_nameinput+`
-                                                            `+print_textlabels+`
-                                                            `+print_actionsbox+`
-
-                                                            <div class="lazy absolute-center maxheight [status-active]"></div>
-                                                            <div class="progress-[00]"></div>
-
-                                                        </div>
-
-                                                   `+grabboxend+`
-                                                </div>
-                                            `;
-
-                                            fileloader.display.container.insertAdjacentHTML('beforeEnd',html_output);
-
-                                        }
-
-                                        else if(fileloader.settings.type == 'grid')
-                                        {
-
-                                            let gridcut =  (!uploderSets.includes('boxcut'))? `25-25-100`:uploderSets.split('boxcut:')[1].split(',')[0];
-
-
-                                            let html_output =
-                                            `
-                                              <div class="box-[`+gridcut+`]">
-                                                  <div class="databox">
-                                                    `+grabboxstart+`
-
-                                                        <div class="contents">
-
-                                                            `+print_previewbox+`
-                                                            `+print_actionsbox+`
-                                                            `+print_nameinput+`
-                                                            `+print_textlabels+`
-
-                                                            <div class="lazy absolute-center maxheight [status-active]"></div>
-                                                            <div class="progress-[00]"></div>
-
-                                                        </div>
-
-                                                    `+grabboxend+`
-                                                    </div>
-                                              </div>
-                                            `;
-
-                                            fileloader.display.container.insertAdjacentHTML('beforeEnd',html_output);
-
-                                        }
-
-                                        else if(fileloader.settings.type == 'wall')
-                                        {
-
-
-                                            let html_output =
-                                            `
-                                              <div class="box databox">
-                                                   `+grabboxstart+`
-
-                                                          <div class="contents">
-
-                                                                `+print_actionsbox+`
-                                                                `+print_previewbox+`
-                                                                `+print_nameinput+`
-                                                                `+print_textlabels+`
-
-                                                                <div class="lazy absolute-center maxheight [status-active]"></div>
-                                                                <div class="progress-[00]"></div>
-
-                                                          </div>
-
-                                                       </div>
-
-                                                `+grabboxend+`
-                                              </div>
-                                            `;
-
-                                            fileloader.display.container.insertAdjacentHTML('beforeEnd',html_output);
-
-                                            ui.reload('grid-y');
-
-                                        }
-
-                                        else
-                                        {
-
-                                            let print_displaysingle_html_output = ``;
-
-                                            if ( fileloader.settings.filters || fileloader.settings.linked || fileloader.settings.deleter || fileloader.settings.grabber )
-                                            {
-                                                print_displaysingle_html_output = `
-                                                                        <div class="preview">
-                                                                            <img alt="" src="">
-                                                                            `+print_actionsbox+`
-                                                                        </div>`;
-                                            }
-
-                                            else
-                                            {
-                                                print_displaysingle_html_output = `
-                                                                            <div class="preview">
-                                                                                <img alt="" src="">
-                                                                            </div>`
-                                            }
-
-                                            let html_output =
-                                            `
-                                                <div class="databox">
                                                     <div class="contents">
 
-                                                        `+print_displaysingle_html_output+`
+                                                        `+print_previewbox+`
+                                                        `+print_nameinput+`
+                                                        `+print_textlabels+`
+                                                        `+print_actionsbox+`
 
                                                         <div class="lazy absolute-center maxheight [status-active]"></div>
                                                         <div class="progress-[00]"></div>
 
                                                     </div>
-                                                </div>
-                                            `;
 
-                                            fileloader.display.container.insertAdjacentHTML('beforeEnd',html_output);
-                                        }
+                                               `+grabboxend+`
+                                            </div>
+                                        `;
 
-
-                                        // select and set a specific stepped data in the data list object
-
-                                        let thestepdata = fileloader.datalist[steptarget];
-
-                                        thestepdata.container = fileloader.display.container.querySelectorAll('.databox')[steptarget];
-
-
-                                        if(fileloader.settings.filetitlelabel ) { thestepdata.buttons.title   = thestepdata.container.querySelectorAll('.action-rename')[0]; }
-                                        if(fileloader.settings.deleter ) { thestepdata.buttons.deleter = thestepdata.container.querySelectorAll('.action-delete')[0]; }
-                                        if(fileloader.settings.grabber ) { thestepdata.buttons.grabber = thestepdata.container.querySelectorAll('.action-grab')[0]; }
-                                        if(fileloader.settings.linked )  { thestepdata.buttons.view    = thestepdata.container.querySelectorAll('.action-view')[0]; }
-                                        if(fileloader.settings.filters ) { thestepdata.buttons.filters = thestepdata.container.querySelectorAll('.action-filters')[0]; }
+                                        fileloader.display.container.insertAdjacentHTML('beforeEnd',html_output);
 
                                     }
 
-
-                                    function analyzeStepData(fileloader,steptarget,steppedfile,nextstep)
+                                    else if(fileloader.settings.type == 'grid')
                                     {
 
-                                        // active data deleter
-                                        if(fileloader.settings.deleter && steptarget>=fileloader.datalist.length-1) deleteAData(fileloader);
+                                        let gridcut =  (!uploderSets.includes('boxcut'))? `25-25-100`:uploderSets.split('boxcut:')[1].split(',')[0];
 
 
-                                        let stepdata       = fileloader.datalist[steptarget];
+                                        let html_output =
+                                        `
+                                          <div class="box-[`+gridcut+`]">
+                                              <div class="databox">
+                                                `+grabboxstart+`
 
-                                        let lazy           = stepdata.container.querySelectorAll('.lazy')[0],
-                                            bar            = stepdata.container.querySelectorAll('[class*=progress-]')[0];
+                                                    <div class="contents">
 
-                                        let browserurl     = window.URL || window.webkitURL;
+                                                        `+print_previewbox+`
+                                                        `+print_actionsbox+`
+                                                        `+print_nameinput+`
+                                                        `+print_textlabels+`
 
-                                        let readFiles      = new FileReader(),
-                                            chunksize      = parseInt(fileloader.settings.chunksize),
-                                            filechunks     = [],
-                                            chunkstep      = 0;
+                                                        <div class="lazy absolute-center maxheight [status-active]"></div>
+                                                        <div class="progress-[00]"></div>
+
+                                                    </div>
+
+                                                `+grabboxend+`
+                                                </div>
+                                          </div>
+                                        `;
+
+                                        fileloader.display.container.insertAdjacentHTML('beforeEnd',html_output);
+
+                                    }
+
+                                    else if(fileloader.settings.type == 'wall')
+                                    {
 
 
-                                        // save for update orginal file list
-                                        stepdata.origins = steppedfile;
+                                        let html_output =
+                                        `
+                                          <div class="box databox">
+                                               `+grabboxstart+`
 
-                                        // loop binary in chunks
-                                        ( loadchunks = () => {
+                                                      <div class="contents">
+
+                                                            `+print_actionsbox+`
+                                                            `+print_previewbox+`
+                                                            `+print_nameinput+`
+                                                            `+print_textlabels+`
+
+                                                            <div class="lazy absolute-center maxheight [status-active]"></div>
+                                                            <div class="progress-[00]"></div>
+
+                                                      </div>
+
+                                                   </div>
+
+                                            `+grabboxend+`
+                                          </div>
+                                        `;
+
+                                        fileloader.display.container.insertAdjacentHTML('beforeEnd',html_output);
+
+                                        ui.reload('grid-y');
+
+                                    }
+
+                                    else
+                                    {
+
+                                        let print_displaysingle_html_output = ``;
+
+                                        if ( fileloader.settings.filters || fileloader.settings.linked || fileloader.settings.deleter || fileloader.settings.grabber )
+                                        {
+                                            print_displaysingle_html_output = `
+                                                                    <div class="preview">
+                                                                        <img alt="" src="">
+                                                                        `+print_actionsbox+`
+                                                                    </div>`;
+                                        }
+
+                                        else
+                                        {
+                                            print_displaysingle_html_output = `
+                                                                        <div class="preview">
+                                                                            <img alt="" src="">
+                                                                        </div>`
+                                        }
+
+                                        let html_output =
+                                        `
+                                            <div class="databox">
+                                                <div class="contents">
+
+                                                    `+print_displaysingle_html_output+`
+
+                                                    <div class="lazy absolute-center maxheight [status-active]"></div>
+                                                    <div class="progress-[00]"></div>
+
+                                                </div>
+                                            </div>
+                                        `;
+
+                                        fileloader.display.container.insertAdjacentHTML('beforeEnd',html_output);
+                                    }
 
 
-                                            // set a binary chunks readeder
-                                            let nextcut    = chunksize+chunkstep,
-                                                filecut    = steppedfile.slice(chunkstep, nextcut);
+                                    // select and set a specific stepped data in the data list object
 
-                                                if((readFiles.readyState==0 || readFiles.readyState==2) && nextcut)
-                                                {
+                                    let thestepdata = fileloader.datalist[steptarget];
 
-                                                    fileloader.running=true;
+                                    thestepdata.container = fileloader.display.container.querySelectorAll('.databox')[steptarget];
 
-                                                    setTimeout( ()=>{
 
-                                                        readFiles.readAsBinaryString(filecut);
+                                    if(fileloader.settings.filetitlelabel ) { thestepdata.buttons.title   = thestepdata.container.querySelectorAll('.action-rename')[0]; }
+                                    if(fileloader.settings.deleter ) { thestepdata.buttons.deleter = thestepdata.container.querySelectorAll('.action-delete')[0]; }
+                                    if(fileloader.settings.grabber ) { thestepdata.buttons.grabber = thestepdata.container.querySelectorAll('.action-grab')[0]; }
+                                    if(fileloader.settings.linked )  { thestepdata.buttons.view    = thestepdata.container.querySelectorAll('.action-view')[0]; }
+                                    if(fileloader.settings.filters ) { thestepdata.buttons.filters = thestepdata.container.querySelectorAll('.action-filters')[0]; }
 
-                                                        // now read
-                                                        readFiles.onload = fileloading =>
+                                }
+
+
+                                function analyzeStepData(fileloader,steptarget,steppedfile,nextstep)
+                                {
+
+                                    // active data deleter
+                                    if(fileloader.settings.deleter && steptarget>=fileloader.datalist.length-1) deleteAData(fileloader);
+
+
+                                    let stepdata       = fileloader.datalist[steptarget];
+
+                                    let lazy           = stepdata.container.querySelectorAll('.lazy')[0],
+                                        bar            = stepdata.container.querySelectorAll('[class*=progress-]')[0];
+
+                                    let browserurl     = window.URL || window.webkitURL;
+
+                                    let readFiles      = new FileReader(),
+                                        chunksize      = parseInt(fileloader.settings.chunksize),
+                                        filechunks     = [],
+                                        chunkstep      = 0;
+
+
+                                    // save for update orginal file list
+                                    stepdata.origins = steppedfile;
+
+                                    // loop binary in chunks
+                                    ( loadchunks = () => {
+
+
+                                        // set a binary chunks readeder
+                                        let nextcut    = chunksize+chunkstep,
+                                            filecut    = steppedfile.slice(chunkstep, nextcut);
+
+                                            if((readFiles.readyState==0 || readFiles.readyState==2) && nextcut)
+                                            {
+
+                                                fileloader.running=true;
+
+                                                setTimeout( ()=>{
+
+                                                    readFiles.readAsBinaryString(filecut);
+
+                                                    // now read
+                                                    readFiles.onload = fileloading =>
+                                                    {
+
+
+                                                        // get/write percent of readed
+                                                        let percentLoaded = parseInt( ((chunkstep / steppedfile.size) * 100), 10 ),
+                                                            percentString = String( (parseInt(percentLoaded)<10)? ('0'+percentLoaded) : percentLoaded );
+
+                                                            bar.className = 'progress-['+percentString+']';
+
+
+                                                        // if bit remained is 0
+                                                        if (fileloading.target.result.length==0)
                                                         {
 
+                                                            bar.className = 'progress-[100]';
 
-                                                            // get/write percent of readed
-                                                            let percentLoaded = parseInt( ((chunkstep / steppedfile.size) * 100), 10 ),
-                                                                percentString = String( (parseInt(percentLoaded)<10)? ('0'+percentLoaded) : percentLoaded );
+                                                            // lounch final analysys
+                                                            setReadedDatas();
 
-                                                                bar.className = 'progress-['+percentString+']';
+                                                        }
 
+                                                        else
+                                                        {
 
-                                                            // if bit remained is 0
-                                                            if (fileloading.target.result.length==0)
+                                                            if (fileloading.target.error == null)
                                                             {
 
-                                                                bar.className = 'progress-[100]';
-
-                                                                // lounch final analysys
-                                                                setReadedDatas();
+                                                                // relounch loadchunks with new chunks
+                                                                filechunks.push(fileloading.target.result)
+                                                                chunkstep += fileloading.target.result.length;
+                                                                loadchunks(chunkstep,chunksize,steppedfile);
 
                                                             }
-
                                                             else
                                                             {
-
-                                                                if (fileloading.target.error == null)
-                                                                {
-
-                                                                    // relounch loadchunks with new chunks
-                                                                    filechunks.push(fileloading.target.result)
-                                                                    chunkstep += fileloading.target.result.length;
-                                                                    loadchunks(chunkstep,chunksize,steppedfile);
-
-                                                                }
-                                                                else
-                                                                {
-                                                                    // wtf is going wrong?
-                                                                    readFiles.oncrash(fileloading.target.error);
-
-                                                                }
+                                                                // wtf is going wrong?
+                                                                readFiles.oncrash(fileloading.target.error);
 
                                                             }
 
+                                                        }
 
-                                                            function setReadedDatas()
+
+                                                        function setReadedDatas()
+                                                        {
+
+                                                            if(fileloader.display.element.querySelectorAll('.scroll-y').length>0)
                                                             {
+                                                                stepdata.container.disabled = true;
+                                                                let scroller = fileloader.display.element.querySelectorAll('.scroll-y')[0];
+                                                                scroller.scrollTop = scroller.scrollHeight;
+                                                            }
 
-                                                                if(fileloader.display.element.querySelectorAll('.scroll-y').length>0)
+                                                            setTimeout(()=>{
+
+
+                                                                let maxw                = fileloader.compressor.imageMaxWidth,
+                                                                    maxh                = fileloader.compressor.imageMaxHeight;
+
+                                                                let fileweightlimit     = inputfield.getAttribute("size");  // let substringlength = words.map(function(word) { return word + ' = ' + word.length; });
+
+                                                                let typed               = 'not-defined',
+                                                                    fileextension       = (steppedfile.name.includes('.')) ? (steppedfile.name.slice(steppedfile.name.lastIndexOf('.') + 1)).toLowerCase() : false;
+
+                                                                let issvg               = ['svg'].includes(fileextension),
+                                                                    isgif               = ['gif'].includes(fileextension),
+                                                                    isimage             = ['mjpeg','bmp','jpg','jpeg','png','ico','webp','cur','jpe','jps','jfif'].includes(fileextension),
+                                                                    issound             = ['amb','aac','flac','m4a','m4r','mp3','oga','ogg','opus','wav'].includes(fileextension),
+                                                                    isvideo             = ['mp4','f4v','mpeg','m4v','mov','webm','ogv'].includes(fileextension),
+                                                                    isunsound           = ['8svx','ac3','aiff','au','avr','caf','cdda','cvs','cvsd','cvu','dts','dvms','fap','fssd','gsrt','hcom','htk','ima','ircam','maud','mp2','nist','paf','prc','pvf','ra','sd2','sln','smp','snd','sndr','sndt','sou','sph','spx','tta','txw','vms','voc','vox','w64','wma','wv','wve'].includes(fileextension),
+                                                                    isunimage           = ['ai','dds','eps','exr','fts','hdr','mng','pam','pbm','pcd','pcx','pfm','pgm','picon','pict','pnm','ppm','psd','ras','sfw','sgi','tga','tiff','tif','wbmp','wpg','x3f','xbm','xdf','xwd','xcf','xpm','cr2','dng','erf','heic','heif','jp2','nef','nrw','orf','pef','pes','raf','rw2'].includes(fileextension),
+                                                                    isunvideo           = ['3gp','asf','avi','flv','hevc','m2ts','m2v','mkv','mpg','mts','mxf','swf','ts','vob','wmv','wtv'].includes(fileextension);
+
+
+                                                                if(!fileextension)      { typed = 'binary-file';   mime = 'not-web-compatible'; }
+                                                                else if (issvg)         { typed = 'web-xmlsvg';    mime = 'image/svg+xml'; }
+                                                                else if (isgif)         { typed = 'web-gif';       mime = 'image/gif'; }
+                                                                else if (isimage)       { typed = 'web-image';     mime = (fileextension=='image/ico') ? 'x-icon' : 'image/png'; }
+                                                                else if (issound)       { typed = 'web-audio';     mime = 'audio/mpeg'; }
+                                                                else if (isvideo)       { typed = 'web-video';     mime = 'video/mp4'; }
+                                                                else if (isunimage)     { typed = 'not-web-image'; mime = 'not-web-compatible'; }
+                                                                else if (isunsound)     { typed = 'not-web-audio'; mime = 'not-web-compatible'; }
+                                                                else if (isunvideo)     { typed = 'not-web-video'; mime = 'not-web-compatible'; }
+                                                                else  /*(isfiles)*/     { typed = 'binary-file';   mime = 'not-web-compatible'; }
+
+
+                                                                // save all basic data...
+
+                                                                stepdata.filedata.name   = steppedfile.name.split('.'+fileextension)[0]||steppedfile.name;
+                                                                stepdata.filedata.blob   = browserurl.createObjectURL(steppedfile);
+                                                                stepdata.filedata.size   = parseFloat( (Math.floor((steppedfile.size/1000))/1024).toFixed(2) );
+                                                                stepdata.filedata.chunks = filechunks;
+                                                                stepdata.filedata.mime   = mime;
+                                                                stepdata.filedata.typed  = typed;
+
+                                                                let idstring = String(stepdata.filedata.blob), idcontent = String(idstring.substr(idstring.length - 5));
+
+                                                                stepdata.container.querySelectorAll('.contents')[0].setAttribute('id', idcontent );
+                                                                stepdata.id = idcontent;
+
+
+                                                                // types: binary big data / base64 optimized;
+                                                                (!fileloader.settings.autoconversion) ? unmime() : convertion();
+
+                                                                function convertion()
                                                                 {
-                                                                    stepdata.container.disabled = true;
-                                                                    let scroller = fileloader.display.element.querySelectorAll('.scroll-y')[0];
-                                                                    scroller.scrollTop = scroller.scrollHeight;
-                                                                }
 
-                                                                setTimeout(()=>{
+                                                                    // make a data previews
 
-
-                                                                    let maxw                = fileloader.compressor.imageMaxWidth,
-                                                                        maxh                = fileloader.compressor.imageMaxHeight;
-
-                                                                    let fileweightlimit     = inputfield.getAttribute("size");  // let substringlength = words.map(function(word) { return word + ' = ' + word.length; });
-
-                                                                    let typed               = 'not-defined',
-                                                                        fileextension       = (steppedfile.name.includes('.')) ? (steppedfile.name.slice(steppedfile.name.lastIndexOf('.') + 1)).toLowerCase() : false;
-
-                                                                    let issvg               = ['svg'].includes(fileextension),
-                                                                        isgif               = ['gif'].includes(fileextension),
-                                                                        isimage             = ['mjpeg','bmp','jpg','jpeg','png','ico','webp','cur','jpe','jps','jfif'].includes(fileextension),
-                                                                        issound             = ['amb','aac','flac','m4a','m4r','mp3','oga','ogg','opus','wav'].includes(fileextension),
-                                                                        isvideo             = ['mp4','f4v','mpeg','m4v','mov','webm','ogv'].includes(fileextension),
-                                                                        isunsound           = ['8svx','ac3','aiff','au','avr','caf','cdda','cvs','cvsd','cvu','dts','dvms','fap','fssd','gsrt','hcom','htk','ima','ircam','maud','mp2','nist','paf','prc','pvf','ra','sd2','sln','smp','snd','sndr','sndt','sou','sph','spx','tta','txw','vms','voc','vox','w64','wma','wv','wve'].includes(fileextension),
-                                                                        isunimage           = ['ai','dds','eps','exr','fts','hdr','mng','pam','pbm','pcd','pcx','pfm','pgm','picon','pict','pnm','ppm','psd','ras','sfw','sgi','tga','tiff','tif','wbmp','wpg','x3f','xbm','xdf','xwd','xcf','xpm','cr2','dng','erf','heic','heif','jp2','nef','nrw','orf','pef','pes','raf','rw2'].includes(fileextension),
-                                                                        isunvideo           = ['3gp','asf','avi','flv','hevc','m2ts','m2v','mkv','mpg','mts','mxf','swf','ts','vob','wmv','wtv'].includes(fileextension);
-
-
-                                                                    if(!fileextension)      { typed = 'binary-file';   mime = 'not-web-compatible'; }
-                                                                    else if (issvg)         { typed = 'web-xmlsvg';    mime = 'image/svg+xml'; }
-                                                                    else if (isgif)         { typed = 'web-gif';       mime = 'image/gif'; }
-                                                                    else if (isimage)       { typed = 'web-image';     mime = (fileextension=='image/ico') ? 'x-icon' : 'image/png'; }
-                                                                    else if (issound)       { typed = 'web-audio';     mime = 'audio/mpeg'; }
-                                                                    else if (isvideo)       { typed = 'web-video';     mime = 'video/mp4'; }
-                                                                    else if (isunimage)     { typed = 'not-web-image'; mime = 'not-web-compatible'; }
-                                                                    else if (isunsound)     { typed = 'not-web-audio'; mime = 'not-web-compatible'; }
-                                                                    else if (isunvideo)     { typed = 'not-web-video'; mime = 'not-web-compatible'; }
-                                                                    else  /*(isfiles)*/     { typed = 'binary-file';   mime = 'not-web-compatible'; }
-
-
-                                                                    // save all basic data...
-
-                                                                    stepdata.filedata.name   = steppedfile.name.split('.'+fileextension)[0]||steppedfile.name;
-                                                                    stepdata.filedata.blob   = browserurl.createObjectURL(steppedfile);
-                                                                    stepdata.filedata.size   = parseFloat( (Math.floor((steppedfile.size/1000))/1024).toFixed(2) );
-                                                                    stepdata.filedata.chunks = filechunks;
-                                                                    stepdata.filedata.mime   = mime;
-                                                                    stepdata.filedata.typed  = typed;
-
-                                                                    let idstring = String(stepdata.filedata.blob), idcontent = String(idstring.substr(idstring.length - 5));
-
-                                                                    stepdata.container.querySelectorAll('.contents')[0].setAttribute('id', idcontent );
-                                                                    stepdata.id = idcontent;
-
-
-                                                                    // types: binary big data / base64 optimized;
-                                                                    (!fileloader.settings.autoconversion) ? unmime() : convertion();
-
-                                                                    function convertion()
+                                                                    if(isimage)
                                                                     {
 
-                                                                        // make a data previews
-
-                                                                        if(isimage)
-                                                                        {
-
-                                                                            let previewbox = stepdata.container.querySelectorAll('.preview')[0];
-                                                                            previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+fileextension );
+                                                                        let previewbox = stepdata.container.querySelectorAll('.preview')[0];
+                                                                        previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+fileextension );
 
 
-                                                                            imagecompressor(
-                                                                            filechunks,mime,maxw,maxh,
-                                                                            optimized => {
+                                                                        imagecompressor(
+                                                                        filechunks,mime,maxw,maxh,
+                                                                        optimized => {
 
-                                                                                if(!optimized)                      { printerror('ERROR ON IMAGE COMPRESSION. THIS FILE CANNOT BE SENT.'); }
-                                                                                else if(optimized=='unprintable')   { printerror('ERROR ON IMAGE PREVIEW CREATION. THIS FILE CANNOT BE SENT.'); }
-                                                                                else if(optimized=='toosmall')      { printerror('THIS IMAGE IS TOO SMALL!! MIN PX IS '+maxw+' x '+maxh); }
+                                                                            if(!optimized)                      { printerror('ERROR ON IMAGE COMPRESSION. THIS FILE CANNOT BE SENT.'); }
+                                                                            else if(optimized=='unprintable')   { printerror('ERROR ON IMAGE PREVIEW CREATION. THIS FILE CANNOT BE SENT.'); }
+                                                                            else if(optimized=='toosmall')      { printerror('THIS IMAGE IS TOO SMALL!! MIN PX IS '+maxw+' x '+maxh); }
 
-                                                                                else
-                                                                                {
-
-                                                                                    let newdata = optimized.replace(/=/g,"").replace('data:'+mime+';base64,',"");
-                                                                                    let newsize = ( ~~(newdata.length * 0.75/1000)/1024 ).toFixed(3);
-
-                                                                                    if(newsize>fileweightlimit)
-                                                                                    {
-                                                                                        printerror('FILE IS TOO BIG!! USED '+newsize+' OF '+inputfield+' Mb');
-                                                                                    }
-
-                                                                                    else
-                                                                                    {
-
-                                                                                        if(fileextension!='image/ico')
-                                                                                        {
-
-                                                                                            stepdata.filedata.size   = newsize;
-                                                                                            stepdata.filedata.chunks = [ newdata ];
-
-                                                                                            if(fileloader.settings.metalabel && fileloader.settings.type != 'single')
-                                                                                            {
-                                                                                                stepdata.container.querySelectorAll('.filesize')[0].innerText = (newsize=='0.000')? '≅ 001 Mb' : newsize +' Mb';
-                                                                                                stepdata.container.querySelectorAll('.filetype')[0].innerText = fileextension;
-                                                                                            }
-
-                                                                                        }
-
-                                                                                        if(fileloader.settings.filetitlelabel)
-                                                                                        {
-                                                                                            let startitle = stepdata.filedata.name;
-
-                                                                                            stepdata.buttons.title.firstElementChild.setAttribute('value',startitle);
-                                                                                            updatefiledataname(stepdata,startitle)
-                                                                                        }
-
-
-                                                                                        if(fileloader.settings.preview)
-                                                                                        {
-
-                                                                                            let previewbox = stepdata.container.querySelectorAll('.preview')[0];
-                                                                                            previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+fileextension );
-
-                                                                                            previewbox.firstElementChild.src = optimized;
-
-                                                                                            if(!optimized || previewbox.firstElementChild.src == undefined)
-                                                                                            {
-                                                                                                previewbox.firstElementChild.classList.add('hide');
-                                                                                            }
-
-                                                                                            if(fileloader.settings.previewicons==true)
-                                                                                            {
-                                                                                                previewbox.insertAdjacentHTML('beforeEnd',`<span class="ico-`+stepdata.filedata.typed+` ico-`+fileextension+`"></span>`);
-                                                                                            }
-
-                                                                                        }
-
-
-                                                                                        if(fileloader.settings.linked)
-                                                                                        {
-
-                                                                                            fileloader.datalist[steptarget].buttons.view.onclick = () =>
-                                                                                            {
-
-                                                                                                if(fileextension=='image/ico')
-                                                                                                {
-                                                                                                    let blobber = new Blob(
-                                                                                                    [`
-                                                                                                        <head>
-                                                                                                          <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-                                                                                                        </head>
-                                                                                                        <body>
-                                                                                                            <main>
-                                                                                                                <div>
-                                                                                                                    <small>
-                                                                                                                        WHAT YOU ARE SEEING IS THE REPRESENTATION OF ICON DATA (from .ico to web/png).<br>
-                                                                                                                        THE DATA THAT WILL BE SENT WILL RELATE TO THE REAL ICON.
-                                                                                                                    </small>
-                                                                                                                </div>
-                                                                                                                <image src="`+optimized+`"/>
-                                                                                                            </main>
-                                                                                                        </body>
-                                                                                                        <style>
-                                                                                                            html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
-                                                                                                            main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
-                                                                                                            main>div{display: flex;flex-direction: column;align-items:center;}
-                                                                                                            main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
-                                                                                                            image{position:relative;display:block;}
-                                                                                                        </style>
-
-                                                                                                    `], {type: "text/html"});
-
-                                                                                                    window.open( browserurl.createObjectURL(blobber) , '_blank');
-                                                                                                }
-                                                                                                else
-                                                                                                {
-
-                                                                                                    let mex = (!fileloader.compressor) ? `THIS IS THE IMAGE ROW DATA THAT WILL BE SENT` : `THIS IS THE OPTIMIZED IMAGE DATA THAT WILL BE SENT`;
-
-                                                                                                    let blobber = new Blob(
-                                                                                                    [`
-                                                                                                        <head>
-                                                                                                          <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-                                                                                                        </head>
-                                                                                                        <body>
-                                                                                                            <main>
-                                                                                                                <div>
-                                                                                                                    <small>
-                                                                                                                        `+mex+`
-                                                                                                                    </small>
-                                                                                                                </div>
-                                                                                                                <image src="`+optimized+`"/>
-                                                                                                            </main>
-                                                                                                        </body>
-                                                                                                        <style>
-                                                                                                            html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
-                                                                                                            main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
-                                                                                                            main>div{display: flex;flex-direction: column;align-items:center;}
-                                                                                                            main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
-                                                                                                            image{position:relative;display:block;}
-                                                                                                        </style>
-
-                                                                                                    `], {type: "text/html"});
-
-                                                                                                    window.open( browserurl.createObjectURL(blobber) , '_blank');
-
-                                                                                                }
-
-
-                                                                                            }
-                                                                                        }
-
-                                                                                    }
-
-                                                                                    clearmemory();
-                                                                                    endofstep(bar,lazy);
-
-                                                                                }
-
-                                                                            });
-
-                                                                        }
-
-                                                                        else if(issvg || isgif)
-                                                                        {
-
-                                                                            if(stepdata.filedata.size>fileweightlimit)
-                                                                            {
-                                                                                printerror('FILE IS TOO BIG!! USED '+stepdata.filedata.size+' OF '+fileweightlimit+' Mb');
-                                                                            }
                                                                             else
                                                                             {
 
-                                                                                if(fileloader.settings.filetitlelabel)
+                                                                                let newdata = optimized.replace(/=/g,"").replace('data:'+mime+';base64,',"");
+                                                                                let newsize = ( ~~(newdata.length * 0.75/1000)/1024 ).toFixed(3);
+
+                                                                                if(newsize>fileweightlimit)
                                                                                 {
-                                                                                    let startitle = stepdata.filedata.name;
-                                                                                    stepdata.buttons.title.firstElementChild.setAttribute('value',startitle);
-                                                                                    updatefiledataname(stepdata,startitle)
+                                                                                    printerror('FILE IS TOO BIG!! USED '+newsize+' OF '+inputfield+' Mb');
                                                                                 }
 
-                                                                                if(fileloader.settings.metalabel)
-                                                                                {
-                                                                                    stepdata.container.querySelectorAll('.filetype')[0].innerText = fileextension;
-                                                                                    stepdata.container.querySelectorAll('.filesize')[0].innerText = (stepdata.filedata.size=='0.000')? '≅.001 mB' : stepdata.filedata.size +' Mb';
-                                                                                }
-
-                                                                                imagecompressor(
-                                                                                filechunks,mime,maxw,maxh,
-                                                                                optimized => {
-
-
-                                                                                    if(!optimized)                      { printerror('ERROR ON VECTOR READING. THIS FILE CANNOT BE SENT.'); }
-                                                                                    else if(optimized=='unprintable')   { printerror('ERROR ON VECTOR PREVIEW CREATION. THIS FILE CANNOT BE SENT.'); }
-                                                                                    else if(optimized=='toosmall')      { printerror('THIS IMAGE IS TOO SMALL!! MIN PX IS '+maxw+' x '+maxh); }
-                                                                                    else
-                                                                                    {
-
-
-                                                                                        if(fileloader.settings.preview)
-                                                                                        {
-
-                                                                                            let previewbox = stepdata.container.querySelectorAll('.preview')[0];
-                                                                                            previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+fileextension );
-
-                                                                                            previewbox.firstElementChild.src = optimized;
-
-                                                                                            if(!optimized || previewbox.firstElementChild.src == undefined)
-                                                                                            {
-                                                                                                previewbox.firstElementChild.classList.add('hide');
-                                                                                            }
-
-                                                                                            if(fileloader.settings.previewicons==true)
-                                                                                            {
-                                                                                                previewbox.insertAdjacentHTML('beforeEnd',`<span class="ico-`+stepdata.filedata.typed+` ico-`+fileextension+`"></span>`);
-                                                                                            }
-
-                                                                                        }
-
-                                                                                        if(fileloader.settings.linked)
-                                                                                        {
-
-                                                                                            fileloader.datalist[steptarget].buttons.view.onclick = () =>
-                                                                                            {
-
-                                                                                                let blobber;
-                                                                                                if(issvg)
-                                                                                                {
-
-                                                                                                    blobber = new Blob(
-                                                                                                    [`
-                                                                                                        <head>
-                                                                                                          <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-                                                                                                        </head>
-                                                                                                        <body>
-                                                                                                            <main>
-                                                                                                                <div>
-                                                                                                                    <small>
-                                                                                                                        WHAT YOU ARE SEEING IS THE IMAGE REPRESENTATION OF THE VECTOR SVG DATA.<br>ORIGINAL DATA ARE SAVED IN BINARY.
-                                                                                                                    </small>
-                                                                                                                </div>
-                                                                                                                <image src="`+optimized+`"/>
-                                                                                                            </main>
-                                                                                                        </body>
-                                                                                                        <style>
-                                                                                                            html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
-                                                                                                            main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
-                                                                                                            main>div{display: flex;flex-direction: column;align-items:center;}
-                                                                                                            main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
-                                                                                                            image{position:relative;display:block;}
-                                                                                                        </style>
-
-                                                                                                    `], {type: "text/html"});
-
-                                                                                                    window.open( browserurl.createObjectURL(blobber) , '_blank');
-
-                                                                                                }
-                                                                                                else if(isgif)
-                                                                                                {
-
-                                                                                                    let margegifchunks;
-                                                                                                    try{ margegifchunks = 'data:'+mime+';base64,'+btoa(stepdata.filedata.chunks.join('')) }
-                                                                                                    catch
-                                                                                                    {
-                                                                                                        blobber = new Blob(
-                                                                                                        [`
-                                                                                                            <head>
-                                                                                                              <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-                                                                                                            </head>
-                                                                                                            <body>
-                                                                                                                <main>
-                                                                                                                    <div>
-                                                                                                                        <small>GIFs ARE NOT OPTIMIZABLE, WHAT YOU ARE SEEING IS THE DATA REPRESENTATION.<br>ORIGINAL DATA ARE SAVED IN BINARY OR B64.</small>
-                                                                                                                    </div>
-                                                                                                                    <image src="`+optimized+`"/>
-                                                                                                                </main>
-                                                                                                            </body>
-                                                                                                            <style>
-                                                                                                                html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
-                                                                                                                main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
-                                                                                                                main>div{display: flex;flex-direction: column;align-items:center;}
-                                                                                                            </style>
-
-                                                                                                        `], {type: "text/html"});
-
-                                                                                                        window.open( browserurl.createObjectURL(blobber) , '_blank');
-
-                                                                                                    }
-                                                                                                    finally
-                                                                                                    {
-                                                                                                        blobber = new Blob(
-                                                                                                        [`
-                                                                                                            <head>
-                                                                                                              <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-                                                                                                            </head>
-                                                                                                            <body>
-                                                                                                                <main>
-                                                                                                                    <div>
-                                                                                                                        <small>GIFs ARE NOT OPTIMIZABLE, WHAT YOU ARE SEEING IS THE DATA REPRESENTATION.<br>ORIGINAL DATA ARE SAVED IN BINARY OR B64.</small>
-                                                                                                                        <image src="`+margegifchunks+`"/>
-                                                                                                                    </div>
-                                                                                                                </main>
-                                                                                                            </body>
-                                                                                                            <style>
-                                                                                                                html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
-                                                                                                                main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
-                                                                                                                main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
-                                                                                                                main>div{display: flex;flex-direction: column;align-items:center;}
-                                                                                                                image{position:relative;display:block;}
-                                                                                                            </style>
-
-                                                                                                        `], {type: "text/html"});
-
-                                                                                                        window.open( browserurl.createObjectURL(blobber) , '_blank');
-
-                                                                                                    }
-
-                                                                                                }
-
-                                                                                            }
-
-                                                                                        }
-
-                                                                                        clearmemory();
-                                                                                        endofstep(bar,lazy);
-                                                                                    }
-
-
-                                                                                });
-
-                                                                            }
-
-
-                                                                        }
-
-                                                                        else if(isvideo)
-                                                                        {
-
-                                                                            if(fileloader.settings.filetitlelabel)
-                                                                            {
-                                                                                let startitle = stepdata.filedata.name;
-                                                                                stepdata.buttons.title.firstElementChild.setAttribute('value',startitle);
-                                                                                updatefiledataname(stepdata,startitle)
-                                                                            }
-
-                                                                            if(fileloader.settings.metalabel)
-                                                                            {
-                                                                                stepdata.container.querySelectorAll('.filetype')[0].innerText = fileextension;
-                                                                                stepdata.container.querySelectorAll('.filesize')[0].innerText = (stepdata.filedata.size=='0.000')? '≅.001 mB' : stepdata.filedata.size +' Mb';
-                                                                            }
-
-                                                                            let projector = document.createElement("VIDEO");
-                                                                            projector.src = stepdata.filedata.blob;
-                                                                            projector.load();
-                                                                            projector.onloadeddata = event_encodedloaded =>
-                                                                            {
-
-                                                                                projector.currentTime = parseInt(projector.duration/2);
-
-                                                                                if(projector.videoWidth<maxw || projector.videoHeight<maxh)
-                                                                                {
-                                                                                    printerror('THIS VIDEO IS TOO SMALL!! MIN PX IS '+maxw+' x '+maxh);
-                                                                                }
                                                                                 else
                                                                                 {
 
-                                                                                    if(fileloader.settings.preview)
+                                                                                    if(fileextension!='image/ico')
                                                                                     {
 
-                                                                                        let canvas = document.createElement('canvas'),
-                                                                                            cw = projector.videoWidth,
-                                                                                            ch = projector.videoHeight;
+                                                                                        stepdata.filedata.size   = newsize;
+                                                                                        stepdata.filedata.chunks = [ newdata ];
 
-
-                                                                                        if(fileloader.compressor.resizingtype=='proportional')
+                                                                                        if(fileloader.settings.metalabel && fileloader.settings.type != 'single')
                                                                                         {
-                                                                                            if (cw >= ch) { cw = ~~(cw *= maxh / ch); ch = maxh;  }
-                                                                                            if (cw < ch) { ch = ~~(ch *= maxw / cw); cw = maxw;   }
+                                                                                            stepdata.container.querySelectorAll('.filesize')[0].innerText = (newsize=='0.000')? '≅ 001 Mb' : newsize +' Mb';
+                                                                                            stepdata.container.querySelectorAll('.filetype')[0].innerText = fileextension;
                                                                                         }
-                                                                                        else
-                                                                                        {
-                                                                                            if (cw >= ch) { ch = ~~(ch *= maxw / cw); cw = maxw; }
-                                                                                            if (cw < ch) { cw = ~~(cw *= maxh / ch); ch = maxh; }
-                                                                                        }
-
-                                                                                        canvas.width = cw; canvas.height = ch;
-
-                                                                                        try
-                                                                                        {
-                                                                                            canvas.getContext("2d").drawImage(projector, 0, 0, cw, ch);
-                                                                                        }
-
-                                                                                        catch (error)
-                                                                                        {
-                                                                                            printerror('Impossible to read file');
-
-                                                                                            let previewbox = stepdata.container.querySelectorAll('.preview')[0];
-                                                                                            previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+fileextension );
-
-                                                                                            previewbox.firstElementChild.src = videobanner;
-
-                                                                                            if(!videobanner || previewbox.firstElementChild.src == undefined)
-                                                                                            {
-                                                                                                previewbox.firstElementChild.classList.add('hide');
-                                                                                            }
-
-                                                                                            if(fileloader.settings.previewicons==true)
-                                                                                            {
-                                                                                                previewbox.insertAdjacentHTML('beforeEnd',`<span class="ico-`+stepdata.filedata.typed+` ico-`+fileextension+`"></span>`);
-                                                                                            }
-
-                                                                                        }
-
-                                                                                        finally
-                                                                                        {
-
-                                                                                            let videobanner = canvas.toDataURL( mime, fileloader.compressor.imageQuality );
-
-                                                                                            let previewbox = stepdata.container.querySelectorAll('.preview')[0];
-                                                                                            previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+fileextension );
-
-                                                                                            previewbox.firstElementChild.src = videobanner;
-
-                                                                                            if(!videobanner || previewbox.firstElementChild.src == undefined)
-                                                                                            {
-                                                                                                previewbox.firstElementChild.classList.add('hide');
-                                                                                            }
-
-                                                                                            if(fileloader.settings.previewicons==true)
-                                                                                            {
-                                                                                                previewbox.insertAdjacentHTML('beforeEnd',`<span class="ico-`+stepdata.filedata.typed+` ico-`+fileextension+`"></span>`);
-                                                                                            }
-
-                                                                                        }
-
 
                                                                                     }
 
-                                                                                    if(fileloader.settings.linked)
+                                                                                    if(fileloader.settings.filetitlelabel)
                                                                                     {
-                                                                                        fileloader.datalist[steptarget].buttons.view.onclick = () =>
-                                                                                        {
-                                                                                            let blobber = new Blob(
-                                                                                            [`
-                                                                                                <head>
-                                                                                                  <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-                                                                                                </head>
-                                                                                                <body>
-                                                                                                    <main>
-                                                                                                        <div>
-                                                                                                            <small>
-                                                                                                                WHAT YOU ARE SEEING IS THE STREAMING REPRESENTATION OF THE VIDEO DATA.<br>ORIGINAL DATA ARE SAVED IN BINARY OR B64.
-                                                                                                            </small>
-                                                                                                        </div>
-                                                                                                        <video controls src="`+stepdata.filedata.blob+`"></video>
-                                                                                                    </main>
-                                                                                                </body>
-                                                                                                <style>
-                                                                                                    html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
-                                                                                                    main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
-                                                                                                    main>div{display: flex;flex-direction: column;align-items:center;}
-                                                                                                    main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
-                                                                                                    image{position:relative;display:block;}
-                                                                                                </style>
+                                                                                        let startitle = stepdata.filedata.name;
 
-                                                                                            `], {type: "text/html"});
-
-                                                                                            window.open( browserurl.createObjectURL(blobber) , '_blank');
-                                                                                        }
+                                                                                        stepdata.buttons.title.firstElementChild.setAttribute('value',startitle);
+                                                                                        updatefiledataname(stepdata,startitle)
                                                                                     }
 
-                                                                                    clearmemory();
-                                                                                    endofstep(bar,lazy);
-
-                                                                                }
-
-
-                                                                            }
-
-                                                                        }
-
-                                                                        else if(issound)
-                                                                        {
-
-                                                                            if(fileloader.settings.filetitlelabel)
-                                                                            {
-                                                                                let startitle = stepdata.filedata.name;
-                                                                                stepdata.buttons.title.firstElementChild.setAttribute('value',startitle);
-                                                                                updatefiledataname(stepdata,startitle)
-                                                                            }
-
-                                                                            if(fileloader.settings.metalabel)
-                                                                            {
-                                                                                stepdata.container.querySelectorAll('.filetype')[0].innerText = fileextension;
-                                                                                stepdata.container.querySelectorAll('.filesize')[0].innerText = (stepdata.filedata.size=='0.000')? '≅.001 mB' : stepdata.filedata.size +' Mb';
-                                                                            }
-
-                                                                            let sound = new Audio();
-                                                                            sound.src = stepdata.filedata.blob;
-                                                                            sound.load();
-                                                                            sound.oncanplay = event_encodedloaded =>
-                                                                            {
-
-                                                                                if(stepdata.filedata.size>fileweightlimit)
-                                                                                {
-                                                                                    printerror('SIZE OF THIS FILE IS TOO BIG!! MAX SIZE IS '+fileweightlimit+' Mb');
-                                                                                }
-                                                                                else
-                                                                                {
 
                                                                                     if(fileloader.settings.preview)
                                                                                     {
@@ -9189,7 +8617,150 @@ const ui = (() => {
                                                                                         let previewbox = stepdata.container.querySelectorAll('.preview')[0];
                                                                                         previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+fileextension );
 
-                                                                                        if(previewbox.getElementsByTagName('img')[0].getAttribute('src').value == undefined)
+                                                                                        previewbox.firstElementChild.src = optimized;
+
+                                                                                        if(!optimized || previewbox.firstElementChild.src == undefined)
+                                                                                        {
+                                                                                            previewbox.firstElementChild.classList.add('hide');
+                                                                                        }
+
+                                                                                        if(fileloader.settings.previewicons==true)
+                                                                                        {
+                                                                                            previewbox.insertAdjacentHTML('beforeEnd',`<span class="ico-`+stepdata.filedata.typed+` ico-`+fileextension+`"></span>`);
+                                                                                        }
+
+                                                                                    }
+
+
+                                                                                    if(fileloader.settings.linked)
+                                                                                    {
+
+                                                                                        fileloader.datalist[steptarget].buttons.view.onclick = () =>
+                                                                                        {
+
+                                                                                            if(fileextension=='image/ico')
+                                                                                            {
+                                                                                                let blobber = new Blob(
+                                                                                                [`
+                                                                                                    <head>
+                                                                                                      <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+                                                                                                    </head>
+                                                                                                    <body>
+                                                                                                        <main>
+                                                                                                            <div>
+                                                                                                                <small>
+                                                                                                                    WHAT YOU ARE SEEING IS THE REPRESENTATION OF ICON DATA (from .ico to web/png).<br>
+                                                                                                                    THE DATA THAT WILL BE SENT WILL RELATE TO THE REAL ICON.
+                                                                                                                </small>
+                                                                                                            </div>
+                                                                                                            <image src="`+optimized+`"/>
+                                                                                                        </main>
+                                                                                                    </body>
+                                                                                                    <style>
+                                                                                                        html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
+                                                                                                        main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
+                                                                                                        main>div{display: flex;flex-direction: column;align-items:center;}
+                                                                                                        main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
+                                                                                                        image{position:relative;display:block;}
+                                                                                                    </style>
+
+                                                                                                `], {type: "text/html"});
+
+                                                                                                window.open( browserurl.createObjectURL(blobber) , '_blank');
+                                                                                            }
+                                                                                            else
+                                                                                            {
+
+                                                                                                let mex = (!fileloader.compressor) ? `THIS IS THE IMAGE ROW DATA THAT WILL BE SENT` : `THIS IS THE OPTIMIZED IMAGE DATA THAT WILL BE SENT`;
+
+                                                                                                let blobber = new Blob(
+                                                                                                [`
+                                                                                                    <head>
+                                                                                                      <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+                                                                                                    </head>
+                                                                                                    <body>
+                                                                                                        <main>
+                                                                                                            <div>
+                                                                                                                <small>
+                                                                                                                    `+mex+`
+                                                                                                                </small>
+                                                                                                            </div>
+                                                                                                            <image src="`+optimized+`"/>
+                                                                                                        </main>
+                                                                                                    </body>
+                                                                                                    <style>
+                                                                                                        html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
+                                                                                                        main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
+                                                                                                        main>div{display: flex;flex-direction: column;align-items:center;}
+                                                                                                        main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
+                                                                                                        image{position:relative;display:block;}
+                                                                                                    </style>
+
+                                                                                                `], {type: "text/html"});
+
+                                                                                                window.open( browserurl.createObjectURL(blobber) , '_blank');
+
+                                                                                            }
+
+
+                                                                                        }
+                                                                                    }
+
+                                                                                }
+
+                                                                                clearmemory();
+                                                                                endofstep(bar,lazy);
+
+                                                                            }
+
+                                                                        });
+
+                                                                    }
+
+                                                                    else if(issvg || isgif)
+                                                                    {
+
+                                                                        if(stepdata.filedata.size>fileweightlimit)
+                                                                        {
+                                                                            printerror('FILE IS TOO BIG!! USED '+stepdata.filedata.size+' OF '+fileweightlimit+' Mb');
+                                                                        }
+                                                                        else
+                                                                        {
+
+                                                                            if(fileloader.settings.filetitlelabel)
+                                                                            {
+                                                                                let startitle = stepdata.filedata.name;
+                                                                                stepdata.buttons.title.firstElementChild.setAttribute('value',startitle);
+                                                                                updatefiledataname(stepdata,startitle)
+                                                                            }
+
+                                                                            if(fileloader.settings.metalabel)
+                                                                            {
+                                                                                stepdata.container.querySelectorAll('.filetype')[0].innerText = fileextension;
+                                                                                stepdata.container.querySelectorAll('.filesize')[0].innerText = (stepdata.filedata.size=='0.000')? '≅.001 mB' : stepdata.filedata.size +' Mb';
+                                                                            }
+
+                                                                            imagecompressor(
+                                                                            filechunks,mime,maxw,maxh,
+                                                                            optimized => {
+
+
+                                                                                if(!optimized)                      { printerror('ERROR ON VECTOR READING. THIS FILE CANNOT BE SENT.'); }
+                                                                                else if(optimized=='unprintable')   { printerror('ERROR ON VECTOR PREVIEW CREATION. THIS FILE CANNOT BE SENT.'); }
+                                                                                else if(optimized=='toosmall')      { printerror('THIS IMAGE IS TOO SMALL!! MIN PX IS '+maxw+' x '+maxh); }
+                                                                                else
+                                                                                {
+
+
+                                                                                    if(fileloader.settings.preview)
+                                                                                    {
+
+                                                                                        let previewbox = stepdata.container.querySelectorAll('.preview')[0];
+                                                                                        previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+fileextension );
+
+                                                                                        previewbox.firstElementChild.src = optimized;
+
+                                                                                        if(!optimized || previewbox.firstElementChild.src == undefined)
                                                                                         {
                                                                                             previewbox.firstElementChild.classList.add('hide');
                                                                                         }
@@ -9203,53 +8774,122 @@ const ui = (() => {
 
                                                                                     if(fileloader.settings.linked)
                                                                                     {
+
                                                                                         fileloader.datalist[steptarget].buttons.view.onclick = () =>
                                                                                         {
 
-                                                                                            blobber = new Blob(
-                                                                                            [`
-                                                                                                <head>
-                                                                                                  <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-                                                                                                </head>
-                                                                                                <body>
-                                                                                                    <main>
-                                                                                                        <div>
-                                                                                                            <small>AUDIO FILES ARE NOT OPTIMIZABLE, WHAT YOU ARE SEEING IS THE STREAMING REPRESENTATION.<br>ORIGINAL DATA ARE SAVED IN BINARY OR B64.</small>
-                                                                                                            <audio controls="true" src="`+stepdata.filedata.blob+`"></audio>
-                                                                                                        </div>
-                                                                                                    </main>
-                                                                                                </body>
-                                                                                                <style>
-                                                                                                    html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
-                                                                                                    main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
-                                                                                                    main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
-                                                                                                    main>div{display: flex;flex-direction: column;align-items:center;}
-                                                                                                    image{position:relative;display:block;}
-                                                                                                </style>
+                                                                                            let blobber;
+                                                                                            if(issvg)
+                                                                                            {
 
-                                                                                            `], {type: "text/html"});
+                                                                                                blobber = new Blob(
+                                                                                                [`
+                                                                                                    <head>
+                                                                                                      <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+                                                                                                    </head>
+                                                                                                    <body>
+                                                                                                        <main>
+                                                                                                            <div>
+                                                                                                                <small>
+                                                                                                                    WHAT YOU ARE SEEING IS THE IMAGE REPRESENTATION OF THE VECTOR SVG DATA.<br>ORIGINAL DATA ARE SAVED IN BINARY.
+                                                                                                                </small>
+                                                                                                            </div>
+                                                                                                            <image src="`+optimized+`"/>
+                                                                                                        </main>
+                                                                                                    </body>
+                                                                                                    <style>
+                                                                                                        html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
+                                                                                                        main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
+                                                                                                        main>div{display: flex;flex-direction: column;align-items:center;}
+                                                                                                        main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
+                                                                                                        image{position:relative;display:block;}
+                                                                                                    </style>
 
-                                                                                            window.open( browserurl.createObjectURL(blobber) , '_blank');
+                                                                                                `], {type: "text/html"});
+
+                                                                                                window.open( browserurl.createObjectURL(blobber) , '_blank');
+
+                                                                                            }
+                                                                                            else if(isgif)
+                                                                                            {
+
+                                                                                                let margegifchunks;
+                                                                                                try{ margegifchunks = 'data:'+mime+';base64,'+btoa(stepdata.filedata.chunks.join('')) }
+                                                                                                catch
+                                                                                                {
+                                                                                                    blobber = new Blob(
+                                                                                                    [`
+                                                                                                        <head>
+                                                                                                          <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+                                                                                                        </head>
+                                                                                                        <body>
+                                                                                                            <main>
+                                                                                                                <div>
+                                                                                                                    <small>GIFs ARE NOT OPTIMIZABLE, WHAT YOU ARE SEEING IS THE DATA REPRESENTATION.<br>ORIGINAL DATA ARE SAVED IN BINARY OR B64.</small>
+                                                                                                                </div>
+                                                                                                                <image src="`+optimized+`"/>
+                                                                                                            </main>
+                                                                                                        </body>
+                                                                                                        <style>
+                                                                                                            html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
+                                                                                                            main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
+                                                                                                            main>div{display: flex;flex-direction: column;align-items:center;}
+                                                                                                        </style>
+
+                                                                                                    `], {type: "text/html"});
+
+                                                                                                    window.open( browserurl.createObjectURL(blobber) , '_blank');
+
+                                                                                                }
+                                                                                                finally
+                                                                                                {
+                                                                                                    blobber = new Blob(
+                                                                                                    [`
+                                                                                                        <head>
+                                                                                                          <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+                                                                                                        </head>
+                                                                                                        <body>
+                                                                                                            <main>
+                                                                                                                <div>
+                                                                                                                    <small>GIFs ARE NOT OPTIMIZABLE, WHAT YOU ARE SEEING IS THE DATA REPRESENTATION.<br>ORIGINAL DATA ARE SAVED IN BINARY OR B64.</small>
+                                                                                                                    <image src="`+margegifchunks+`"/>
+                                                                                                                </div>
+                                                                                                            </main>
+                                                                                                        </body>
+                                                                                                        <style>
+                                                                                                            html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
+                                                                                                            main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
+                                                                                                            main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
+                                                                                                            main>div{display: flex;flex-direction: column;align-items:center;}
+                                                                                                            image{position:relative;display:block;}
+                                                                                                        </style>
+
+                                                                                                    `], {type: "text/html"});
+
+                                                                                                    window.open( browserurl.createObjectURL(blobber) , '_blank');
+
+                                                                                                }
+
+                                                                                            }
 
                                                                                         }
+
                                                                                     }
 
                                                                                     clearmemory();
                                                                                     endofstep(bar,lazy);
-
                                                                                 }
 
-                                                                            }
+
+                                                                            });
 
                                                                         }
 
-                                                                        else { unmime(); }
 
                                                                     }
 
-                                                                    function unmime()
+                                                                    else if(isvideo)
                                                                     {
-
 
                                                                         if(fileloader.settings.filetitlelabel)
                                                                         {
@@ -9260,404 +8900,644 @@ const ui = (() => {
 
                                                                         if(fileloader.settings.metalabel)
                                                                         {
-                                                                            stepdata.container.querySelectorAll('.filetype')[0].innerText = (!fileextension) ? '' : fileextension;
+                                                                            stepdata.container.querySelectorAll('.filetype')[0].innerText = fileextension;
                                                                             stepdata.container.querySelectorAll('.filesize')[0].innerText = (stepdata.filedata.size=='0.000')? '≅.001 mB' : stepdata.filedata.size +' Mb';
                                                                         }
 
-                                                                        if(stepdata.filedata.size>fileweightlimit)
-                                                                        {
-                                                                            printerror('SIZE OF THIS FILE IS TOO BIG!! MAX SIZE IS '+fileweightlimit+' Mb');
-                                                                        }
-                                                                        else
+                                                                        let projector = document.createElement("VIDEO");
+                                                                        projector.src = stepdata.filedata.blob;
+                                                                        projector.load();
+                                                                        projector.onloadeddata = event_encodedloaded =>
                                                                         {
 
-                                                                            if ( fileloader.settings.preview )
+                                                                            projector.currentTime = parseInt(projector.duration/2);
+
+                                                                            if(projector.videoWidth<maxw || projector.videoHeight<maxh)
                                                                             {
-
-                                                                                let previewbox = stepdata.container.querySelectorAll('.preview')[0];
-                                                                                previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+((!fileextension)?'binary':fileextension) );
-
-                                                                                if(previewbox.getElementsByTagName('img')[0].getAttribute('src').value == undefined)//if user not change a src
-                                                                                {
-                                                                                    previewbox.firstElementChild.classList.add('hide');
-                                                                                }
-
-                                                                                if(fileloader.settings.previewicons==true)
-                                                                                {
-                                                                                    previewbox.insertAdjacentHTML('beforeEnd',`<span class="ico-`+stepdata.filedata.typed+` ico-`+fileextension+`"></span>`);
-                                                                                }
-
+                                                                                printerror('THIS VIDEO IS TOO SMALL!! MIN PX IS '+maxw+' x '+maxh);
                                                                             }
-
-
-                                                                            if(fileloader.settings.linked)
-                                                                            {
-                                                                                fileloader.datalist[steptarget].buttons.view.onclick = () =>
-                                                                                {
-                                                                                    blobber = new Blob(
-                                                                                    [`
-                                                                                        <head>
-                                                                                          <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-                                                                                        </head>
-                                                                                        <body>
-                                                                                            <main>
-                                                                                                <div>
-                                                                                                    <small>"NON WEB FILES" ARE CONVERTED AND SAVED IN BINARY OR B64. IT IS NOT POSSIBLE TO READ THEM FROM HERE.</small>
-                                                                                                </div>
-                                                                                            </main>
-                                                                                        </body>
-                                                                                        <style>
-                                                                                            html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
-                                                                                            main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
-                                                                                            main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
-                                                                                            main>div{display: flex;flex-direction: column;align-items:center;}
-                                                                                            image{position:relative;display:block;}
-                                                                                        </style>
-
-                                                                                    `], {type: "text/html"});
-
-                                                                                    window.open( browserurl.createObjectURL(blobber) , '_blank');
-
-                                                                                }
-                                                                            }
-
-                                                                            clearmemory();
-                                                                            endofstep(bar,lazy); //browserurl.revokeObjectURL(steppedfile);
-
-                                                                        }
-
-                                                                    }
-
-                                                                    function imagecompressor(imagechunks, mime, maxw, maxh, optimized)
-                                                                    {
-
-                                                                        let b64data = 'no-base64-data';
-
-                                                                        try
-                                                                        {
-                                                                            b64data = btoa( imagechunks.join('') );
-                                                                        }
-                                                                        catch (error)
-                                                                        {
-                                                                            printerror('File is oversized for make a preview');
-                                                                            return optimized('unprintable');
-                                                                        }
-                                                                        finally
-                                                                        {
-
-                                                                            if(fileloader.compressor)
+                                                                            else
                                                                             {
 
-                                                                                let image = new Image();
-                                                                                image.src = 'data:'+mime+';base64,'+b64data;
-                                                                                image.onload = event_encodedloaded =>
+                                                                                if(fileloader.settings.preview)
                                                                                 {
 
                                                                                     let canvas = document.createElement('canvas'),
-                                                                                        cw = image.width,
-                                                                                        ch = image.height;
+                                                                                        cw = projector.videoWidth,
+                                                                                        ch = projector.videoHeight;
 
-                                                                                    // if( cw < minresolution || ch < minresolution ) {  return optimized('toosmall'); }
-                                                                                    // else
-                                                                                    // {
 
-                                                                                        if(fileloader.compressor.resizingtype=='proportional')
+                                                                                    if(fileloader.compressor.resizingtype=='proportional')
+                                                                                    {
+                                                                                        if (cw >= ch) { cw = ~~(cw *= maxh / ch); ch = maxh;  }
+                                                                                        if (cw < ch) { ch = ~~(ch *= maxw / cw); cw = maxw;   }
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        if (cw >= ch) { ch = ~~(ch *= maxw / cw); cw = maxw; }
+                                                                                        if (cw < ch) { cw = ~~(cw *= maxh / ch); ch = maxh; }
+                                                                                    }
+
+                                                                                    canvas.width = cw; canvas.height = ch;
+
+                                                                                    try
+                                                                                    {
+                                                                                        canvas.getContext("2d").drawImage(projector, 0, 0, cw, ch);
+                                                                                    }
+
+                                                                                    catch (error)
+                                                                                    {
+                                                                                        printerror('Impossible to read file');
+
+                                                                                        let previewbox = stepdata.container.querySelectorAll('.preview')[0];
+                                                                                        previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+fileextension );
+
+                                                                                        previewbox.firstElementChild.src = videobanner;
+
+                                                                                        if(!videobanner || previewbox.firstElementChild.src == undefined)
                                                                                         {
-                                                                                            if (cw >= ch) { cw = ~~(cw *= maxh / ch); ch = maxh;  }
-                                                                                            if (cw < ch) { ch = ~~(ch *= maxw / cw); cw = maxw;   }
+                                                                                            previewbox.firstElementChild.classList.add('hide');
                                                                                         }
-                                                                                        else
+
+                                                                                        if(fileloader.settings.previewicons==true)
                                                                                         {
-                                                                                            if (cw >= ch) { ch = ~~(ch *= maxw / cw); cw = maxw; }
-                                                                                            if (cw < ch) { cw = ~~(cw *= maxh / ch); ch = maxh; }
+                                                                                            previewbox.insertAdjacentHTML('beforeEnd',`<span class="ico-`+stepdata.filedata.typed+` ico-`+fileextension+`"></span>`);
                                                                                         }
 
-                                                                                        canvas.width = cw; canvas.height = ch;
+                                                                                    }
 
-                                                                                        canvas.getContext("2d").drawImage(image, 0, 0, cw, ch);
+                                                                                    finally
+                                                                                    {
 
-                                                                                        return optimized( canvas.toDataURL( mime, fileloader.compressor.imageQuality ) );
+                                                                                        let videobanner = canvas.toDataURL( mime, fileloader.compressor.imageQuality );
 
-                                                                                    // }
+                                                                                        let previewbox = stepdata.container.querySelectorAll('.preview')[0];
+                                                                                        previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+fileextension );
+
+                                                                                        previewbox.firstElementChild.src = videobanner;
+
+                                                                                        if(!videobanner || previewbox.firstElementChild.src == undefined)
+                                                                                        {
+                                                                                            previewbox.firstElementChild.classList.add('hide');
+                                                                                        }
+
+                                                                                        if(fileloader.settings.previewicons==true)
+                                                                                        {
+                                                                                            previewbox.insertAdjacentHTML('beforeEnd',`<span class="ico-`+stepdata.filedata.typed+` ico-`+fileextension+`"></span>`);
+                                                                                        }
+
+                                                                                    }
+
+
                                                                                 }
 
+                                                                                if(fileloader.settings.linked)
+                                                                                {
+                                                                                    fileloader.datalist[steptarget].buttons.view.onclick = () =>
+                                                                                    {
+                                                                                        let blobber = new Blob(
+                                                                                        [`
+                                                                                            <head>
+                                                                                              <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+                                                                                            </head>
+                                                                                            <body>
+                                                                                                <main>
+                                                                                                    <div>
+                                                                                                        <small>
+                                                                                                            WHAT YOU ARE SEEING IS THE STREAMING REPRESENTATION OF THE VIDEO DATA.<br>ORIGINAL DATA ARE SAVED IN BINARY OR B64.
+                                                                                                        </small>
+                                                                                                    </div>
+                                                                                                    <video controls src="`+stepdata.filedata.blob+`"></video>
+                                                                                                </main>
+                                                                                            </body>
+                                                                                            <style>
+                                                                                                html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
+                                                                                                main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
+                                                                                                main>div{display: flex;flex-direction: column;align-items:center;}
+                                                                                                main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
+                                                                                                image{position:relative;display:block;}
+                                                                                            </style>
+
+                                                                                        `], {type: "text/html"});
+
+                                                                                        window.open( browserurl.createObjectURL(blobber) , '_blank');
+                                                                                    }
+                                                                                }
+
+                                                                                clearmemory();
+                                                                                endofstep(bar,lazy);
+
                                                                             }
 
-                                                                            else
-                                                                            {
-                                                                                return optimized( b64data );
-                                                                            }
+
                                                                         }
 
                                                                     }
 
-                                                                    function updatefiledataname(stepData,startitle)
+                                                                    else if(issound)
                                                                     {
-                                                                       let btninput = stepData.buttons.title.querySelectorAll('input')[0];
-                                                                        btninput.onfocus = () =>
+
+                                                                        if(fileloader.settings.filetitlelabel)
+                                                                        {
+                                                                            let startitle = stepdata.filedata.name;
+                                                                            stepdata.buttons.title.firstElementChild.setAttribute('value',startitle);
+                                                                            updatefiledataname(stepdata,startitle)
+                                                                        }
+
+                                                                        if(fileloader.settings.metalabel)
+                                                                        {
+                                                                            stepdata.container.querySelectorAll('.filetype')[0].innerText = fileextension;
+                                                                            stepdata.container.querySelectorAll('.filesize')[0].innerText = (stepdata.filedata.size=='0.000')? '≅.001 mB' : stepdata.filedata.size +' Mb';
+                                                                        }
+
+                                                                        let sound = new Audio();
+                                                                        sound.src = stepdata.filedata.blob;
+                                                                        sound.load();
+                                                                        sound.oncanplay = event_encodedloaded =>
                                                                         {
 
-                                                                            let changename = setInterval( () =>{
+                                                                            if(stepdata.filedata.size>fileweightlimit)
+                                                                            {
+                                                                                printerror('SIZE OF THIS FILE IS TOO BIG!! MAX SIZE IS '+fileweightlimit+' Mb');
+                                                                            }
+                                                                            else
+                                                                            {
 
-                                                                                (!btninput.value)?btninput.value=startitle:null;
+                                                                                if(fileloader.settings.preview)
+                                                                                {
 
-                                                                                btninput.setAttribute('value', btninput.value );
+                                                                                    let previewbox = stepdata.container.querySelectorAll('.preview')[0];
+                                                                                    previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+fileextension );
 
-                                                                                (document.activeElement == btninput) ? stepData.filedata.name = btninput.value : window.clearInterval(changename);
+                                                                                    if(previewbox.getElementsByTagName('img')[0].getAttribute('src').value == undefined)
+                                                                                    {
+                                                                                        previewbox.firstElementChild.classList.add('hide');
+                                                                                    }
 
-                                                                            }, 250);
+                                                                                    if(fileloader.settings.previewicons==true)
+                                                                                    {
+                                                                                        previewbox.insertAdjacentHTML('beforeEnd',`<span class="ico-`+stepdata.filedata.typed+` ico-`+fileextension+`"></span>`);
+                                                                                    }
 
-                                                                        };
+                                                                                }
+
+                                                                                if(fileloader.settings.linked)
+                                                                                {
+                                                                                    fileloader.datalist[steptarget].buttons.view.onclick = () =>
+                                                                                    {
+
+                                                                                        blobber = new Blob(
+                                                                                        [`
+                                                                                            <head>
+                                                                                              <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+                                                                                            </head>
+                                                                                            <body>
+                                                                                                <main>
+                                                                                                    <div>
+                                                                                                        <small>AUDIO FILES ARE NOT OPTIMIZABLE, WHAT YOU ARE SEEING IS THE STREAMING REPRESENTATION.<br>ORIGINAL DATA ARE SAVED IN BINARY OR B64.</small>
+                                                                                                        <audio controls="true" src="`+stepdata.filedata.blob+`"></audio>
+                                                                                                    </div>
+                                                                                                </main>
+                                                                                            </body>
+                                                                                            <style>
+                                                                                                html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
+                                                                                                main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
+                                                                                                main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
+                                                                                                main>div{display: flex;flex-direction: column;align-items:center;}
+                                                                                                image{position:relative;display:block;}
+                                                                                            </style>
+
+                                                                                        `], {type: "text/html"});
+
+                                                                                        window.open( browserurl.createObjectURL(blobber) , '_blank');
+
+                                                                                    }
+                                                                                }
+
+                                                                                clearmemory();
+                                                                                endofstep(bar,lazy);
+
+                                                                            }
+
+                                                                        }
+
                                                                     }
 
-                                                                },500)
+                                                                    else { unmime(); }
 
-                                                            }
+                                                                }
 
+                                                                function unmime()
+                                                                {
+
+
+                                                                    if(fileloader.settings.filetitlelabel)
+                                                                    {
+                                                                        let startitle = stepdata.filedata.name;
+                                                                        stepdata.buttons.title.firstElementChild.setAttribute('value',startitle);
+                                                                        updatefiledataname(stepdata,startitle)
+                                                                    }
+
+                                                                    if(fileloader.settings.metalabel)
+                                                                    {
+                                                                        stepdata.container.querySelectorAll('.filetype')[0].innerText = (!fileextension) ? '' : fileextension;
+                                                                        stepdata.container.querySelectorAll('.filesize')[0].innerText = (stepdata.filedata.size=='0.000')? '≅.001 mB' : stepdata.filedata.size +' Mb';
+                                                                    }
+
+                                                                    if(stepdata.filedata.size>fileweightlimit)
+                                                                    {
+                                                                        printerror('SIZE OF THIS FILE IS TOO BIG!! MAX SIZE IS '+fileweightlimit+' Mb');
+                                                                    }
+                                                                    else
+                                                                    {
+
+                                                                        if ( fileloader.settings.preview )
+                                                                        {
+
+                                                                            let previewbox = stepdata.container.querySelectorAll('.preview')[0];
+                                                                            previewbox.classList.add( 'bkg-'+stepdata.filedata.typed, 'bkg-'+((!fileextension)?'binary':fileextension) );
+
+                                                                            if(previewbox.getElementsByTagName('img')[0].getAttribute('src').value == undefined)//if user not change a src
+                                                                            {
+                                                                                previewbox.firstElementChild.classList.add('hide');
+                                                                            }
+
+                                                                            if(fileloader.settings.previewicons==true)
+                                                                            {
+                                                                                previewbox.insertAdjacentHTML('beforeEnd',`<span class="ico-`+stepdata.filedata.typed+` ico-`+fileextension+`"></span>`);
+                                                                            }
+
+                                                                        }
+
+
+                                                                        if(fileloader.settings.linked)
+                                                                        {
+                                                                            fileloader.datalist[steptarget].buttons.view.onclick = () =>
+                                                                            {
+                                                                                blobber = new Blob(
+                                                                                [`
+                                                                                    <head>
+                                                                                      <title>FILE PREVIEWS</title><meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+                                                                                    </head>
+                                                                                    <body>
+                                                                                        <main>
+                                                                                            <div>
+                                                                                                <small>"NON WEB FILES" ARE CONVERTED AND SAVED IN BINARY OR B64. IT IS NOT POSSIBLE TO READ THEM FROM HERE.</small>
+                                                                                            </div>
+                                                                                        </main>
+                                                                                    </body>
+                                                                                    <style>
+                                                                                        html,body{background:#131313;display:flex;height:100%;width:100%;align-self:center;margin:0;padding:0;align-items:center;}
+                                                                                        main{max-width:50%;margin: 0 auto;display:flex;flex-direction:column;align-items:center;}
+                                                                                        main>div>small{text-align:center;color:white;font-style;font-family:verdana,helvetica;margin-bottom: 20px;font-size: 9px;padding:15px;max-width:100%;}
+                                                                                        main>div{display: flex;flex-direction: column;align-items:center;}
+                                                                                        image{position:relative;display:block;}
+                                                                                    </style>
+
+                                                                                `], {type: "text/html"});
+
+                                                                                window.open( browserurl.createObjectURL(blobber) , '_blank');
+
+                                                                            }
+                                                                        }
+
+                                                                        clearmemory();
+                                                                        endofstep(bar,lazy); //browserurl.revokeObjectURL(steppedfile);
+
+                                                                    }
+
+                                                                }
+
+                                                                function imagecompressor(imagechunks, mime, maxw, maxh, optimized)
+                                                                {
+
+                                                                    let b64data = 'no-base64-data';
+
+                                                                    try
+                                                                    {
+                                                                        b64data = btoa( imagechunks.join('') );
+                                                                    }
+                                                                    catch (error)
+                                                                    {
+                                                                        printerror('File is oversized for make a preview');
+                                                                        return optimized('unprintable');
+                                                                    }
+                                                                    finally
+                                                                    {
+
+                                                                        if(fileloader.compressor)
+                                                                        {
+
+                                                                            let image = new Image();
+                                                                            image.src = 'data:'+mime+';base64,'+b64data;
+                                                                            image.onload = event_encodedloaded =>
+                                                                            {
+
+                                                                                let canvas = document.createElement('canvas'),
+                                                                                    cw = image.width,
+                                                                                    ch = image.height;
+
+                                                                                // if( cw < minresolution || ch < minresolution ) {  return optimized('toosmall'); }
+                                                                                // else
+                                                                                // {
+
+                                                                                    if(fileloader.compressor.resizingtype=='proportional')
+                                                                                    {
+                                                                                        if (cw >= ch) { cw = ~~(cw *= maxh / ch); ch = maxh;  }
+                                                                                        if (cw < ch) { ch = ~~(ch *= maxw / cw); cw = maxw;   }
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        if (cw >= ch) { ch = ~~(ch *= maxw / cw); cw = maxw; }
+                                                                                        if (cw < ch) { cw = ~~(cw *= maxh / ch); ch = maxh; }
+                                                                                    }
+
+                                                                                    canvas.width = cw; canvas.height = ch;
+
+                                                                                    canvas.getContext("2d").drawImage(image, 0, 0, cw, ch);
+
+                                                                                    return optimized( canvas.toDataURL( mime, fileloader.compressor.imageQuality ) );
+
+                                                                                // }
+                                                                            }
+
+                                                                        }
+
+                                                                        else
+                                                                        {
+                                                                            return optimized( b64data );
+                                                                        }
+                                                                    }
+
+                                                                }
+
+                                                                function updatefiledataname(stepData,startitle)
+                                                                {
+                                                                   let btninput = stepData.buttons.title.querySelectorAll('input')[0];
+                                                                    btninput.onfocus = () =>
+                                                                    {
+
+                                                                        let changename = setInterval( () =>{
+
+                                                                            (!btninput.value)?btninput.value=startitle:null;
+
+                                                                            btninput.setAttribute('value', btninput.value );
+
+                                                                            (document.activeElement == btninput) ? stepData.filedata.name = btninput.value : window.clearInterval(changename);
+
+                                                                        }, 250);
+
+                                                                    };
+                                                                }
+
+                                                            },500)
 
                                                         }
 
-                                                        // clear data mems if request
 
-                                                        function clearmemory()
-                                                        {
-                                                            filechunks=[]; event_encodedloaded=null; reader=null; canvas=null; projector=null; sound=null; image = null; URL.revokeObjectURL(browserurl);
-                                                        }
+                                                    }
 
+                                                    // clear data mems if request
 
-                                                    },200)
-
-                                                    if(fileloader.firstlaunch) delete fileloader.firstlaunch;
-
-                                                }
-
-                                        })()
+                                                    function clearmemory()
+                                                    {
+                                                        filechunks=[]; event_encodedloaded=null; reader=null; canvas=null; projector=null; sound=null; image = null; URL.revokeObjectURL(browserurl);
+                                                    }
 
 
-                                        // print all "oh fuck!"
+                                                },200)
 
-                                        readFiles.onabort = (errors) => { debug(`:: [⚠ ui alert]: fileloader error\n   ⮑ critical error/abort: reader crash on loading.\n   ⮑ reader message:`+errors.error); printerror(errors); }
-                                        readFiles.onerror = (errors) => { debug(`:: [⚠ ui alert]: fileloader error\n   ⮑ critical error/abort: reader crash on loading.\n   ⮑ reader message:`+errors.error); printerror(errors); }
-                                        readFiles.oncrash = (errors) => { debug(`:: [⚠ ui alert]: fileloader error\n   ⮑ critical error/abort: reader crash on loading.\n   ⮑ reader message:`+errors.error); printerror(errors); }
+                                                if(fileloader.firstlaunch) delete fileloader.firstlaunch;
 
-                                        function printerror(errors)
+                                            }
+
+                                    })()
+
+
+                                    // print all "oh fuck!"
+
+                                    readFiles.onabort = (errors) => { debug(`:: [⚠ ui alert]: fileloader error\n   ⮑ critical error/abort: reader crash on loading.\n   ⮑ reader message:`+errors.error); printerror(errors); }
+                                    readFiles.onerror = (errors) => { debug(`:: [⚠ ui alert]: fileloader error\n   ⮑ critical error/abort: reader crash on loading.\n   ⮑ reader message:`+errors.error); printerror(errors); }
+                                    readFiles.oncrash = (errors) => { debug(`:: [⚠ ui alert]: fileloader error\n   ⮑ critical error/abort: reader crash on loading.\n   ⮑ reader message:`+errors.error); printerror(errors); }
+
+                                    function printerror(errors)
+                                    {
+
+                                        let errorstring= (steppedfile.name.substr(steppedfile.name.length - 15)+'  :  '+errors.toUpperCase());
+
+                                        let previewbox = stepdata.container.querySelectorAll('.preview')[0];
+                                        if(previewbox)
                                         {
-
-                                            let errorstring= (steppedfile.name.substr(steppedfile.name.length - 15)+'  :  '+errors.toUpperCase());
-
-                                            let previewbox = stepdata.container.querySelectorAll('.preview')[0];
-                                            if(previewbox)
-                                            {
-                                                previewbox.innerHTML = '';
-                                                previewbox.classList.remove('autocrop');
-                                                previewbox.insertAdjacentHTML('beforeEnd','<span class="debug-error-message" title="this file have an error. You cannot save/sent data if you not delete it.\n'+errorstring+'"><p>&#10060;</p></span>');
-                                            }
-
-                                            let btntitle = stepdata.container.querySelectorAll('.action-rename')[0];
-                                            if(btntitle)
-                                            {
-                                                btntitle.title="this file have an error. You cannot save/sent data if you not delete it.\n"+errorstring;
-                                                btntitle.firstElementChild.setAttribute('value', errorstring);
-                                                btntitle.firstElementChild.setAttribute('readonly',true);
-                                                btntitle.firstElementChild.setAttribute('disabled',true);
-                                            }
-
-                                            if(stepdata.container.querySelectorAll('.action-grab').length>0)
-                                            {
-                                                stepdata.container.querySelectorAll('.action-grab')[0].classList.add('disabled');
-                                            }
-
-                                            if( fileloader.settings.filters ) { [...stepdata.container.querySelectorAll('.action-options')][0].classList.add('disabled'); }
-
-                                            endofstep(bar,lazy)
-
+                                            previewbox.innerHTML = '';
+                                            previewbox.classList.remove('autocrop');
+                                            previewbox.insertAdjacentHTML('beforeEnd','<span class="debug-error-message" title="this file have an error. You cannot save/sent data if you not delete it.\n'+errorstring+'"><p>&#10060;</p></span>');
                                         }
 
-
-                                        // show file in display if request
-                                        function endofstep(bar,lazy)
+                                        let btntitle = stepdata.container.querySelectorAll('.action-rename')[0];
+                                        if(btntitle)
                                         {
+                                            btntitle.title="this file have an error. You cannot save/sent data if you not delete it.\n"+errorstring;
+                                            btntitle.firstElementChild.setAttribute('value', errorstring);
+                                            btntitle.firstElementChild.setAttribute('readonly',true);
+                                            btntitle.firstElementChild.setAttribute('disabled',true);
+                                        }
 
-                                            bar.remove();
+                                        if(stepdata.container.querySelectorAll('.action-grab').length>0)
+                                        {
+                                            stepdata.container.querySelectorAll('.action-grab')[0].classList.add('disabled');
+                                        }
 
-                                            lazy.classList.add('[status-off]');
+                                        if( fileloader.settings.filters ) { [...stepdata.container.querySelectorAll('.action-options')][0].classList.add('disabled'); }
+
+                                        endofstep(bar,lazy)
+
+                                    }
+
+
+                                    // show file in display if request
+                                    function endofstep(bar,lazy)
+                                    {
+
+                                        bar.remove();
+
+                                        lazy.classList.add('[status-off]');
+
+                                        setTimeout(()=>{
+
+                                            lazy.classList.add('[status---]');
 
                                             setTimeout(()=>{
 
-                                                lazy.classList.add('[status---]');
+                                                stepdata.container.removeAttribute('disabled');
+
+                                                lazy.classList.remove('[status-active]');
+                                                lazy.classList.remove('[status-off]');
 
                                                 setTimeout(()=>{
-
-                                                    stepdata.container.removeAttribute('disabled');
-
-                                                    lazy.classList.remove('[status-active]');
-                                                    lazy.classList.remove('[status-off]');
-
-                                                    setTimeout(()=>{
-                                                        lazy.remove();
-                                                    },500)
-
+                                                    lazy.remove();
                                                 },500)
 
                                             },500)
 
-                                            return nextstep();
+                                        },500)
 
-                                        }
+                                        return nextstep();
 
                                     }
 
-                                }))()
+                                }
+
+                            }))()
 
 
-                            }
+                        }
 
-                            function updateButtonFileList(fileloader)
-                            {
+                        function updateButtonFileList(fileloader)
+                        {
 
-                                let filestored = [];
+                            let filestored = [];
+                            setTimeout(()=>{
+
+                                for (let filebox of fileloader.datalist)
+                                {
+                                    let filedata = filebox.origins,
+                                        filename = String( filebox.origins.name );
+
+                                    filestored.push( new File( [filedata], filename ) );
+                                }
+
                                 setTimeout(()=>{
 
-                                    for (let filebox of fileloader.datalist)
-                                    {
-                                        let filedata = filebox.origins,
-                                            filename = String( filebox.origins.name );
+                                    fileloader.input.files =  FromArrayToInputFileList(filestored);
 
-                                        filestored.push( new File( [filedata], filename ) );
-                                    }
+                                    inputfield       = btn.querySelectorAll('input[type="file"]')[0];
+                                    textfield        = btn.getElementsByTagName('label')[0];
 
-                                    setTimeout(()=>{
+                                    btn.style='';
 
-                                        fileloader.input.files =  FromArrayToInputFileList(filestored);
-
-                                        inputfield       = btn.querySelectorAll('input[type="file"]')[0];
-                                        textfield        = btn.getElementsByTagName('label')[0];
-
-                                        btn.style='';
-
-                                        updatebuttonfile(btn,inputfield,textfield,startlabeltext,fileloader,false);
-
-                                    },200)
+                                    updatebuttonfile(btn,inputfield,textfield,startlabeltext,fileloader,false);
 
                                 },200)
 
-                            }
+                            },200)
+
+                        }
 
 
-                            function onclickresetter(fileloader)
+                        function onclickresetter(fileloader)
+                        {
+                            fileloader.resetter.onclick = () =>
                             {
-                                fileloader.resetter.onclick = () =>
-                                {
-                                    // reset fileloader
+                                // reset fileloader
 
-                                    fileloader.display.container.innerHTML = '';
-                                    fileloader.datalist = [];
-                                    makedisplay(fileloader)
+                                fileloader.display.container.innerHTML = '';
+                                fileloader.datalist = [];
+                                makedisplay(fileloader)
 
-                                    updateButtonFileList(fileloader);
-                                }
+                                updateButtonFileList(fileloader);
                             }
+                        }
 
 
-                            function deleteAData(fileloader)
+                        function deleteAData(fileloader)
+                        {
+
+                            if(fileloader.settings.deleter)
                             {
 
-                                if(fileloader.settings.deleter)
+                                let e_fileloader_del = null;
+
+                                for (let box of fileloader.datalist)
                                 {
-
-                                    let e_fileloader_del = null;
-
-                                    for (let box of fileloader.datalist)
+                                    box.buttons.deleter.onclick = e_fileloader_del =>
                                     {
-                                        box.buttons.deleter.onclick = e_fileloader_del =>
-                                        {
 
-                                            //get steptarget of box via click
-                                            let steptarget = [...fileloader.container.querySelectorAll('.action-delete')].indexOf(e_fileloader_del.target);
+                                        //get steptarget of box via click
+                                        let steptarget = [...fileloader.container.querySelectorAll('.action-delete')].indexOf(e_fileloader_del.target);
 
-                                            //prevent other click
-                                            for (let contentbox of fileloader.datalist) contentbox.container.classList.add('disabled');
+                                        //prevent other click
+                                        for (let contentbox of fileloader.datalist) contentbox.container.classList.add('disabled');
 
-                                            setTimeout(()=>{
+                                        setTimeout(()=>{
 
-                                                //clean objects and structure
-                                                fileloader.datalist[steptarget].container.remove();
-                                                fileloader.datalist.splice(steptarget,1);
+                                            //clean objects and structure
+                                            fileloader.datalist[steptarget].container.remove();
+                                            fileloader.datalist.splice(steptarget,1);
 
-                                                //re active click
-                                                for (let contentbox of fileloader.datalist) contentbox.container.classList.remove('disabled');
+                                            //re active click
+                                            for (let contentbox of fileloader.datalist) contentbox.container.classList.remove('disabled');
 
-                                                updateButtonFileList(fileloader)
+                                            updateButtonFileList(fileloader)
 
-                                            },100)
-
-                                        }
+                                        },100)
 
                                     }
 
                                 }
-
-                            }
-
-
-                            fileloader.display.container.ontouchend = ev =>{  ev=null; setTimeout(()=>{reorderdata(fileloader)},250) }
-                            fileloader.display.container.onmouseup = ev =>{ ev=null; setTimeout(()=>{reorderdata(fileloader)},250) }
-
-                            function reorderdata(fileloader)
-                            {
-                                let neworder = [];
-
-                                let databoxes =  fileloader.display.element.querySelectorAll('.databox');
-
-                                for (let box of databoxes)
-                                {
-
-                                    let boxcontentsid = box.querySelectorAll('.contents')[0].id;
-
-                                    for (let datainmemory of fileloader.datalist)
-                                    {
-                                        if(boxcontentsid === datainmemory.id)
-                                        {
-                                            datainmemory.container = box;
-                                            neworder.push(datainmemory);
-                                        }
-
-                                    }
-
-                                }
-
-                                fileloader.datalist = neworder;
 
                             }
 
                         }
 
+
+                        fileloader.display.container.ontouchend = ev =>{  ev=null; setTimeout(()=>{reorderdata(fileloader)},250) }
+                        fileloader.display.container.onmouseup = ev =>{ ev=null; setTimeout(()=>{reorderdata(fileloader)},250) }
+
+                        function reorderdata(fileloader)
+                        {
+                            let neworder = [];
+
+                            let databoxes =  fileloader.display.element.querySelectorAll('.databox');
+
+                            for (let box of databoxes)
+                            {
+
+                                let boxcontentsid = box.querySelectorAll('.contents')[0].id;
+
+                                for (let datainmemory of fileloader.datalist)
+                                {
+                                    if(boxcontentsid === datainmemory.id)
+                                    {
+                                        datainmemory.container = box;
+                                        neworder.push(datainmemory);
+                                    }
+
+                                }
+
+                            }
+
+                            fileloader.datalist = neworder;
+
+                        }
+
                     }
 
-
-                    loaderindex++;
-
-               }
+                }
 
 
+                loaderindex++;
 
-            }
+           }
 
-            function buttons()
-            {
-                passwords();
-                starts();
-                numbers();
-                ranges();
-                selects();
-                dropsdown();
-                clocks();
-                checks();
-                radios();
-                datepikers();
-                stopwatch();
-                filereaders();
-            }
+
+
+        }
+
+        function buttons()
+        {
+            passwords();
+            starts();
+            numbers();
+            ranges();
+            selects();
+            dropsdown();
+            clocks();
+            checks();
+            radios();
+            datepikers();
+            stopwatch();
+            filereaders();
+        }
 
 
 
@@ -10076,7 +9956,7 @@ const ui = (() => {
                         let box = card.firstElementChild,
                             close = card.querySelectorAll('.close')[0];
 
-                        if(!close) debug(`:: [⚠ ui alert]: wrong card\n   ⮑ Card can be expanse but not contract. Close element not faunded.\n      read more on: https://git.io/vldt456`);
+                        if(!close) debug(`:: [⚠ ui alert]: wrong card\n   ⮑ Card can be expanse but not contract. Close element not faunded.\n      read more on: https://git.io/J4hdP`);
 
 
                         box.classList.add('[status-off]');
@@ -10465,7 +10345,7 @@ const ui = (() => {
                 pop.classList.remove('[status-off]');
                 pop.classList.remove('[status-active]');
 
-                if(pop.parentNode.tagName.toLowerCase()=='p' && !is_touch_device())
+                if(pop.parentNode.tagName.toLowerCase()=='p')
                 {
                     pop.addEventListener('mouseenter', ev_togglepopover => {
 
@@ -10526,6 +10406,7 @@ const ui = (() => {
     //--------------------------------------------------//
 
 
+
         const audiobox = () =>
         {
 
@@ -10537,8 +10418,7 @@ const ui = (() => {
             {
 
 
-                let isfirstplay = true,
-                    audio       = playerbox.getElementsByTagName('audio')[0],
+                let audio       = playerbox.getElementsByTagName('audio')[0],
                     play        = playerbox.querySelectorAll('.play')[0],
                     loop        = playerbox.querySelectorAll('.loop')[0],
                     timer       = playerbox.querySelectorAll('.duration>*')[0],
@@ -10547,8 +10427,6 @@ const ui = (() => {
                     volume      = playerbox.querySelectorAll('.volume')[0],
                     volumeIcon,
                     power;
-
-                audio.muted=true;
 
                 audio.load();
 
@@ -10640,16 +10518,6 @@ const ui = (() => {
 
                         play.addEventListener( 'click', ev_audio_playclick => {
 
-                            if(isfirstplay)
-                            {
-                                isfirstplay=false;
-                                audio.muted=false;
-                                audio.volume=1.0;
-                                audio.removeAttribute("muted");
-                                audio.setAttribute('volume',1.0)
-
-                            }
-
                             updateRuntime();
 
                             if(audio.paused)
@@ -10727,7 +10595,7 @@ const ui = (() => {
 
                             if(ev_audio_powerclick.target!=power)
                             {
-                                if( !audio.muted || audio.muted==null )
+                                if( !audio.muted )
                                 {
                                     audio.muted = true;
                                     volume.classList.add('[status-off]');
@@ -10777,6 +10645,7 @@ const ui = (() => {
         }
 
 
+
     //--------------------------------------------------//
 
 
@@ -10805,7 +10674,7 @@ const ui = (() => {
                 {
 
                     videobox.classList.add('[status-error]');
-                    debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Framework support only html5 <video> for create a preset.\n      read more on: https://git.io/vldt456`);
+                    debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Framework support only html5 <video> for create a preset.\n      read more on: https://git.io/J4hdh`);
 
                 }
                 else
@@ -10850,7 +10719,6 @@ const ui = (() => {
 
                 //// set for start
 
-                video.setAttribute('muted',true); // anti safari "block content with audio"
 
                 if(video.autoplay)
                 {
@@ -10925,25 +10793,20 @@ const ui = (() => {
 
                 }
 
-                video.addEventListener('canplaythrough', ev_videoready =>
-                {
+
+                video.onloadedmetadata = ev_videoready => {
+
 
                     // on buffering start...
 
+                    if (video.buffered.length === 0)
+                    {
 
-                    var checkbuffer = setInterval( () =>{
+                        console.log('no buffer for a video'); return;
 
-                        if(video.buffered.length !== 0)
-                        {
-                            videodatastart()
-                            window.clearInterval(checkbuffer);
-                            checkbuffer = null;
-                        }
+                    }
 
-                    },500);
-
-
-                    let videodatastart = () =>
+                    else
                     {
 
                         //// Print load progress
@@ -10952,18 +10815,18 @@ const ui = (() => {
                         {
 
                             let bufferedSeconds = (video.buffered.end(0) - video.buffered.start(0)),
-                                buffering = setInterval( () =>{
+                                checkvideobuffer = setInterval( () =>{
                                     let loadpercent = ~~((bufferedSeconds / video.duration) * 100);
                                     if(loadpercent>=99 || bufferedSeconds==video.duration)
                                     {
                                         streamprogress.className = 'progress-[100]';
-                                        window.clearInterval(buffering);
+                                        window.clearInterval(checkvideobuffer);
                                     }
                                     else
                                     {
                                         streamprogress.className = 'progress-['+((loadpercent<10)?'0'+loadpercent:''+loadpercent)+']'
                                     }
-                                },250);
+                                },500);
 
                         }
 
@@ -11096,13 +10959,10 @@ const ui = (() => {
                         let playpause = () =>
                         {
 
-
                             var checkvals;
 
                             function playvideo()
                             {
-
-                                video.removeAttribute("muted");
 
                                 videobox.classList.remove('[display-active]');
                                 videobox.classList.add('[display-off]');
@@ -11156,14 +11016,11 @@ const ui = (() => {
 
                         }
 
-                        if(video.autoplay) playpause();
-
-                        if(starter) starter.addEventListener( 'click', ev_playvideo => {  playpause(ev_playvideo); },false);
-
-                        if(play) play.addEventListener( 'click', ev_playvideo => {  playpause(ev_playvideo); },false);
+                        if(video.autoplay){ playpause(); };
+                        if(starter) starter.addEventListener( 'click', ev_playvideo => { playpause(ev_playvideo) },false);
+                        if(play) play.addEventListener( 'click', ev_playvideo => { playpause(ev_playvideo) },false);
 
                         display.addEventListener( 'click', ev_playvideo => {
-
                             if(ev_playvideo.target === display)
                             {
 
@@ -11210,7 +11067,6 @@ const ui = (() => {
                         {
 
                             maximized.addEventListener( 'click',  ev_maximizedvideo => {
-                                alert("click all maximized!");
 
                                 ev_maximizedvideo.preventDefault();
                                 setfullscreen()
@@ -11361,9 +11217,7 @@ const ui = (() => {
                     }
 
 
-
-
-                }, false);
+                }
 
             }
 
@@ -11392,7 +11246,7 @@ const ui = (() => {
                     if(settings)
                     {
                         if(optionslist.includes('autostartstop') && !videobox.parentElement.classList.toString().toLowerCase().includes('lazy'))
-                        debug(`:: [⚠ ui alert]: wrong video\n   ⮑ video not support 'autostartstop' without lazy\n      read more on: https://git.io/vldt456`)
+                        debug(`:: [⚠ ui alert]: wrong video\n   ⮑ video not support 'autostartstop' without lazy\n      read more on: https://git.io/J4hdh`)
                     }
 
 
@@ -11400,9 +11254,9 @@ const ui = (() => {
                     // check video url
                     let strcheck    = srcstring.toLowerCase(),
                         isyt_be     = strcheck.includes('youtu.be/'),
-                        isyt_watch  = strcheck.includes('youtube.com/watch'),
-                        isyt_embed  = strcheck.includes('youtube.com/embed'),
-                        isVimeo     = strcheck.includes('vimeo.com/'),
+                        isyt_watch 	= strcheck.includes('youtube.com/watch'),
+                        isyt_embed 	= strcheck.includes('youtube.com/embed'),
+                        isVimeo 	= strcheck.includes('vimeo.com/'),
                         isInstagram = strcheck.includes('instagram.com/'),
                         isFacebook  = strcheck.includes('facebook.com/'),
                         isFb        = strcheck.includes('fb.com/'),
@@ -11488,7 +11342,7 @@ const ui = (() => {
                         if(isyt_watch)      { videourl = 'https://www.youtube.com/embed/'+srcstring.split('watch?v=')[1].split('=')[0]+'?enablejsapi=1&version=3&playsinline=0'; }
                         else if(isyt_be)    { videourl = 'https://www.youtube.com/embed/'+srcstring.split('.be/')[1]+'?enablejsapi=1&version=3&playsinline=0'; }
                         else if(isyt_embed) { videourl = 'https://www.youtube.com/embed/'+srcstring.split('embed/')[1].split('=')[0]+'?enablejsapi=1&version=3&playsinline=0'; }
-                        else                { error=true;  debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Youtube video link unsupported\n      read more on: https://git.io/vldt456`);}
+                        else                { error=true;  debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Youtube video link unsupported\n      read more on: https://git.io/J4hdh`);}
 
                         if(error==false)
                         {
@@ -11598,7 +11452,7 @@ const ui = (() => {
                             //check error
                             if(optionslist.includes('playlist')||optionslist.includes('lang')||optionslist.includes('volume')||optionslist.includes('controls'))
                             {
-                                debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Facebook video not support 'controls','playlist','lang','loop','volume'\n      read more on: https://git.io/vldt456`);
+                                debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Facebook video not support 'controls','playlist','lang','loop','volume'\n      read more on: https://git.io/J4hdh`);
                             }
 
                         }
@@ -11611,7 +11465,7 @@ const ui = (() => {
                         //make new link
                         if(srcstring.match("extid"))
                         {
-                            error=true; debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Usupported Facebook video link\n      read more on: https://git.io/vldt456\n      wrong link: `+srcstring);
+                            error=true; debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Usupported Facebook video link\n      read more on: https://git.io/J4hdh\n      wrong link: `+srcstring);
                         }
 
                         else
@@ -11619,7 +11473,7 @@ const ui = (() => {
 
                             if(srcstring.match("videos")) { addlink = 'https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(srcstring.replace('facebook','fb')); }
                             else if(srcstring.match("posts") || srcstring.match("story") || srcstring.match(/\?v=/g))    { addlink = 'https://www.facebook.com/plugins/post.php?href='+encodeURIComponent(srcstring.replace('facebook','fb')); }
-                            else { error=true; debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Facebook video link unsupported\n      read more on: https://git.io/vldt456`); }
+                            else { error=true; debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Facebook video link unsupported\n      read more on: https://git.io/J4hdh`); }
 
                         }
 
@@ -11655,7 +11509,7 @@ const ui = (() => {
                             //check errors
                             if(optionslist.includes('autoplay')||optionslist.includes('loop')||optionslist.includes('playlist')||optionslist.includes('playlist')||optionslist.includes('lang')||optionslist.includes('volume')||optionslist.includes('controls'))
                             {
-                                debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Instagram video support only settings-[autostartstop]\n      read more on: https://git.io/vldt456`);
+                                debug(`:: [⚠ ui alert]: wrong video\n   ⮑ Instagram video support only settings-[autostartstop]\n      read more on: https://git.io/J4hdh`);
                             }
 
                         }
@@ -11751,55 +11605,6 @@ const ui = (() => {
         }
 
 
-
-    //--------------------------------------------------//
-
-
-        const fullscreener = () =>
-        {
-
-            const requestFullScreen = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullScreen || document.documentElement.mozRequestFullScreen || document.documentElement.msRequestFullScreen;
-            const cancellFullScreen = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.msExitFullscreen;
-
-            var gofullscreeners   = document.querySelectorAll(".screenmode");
-
-            for (let screenerbutton of gofullscreeners)
-            {
-
-                screenerbutton.addEventListener('click', () => {
-
-                    if(screenview.fullscreen===false)
-                    {
-
-                        screenview.fullscreen = true;
-                        requestFullScreen.call(document.documentElement);
-
-                        for (let sbtm of gofullscreeners)
-                        {
-                            sbtm.classList.add('[status-active]')
-                            sbtm.classList.remove('[status-off]')
-                        }
-
-                    }
-
-                    else
-                    {
-
-                        screenview.fullscreen = false;
-                        cancellFullScreen.call(document);
-
-                        for (let sbtm of gofullscreeners)
-                        {
-                            sbtm.classList.add('[status-off]')
-                            sbtm.classList.remove('[status-active]')
-                        }
-
-                    }
-
-                }, false);
-
-            }
-        }
 
     //--------------------------------------------------//
 
@@ -12047,7 +11852,7 @@ const ui = (() => {
                                 let makefx_scrolling = (event) =>
                                 {
 
-                                    let scrlDelPosIn = parseInt( document.documentElement.scrollTop + screen.height-(screen.height/10)),
+                                    let	scrlDelPosIn = parseInt( document.documentElement.scrollTop + screen.height-(screen.height/10)),
                                         scrlDelPosOut = parseInt( document.documentElement.scrollTop + (screen.height/10)),
                                         scrlBodyPosIn = parseInt( document.body.scrollTop + screen.height-(screen.height/10)),
                                         scrlBodyPosOut = parseInt( document.body.scrollTop + (screen.height/10)),
@@ -12264,6 +12069,7 @@ const ui = (() => {
             tagcode();
             retagpre();
             lazyloader();
+            //nomobar();
             modeapp();
             absolute();
             paginations();
@@ -12279,7 +12085,6 @@ const ui = (() => {
             audiobox();
             grid_y();
             grabs();
-            nomobar();
 
         },false);
 
@@ -12295,7 +12100,6 @@ const ui = (() => {
             fitup();
             flange();
             outbox();
-            fullscreener();
             effectors();
             exitloader();
 
@@ -12316,7 +12120,7 @@ const ui = (() => {
 
         })),false);
 
-        window.onresize = () =>{ nomobar(); grid_y(); }
+        window.onresize = () =>{ /*nomobar();*/ grid_y(); }
 
 
 
@@ -12333,6 +12137,7 @@ const ui = (() => {
             else if(fn == 'scrollers')      standardscroll();
             else if(fn == 'snaps')          snapscroll();
             else if(fn == 'anchors')        anchors();
+            else if(fn == 'buttons')        buttons();
             else if(fn == 'fileloader')     fileloader();
             else if(fn == 'cards')          expandercard();
             else if(fn == 'paginations')    paginations();
@@ -12351,31 +12156,12 @@ const ui = (() => {
             else if(fn == 'flanges')        flange();
             else if(fn == 'grabs')          grabs();
             else if(fn == 'effectors')      effectors();
-
-            else if(fn == 'buttons')        buttons();
-
-            else if(fn == 'filereaders')    filereaders();
-
-            else if(fn == 'passwords')      passwords();
-            else if(fn == 'starts')         starts();
-            else if(fn == 'numbers')        numbers();
-            else if(fn == 'ranges')         ranges();
-            else if(fn == 'selects')        selects();
-            else if(fn == 'dropsdown')      dropsdown();
-            else if(fn == 'clocks')         clocks();
-            else if(fn == 'checks')         checks();
-            else if(fn == 'radios')         radios();
-            else if(fn == 'datepikers')     datepikers();
-            else if(fn == 'stopwatch')      stopwatch();
-
-
-            else debug(':: [⚠ ui alert]: wrong reload\n   ⮑ The name "'+fn+'" is not valid!\n      Read the wiki on: https://git.io/vldt456\n      Actual valid names: ["buttons","filereaders","passwords","starts","numbers","ranges","selects","dropsdown","clocks","checks","radios","datepikers","stopwatch","condingtag","absolute","checksize","scrollers","snaps","anchors","cards","paginations","tab-x","tab-y,"spoilers","videobox","audiobox","gridx-y","warning","outbox","parallax","autocrop","fitheight","fitup","flanges","grabs","effectors"');
-
+            else debug(`:: [⚠ ui alert]: wrong reload\n   ⮑ The name "`+fn+`" is not valid!\n      Actual valid names: https://git.io/J4hh3`);
+            //condingtag, absolute, checksize, scrollers, snaps, anchors, cards, paginations, tab-x, tab-y, spoilers, videobox, audiobox, grid-y, buttons, warning, outbox, parallax, autocrop, fitheight, fitup, flanges, grabs, effectors
         }
 
         return {
             warning,
-            screenview,
             loaderslist,
             draganddrop,
             reload: reload
