@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.34c12 ]
+        //	[ kimera framework V 2.8.34c13 ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.34c12 kimera`);
+        debug(`:: [🛈 Version] V2.8.34c13 kimera`);
         // debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
