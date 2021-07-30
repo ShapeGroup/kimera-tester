@@ -6120,6 +6120,7 @@ nav.type-y>ul {
 
 	.hide-bar-x>* {
 
+		width: 100%;
 	    padding-bottom: 17px;
 	    margin-bottom: -17px;
 
