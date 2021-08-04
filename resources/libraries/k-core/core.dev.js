@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.35e ]
+        //	[ kimera framework V 2.8.35e1 ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.35e kimera`);
+        debug(`:: [🛈 Version] V2.8.35e1 kimera`);
         // debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -2331,9 +2331,16 @@ const ui = (() => {
 				}
 				else
 				{
-					starerpos = (slider.className.includes('snap-x'))
-						? 'translateX('+(active.offsetLeft-(slider.offsetWidth/2))+'px)'
-						: 'translateY('+(active.offsetTop+(slider.offsetHeight/2))+'px)'
+					if(slider.className.includes('snap-x'))
+					{
+						starerpos =  'translateX('+(active.offsetLeft-(slider.offsetWidth/2))+'px)'
+					}
+					else
+					{
+						starerpos = (active.offsetTop<=slider.offsetHeight/2)
+										? 'translateY('+active.offsetTop+'px)'
+										: 'translateY('+( (active.offsetTop-(active.offsetHeight/2))+(slider.offsetHeight/2) )+'px)'
+					}
 				}
 
 				dragbox.style.transform = starerpos;
