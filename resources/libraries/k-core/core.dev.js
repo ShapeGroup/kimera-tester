@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.35d ]
+        //	[ kimera framework V 2.8.35e ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.35d kimera`);
+        debug(`:: [🛈 Version] V2.8.35e kimera`);
         // debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -2331,7 +2331,6 @@ const ui = (() => {
 				}
 				else
 				{
-					console.log("YES",active.offsetLeft-(slider.offsetWidth/2));
 					starerpos = (slider.className.includes('snap-x'))
 						? 'translateX('+(active.offsetLeft-(slider.offsetWidth/2))+'px)'
 						: 'translateY('+(active.offsetTop+(slider.offsetHeight/2))+'px)'
