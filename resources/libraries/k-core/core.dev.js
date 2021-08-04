@@ -3,7 +3,7 @@ const ui = (() => {
 
 
         /*
-        //	[ kimera framework V 2.8.34c14 ]
+        //	[ kimera framework V 2.8.35d ]
         //	Credits: Alberto Marà & Shape group
         //	https://github.com/ShapeGroup/kimera-frontend-framework/wiki
         //	https://www.facebook.com/kimeraframework/
@@ -12,7 +12,7 @@ const ui = (() => {
 
         function debug(){ console.debug.apply(console,arguments); }
 
-        debug(`:: [🛈 Version] V2.8.34c14 kimera`);
+        debug(`:: [🛈 Version] V2.8.35d kimera`);
         // debug(`:: [🛈 Project] https://git.io/JIJEt`);
         debug(`:: [🛈 wikizone] https://git.io/fhSzk`);
         debug(`:: [🛈 licence] GNU V3 https://git.io/JJVw0`);
@@ -1775,7 +1775,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -1802,7 +1802,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -1840,7 +1840,7 @@ const ui = (() => {
 
                     let html =
                         `
-                        <div class="outbox warning gpuboost active" id="warningbox-`+id+`">
+                        <div class="outbox warning gpuboost [status-active]" id="warningbox-`+id+`">
                             <div class="overlay">
                                 <div class="side-center">
                                     <div>
@@ -1946,10 +1946,12 @@ const ui = (() => {
         {
 
 
-            let Viewport     = [document.querySelector('*[class*="mode-"]')][0],
-                RelOutbox    = document.querySelectorAll('*[target^="outbox#"]'),
-                OnLoadActive = document.querySelectorAll('.outbox [status-active]');
+            let Viewport     = document.querySelector('*[class*="mode-"]'),
+             	RelOutbox    = document.querySelectorAll('*[target^="outbox#"]'),
+                OnLoadActive = Array.from( document.querySelectorAll('.outbox') );
 
+
+			for (let i = 0; i < OnLoadActive.length; i++) if(!OnLoadActive[i].className.includes('status-active')) OnLoadActive.splice(i,i)
 
             let l = RelOutbox.length;
             for (let i = 0; i < l; i++)
@@ -2037,14 +2039,14 @@ const ui = (() => {
 
 
                     //auto open
-                    let ola = OnLoadActive.length;
+
+					let ola = OnLoadActive.length;
                     for (let i = 0; i < ola; i++)
                     {
 
                         let OutboxOpen = OnLoadActive[i];
                         OutboxOpen.onclick = event =>
                         {
-
 
                             if(!OutboxOpen.classList.contains('warning') && (event.target.className.includes('close') || event.target.className.includes('accept') || event.target.classList.contains('overlay')))
                             {
@@ -2307,7 +2309,7 @@ const ui = (() => {
                     allboxes        = dragbox.querySelectorAll('.snaps>*'),
                     dotcontainer    = slider.querySelectorAll('.dots')[0],
                     active          = null,
-                    startpos        = 0;
+					starerpos		= null;
 
 
                 // if not active exist, make it
@@ -2320,12 +2322,22 @@ const ui = (() => {
 
                 // start point position
 
-                startpos = (slider.className.includes('snap-x'))
-                                ? 'translateX(-'+active.offsetLeft+'px)'
-                                : 'translateY(-'+active.offsetTop+'px)'
 
-                dragbox.style.transform = startpos;
+				if(!slider.querySelectorAll('.snaptype-blocks').length)
+				{
+					starerpos = (slider.className.includes('snap-x'))
+						? 'translateX(-'+active.offsetLeft+'px)'
+						: 'translateY(-'+active.offsetTop+'px)'
+				}
+				else
+				{
+					console.log("YES",active.offsetLeft-(slider.offsetWidth/2));
+					starerpos = (slider.className.includes('snap-x'))
+						? 'translateX('+(active.offsetLeft-(slider.offsetWidth/2))+'px)'
+						: 'translateY('+(active.offsetTop+(slider.offsetHeight/2))+'px)'
+				}
 
+				dragbox.style.transform = starerpos;
 
                 //set dot
 
@@ -2443,7 +2455,6 @@ const ui = (() => {
                     dragbox.style.transform = (isblocks)
                         ? 'translateY(-'+(snapsmainwrap.offsetTop+active.offsetHeight/2)+'px)'
                         : 'translateY(-'+(snapsmainwrap.offsetTop)+'px)';
-
                 }
 
 
@@ -5754,19 +5765,23 @@ const ui = (() => {
 
                 btn.onclick = ev_click_checkboxbutton =>
                 {
+					if(!inputtag.disabled)
+					{
 
-                    if(!inputtag.checked)
-                    {
-                        inputtag.setAttribute('checked',true);
-                        inputtag.checked = true;
-                        inputtag.value = 1;
-                    }
-                    else
-                    {
-                        inputtag.setAttribute('checked',false);
-                        inputtag.checked = false;
-                        inputtag.value = 0;
-                    }
+	                    if(!inputtag.checked)
+	                    {
+	                        inputtag.setAttribute('checked',true);
+	                        inputtag.checked = true;
+	                        inputtag.value = 1;
+	                    }
+	                    else
+	                    {
+	                        inputtag.setAttribute('checked',false);
+	                        inputtag.checked = false;
+	                        inputtag.value = 0;
+	                    }
+
+					}
 
                 }
 
@@ -11614,8 +11629,8 @@ const ui = (() => {
         {
 
 
-            window.addEventListener('touchmove', () => { checkparallax = setInterval( moveparallax() , 50); },false);
-            window.addEventListener('scroll',    () => { moveparallax() },false);
+            document.body.addEventListener('touchmove', () => { checkparallax = setInterval( moveparallax() , 50); },true);
+            document.body.addEventListener('scroll',    () => { moveparallax() },true);
 
             /*>>>>*/ moveparallax();
             function moveparallax()
@@ -11624,11 +11639,10 @@ const ui = (() => {
                 setTimeout(()=>{
 
 
-                    let parallaxList = [...document.querySelectorAll('*[class*="Parallax-["]')];
+                    let parallaxList = document.querySelectorAll('*[class*="Parallax-["]');
 
-                    for (let parallax of  parallaxList)
+                    for (let parallax of parallaxList)
                     {
-
 
                         let scale,sensibility;
                         if(parallax.className.includes("mask"))
@@ -11654,19 +11668,21 @@ const ui = (() => {
                             screen_w          = document.body.clientWidth;
 
 
-
                         //starter box positon
                         let y_start =  (distancetotop-(screen_h/2))*-1,
                             x_start =  (distancetoleft-(screen_w/2))*-1;
 
 
                         //for all child of box
-                        let counterbox = 1;
+                        let l = parallax.children.length,
+								counterbox = 1;
 
-                        for (let innerbox = 0; i < l; i++)
+                        for (let i = 0; i < l; i++)
                         {
 
                             counterbox++;
+
+							let innerbox = parallax.children[i];
 
                             let Y =  ( y_start/screen_h )*(100-(counterbox*sensibility)),
                                 X =  ( x_start/screen_w )*(100-(counterbox*sensibility));
